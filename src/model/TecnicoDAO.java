@@ -37,9 +37,9 @@ public class TecnicoDAO {
 	}
 	void listar() {
 		int contador = 1;
+		System.out.println("TECNICOS:");
 		for (Tecnico tecnico: tecnicos) {
-			System.out.printf("[%d] - Nome: %s | Sele��o: %s\n".formatted(contador++,
-								tecnico.getNome(),tecnico.getSelecao().getNome()));	
+			System.out.println(tecnico);	
 		}
 	}
 	

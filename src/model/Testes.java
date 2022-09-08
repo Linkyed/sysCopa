@@ -1,7 +1,4 @@
 package model;
-
-import java.util.ArrayList;
-
 public class Testes {
 	
 	public static void main(String[] args) {
@@ -19,6 +16,9 @@ public class Testes {
 		System.out.println("Edição: "+tecnicoDAO.editar(tecnicoDAO.getOneTecnico(0), "João"));
 		System.out.println("--------------");
 		tecnicoDAO.listar();
+		
+		Jogador zezinho = new Jogador("joao", null, a);
+		System.out.println(zezinho.setNome("Joao"));
 
 	}
 }
