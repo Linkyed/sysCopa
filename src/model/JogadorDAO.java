@@ -1,7 +1,8 @@
 package model;
 
 public class JogadorDAO {
-	boolean inserir(Jogador jog) {
+	boolean inserir(Jogador jogador) {
+		
 		return true;
 	}
 	boolean editar(String nome) {
