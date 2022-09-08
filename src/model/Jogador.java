@@ -53,7 +53,7 @@ public class Jogador{
 	}
 	
 	public boolean setGolmarcado(int gols_Marcados) {
-		if(golsmarcados > 0) {
+		if(gols_Marcados > 0) {
 			this.golMarcado += gols_Marcados;
 			return true;
 			}
@@ -65,9 +65,9 @@ public class Jogador{
 	}
 	
 	public boolean setNome(String nome) {
-		for(int i = 0; i < nome.length()i;i++) {
+		for(int i = 0; i < nome.length();i++) {
 			char c = nome.charAt(i);
-			if(c.isLetter() == false) {
+			if(Character.isLetter(c)== false) {
 				return false;
 			}
 		}

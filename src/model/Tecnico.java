@@ -44,4 +44,10 @@ public class Tecnico{
 		return Objects.equals(nome, other.nome);
 	}
 
+	public String toString() {
+		return "Nome: " + nome + " | Selecao: " + selecao.getNome();
+	}
+
+	
+	
 }
