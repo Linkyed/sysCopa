@@ -1,7 +1,7 @@
 package model;
 
 public class JogadorDAO {
-	boolean inserir(Jogador jogador) {
+	boolean inserir(Jogador jogador,Selecao selecao) {
 		
 		return true;
 	}

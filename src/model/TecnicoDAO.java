@@ -36,7 +36,6 @@ public class TecnicoDAO {
 		
 	}
 	void listar() {
-		int contador = 1;
 		System.out.println("TECNICOS:");
 		for (Tecnico tecnico: tecnicos) {
 			System.out.println(tecnico);	
