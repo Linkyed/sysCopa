@@ -46,8 +46,4 @@ public class TecnicoDAO {
 		return tecnicos.get(num);
 	}
 
-	void pedroLixo(){
-		System.out.print("Lixo");
-	}
-	
 }
