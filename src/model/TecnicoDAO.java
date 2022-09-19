@@ -17,7 +17,7 @@ public class TecnicoDAO {
 		}
 	}
 	boolean editar(Tecnico tecnico, String nome) {
-		
+
 		if (tecnico.getNome() == nome) {
 			return false;
 		}else {
@@ -25,12 +25,12 @@ public class TecnicoDAO {
 			return true;
 		}
 	}
-	boolean excluir(Tecnico tecnico) {
-		if (tecnicos.contains(tecnico) == true){
-			tecnicos.remove(tecnico);
+	boolean excluir(int num) {
+		if (num <= tamanhoLista && num >= 0) {
+			tecnicos.remove(num);
 			tamanhoLista--;
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 		
