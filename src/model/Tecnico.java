@@ -6,6 +6,10 @@ public class Tecnico{
 	private String nome;
 	private Selecao selecao;
 	
+	Tecnico (String nome){
+		this.nome = Funcoes.captilizeString(nome);
+	}
+	
 	Tecnico (String nome, Selecao selecao){
 		this.nome = Funcoes.captilizeString(nome);
 		this.selecao = selecao;

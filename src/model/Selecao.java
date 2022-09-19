@@ -3,12 +3,16 @@ package model;
 import java.util.Objects;
 
 public class Selecao{
-	private Jogador[] jogadores = new Jogador[26];
+	private String[] jogadores = new String[11];
 	private Tecnico tecnico;
 	private String nome;
 	
 	Selecao(String nome) {
 		this.nome = nome;
+	}
+	Selecao(String nome, Tecnico tecnico) {
+		this.nome = nome;
+		this.tecnico = tecnico;
 	}
 	
 	public Tecnico getTecnico() {
@@ -21,19 +25,10 @@ public class Selecao{
 		}
 	}
 	
-	public Jogador[] getJogadores() {
-		return jogadores;
-	}
-	
-	public void setJogadores(Jogador[] jogadores) {
-		if(jogadores != null) {
-			this.jogadores = jogadores;
-		}
-	}
-	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
