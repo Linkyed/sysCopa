@@ -51,18 +51,35 @@ public class Testes {
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		
-    Jogador jogador = new Jogador("JOSE RIBEIRO DA SILVA", selecaoDAO.getOneSelecao(0), 27);
+		Jogador jogador = new Jogador("JOSE RIBEIRO DA SILVA", selecaoDAO.getOneSelecao(0), 27);
 		Jogador jogador2 = new Jogador("JOÃ‚O RIBEIRO DE JESUS", selecaoDAO.getOneSelecao(0), 18);
 		System.out.println(jogador.getCodJog());
 		System.out.println(jogador2.getCodJog());
 
 		JogadorDAO jogadorDAO = new JogadorDAO();
 		System.out.println("--------------");
-		jogadorDAO.listar();
-		Jogador jogas = new Jogador("Nalbert", "6544" , null);
+		
+	
+	
+		Jogador jogas = new Jogador("João ALmeida", selecaoDAO.getOneSelecao(0) , 10);
+		Jogador jogas11 = new Jogador("João ALmeida", selecaoDAO.getOneSelecao(0) , 10);
+		Jogador jogas1 = new Jogador("Nalbert Santos", selecaoDAO.getOneSelecao(0) , 12);
+		Jogador jogas2 = new Jogador("Araujo Leste", selecaoDAO.getOneSelecao(0) , 11);
+		Jogador jogas3 = new Jogador("Araujo Leste a", selecaoDAO.getOneSelecao(1) , 10);
+		
+
 		jogadorDAO.inserir(jogas);
+		jogadorDAO.inserir(jogas1);
+		jogadorDAO.inserir(jogas2);
+		jogadorDAO.inserir(jogas3);
+		selecaoDAO.getOneSelecao(0).addJogador(jogas);
+		selecaoDAO.getOneSelecao(0).addJogador(jogas1);
+		selecaoDAO.getOneSelecao(0).addJogador(jogas2);
+		
 		jogadorDAO.listar();
-		jogadorDAO.editar_nome(jogas, "Pedro");
+		selecaoDAO.listar();
+		selecaoDAO.excluir(0);
 		jogadorDAO.listar();
+		selecaoDAO.listar();
 	}
 }
