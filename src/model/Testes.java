@@ -2,22 +2,22 @@ package model;
 public class Testes {
 	
 	public static void main(String[] args) {
-
-		//TESTE DE SELE«√O
+		
+		//TESTE DE SELE√á√ÉO
 		SelecaoDAO selecaoDAO = new SelecaoDAO();
 		System.out.println("--------------");
-		System.out.println("InserÁ„o: "+selecaoDAO.inserir(new Selecao("BRASIL")));
-		System.out.println("InserÁ„o: "+selecaoDAO.inserir(new Selecao("ARGENTINA")));
-		System.out.println("InserÁ„o: "+selecaoDAO.inserir(new Selecao("PARAGUAI")));
+		System.out.println("Inser√ß√£o: "+selecaoDAO.inserir(new Selecao("BRASIL")));
+		System.out.println("Inser√ß√£o: "+selecaoDAO.inserir(new Selecao("ARGENTINA")));
+		System.out.println("Inser√ß√£o: "+selecaoDAO.inserir(new Selecao("PARAGUAI")));
 		System.out.println("--------------");
 		selecaoDAO.listar();
 		System.out.println("--------------");
-		System.out.println("EdiÁ„o: "+selecaoDAO.editar(selecaoDAO.getOneSelecao(0), "COLOMBIA"));
-		//TESTAR A ALTERA«√O DE JOGADORES QUANDO TIVER O CODJOG
+		System.out.println("Edi√ß√£o: "+selecaoDAO.editar(selecaoDAO.getOneSelecao(0), "COLOMBIA"));
+		//TESTAR A ALTERA√á√ÉO DE JOGADORES QUANDO TIVER O CODJOG
 		System.out.println("--------------");
 		selecaoDAO.listar();
 		System.out.println("--------------");
-		System.out.println("Exclus„o: "+selecaoDAO.excluir(1));
+		System.out.println("Exclus√£o: "+selecaoDAO.excluir(1));
 		System.out.println("--------------");
 		selecaoDAO.listar();
 		
@@ -27,34 +27,42 @@ public class Testes {
 		tecnicoDAO.inserir(new Tecnico("Vestapen", selecaoDAO.getOneSelecao(1)));
 		tecnicoDAO.listar();
 		System.out.println("--------------");
-		System.out.println("Exclus„o: "+tecnicoDAO.excluir(1));
+		System.out.println("Exclus√£o: "+tecnicoDAO.excluir(1));
 		System.out.println("--------------");
 		tecnicoDAO.listar();
 		System.out.println("--------------");
-		System.out.println("EdiÁ„o: "+tecnicoDAO.editar(tecnicoDAO.getOneTecnico(0), "Jo„o"));
+		System.out.println("Edi√ß√£o: "+tecnicoDAO.editar(tecnicoDAO.getOneTecnico(0), "Jo√£o"));
 		System.out.println("--------------");
 		tecnicoDAO.listar();
 		
 		//TESTE DO ARBITRO
 		ArbitroDAO arbitroDAO = new ArbitroDAO();
 		System.out.println("--------------");
-		System.out.println("InserÁ„o: "+arbitroDAO.inserir(new Arbitro("Josias")));
-		System.out.println("InserÁ„o: "+arbitroDAO.inserir(new Arbitro("Rafael")));
+		System.out.println("Inser√ß√£o: "+arbitroDAO.inserir(new Arbitro("Josias")));
+		System.out.println("Inser√ß√£o: "+arbitroDAO.inserir(new Arbitro("Rafael")));
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		System.out.println("--------------");
-		System.out.println("EdiÁ„o: "+arbitroDAO.editar(arbitroDAO.getOneArbitro(0), "Jo„o"));
+		System.out.println("Edi√ß√£o: "+arbitroDAO.editar(arbitroDAO.getOneArbitro(0), "Jo√£o"));
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		System.out.println("--------------");
-		System.out.println("Exclus„o: "+arbitroDAO.excluir(0));
+		System.out.println("Exclus√£o: "+arbitroDAO.excluir(0));
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		
-		Jogador jogador = new Jogador("JOSE RIBEIRO DA SILVA", selecaoDAO.getOneSelecao(0), 27);
-		Jogador jogador2 = new Jogador("JO¬O RIBEIRO DE JESUS", selecaoDAO.getOneSelecao(0), 18);
+    Jogador jogador = new Jogador("JOSE RIBEIRO DA SILVA", selecaoDAO.getOneSelecao(0), 27);
+		Jogador jogador2 = new Jogador("JO√ÇO RIBEIRO DE JESUS", selecaoDAO.getOneSelecao(0), 18);
 		System.out.println(jogador.getCodJog());
 		System.out.println(jogador2.getCodJog());
 
+		JogadorDAO jogadorDAO = new JogadorDAO();
+		System.out.println("--------------");
+		jogadorDAO.listar();
+		Jogador jogas = new Jogador("Nalbert", "6544" , null);
+		jogadorDAO.inserir(jogas);
+		jogadorDAO.listar();
+		jogadorDAO.editar_nome(jogas, "Pedro");
+		jogadorDAO.listar();
 	}
 }

@@ -1,10 +1,10 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArbitroDAO {
-	private List<Arbitro> arbitros = new ArrayList<>();
+	BancoDeDados dados = new BancoDeDados();
+	private List<Arbitro> arbitros = dados.getArbitros();
 	private int tamanhoLista = 0;
 	boolean inserir(Arbitro arbitro) {
 		arbitros.add(arbitro);
