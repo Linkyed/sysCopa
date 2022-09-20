@@ -51,7 +51,10 @@ public class Testes {
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		
-		
+		Jogador jogador = new Jogador("JOSE RIBEIRO DA SILVA", selecaoDAO.getOneSelecao(0), 27);
+		Jogador jogador2 = new Jogador("JOÂO RIBEIRO DE JESUS", selecaoDAO.getOneSelecao(0), 18);
+		System.out.println(jogador.getCodJog());
+		System.out.println(jogador2.getCodJog());
 
 	}
 }
