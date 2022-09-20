@@ -3,17 +3,21 @@ package model;
 
 public class Jogador{
 	private String nome;
-	private String codJog;
+	private String codJog = "";
+	private int camisa;
 	
 	private int cartaoVermelho = 0;
 	private int cartaoAmarelo = 0;
 	private int golMarcado = 0;
 	private Selecao selecao;
 	
-	public Jogador(String nome, String codigo, Selecao selecao) {
+	public Jogador(String nome, Selecao selecao, int camisa) {
 		this.nome = nome;
-		this.codJog = codigo;
 		this.selecao = selecao;
+		this.camisa = camisa;
+		String[] separacao = this.nome.split(" ");
+		this.codJog = separacao[0].length() + "" + separacao[1].length() + separacao[0].charAt(0) + this.camisa + separacao[1].charAt(0) + this.nome.length()
+;		
 	}
 	
 	
