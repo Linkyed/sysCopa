@@ -5,12 +5,19 @@ import java.util.List;
 public class JogadorDAO {
 
 	private List<Jogador> todos_Jogadores = BancoDeDados.getTodos_Jogadores() ;
-	
+	private List<Selecao> todas_Selecao = BancoDeDados.getSelecoes();
 
-	boolean inserir(Jogador jogador) {
-		todos_Jogadores.add(jogador);
-		return true;
+	boolean inserir(Jogador jogador,Selecao selecao) {
+		if(todas_Selecao.contains(selecao)==true) {
+			int posicao_lista = todas_Selecao.indexOf(selecao);
+			todas_Selecao.get(posicao_lista).addJogador(jogador);
+			todos_Jogadores.add(jogador);
+			return true;
+
+		}
+		return false;
 	}
+	
 	boolean editar_nome(Jogador jogador, String nome) {
 		if(todos_Jogadores.contains(jogador)) {
 			jogador.setNome(nome);

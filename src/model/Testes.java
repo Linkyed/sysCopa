@@ -1,8 +1,11 @@
 package model;
+
+import java.util.Iterator;
+
 public class Testes {
 	
 	public static void main(String[] args) {
-		
+		/*
 		//TESTE DE SELE√á√ÉO
 		SelecaoDAO selecaoDAO = new SelecaoDAO();
 		System.out.println("--------------");
@@ -57,29 +60,38 @@ public class Testes {
 		System.out.println(jogador2.getCodJog());
 
 		JogadorDAO jogadorDAO = new JogadorDAO();
-		System.out.println("--------------");
+		System.out.println("--------------");*/
 		
-	
-	
-		Jogador jogas = new Jogador("Jo„o ALmeida", selecaoDAO.getOneSelecao(0) , 10);
-		Jogador jogas11 = new Jogador("Jo„o ALmeida", selecaoDAO.getOneSelecao(0) , 10);
-		Jogador jogas1 = new Jogador("Nalbert Santos", selecaoDAO.getOneSelecao(0) , 12);
-		Jogador jogas2 = new Jogador("Araujo Leste", selecaoDAO.getOneSelecao(0) , 11);
-		Jogador jogas3 = new Jogador("Araujo Leste a", selecaoDAO.getOneSelecao(1) , 10);
+		SelecaoDAO selecaoDAO = new SelecaoDAO();
+		JogadorDAO jogadorDAO = new JogadorDAO();
+		Selecao sele = new Selecao("Brasil");
+
+		selecaoDAO.inserir(sele);
+		Selecao sele1 = new Selecao("Brasil");
+
+		
+		Jogador jogas = new Jogador("Jo„o ALmeida", sele , 10);
+		Jogador jogas1 = new Jogador("Nalbert Santos", sele , 12);
+		Jogador jogas2 = new Jogador("Araujo Leste", sele , 11);
+		Jogador jogas3 = new Jogador("Araujo Leste a", sele , 10);
+		
+		
 		
 
-		jogadorDAO.inserir(jogas);
-		jogadorDAO.inserir(jogas1);
-		jogadorDAO.inserir(jogas2);
-		jogadorDAO.inserir(jogas3);
-		selecaoDAO.getOneSelecao(0).addJogador(jogas);
-		selecaoDAO.getOneSelecao(0).addJogador(jogas1);
-		selecaoDAO.getOneSelecao(0).addJogador(jogas2);
+		jogadorDAO.inserir(jogas,sele1);
+		jogadorDAO.inserir(jogas1,sele1);
+		jogadorDAO.inserir(jogas2,sele1);
+		jogadorDAO.inserir(jogas3,sele1);
 		
 		jogadorDAO.listar();
 		selecaoDAO.listar();
-		selecaoDAO.excluir(0);
 		jogadorDAO.listar();
 		selecaoDAO.listar();
+		System.out.println("============================================================================");
+		for(Selecao s: BancoDeDados.getSelecoes() ) {
+			for(Jogador j: s.getJogadores()) {
+				System.out.println(j);
+			}
+		}
 	}
 }
