@@ -3,8 +3,7 @@ package model;
 import java.util.List;
 
 public class SelecaoDAO {
-	BancoDeDados dados = new BancoDeDados();
-	private List<Selecao> selecoes = dados.getSelecoes() ;
+	private List<Selecao> selecoes = BancoDeDados.getSelecoes() ;
 	private int tamanhoLista = 0;
 	boolean inserir(Selecao selecao) {
 		if (tamanhoLista < 32) {
@@ -25,15 +24,21 @@ public class SelecaoDAO {
 	}
 	
 	boolean editar(Selecao selecao, Jogador jogador) {
-		if (selecao.getJogadores().contains(jogador.getCodJog()) == true) {
-			return selecao.removerJogador(jogador.getCodJog());
+		if (selecao.getJogadores().contains(jogador) == true) {
+			BancoDeDados.getTodos_Jogadores().remove(jogador);
+			return selecao.removerJogador(jogador);
 		} else {
-			return selecao.addJogador(jogador.getCodJog());
+			BancoDeDados.getTodos_Jogadores().add(jogador);
+			return selecao.addJogador(jogador);
 		}
 	}
 
 	boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
+			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
+			for (Jogador jogador : jogadores) {
+				BancoDeDados.getTodos_Jogadores().remove(jogador);
+			}
 			selecoes.remove(num);
 			return true;
 		} else {

@@ -3,8 +3,8 @@ package model;
 import java.util.List;
 
 public class JogadorDAO {
-	BancoDeDados dados = new BancoDeDados();
-	private List<Jogador> todos_Jogadores = dados.getTodos_Jogadores() ;
+
+	private List<Jogador> todos_Jogadores = BancoDeDados.getTodos_Jogadores() ;
 	
 
 	boolean inserir(Jogador jogador) {

@@ -3,8 +3,8 @@ package model;
 import java.util.List;
 
 public class TecnicoDAO {
-	BancoDeDados dados = new BancoDeDados();
-	private List<Tecnico> tecnicos = dados.getTecnicos();
+	
+	private List<Tecnico> tecnicos = BancoDeDados.getTecnicos();
 	private int tamanhoLista = 0;
 	
 	boolean inserir(Tecnico tecnico) {
