@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BancoDeDados {
-	private List<Jogador> todos_Jogadores = new ArrayList<>();
-	private List<Tecnico> tecnicos = new ArrayList<>();
-	private List<Selecao> selecoes = new ArrayList<>();
-	private List<Arbitro> arbitros = new ArrayList<>();
+	static private List<Jogador> todos_Jogadores = new ArrayList<>();
+	static private List<Tecnico> tecnicos = new ArrayList<>();
+	static private List<Selecao> selecoes = new ArrayList<>();
+	static private List<Arbitro> arbitros = new ArrayList<>();
 
 
-	public List<Jogador> getTodos_Jogadores() {
+	static public List<Jogador> getTodos_Jogadores() {
 		return todos_Jogadores;
 	}
-	public List<Tecnico> getTecnicos() {
+	static public List<Tecnico> getTecnicos() {
 		return tecnicos;
 	}
-	public List<Selecao> getSelecoes() {
+	static public List<Selecao> getSelecoes() {
 		return selecoes;
 	}
-	public List<Arbitro> getArbitros() {
+	static public List<Arbitro> getArbitros() {
 		return arbitros;
 	}
 }

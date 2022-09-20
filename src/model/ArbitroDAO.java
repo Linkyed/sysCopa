@@ -3,8 +3,8 @@ package model;
 import java.util.List;
 
 public class ArbitroDAO {
-	BancoDeDados dados = new BancoDeDados();
-	private List<Arbitro> arbitros = dados.getArbitros();
+
+	private List<Arbitro> arbitros = BancoDeDados.getArbitros();
 	private int tamanhoLista = 0;
 	boolean inserir(Arbitro arbitro) {
 		arbitros.add(arbitro);
