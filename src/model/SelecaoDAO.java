@@ -1,10 +1,10 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SelecaoDAO {
-	private List<Selecao> selecoes = new ArrayList<>();
+	BancoDeDados dados = new BancoDeDados();
+	private List<Selecao> selecoes = dados.getSelecoes() ;
 	private int tamanhoLista = 0;
 	boolean inserir(Selecao selecao) {
 		if (tamanhoLista < 32) {

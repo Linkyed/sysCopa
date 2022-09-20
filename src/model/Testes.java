@@ -2,7 +2,7 @@ package model;
 public class Testes {
 	
 	public static void main(String[] args) {
-
+		
 		//TESTE DE SELEÇÃO
 		SelecaoDAO selecaoDAO = new SelecaoDAO();
 		System.out.println("--------------");
@@ -51,7 +51,16 @@ public class Testes {
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		
+		// TESTE DO JOGADOR
 		
+		JogadorDAO jogadorDAO = new JogadorDAO();
+		System.out.println("--------------");
+		jogadorDAO.listar();
+		Jogador jogas = new Jogador("Nalbert", "6544" , null);
+		jogadorDAO.inserir(jogas);
+		jogadorDAO.listar();
+		jogadorDAO.editar_nome(jogas, "Pedro");
+		jogadorDAO.listar();
 
 	}
 }

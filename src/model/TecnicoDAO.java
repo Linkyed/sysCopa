@@ -1,10 +1,10 @@
 package model;
 
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class TecnicoDAO {
-	private ArrayList<Tecnico> tecnicos = new ArrayList<>();
+	BancoDeDados dados = new BancoDeDados();
+	private List<Tecnico> tecnicos = dados.getTecnicos();
 	private int tamanhoLista = 0;
 	
 	boolean inserir(Tecnico tecnico) {

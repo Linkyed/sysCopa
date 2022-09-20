@@ -1,10 +1,11 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class JogadorDAO {
-	private List<Jogador> todos_Jogadores = new ArrayList<>();
+	BancoDeDados dados = new BancoDeDados();
+	private List<Jogador> todos_Jogadores = dados.getTodos_Jogadores() ;
+	
 
 	boolean inserir(Jogador jogador) {
 		todos_Jogadores.add(jogador);
