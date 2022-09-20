@@ -75,4 +75,23 @@ public class Jogador{
 		return true;
 	}
 
+
+	public String getCodJog() {
+		return codJog;
+	}
+
+
+	public void setCodJog(String codJog) {
+		this.codJog = codJog;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Nome: " + nome + " || Seleção: " + selecao;
+	}
+	
+	
+	
+	
 }

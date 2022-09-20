@@ -1,12 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArbitroDAO {
-	private ArrayList<Arbitro> arbitros = new ArrayList<>();
-	
+	private List<Arbitro> arbitros = new ArrayList<>();
+	private int tamanhoLista = 0;
 	boolean inserir(Arbitro arbitro) {
 		arbitros.add(arbitro);
+		tamanhoLista++;
 		return true;
 	}
 	boolean editar(Arbitro arbitro, String nome) {
@@ -17,11 +19,12 @@ public class ArbitroDAO {
 			return true;
 		}
 	}
-	boolean excluir(Arbitro arbitro) {
-		if (arbitros.contains(arbitro) == true){
-			arbitros.remove(arbitro);
+	boolean excluir(int num) {
+		if (num <= tamanhoLista && num >= 0) {
+			arbitros.remove(num);
+			tamanhoLista--;
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}

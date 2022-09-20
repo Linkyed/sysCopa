@@ -2,15 +2,32 @@ package model;
 public class Testes {
 	
 	public static void main(String[] args) {
+
+		//TESTE DE SELEÇÃO
+		SelecaoDAO selecaoDAO = new SelecaoDAO();
+		System.out.println("--------------");
+		System.out.println("Inserção: "+selecaoDAO.inserir(new Selecao("BRASIL")));
+		System.out.println("Inserção: "+selecaoDAO.inserir(new Selecao("ARGENTINA")));
+		System.out.println("Inserção: "+selecaoDAO.inserir(new Selecao("PARAGUAI")));
+		System.out.println("--------------");
+		selecaoDAO.listar();
+		System.out.println("--------------");
+		System.out.println("Edição: "+selecaoDAO.editar(selecaoDAO.getOneSelecao(0), "COLOMBIA"));
+		//TESTAR A ALTERAÇÃO DE JOGADORES QUANDO TIVER O CODJOG
+		System.out.println("--------------");
+		selecaoDAO.listar();
+		System.out.println("--------------");
+		System.out.println("Exclusão: "+selecaoDAO.excluir(1));
+		System.out.println("--------------");
+		selecaoDAO.listar();
+		
 		//TESTE DO TECNICO
 		TecnicoDAO tecnicoDAO = new TecnicoDAO();
-		Selecao a = new Selecao("brasil");
-		Selecao b = new Selecao("Argentina");
-		tecnicoDAO.inserir(new Tecnico("Jos", a));
-		tecnicoDAO.inserir(new Tecnico("Vestapen", b));
+		tecnicoDAO.inserir(new Tecnico("Jos", selecaoDAO.getOneSelecao(0)));
+		tecnicoDAO.inserir(new Tecnico("Vestapen", selecaoDAO.getOneSelecao(1)));
 		tecnicoDAO.listar();
 		System.out.println("--------------");
-		System.out.println("Exclusão: "+tecnicoDAO.excluir(new Tecnico("Jos", a)));
+		System.out.println("Exclusão: "+tecnicoDAO.excluir(1));
 		System.out.println("--------------");
 		tecnicoDAO.listar();
 		System.out.println("--------------");
@@ -30,11 +47,11 @@ public class Testes {
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		System.out.println("--------------");
-		System.out.println("Exclusão: "+arbitroDAO.excluir(new Arbitro("João")));
+		System.out.println("Exclusão: "+arbitroDAO.excluir(0));
 		System.out.println("--------------");
 		arbitroDAO.listar();
 		
-		Jogador zezinho = new Jogador("joao", null, a);
-		System.out.println(zezinho.setNome("Joao"));
+		
+
 	}
 }
