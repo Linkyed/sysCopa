@@ -1,10 +1,10 @@
 package model;
 
-
-import java.util.ArrayList;
+import java.util.List;
 
 public class TecnicoDAO {
-	private ArrayList<Tecnico> tecnicos = new ArrayList<>();
+	BancoDeDados dados = new BancoDeDados();
+	private List<Tecnico> tecnicos = dados.getTecnicos();
 	private int tamanhoLista = 0;
 	
 	boolean inserir(Tecnico tecnico) {
@@ -17,7 +17,7 @@ public class TecnicoDAO {
 		}
 	}
 	boolean editar(Tecnico tecnico, String nome) {
-		
+
 		if (tecnico.getNome() == nome) {
 			return false;
 		}else {
@@ -25,12 +25,12 @@ public class TecnicoDAO {
 			return true;
 		}
 	}
-	boolean excluir(Tecnico tecnico) {
-		if (tecnicos.contains(tecnico) == true){
-			tecnicos.remove(tecnico);
+	boolean excluir(int num) {
+		if (num <= tamanhoLista && num >= 0) {
+			tecnicos.remove(num);
 			tamanhoLista--;
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 		
@@ -46,8 +46,4 @@ public class TecnicoDAO {
 		return tecnicos.get(num);
 	}
 
-	void pedroLixo(){
-		System.out.print("Lixo");
-	}
-	
 }
