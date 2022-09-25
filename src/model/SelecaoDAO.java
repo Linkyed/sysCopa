@@ -1,11 +1,12 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelecaoDAO {
-	private List<Selecao> selecoes = BancoDeDados.getSelecoes() ;
-	private int tamanhoLista = 0;
-	boolean inserir(Selecao selecao) {
+	static private List<Selecao> selecoes = new ArrayList<>();
+	static private int tamanhoLista = 0;
+	static boolean inserir(Selecao selecao) {
 		if (tamanhoLista < 32) {
 			tamanhoLista++;
 			selecoes.add(selecao);
@@ -14,7 +15,7 @@ public class SelecaoDAO {
 			return false;
 		}
 	}
-	boolean editar(Selecao selecao, String nome) {
+	static boolean editar(Selecao selecao, String nome) {
 		if (nome.isEmpty() == true) {
 			return false;
 		} else {
@@ -23,21 +24,21 @@ public class SelecaoDAO {
 		}
 	}
 	
-	boolean editar(Selecao selecao, Jogador jogador) {
+	static boolean editar(Selecao selecao, Jogador jogador) {
 		if (selecao.getJogadores().contains(jogador) == true) {
-			BancoDeDados.getTodos_Jogadores().remove(jogador);
+			JogadorDAO.excluir(jogador);
 			return selecao.removerJogador(jogador);
 		} else {
-			BancoDeDados.getTodos_Jogadores().add(jogador);
+			JogadorDAO.inserir(jogador, selecao);
 			return selecao.addJogador(jogador);
 		}
 	}
 
-	boolean excluir(int num) {
+	static boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
 			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
 			for (Jogador jogador : jogadores) {
-				BancoDeDados.getTodos_Jogadores().remove(jogador);
+				JogadorDAO.excluir(jogador);
 			}
 			selecoes.remove(num);
 			return true;
@@ -45,14 +46,22 @@ public class SelecaoDAO {
 			return false;
 		}
 	}
-	void listar() {
+	static void listar() {
 		System.out.println("SELEÇÕES:");
 		for (Selecao selecao: selecoes) {
 			System.out.println(selecao);	
 		}
 	}
 	
-	Selecao getOneSelecao(int num) {
+	static Selecao getOneSelecao(int num) {
 		return selecoes.get(num);
+	}
+	
+	static boolean existeSelecao(Selecao selecao) {
+		return selecoes.contains(selecao);
+	}
+	
+	static Selecao indexSelecao(Selecao selecao) {
+		return selecoes.get(selecoes.indexOf(selecao));
 	}
 }

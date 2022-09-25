@@ -1,13 +1,14 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TecnicoDAO {
 	
-	private List<Tecnico> tecnicos = BancoDeDados.getTecnicos();
-	private int tamanhoLista = 0;
+	static private List<Tecnico> tecnicos = new ArrayList<>();
+	static private int tamanhoLista = 0;
 	
-	boolean inserir(Tecnico tecnico) {
+	static boolean inserir(Tecnico tecnico) {
 		if (tamanhoLista < 32){
 			tecnicos.add(tecnico);
 			tamanhoLista++;
@@ -16,7 +17,7 @@ public class TecnicoDAO {
 			return false;
 		}
 	}
-	boolean editar(Tecnico tecnico, String nome) {
+	static boolean editar(Tecnico tecnico, String nome) {
 
 		if (tecnico.getNome() == nome) {
 			return false;
@@ -25,7 +26,7 @@ public class TecnicoDAO {
 			return true;
 		}
 	}
-	boolean excluir(int num) {
+	static boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
 			tecnicos.remove(num);
 			tamanhoLista--;
@@ -35,14 +36,14 @@ public class TecnicoDAO {
 		}
 		
 	}
-	void listar() {
+	static void listar() {
 		System.out.println("TECNICOS:");
 		for (Tecnico tecnico: tecnicos) {
 			System.out.println(tecnico);	
 		}
 	}
 	
-	Tecnico getOneTecnico(int num) {
+	static Tecnico getOneTecnico(int num) {
 		return tecnicos.get(num);
 	}
 
