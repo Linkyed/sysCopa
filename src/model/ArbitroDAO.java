@@ -7,12 +7,12 @@ public class ArbitroDAO {
 	int a = 0;
 	static private List<Arbitro> arbitros = new ArrayList<>();
 	static private int tamanhoLista = 0;
-	static boolean inserir(Arbitro arbitro) {
+	static public boolean inserir(Arbitro arbitro) {
 		arbitros.add(arbitro);
 		tamanhoLista++;
 		return true;
 	}
-	static boolean editar(Arbitro arbitro, String nome) {
+	static public boolean editar(Arbitro arbitro, String nome) {
 		if (arbitro.getNome() == nome) {
 			return false;
 		}else {
@@ -20,8 +20,8 @@ public class ArbitroDAO {
 			return true;
 		}
 	}
-	static boolean excluir(int num) {
-		if (num <= tamanhoLista && num >= 0) {
+	static public boolean excluir(int num) {
+		if (num <= tamanhoLista-1 && num >= 0) {
 			arbitros.remove(num);
 			tamanhoLista--;
 			return true;
@@ -29,14 +29,17 @@ public class ArbitroDAO {
 			return false;
 		}
 	}
-	static void listar() {
-		System.out.println("ARBITROS:");
+	static public void listar() {
+		System.out.println("\nARBITROS:");
+		int contador = 0;
 		for (Arbitro arbitro: arbitros) {
-			System.out.println(arbitro);	
+			System.out.println("[" + contador + "]" + arbitro);	
+			contador++;
 		}
+		System.out.println();
 	}
 	
-	static Arbitro getOneArbitro(int num) {
+	static public Arbitro getOneArbitro(int num) {
 		return arbitros.get(num);
 	}
 }

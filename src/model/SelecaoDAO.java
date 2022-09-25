@@ -7,7 +7,7 @@ public class SelecaoDAO {
 	int a = 0;
 	static private List<Selecao> selecoes = new ArrayList<>();
 	static private int tamanhoLista = 0;
-	static boolean inserir(Selecao selecao) {
+	static public boolean inserir(Selecao selecao) {
 		if (tamanhoLista < 32) {
 			tamanhoLista++;
 			selecoes.add(selecao);
@@ -16,7 +16,7 @@ public class SelecaoDAO {
 			return false;
 		}
 	}
-	static boolean editar(Selecao selecao, String nome) {
+	static public boolean editar(Selecao selecao, String nome) {
 		if (nome.isEmpty() == true) {
 			return false;
 		} else {
@@ -25,7 +25,7 @@ public class SelecaoDAO {
 		}
 	}
 	
-	static boolean editar(Selecao selecao, Jogador jogador) {
+	static public boolean editar(Selecao selecao, Jogador jogador) {
 		if (selecao.getJogadores().contains(jogador) == true) {
 			JogadorDAO.excluir(jogador);
 			return selecao.removerJogador(jogador);
@@ -35,7 +35,7 @@ public class SelecaoDAO {
 		}
 	}
 
-	static boolean excluir(int num) {
+	static public boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
 			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
 			for (Jogador jogador : jogadores) {
@@ -47,22 +47,22 @@ public class SelecaoDAO {
 			return false;
 		}
 	}
-	static void listar() {
+	static public void listar() {
 		System.out.println("SELEÇÕES:");
 		for (Selecao selecao: selecoes) {
 			System.out.println(selecao);	
 		}
 	}
 	
-	static Selecao getOneSelecao(int num) {
+	static public Selecao getOneSelecao(int num) {
 		return selecoes.get(num);
 	}
 	
-	static boolean existeSelecao(Selecao selecao) {
+	static public boolean existeSelecao(Selecao selecao) {
 		return selecoes.contains(selecao);
 	}
 	
-	static Selecao indexSelecao(Selecao selecao) {
+	static public Selecao indexSelecao(Selecao selecao) {
 		return selecoes.get(selecoes.indexOf(selecao));
 	}
 }
