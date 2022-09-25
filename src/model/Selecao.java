@@ -51,7 +51,9 @@ public class Selecao{
 	public String getNome() {
 		return nome;
 	}
-	
+	public int getTamanho() {
+		return tamListaJogadores;
+	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

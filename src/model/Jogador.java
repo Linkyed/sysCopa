@@ -90,6 +90,27 @@ public class Jogador{
 		this.codJog = codJog;
 	}
 
+	
+
+	public int getCamisa() {
+		return camisa;
+	}
+
+
+	public void setCamisa(int camisa) {
+		this.camisa = camisa;
+	}
+
+
+	public Selecao getSelecao() {
+		return selecao;
+	}
+
+
+	public void setSelecao(Selecao selecao) {
+		this.selecao = selecao;
+	}
+
 
 	@Override
 	public String toString() {
@@ -99,7 +120,7 @@ public class Jogador{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codJog);
+		return Objects.hash(codJog, nome);
 	}
 
 
@@ -112,8 +133,12 @@ public class Jogador{
 		if (getClass() != obj.getClass())
 			return false;
 		Jogador other = (Jogador) obj;
-		return Objects.equals(codJog, other.codJog);
+		return Objects.equals(codJog, other.codJog) || Objects.equals(nome, other.nome);
 	}
+
+
+	
+	
 	
 	
 	
