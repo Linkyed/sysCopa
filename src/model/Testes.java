@@ -72,21 +72,25 @@ public class Testes {
 		
 		Jogador jogas = new Jogador("João ALmeida", sele , 10);
 		Jogador jogas1 = new Jogador("Nalbert Santos", sele , 12);
+		Jogador jogas6 = new Jogador("Nalbert Santos", sele , 12);
 		Jogador jogas2 = new Jogador("Araujo Leste", sele , 11);
-		Jogador jogas3 = new Jogador("Araujo Leste a", sele , 10);
+		Jogador jogas3 = new Jogador("Araujo Leste ", sele1 , 10);
 		
 		
 		
 
 		jogadorDAO.inserir(jogas,sele1);
+		jogadorDAO.inserir(jogas6,sele1);
 		jogadorDAO.inserir(jogas1,sele1);
 		jogadorDAO.inserir(jogas2,sele1);
 		jogadorDAO.inserir(jogas3,sele1);
 		
 		jogadorDAO.listar();
-		selecaoDAO.listar();
+		jogadorDAO.excluir(jogas3);
+	
 		jogadorDAO.listar();
 		selecaoDAO.listar();
+
 		System.out.println("============================================================================");
 		for(Selecao s: BancoDeDados.getSelecoes() ) {
 			for(Jogador j: s.getJogadores()) {
