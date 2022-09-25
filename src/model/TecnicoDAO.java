@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TecnicoDAO {
-	
+	int a = 0;
 	static private List<Tecnico> tecnicos = new ArrayList<>();
 	static private int tamanhoLista = 0;
 	
@@ -34,7 +34,7 @@ public class TecnicoDAO {
 		} else {
 			return false;
 		}
-		
+		 
 	}
 	static void listar() {
 		System.out.println("TECNICOS:");

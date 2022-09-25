@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JogadorDAO {
-
+	int a = 0;
 	static private List<Jogador> todos_Jogadores = new ArrayList<>();
 
 

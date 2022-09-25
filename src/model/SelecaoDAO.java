@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelecaoDAO {
+	int a = 0;
 	static private List<Selecao> selecoes = new ArrayList<>();
 	static private int tamanhoLista = 0;
 	static boolean inserir(Selecao selecao) {

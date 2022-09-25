@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArbitroDAO {
-
+	int a = 0;
 	static private List<Arbitro> arbitros = new ArrayList<>();
 	static private int tamanhoLista = 0;
 	static boolean inserir(Arbitro arbitro) {
