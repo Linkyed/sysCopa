@@ -1,6 +1,7 @@
 package model;
 
 public interface ArbitroDAOInterface {
+	
 	static public boolean inserir(Arbitro arbitro) {
 		return false;
 	}
