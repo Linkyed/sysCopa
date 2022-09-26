@@ -23,25 +23,11 @@ public class Funcoes {
 		return entradaUsuario;
 	}
 	public final static void mostrarOpcoes() {
-		int escolhaSecundaria = 0;
+		
 		System.out.println("[1] Seleção.\n"
 				+ "[2] Arbitro.\n"
 				+ "[3] Tecnico.\n"
 				+ "[4] Jogador.\n");
-		escolhaSecundaria = entradaInt();
-		// Passivel de troca possivelmente em cada funcionlaidade
-		switch (escolhaSecundaria) {
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			default:
-				System.out.println("\nLembre-se de digitar apenas os numeros relacionados a opções.\n");
-		}
 	}
 	public final static String captilizeString(String texto) {
 		String[] c = texto.split(" ");

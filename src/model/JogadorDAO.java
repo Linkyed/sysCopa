@@ -8,7 +8,7 @@ public class JogadorDAO {
 	static private List<Jogador> todos_Jogadores = new ArrayList<>();
 
 
-	static boolean inserir(Jogador jogador, Selecao selecao) {
+	static public boolean inserir(Jogador jogador, Selecao selecao) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			
 			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
@@ -21,7 +21,7 @@ public class JogadorDAO {
 		return false;
 	}
 
-	static boolean editar_nome(Jogador jogador, String nome) {
+	static public boolean editar_nome(Jogador jogador, String nome) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -32,7 +32,7 @@ public class JogadorDAO {
 
 	}
 
-	static boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
+	static public boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -42,7 +42,7 @@ public class JogadorDAO {
 		return false;
 	}
 
-	static boolean editar_Cart_Vermelho(Jogador jogador, int cartao_vermelho) {
+	static public boolean editar_Cart_Vermelho(Jogador jogador, int cartao_vermelho) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -53,7 +53,7 @@ public class JogadorDAO {
 
 	}
 
-	static boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
+	static public boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -63,7 +63,7 @@ public class JogadorDAO {
 		return false;
 	}
 
-	static boolean excluir(Jogador jogador) {
+	static public boolean excluir(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -76,17 +76,18 @@ public class JogadorDAO {
 		}
 	}
 
-	static boolean listar() {
+	static public boolean listar() {
 
 		if (todos_Jogadores.isEmpty()) {
-			System.out.println("Não existe nenhum jogador cadastrado.");
+			System.out.println("\nNão existe nenhum jogador cadastrado.\n");
 			return false;
 		} else {
-			System.out.println("Lista de Todos os Jogadores");
+			System.out.println("\nLista de Todos os Jogadores");
 			System.out.println("=================================");
 			for (Jogador jogador : todos_Jogadores) {
 				System.out.println(jogador);
 			}
+			System.out.println();
 			return true;
 		}
 	}

@@ -8,7 +8,7 @@ public class TecnicoDAO {
 	static private List<Tecnico> tecnicos = new ArrayList<>();
 	static private int tamanhoLista = 0;
 	
-	static boolean inserir(Tecnico tecnico) {
+	static public boolean inserir(Tecnico tecnico) {
 		if (tamanhoLista < 32){
 			tecnicos.add(tecnico);
 			tamanhoLista++;
@@ -17,7 +17,7 @@ public class TecnicoDAO {
 			return false;
 		}
 	}
-	static boolean editar(Tecnico tecnico, String nome) {
+	static public boolean editar(Tecnico tecnico, String nome) {
 
 		if (tecnico.getNome() == nome) {
 			return false;
@@ -26,7 +26,7 @@ public class TecnicoDAO {
 			return true;
 		}
 	}
-	static boolean excluir(int num) {
+	static public boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
 			tecnicos.remove(num);
 			tamanhoLista--;
@@ -36,14 +36,14 @@ public class TecnicoDAO {
 		}
 		 
 	}
-	static void listar() {
+	static public void listar() {
 		System.out.println("TECNICOS:");
 		for (Tecnico tecnico: tecnicos) {
 			System.out.println(tecnico);	
 		}
 	}
 	
-	static Tecnico getOneTecnico(int num) {
+	static public Tecnico getOneTecnico(int num) {
 		return tecnicos.get(num);
 	}
 

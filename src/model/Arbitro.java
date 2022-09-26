@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Arbitro{
 	private String nome;
 	
-	Arbitro(String nome){
-		this.nome = nome;
+	public Arbitro(String nome){
+		this.nome = Funcoes.captilizeString(nome);
 	}
 
 	public String getNome() {
