@@ -34,26 +34,25 @@ public class Main{
 					+ "[4] Listar os jogadores, tecnicos, arbitros ou seleções.\n"
 					+ "[5] Sair do programa.\n");
 			
-			escolha = Funcoes.entradaInt();
+			escolha = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
 			
 			//MENU GERAL
 			switch (escolha) {
 				//INSERÇÃO
 				case 1:
 					Funcoes.mostrarOpcoes();
-					escolha_inserir = Funcoes.entradaInt();
+					escolha_inserir = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
 					
 					switch (escolha_inserir) {
 						//INSERÇÃO SELEÇÃO
 						case 1:
-							System.out.print("Digite o nome da Seleção: ");
-							SelecaoDAO.inserir(new Selecao(Funcoes.entradaString()));
+							SelecaoDAO.inserir(new Selecao(Funcoes.entradaString("Digite o nome da Seleção: ")));
 							break;
 					
 						//INSERÇÃO ARBITRO
 						case 2:
-							System.out.print("Digite o nome do arbitro: ");
-							ArbitroDAO.inserir(new Arbitro(Funcoes.entradaString()));
+						
+							ArbitroDAO.inserir(new Arbitro(Funcoes.entradaString("Digite o nome do arbitro: ")));
 							break;
 					}
 					break;
@@ -61,7 +60,7 @@ public class Main{
 				//EDIÇÃO
 				case 2:
 					Funcoes.mostrarOpcoes();
-					escolha_editar = Funcoes.entradaInt();
+					escolha_editar = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
 					
 					
 					
@@ -69,13 +68,12 @@ public class Main{
 						//EDIÇÃO SELEÇÃO
 						case 1:
 							SelecaoDAO.listar();
-							System.out.print("Digite o numero da Seleção a ser editada: ");
-							int numSelecao = Funcoes.entradaInt();
+							int numSelecao = Funcoes.entradaInt("Digite o numero da Seleção a ser editada: ");
 							System.out.println("\n[0] Editar o nome da seleção\n[1] Editar o tecnico da seleção");
-							int opcaoEditar = Funcoes.entradaInt();
+							int opcaoEditar = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
 							if (opcaoEditar == 0) {
-								System.out.println("Digite o novo nome da seleção: ");
-								String novoNome = Funcoes.entradaString();
+							
+								String novoNome = Funcoes.entradaString("Digite o novo nome da seleção: ");
 								if (SelecaoDAO.editar(SelecaoDAO.getOneSelecao(numSelecao), novoNome) == true) {
 									System.out.println("\nA operação foi um sucesso!\n");
 								} else {
@@ -85,8 +83,8 @@ public class Main{
 								if (SelecaoDAO.getOneSelecao(numSelecao).getTecnico() == null) {
 									System.out.println("\nSeleção ainda não possui tecnico para ser editado!\n");
 								} else {
-									System.out.println("Digite o novo nome do tecnico: ");
-									String novoNomeTecnico = Funcoes.entradaString();
+									
+									String novoNomeTecnico = Funcoes.entradaString("Digite o novo nome do tecnico: ");
 									if (TecnicoDAO.editar(TecnicoDAO.getTecnicoIndes(SelecaoDAO.getOneSelecao(numSelecao).getTecnico()), novoNomeTecnico) == true) {
 										System.out.println("\nA operação foi um sucesso!\n");
 									}else {
@@ -98,10 +96,8 @@ public class Main{
 						//EDIÇÃO ARBITRO
 						case 2:
 							ArbitroDAO.listar();
-							System.out.println("Lembre-se de digitar o numero do arbitro a ser editado!");
-							int numArbitro = Funcoes.entradaInt();
-							System.out.print("Digite o novo nome do arbitro: ");
-							String nomeArbitro = Funcoes.entradaString();
+							int numArbitro = Funcoes.entradaInt("Digite o numero do arbitro a ser editado: ");
+							String nomeArbitro = Funcoes.entradaString("Digite o novo nome do arbitro: ");
 							if (ArbitroDAO.editar(ArbitroDAO.getOneArbitro(numArbitro), nomeArbitro) == true) {
 								System.out.println("\nA operação foi um sucesso!\n");
 							}else{
@@ -113,13 +109,12 @@ public class Main{
 				//EXCLUSÃO
 				case 3:
 					Funcoes.mostrarOpcoes();
-					escolha_excluir = Funcoes.entradaInt();
+					escolha_excluir = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima: ");
 					switch (escolha_excluir) {
 					//EXCLUSÃO SELEÇÃO
 					case 1:
 						SelecaoDAO.listar();
-						System.out.print("Digite o numero da Seleção a ser excluida: ");
-						if (SelecaoDAO.excluir(Funcoes.entradaInt()) == true) {
+						if (SelecaoDAO.excluir(Funcoes.entradaInt("Digite o numero da Seleção a ser excluida: ")) == true) {
 							System.out.println("\nA operação foi um sucesso!\n");
 						}else{
 							System.out.println("\nA operação foi uma falha!\n");
@@ -129,8 +124,7 @@ public class Main{
 					//EXCLUSÃO ARBITRO
 					case 2:
 						ArbitroDAO.listar();
-						System.out.print("Digite o numero do arbitro a ser excluido: ");
-						if (ArbitroDAO.excluir(Funcoes.entradaInt()) == true) {
+						if (ArbitroDAO.excluir(Funcoes.entradaInt("Digite o numero do arbitro a ser excluido: ")) == true) {
 							System.out.println("\nA operação foi um sucesso!\n");
 						}else{
 							System.out.println("\nA operação foi uma falha!\n");
@@ -142,7 +136,7 @@ public class Main{
 				//LISTAR
 				case 4:
 					Funcoes.mostrarOpcoes();
-					escolha_listar = Funcoes.entradaInt();
+					escolha_listar = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima: ");
 					switch (escolha_listar) {
 						//LISTAR SELEÇÃO
 						case 1:

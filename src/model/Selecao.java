@@ -49,7 +49,7 @@ public class Selecao{
 	}
 	
 	public String getNome() {
-		return nome;
+		return Funcoes.captilizeString(nome);
 	}
 	public int getTamanho() {
 		return tamListaJogadores;

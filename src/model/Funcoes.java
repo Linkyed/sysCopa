@@ -3,17 +3,18 @@ package model;
 import java.util.Scanner;
 
 public class Funcoes {
-	public final static String entradaString () {
+	public final static String entradaString (String texto) {
 		String entradaUsuario = "";
+		System.out.println(texto);
 		Scanner entrada = new Scanner(System.in);
 		entradaUsuario = entrada.nextLine();
 		return entradaUsuario;
 	}
 	
-	public final static int entradaInt() {
+	public final static int entradaInt(String texto) {
 		int entradaUsuario = 0;
 		Scanner entrada = new Scanner(System.in);
-		System.out.print("Digite o numero relacionado a uma opção acima:");
+		System.out.print(texto);
 		try {
 			entradaUsuario = Integer.parseInt(entrada.nextLine());
 		}
@@ -37,5 +38,7 @@ public class Funcoes {
 		}
 		return n.strip();
 	}
+
+
 	
 }
