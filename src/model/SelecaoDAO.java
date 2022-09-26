@@ -9,7 +9,7 @@ public class SelecaoDAO {
 	static private int tamanhoLista = 0;
 
 	static public boolean inserir(Selecao selecao) {
-		if (tamanhoLista < 32) {
+		if (tamanhoLista < 32 && !selecoes.contains(selecao)) {
 			tamanhoLista++;
 			selecoes.add(selecao);
 			return true;
