@@ -16,7 +16,7 @@ public class Testes {
 		Jogador jogas = new Jogador("João ALmeida", sele , 10);
 		Jogador jogas1 = new Jogador("Nalbert Santos", sele , 12);
 		Jogador jogas2 = new Jogador("Araujo Leste", sele , 11);
-		Jogador jogas3 = new Jogador("Araujo Leste ", sele , 10);
+		Jogador jogas3 = new Jogador("Araujo Leste", sele , 10);
 		Jogador jogador = new Jogador("Nalbert Santos", sele, 25);
 
 		JogadorDAO.inserir(jogas,sele);
@@ -35,9 +35,13 @@ public class Testes {
 		JogadorDAO.listar();
 		SelecaoDAO.listar();
 		
-		System.out.println("============================================================================");
+		System.out.println("========================================================================+====");
 
+		SelecaoDAO.excluir(sele);
+		JogadorDAO.listar();
+		SelecaoDAO.listar();
 		
+
 	
 		
 		}

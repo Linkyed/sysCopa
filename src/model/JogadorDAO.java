@@ -77,6 +77,15 @@ public class JogadorDAO {
 		}
 	}
 
+	public static boolean excluir_Jogador_parcial(Jogador jogador) {
+		if (todos_Jogadores.contains(jogador)) {
+			todos_Jogadores.remove(jogador);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public static boolean listar() {
 
 		if (todos_Jogadores.isEmpty()) {
