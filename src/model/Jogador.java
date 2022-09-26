@@ -72,7 +72,7 @@ public class Jogador {
 	}
 
 	public boolean setNome(String nome) {
-		
+
 		if (nome.matches("[a-zA-Z\s]+")) {
 			this.nome = Funcoes.captilizeString(nome);
 			return true;
