@@ -46,5 +46,9 @@ public class TecnicoDAO {
 	static public Tecnico getOneTecnico(int num) {
 		return tecnicos.get(num);
 	}
+	
+	static public Tecnico getTecnicoIndes(Tecnico tecnico) {
+		return tecnicos.get(tecnicos.indexOf(tecnico));
+	}
 
 }

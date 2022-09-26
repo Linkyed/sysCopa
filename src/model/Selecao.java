@@ -10,7 +10,7 @@ public class Selecao{
 	private Tecnico tecnico;
 	private String nome;
 	
-	Selecao(String nome) {
+	public Selecao(String nome) {
 		this.nome = nome;
 	}
 	
@@ -77,7 +77,7 @@ public class Selecao{
 	}
 
 	public String toString() {
-		return "Nome: " + this.nome + "|| Tecnico: " + this.tecnico;
+		return "Nome: " + this.nome + " || Tecnico: " + this.tecnico;
 	}
 
 	

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArbitroDAO {
+public class ArbitroDAO implements ArbitroDAOInterface{
 	int a = 0;
 	static private List<Arbitro> arbitros = new ArrayList<>();
 	static private int tamanhoLista = 0;
@@ -33,7 +33,7 @@ public class ArbitroDAO {
 		System.out.println("\nARBITROS:");
 		int contador = 0;
 		for (Arbitro arbitro: arbitros) {
-			System.out.println("[" + contador + "]" + arbitro);	
+			System.out.println("[" + contador + "] " + arbitro);	
 			contador++;
 		}
 		System.out.println();

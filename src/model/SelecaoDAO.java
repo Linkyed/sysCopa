@@ -48,10 +48,13 @@ public class SelecaoDAO {
 		}
 	}
 	static public void listar() {
-		System.out.println("SELEÇÕES:");
+		System.out.println("\nSELEÇÕES:");
+		int contador = 0;
 		for (Selecao selecao: selecoes) {
-			System.out.println(selecao);	
+			System.out.println("[" + contador + "] " + selecao);	
+			contador++;
 		}
+		System.out.println();
 	}
 	
 	static public Selecao getOneSelecao(int num) {
