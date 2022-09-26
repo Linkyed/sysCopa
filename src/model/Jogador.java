@@ -1,10 +1,12 @@
 package model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Jogador {
 	private String nome;
-	private String codJog = "";
+	private String codJog;
 	private int camisa;
 
 	private int cartaoVermelho = 0;
@@ -12,14 +14,20 @@ public class Jogador {
 	private int golMarcado = 0;
 	private Selecao selecao;
 
+	public Jogador(String nome) {
+		this.nome = nome;
+	}
+
 	public Jogador(String nome, Selecao selecao, int camisa) {
 		this.nome = nome;
 		this.selecao = selecao;
 		this.camisa = camisa;
-		this.selecao = selecao;
-		String[] separacao = this.nome.split(" ");
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss") ;
+		this.codJog =  dtf.format(LocalDateTime.now());
+
+		/*String[] separacao = this.nome.split(" ");
 		this.codJog = separacao[0].length() + "" + separacao[1].length() + separacao[0].charAt(0) + this.camisa
-				+ separacao[1].charAt(0) + this.nome.length();
+				+ separacao[1].charAt(0) + this.nome.length();*/
 
 	}
 
@@ -84,9 +92,6 @@ public class Jogador {
 		return codJog;
 	}
 
-	public void setCodJog(String codJog) {
-		this.codJog = codJog;
-	}
 
 	public int getCamisa() {
 		return camisa;
@@ -124,7 +129,8 @@ public class Jogador {
 		if (getClass() != obj.getClass())
 			return false;
 		Jogador other = (Jogador) obj;
-		return Objects.equals(codJog, other.codJog) || Objects.equals(nome, other.nome);
+		return //Objects.equals(codJog, other.codJog) ||
+				Objects.equals(nome, other.nome);
 	}
 
 }

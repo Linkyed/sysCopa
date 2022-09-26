@@ -15,16 +15,14 @@ public class Testes {
 
 		Jogador jogas = new Jogador("João ALmeida", sele , 10);
 		Jogador jogas1 = new Jogador("Nalbert Santos", sele , 12);
-		/*Jogador jogas6 = new Jogador("Nalbert Santos", sele1 , 12);
 		Jogador jogas2 = new Jogador("Araujo Leste", sele , 11);
-		Jogador jogas3 = new Jogador("Araujo Leste Neto", sele , 10);*/
+		Jogador jogas3 = new Jogador("Araujo Leste ", sele , 10);
 		Jogador jogador = new Jogador("Nalbert Santos", sele, 25);
 
 		JogadorDAO.inserir(jogas,sele);
 		JogadorDAO.inserir(jogas1,sele);
-		/*JogadorDAO.inserir(jogas1,sele1);
 		JogadorDAO.inserir(jogas2,sele);
-		JogadorDAO.inserir(jogas3,sele);*/
+		System.out.print( JogadorDAO.inserir(jogas3,sele));
 		JogadorDAO.editar_Cart_Amarelo(jogas,1000);
 		JogadorDAO.editar_Gol_Marcado(jogas, 5);
 		JogadorDAO.editar_nome(jogas, jogador);
@@ -36,10 +34,12 @@ public class Testes {
 
 		JogadorDAO.listar();
 		SelecaoDAO.listar();
-
+		
 		System.out.println("============================================================================");
 
+		
 	
+		
 		}
 
 }

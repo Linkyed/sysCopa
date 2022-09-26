@@ -11,7 +11,7 @@ public class JogadorDAO {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 26;
 			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
-			if (selecao_Modelo.getTamanho() < tamanho_Max && !selecao_Modelo.getJogadores().contains(jogador)) {
+			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
 				return true;
