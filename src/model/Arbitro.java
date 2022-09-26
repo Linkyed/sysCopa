@@ -13,8 +13,13 @@ public class Arbitro{
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public boolean setNome(String nome) {
+
+		if (nome.matches("[a-zA-Z\s]+")) {
+			this.nome = Funcoes.captilizeString(nome);
+			return true;
+		}
+		return false;
 	}
 	
 	public String toString() {

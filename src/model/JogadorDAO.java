@@ -22,12 +22,14 @@ public class JogadorDAO {
 	}
 
 	public static boolean editar_nome(Jogador jogador_Antigo, Jogador jogador_Novo) {
-		
+
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			modelo_Jogador.setNome(jogador_Novo.getNome());
-			return true;
+			if(modelo_Jogador.getNome().equalsIgnoreCase(jogador_Novo.getNome())){
+				return true;
+				}
+			return false;
 		}
 		return false;
 
@@ -69,7 +71,7 @@ public class JogadorDAO {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
 			Selecao selecao_modelo = SelecaoDAO.indexSelecao(modelo_Jogador.getSelecao());
-			selecao_modelo.getJogadores().remove(modelo_Jogador);
+			selecao_modelo.removerJogador(modelo_Jogador);
 			todos_Jogadores.remove(modelo_Jogador);
 			return true;
 		} else {
@@ -85,7 +87,7 @@ public class JogadorDAO {
 			return false;
 		}
 	}
-	
+
 	public static boolean listar() {
 
 		if (todos_Jogadores.isEmpty()) {

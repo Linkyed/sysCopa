@@ -37,10 +37,11 @@ public class Testes {
 		
 		System.out.println("========================================================================+====");
 
-		SelecaoDAO.excluir(sele);
+		JogadorDAO.excluir(jogas);
 		JogadorDAO.listar();
 		SelecaoDAO.listar();
-		
+		System.out.println("========================================================================+====");
+		SelecaoDAO.listar_jogadors();
 
 	
 		

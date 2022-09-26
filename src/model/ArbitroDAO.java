@@ -13,7 +13,7 @@ public class ArbitroDAO {
 		return true;
 	}
 	static public boolean editar(Arbitro arbitro, String nome) {
-		if (arbitro.getNome() == nome) {
+		if (arbitro.getNome().equals(nome)) {
 			return false;
 		}else {
 			arbitro.setNome(nome);

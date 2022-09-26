@@ -27,16 +27,6 @@ public class SelecaoDAO {
 		}
 	}
 
-	static public boolean editar(Selecao selecao, Jogador jogador) {
-		if (selecao.getJogadores().contains(jogador) == true) {
-			JogadorDAO.excluir(jogador);
-			return selecao.removerJogador(jogador);
-		} else {
-			JogadorDAO.inserir(jogador, selecao);
-			return selecao.addJogador(jogador);
-		}
-	}
-
 	static public boolean excluir(Selecao selecao) {
 		if (selecoes.contains(selecao)) {
 			Selecao modelo_Selecao = indexSelecao(selecao);
@@ -54,6 +44,14 @@ public class SelecaoDAO {
 		System.out.println("SELEÇÕES:");
 		for (Selecao selecao : selecoes) {
 			System.out.println(selecao);
+		}
+	}
+
+	static public void listar_jogadors() {
+		for (Selecao selecao : selecoes) {
+			for (Jogador jogador : selecao.getJogadores()) {
+				System.out.println(jogador);
+			}
 		}
 	}
 
