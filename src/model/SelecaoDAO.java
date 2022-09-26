@@ -27,13 +27,13 @@ public class SelecaoDAO {
 		}
 	}
 
-	static public boolean excluir(Selecao selecao) {
-		if (selecoes.contains(selecao)) {
-			Selecao modelo_Selecao = indexSelecao(selecao);
-			for (Jogador jogador : modelo_Selecao.getJogadores()) {
+	static public boolean excluir(int num) {
+		if (num <= tamanhoLista && num >= 0) {
+			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
+			for (Jogador jogador : jogadores) {
 				JogadorDAO.excluir_Jogador_parcial(jogador);
 			}
-			selecoes.remove(modelo_Selecao);
+			selecoes.remove(num);
 			return true;
 		} else {
 			return false;
@@ -41,10 +41,13 @@ public class SelecaoDAO {
 	}
 
 	static public void listar() {
-		System.out.println("SELEÇÕES:");
+		System.out.println("\nSELEÇÕES:");
+		int contador = 0;
 		for (Selecao selecao : selecoes) {
-			System.out.println(selecao);
+			System.out.println("[" + contador + "] " + selecao);
+			contador++;
 		}
+		System.out.println();
 	}
 
 	static public void listar_jogadors() {
