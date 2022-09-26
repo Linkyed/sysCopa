@@ -4,35 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JogadorDAO {
-	int a = 0;
+
 	static private List<Jogador> todos_Jogadores = new ArrayList<>();
 
-
-	static boolean inserir(Jogador jogador, Selecao selecao) {
+	public static boolean inserir(Jogador jogador, Selecao selecao) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
-			
+			int tamanho_Max = 26;
 			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
-			if (selecao_Modelo.getTamanho() < 26 && !selecao_Modelo.getJogadores().contains(jogador)) {
+			if (selecao_Modelo.getTamanho() < tamanho_Max && !selecao_Modelo.getJogadores().contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
+				return true;
 			}
-			return true;
+			return false;
 		}
 		return false;
 	}
 
-	static boolean editar_nome(Jogador jogador, String nome) {
-		if (todos_Jogadores.contains(jogador)) {
-			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
+	public static boolean editar_nome(Jogador jogador_Antigo, Jogador jogador_Novo) {
+		
+		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
+			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			modelo_Jogador.setNome(nome);
+			modelo_Jogador.setNome(jogador_Novo.getNome());
 			return true;
 		}
 		return false;
 
 	}
 
-	static boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
+	public static boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -42,7 +43,7 @@ public class JogadorDAO {
 		return false;
 	}
 
-	static boolean editar_Cart_Vermelho(Jogador jogador, int cartao_vermelho) {
+	public static boolean editar_Cart_Vermelho(Jogador jogador, int cartao_vermelho) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -53,7 +54,7 @@ public class JogadorDAO {
 
 	}
 
-	static boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
+	public static boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -63,11 +64,11 @@ public class JogadorDAO {
 		return false;
 	}
 
-	static boolean excluir(Jogador jogador) {
+	public static boolean excluir(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			Selecao selecao_modelo = modelo_Jogador.getSelecao();
+			Selecao selecao_modelo = SelecaoDAO.indexSelecao(modelo_Jogador.getSelecao());
 			selecao_modelo.getJogadores().remove(modelo_Jogador);
 			todos_Jogadores.remove(modelo_Jogador);
 			return true;
@@ -76,7 +77,7 @@ public class JogadorDAO {
 		}
 	}
 
-	static boolean listar() {
+	public static boolean listar() {
 
 		if (todos_Jogadores.isEmpty()) {
 			System.out.println("Não existe nenhum jogador cadastrado.");
