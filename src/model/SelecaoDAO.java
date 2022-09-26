@@ -65,4 +65,12 @@ public class SelecaoDAO {
 	static Selecao indexSelecao(Selecao selecao) {
 		return selecoes.get(selecoes.indexOf(selecao));
 	}
+	
+	static void jogadorSele() {
+		for(Selecao s: selecoes ) {
+			for(Jogador j: s.getJogadores()) {
+				System.out.println(j);
+			}
+		}
+	}
 }

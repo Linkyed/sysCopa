@@ -2,10 +2,10 @@ package model;
 
 import java.util.Objects;
 
-public class Arbitro{
+public class Arbitro {
 	private String nome;
-	
-	Arbitro(String nome){
+
+	Arbitro(String nome) {
 		this.nome = nome;
 	}
 
@@ -13,10 +13,14 @@ public class Arbitro{
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public boolean setNome(String nome) {
+		if (nome.matches("[a-zA-Z\s]+")) {
+			this.nome = Funcoes.captilizeString(nome);
+			return true;
+		}
+		return false;
 	}
-	
+
 	public String toString() {
 		return "Nome: " + nome;
 	}
@@ -24,7 +28,7 @@ public class Arbitro{
 	public int hashCode() {
 		return Objects.hash(nome);
 	}
-	
+
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -35,6 +39,5 @@ public class Arbitro{
 		Arbitro other = (Arbitro) obj;
 		return Objects.equals(nome, other.nome);
 	}
-	
-	
+
 }
