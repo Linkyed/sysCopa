@@ -19,7 +19,7 @@ public class SelecaoDAO {
 	}
 
 	static public boolean editar(Selecao selecao, String nome) {
-		if (nome.isEmpty() == true) {
+		if (nome.isEmpty() == true || selecao == null) {
 			return false;
 		} else {
 			selecao.setNome(nome);
@@ -41,6 +41,7 @@ public class SelecaoDAO {
 	}
 
 	static public void listar() {
+		
 		System.out.println("\nSELEÇÕES:");
 		int contador = 0;
 		for (Selecao selecao : selecoes) {
@@ -58,8 +59,15 @@ public class SelecaoDAO {
 		}
 	}
 
+
 	static public Selecao getOneSelecao(int num) {
-		return selecoes.get(num);
+		if (num > tamanhoLista-1 || num < 0) {
+			System.out.println("\nO numero esta fora da lista!\n");
+			return null;
+		} else {
+			return selecoes.get(num);
+		}
+	
 	}
 
 	static public boolean existeSelecao(Selecao selecao) {
@@ -68,5 +76,22 @@ public class SelecaoDAO {
 
 	static public Selecao indexSelecao(Selecao selecao) {
 		return selecoes.get(selecoes.indexOf(selecao));
+	}
+	
+	static public int quantidadeSelecoes() {
+		return selecoes.size();
+	}
+	
+	static public int selecoesSemTecnico() {
+		System.out.println("\nSELEÇÕES:");
+		int contador = 0;
+		for (Selecao selecao : selecoes) {
+			if (selecao.getTecnico() == null) {
+				System.out.println("[" + selecoes.indexOf(selecao) + "] " + selecao);
+				contador++;				
+			}
+		}
+		System.out.println();
+		return contador;
 	}
 }
