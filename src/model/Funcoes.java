@@ -8,19 +8,23 @@ public class Funcoes {
 		System.out.println(texto);
 		Scanner entrada = new Scanner(System.in);
 		entradaUsuario = entrada.nextLine();
+		entrada.close();
 		return entradaUsuario;
 	}
 	
 	public final static int entradaInt(String texto) {
 		int entradaUsuario = 0;
 		Scanner entrada = new Scanner(System.in);
-		System.out.print(texto);
+		while (true) {
 		try {
+			System.out.print(texto);
 			entradaUsuario = Integer.parseInt(entrada.nextLine());
+			break;
 		}
 		catch (java.lang.NumberFormatException e) {
-			System.out.println("\nSó digite numeros que sejam relacionados as opções!\n");
-		}
+			System.out.println("\nSó digite numeros!\n");
+		}}
+		entrada.close();
 		return entradaUsuario;
 	}
 	public final static void mostrarOpcoes() {

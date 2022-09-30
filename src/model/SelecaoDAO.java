@@ -41,7 +41,7 @@ public class SelecaoDAO {
 	}
 
 	static public void listar() {
-		
+
 		System.out.println("\nSELEÇÕES:");
 		int contador = 0;
 		for (Selecao selecao : selecoes) {
@@ -59,15 +59,14 @@ public class SelecaoDAO {
 		}
 	}
 
-
 	static public Selecao getOneSelecao(int num) {
-		if (num > tamanhoLista-1 || num < 0) {
+		if (num > tamanhoLista - 1 || num < 0) {
 			System.out.println("\nO numero esta fora da lista!\n");
 			return null;
 		} else {
 			return selecoes.get(num);
 		}
-	
+
 	}
 
 	static public boolean existeSelecao(Selecao selecao) {
@@ -77,21 +76,39 @@ public class SelecaoDAO {
 	static public Selecao indexSelecao(Selecao selecao) {
 		return selecoes.get(selecoes.indexOf(selecao));
 	}
-	
+
 	static public int quantidadeSelecoes() {
 		return selecoes.size();
 	}
-	
-	static public int selecoesSemTecnico() {
+
+	static public void imprimirSelecaoSemTecnico() {
 		System.out.println("\nSELEÇÕES:");
 		int contador = 0;
 		for (Selecao selecao : selecoes) {
 			if (selecao.getTecnico() == null) {
 				System.out.println("[" + selecoes.indexOf(selecao) + "] " + selecao);
-				contador++;				
+				contador++;
 			}
 		}
-		System.out.println();
+		if (contador == 0) {
+			System.out.println("Não existe seleção sem tecnico.");
+		}
+	}
+
+	static public void imprimirSelecao() {
+		System.out.println("\nSELEÇÕES:");
+		for (Selecao selecao : selecoes) {
+			System.out.println("[" + selecoes.indexOf(selecao) + "] " + selecao);
+		}
+	}
+
+	static public int selecoesSemTecnico() {
+		int contador = 0;
+		for (Selecao selecao : selecoes) {
+			if (selecao.getTecnico() == null) {
+				contador++;
+			}
+		}
 		return contador;
 	}
 }
