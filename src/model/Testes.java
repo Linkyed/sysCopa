@@ -42,6 +42,17 @@ public class Testes {
 		SelecaoDAO.listar();
 		System.out.println("========================================================================+====");
 		SelecaoDAO.listar_jogadors();
+		
+		SelecaoDAO.imprimirSelecao();
+		int numSelecao = Funcoes.entradaInt("Digite o numero da seleção que o jogador faz parte: ");
+		String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ");
+
+		
+		
+			Jogador modelo_Jogador = new Jogador(nomeJogador);
+			Selecao modelo_Selecao = SelecaoDAO.getOneSelecao(numSelecao);
+			JogadorDAO.inserir(modelo_Jogador, SelecaoDAO.getOneSelecao(numSelecao));
+		
 
 	
 		

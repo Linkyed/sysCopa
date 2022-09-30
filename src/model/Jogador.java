@@ -7,7 +7,6 @@ import java.util.Objects;
 public class Jogador {
 	private String nome;
 	private String codJog;
-	private int camisa;
 
 	private int cartaoVermelho = 0;
 	private int cartaoAmarelo = 0;
@@ -18,16 +17,16 @@ public class Jogador {
 		this.nome = nome;
 	}
 
-	public Jogador(String nome, Selecao selecao, int camisa) {
+	public Jogador(String nome, Selecao selecao,int cart_Vermelho, int cart_Amarelo,int gol_Marcado) {
+		
 		this.nome = nome;
 		this.selecao = selecao;
-		this.camisa = camisa;
+		this.cartaoAmarelo = cart_Amarelo;
+		this.cartaoVermelho = cart_Vermelho;
+		this.golMarcado = gol_Marcado;
+		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss") ;
 		this.codJog =  dtf.format(LocalDateTime.now());
-
-		/*String[] separacao = this.nome.split(" ");
-		this.codJog = separacao[0].length() + "" + separacao[1].length() + separacao[0].charAt(0) + this.camisa
-				+ separacao[1].charAt(0) + this.nome.length();*/
 
 	}
 
