@@ -6,13 +6,13 @@ public class Tecnico{
 	private String nome;
 	private Selecao selecao;
 	
-	Tecnico (String nome){
-		this.nome = Funcoes.captilizeString(nome);
-	}
-	
-	Tecnico (String nome, Selecao selecao){
+
+	public Tecnico (String nome, Selecao selecao){
 		this.nome = Funcoes.captilizeString(nome);
 		this.selecao = selecao;
+		if (selecao.getTecnico() == null) {
+			selecao.setTecnico(this);
+		}
 	}
 	
 	public String getNome() {

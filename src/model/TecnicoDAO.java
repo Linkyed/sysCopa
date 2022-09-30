@@ -19,7 +19,7 @@ public class TecnicoDAO {
 	}
 	static public boolean editar(Tecnico tecnico, String nome) {
 
-		if (tecnico.getNome() == nome) {
+		if (tecnico.getNome() == nome || nome.isEmpty() == true || nome == null) {
 			return false;
 		}else {
 			tecnico.setNome(nome);
@@ -28,6 +28,7 @@ public class TecnicoDAO {
 	}
 	static public boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
+			tecnicos.get(num).getSelecao().setTecnico(null);
 			tecnicos.remove(num);
 			tamanhoLista--;
 			return true;
@@ -37,14 +38,22 @@ public class TecnicoDAO {
 		 
 	}
 	static public void listar() {
-		System.out.println("TECNICOS:");
+		System.out.println("\nTECNICOS:");
+		int contador = 0;
 		for (Tecnico tecnico: tecnicos) {
-			System.out.println(tecnico);	
+			System.out.println("["+ contador +"]" + tecnico);	
 		}
+		System.out.println();
 	}
 	
 	static public Tecnico getOneTecnico(int num) {
-		return tecnicos.get(num);
+		if (num > tamanhoLista-1 || num < 0) {
+			System.out.println("\nO numero esta fora da lista!\n");
+			return null;
+		} else {
+			return tecnicos.get(num);
+		}
+	
 	}
 	
 	static public Tecnico getTecnicoIndes(Tecnico tecnico) {

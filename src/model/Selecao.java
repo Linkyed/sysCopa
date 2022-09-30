@@ -42,10 +42,7 @@ public class Selecao{
 		return tecnico;
 	}
 	public void setTecnico(Tecnico tecnico) {
-		
-		if(tecnico != null) {
 			this.tecnico = tecnico;
-		}
 	}
 	
 	public String getNome() {
@@ -77,7 +74,12 @@ public class Selecao{
 	}
 
 	public String toString() {
-		return "Nome: " + this.nome + " || Tecnico: " + this.tecnico;
+		if (this.tecnico == null) {
+			return "Nome: " + this.nome + " || Tecnico: Vazio";
+			
+		} else {
+			return "Nome: " + this.nome + " || Tecnico: " + this.tecnico.getNome();
+		}
 	}
 
 	

@@ -40,6 +40,11 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	}
 	
 	static public Arbitro getOneArbitro(int num) {
-		return arbitros.get(num);
+		if (num > tamanhoLista-1 || num < 0) {
+			return null;
+		}else {
+			System.out.println("\nO numero esta fora da lista!\n");
+			return arbitros.get(num);			
+		}
 	}
 }
