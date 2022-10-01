@@ -90,10 +90,13 @@ public class Main {
 
 					if (SelecaoDAO.quantidadeSelecoes() > 0) {
 						SelecaoDAO.imprimirSelecao();
-						int numSelecao = Funcoes.entradaInt("Digite o numero da seleção que o jogador faz parte: ");
+						int numSelecao = Funcoes.entradaInt(
+								"Digite o numero da seleção que o jogador faz parte: ");
 						String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ");
-						int quant_Cart_Amarelo = Funcoes.entradaInt("Digite a quantidade ");
-						
+						int quant_Cart_Amarelo = Funcoes
+								.entradaInt("Digite a quantidade de cart. Amarelo do Jogador: ");
+						int quant_Cart_Vermelho = Funcoes
+								.entradaInt("Digite a quantidade de cart. Vermelho do Jogador: ");
 						if (SelecaoDAO.getOneSelecao(numSelecao).equals(null)) {
 							break;
 						} else {
