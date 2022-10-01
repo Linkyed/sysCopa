@@ -32,7 +32,6 @@ public class JogadorDAO {
 			if (modelo_Jogador.getNome().equalsIgnoreCase(jogador_Novo.getNome())) {
 				return true;
 			}
-			return false;
 		}
 		return false;
 
@@ -46,7 +45,6 @@ public class JogadorDAO {
 				modelo_Jogador.setNome(nome);
 				return true;
 			}
-			return false;
 		}
 		return false;
 
@@ -83,7 +81,7 @@ public class JogadorDAO {
 		return false;
 
 	}
-	
+
 	public static boolean editar_Cart_Vermelho(int numJogador, int cartao_vermelho) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
@@ -104,12 +102,35 @@ public class JogadorDAO {
 		}
 		return false;
 	}
-	
+
 	public static boolean editar_Gol_Marcado(int numJogador, int gol_Marcado) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
 			if (0 < gol_Marcado) {
 				modelo_Jogador.setGolmarcado(gol_Marcado);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean editar_Posicao(int numJogador, int posicao) {
+		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
+			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
+			if (0 <= posicao && posicao < 6) {
+				modelo_Jogador.setPosicaoJogada(posicao);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean editar_Posicao(Jogador jogador, int posicao) {
+		if (todos_Jogadores.contains(jogador)) {
+			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
+			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
+			if (0 <= posicao && posicao < 6) {
+				modelo_Jogador.setPosicaoJogada(posicao);
 				return true;
 			}
 		}
@@ -172,4 +193,19 @@ public class JogadorDAO {
 		return todos_Jogadores.size();
 	}
 
+	public static boolean estaNaLista(Jogador jogador) {
+		if (todos_Jogadores.contains(jogador)) {
+			return true;
+		}
+		return false;
+
+	}
+
+	public static void imprimirJogador(Jogador jogador) {
+		if (todos_Jogadores.contains(jogador)) {
+			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
+			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
+			System.out.println(modelo_Jogador);
+		}
+	}
 }

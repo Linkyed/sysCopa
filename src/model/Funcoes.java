@@ -107,5 +107,9 @@ public class Funcoes {
 		}
 		return n.strip();
 	}
+	
+	public static void fechar() {
+		entrada.close();
+	}
 
 }
