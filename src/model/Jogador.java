@@ -92,13 +92,6 @@ public class Jogador {
 	}
 
 
-	public int getCamisa() {
-		return camisa;
-	}
-
-	public void setCamisa(int camisa) {
-		this.camisa = camisa;
-	}
 
 	public Selecao getSelecao() {
 		return selecao;

@@ -3,49 +3,54 @@ package model;
 import java.util.Scanner;
 
 public class Funcoes {
+	
+	static final Scanner entrada = new Scanner(System.in);
+	
 	public final static String entradaString(String texto) {
 		String entradaUsuario = "";
 		System.out.println(texto);
-		Scanner entrada = new Scanner(System.in);
+
 		entradaUsuario = entrada.nextLine();
-		entrada.close();
+		
 		return entradaUsuario;
 	}
 
 	public final static int entradaInt(String texto) {
 		int entradaUsuario = 0;
-		Scanner entrada = new Scanner(System.in);
-		
+
+		while (true) {
 			try {
 				System.out.print(texto);
 				entradaUsuario = Integer.parseInt(entrada.nextLine());
-				
+
+				break;
+
 			} catch (java.lang.NumberFormatException e) {
 				System.out.println("\nSó digite numeros!\n");
 			}
-		
+
+		}
 		
 		return entradaUsuario;
 	}
 
-	public final static int entraIntRanger(String texto, int inicio, int fim) {
+	public final static int entradaIntRanger(String texto, int inicio, int fim) {
 		int entradaUsuario = 0;
-		Scanner entrada = new Scanner(System.in);
+	
 		while (true) {
 			try {
 				System.out.print(texto);
 				entradaUsuario = Integer.parseInt(entrada.nextLine());
 				if (inicio <= entradaUsuario && entradaUsuario <= fim) {
 					break;
-				}
-				else {
+				} else {
 					System.out.println("O número está fora do ranger! Digite novamente.");
 				}
 			} catch (java.lang.NumberFormatException e) {
 				System.out.println("\nSó digite numeros!\n");
 			}
 		}
-		entrada.close();
+		
 		return entradaUsuario;
 
 	}

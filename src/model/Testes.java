@@ -12,6 +12,7 @@ public class Testes {
 		
 		int escolha = Funcoes.entradaInt("Escolha: ");
 		System.out.println(escolha);
-
+		System.out.println(escolha);
+		escolha = Funcoes.entradaInt("Escolha: ");
 	}
 }
