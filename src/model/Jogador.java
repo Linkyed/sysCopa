@@ -27,9 +27,8 @@ public class Jogador {
 		this.cartaoAmarelo = cart_Amarelo;
 		this.cartaoVermelho = cart_Vermelho;
 		this.golMarcado = gol_Marcado;
-		if(0 <= posicao && posicao <6) {
-			this.setPosicaoJogada(posicaoJogadorString[posicao]);
-		}
+		this.posicaoJogada = posicaoJogadorString[posicao];
+		
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss") ;
 		this.codJog =  dtf.format(LocalDateTime.now());
@@ -78,8 +77,8 @@ public class Jogador {
 
 	public boolean setNome(String nome) {
 
-		if (nome.matches("[a-zA-Z\s]+")) {
-			this.nome = Funcoes.captilizeString(nome);
+		if (nome.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\\s]+")) {
+			this.nome = Funcoes.captilizeString(nome).strip();
 			return true;
 		}
 		return false;
@@ -88,7 +87,6 @@ public class Jogador {
 	public String getCodJog() {
 		return codJog;
 	}
-
 
 
 	public Selecao getSelecao() {
@@ -103,8 +101,10 @@ public class Jogador {
 		return posicaoJogada;
 	}
 
-	public void setPosicaoJogada(String posicaoJogada) {
-		this.posicaoJogada = posicaoJogada;
+	public void setPosicaoJogada(int posicao) {
+		if(0 <= posicao && posicao <6) {
+			this.posicaoJogada = posicaoJogadorString[posicao];
+		}
 	}
 
 

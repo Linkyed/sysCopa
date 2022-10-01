@@ -24,6 +24,7 @@ public class Main {
 		int escolha_editar = 0;
 		int escolha_listar = 0;
 		int escolha_excluir_Jogador = 0;
+		int escolha_editar_Jogador = 0;
 
 		// Loop principal onde todas as funcionalidades foram implementadas
 		while (escolha != 5) {
@@ -51,14 +52,14 @@ public class Main {
 				// INSERÇÃO SELEÇÃO
 				case 1:
 					// Apenas cria a seleção com o nome que o usuario escolher
-					SelecaoDAO.inserir(new Selecao(Funcoes.entradaString("Digite o nome da Seleção: ",true)));
+					SelecaoDAO.inserir(new Selecao(Funcoes.entradaString("Digite o nome da Seleção: ", true)));
 
 					break;
 
 				// INSERÇÃO ARBITRO
 				case 2:
 					// Apenas cria o arbitro com o nome que o usuario escolher
-					ArbitroDAO.inserir(new Arbitro(Funcoes.entradaString("Digite o nome do arbitro: ",true)));
+					ArbitroDAO.inserir(new Arbitro(Funcoes.entradaString("Digite o nome do arbitro: ", true)));
 					break;
 				// INSERÇÃO TECNICO
 				case 3:
@@ -67,7 +68,7 @@ public class Main {
 					if (SelecaoDAO.selecoesSemTecnico() > 0) {
 						SelecaoDAO.imprimirSelecaoSemTecnico();
 						int numSelecao = Funcoes.entradaInt("Digite o numero da seleção que o tecnico faz parte: ");
-						String nomeTecnico = Funcoes.entradaString("Digite o nome do Tecnico: ",true);
+						String nomeTecnico = Funcoes.entradaString("Digite o nome do Tecnico: ", true);
 
 						// Caso o usuario escolha um numero que não refere a nenhuma seleção ele não ira
 						// criar o tecnico
@@ -90,7 +91,7 @@ public class Main {
 						int numSelecao = Funcoes.entradaIntRanger(
 								"Digite o numero da seleção que o jogador faz parte: ", 0,
 								SelecaoDAO.quantidadeSelecoes() - 1);
-						String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ",true);
+						String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ", true);
 						int quant_Cart_Amarelo = Funcoes.entradaIntRanger("Digite a quantidade de Cartões Amarelos: ",
 								0);
 						int quant_Cart_Vermelho = Funcoes.entradaIntRanger("Digite a quantidade de Cartões Vermelhos: ",
@@ -139,7 +140,7 @@ public class Main {
 					// Primeira opção onde só edita o nome da seleção
 					if (opcaoEditar == 0) {
 
-						String novoNome = Funcoes.entradaString("Digite o novo nome da seleção: ",true);
+						String novoNome = Funcoes.entradaString("Digite o novo nome da seleção: ", true);
 						if (SelecaoDAO.editar(SelecaoDAO.getOneSelecao(numSelecao), novoNome) == true) {
 							System.out.println("\nA operação foi um sucesso!\n");
 						} else {
@@ -149,7 +150,7 @@ public class Main {
 					} else if (opcaoEditar == 1) {
 						// Teste de erro para caso a seleção não possua um tecnico
 						try {
-							String novoNomeTecnico = Funcoes.entradaString("Digite o novo nome do tecnico: ",true);
+							String novoNomeTecnico = Funcoes.entradaString("Digite o novo nome do tecnico: ", true);
 							if (TecnicoDAO.editar(
 									TecnicoDAO.getTecnicoIndes(SelecaoDAO.getOneSelecao(numSelecao).getTecnico()),
 									novoNomeTecnico) == true) {
@@ -189,7 +190,7 @@ public class Main {
 							"\n[0] Editar o nome\n[1] Editar a seleção\n" + "Digite o que deseja editar no tecnico: ");
 					// Primeira opção so mudando o nome do tecnico
 					if (escolhaEdicaoTecnico == 0) {
-						String nomeTecnico = Funcoes.entradaString("Digite o novo nome do tecnico: ",true);
+						String nomeTecnico = Funcoes.entradaString("Digite o novo nome do tecnico: ", true);
 						if (TecnicoDAO.editar(TecnicoDAO.getOneTecnico(numTecnico), nomeTecnico) == true) {
 							System.out.println("\nA operação foi um sucesso!\n");
 						} else {
@@ -221,9 +222,54 @@ public class Main {
 						System.out.println("\nOpção digitada invalida!\n");
 					}
 				case 4:
-					JogadorDAO.listar();
+					if (JogadorDAO.getQuantidade_jogadores() != 0) {
+						
+						escolha_editar_Jogador = Funcoes.entradaIntRanger(
+								"[1] - Para editar o jogador pelo Nome\n[2] - Para editar pelo o Cod. do jogador\nEscolha: ",
+								1, 2);
+						if (escolha_editar_Jogador == 1) {
+							JogadorDAO.listar();
+							int num_Jogador = Funcoes.entradaIntRanger("Digite o número do jogador: ", 0,
+									JogadorDAO.getQuantidade_jogadores() - 1);
+							int escolhaEdicaoJogador = Funcoes.entradaIntRanger(
+									"[1] - Editar o nome\n[2] - Editar número de cart. Amarelo\n[3]- Editar o número de cart. Vermelho\n[4] - Editar o número de gol(s) marcados\n[5] - Editar a posição do Jogador\n"
+											+ "Digite o que deseja editar do Jogador: ",
+									1, 5);
+							if (escolhaEdicaoJogador == 1) {
+								String nomeJogador = Funcoes.entradaString("Ditige o Novo nome do jogador: ", true);
+								Boolean verificadorBoolean = JogadorDAO.editar_nome(num_Jogador, nomeJogador);
+								if (verificadorBoolean) {
+									System.out.println("O nome foi atualizado com sucesso!");
+								} else {
+									System.out.println("Erro! O nome do jogador já está dentro da lista.");
+								}
 
-					break;
+							} else if (escolhaEdicaoJogador == 2) {
+								int num_Cart_Amarelo = Funcoes.entradaIntRanger("Número de cart. Amarelo: ", 0);
+								JogadorDAO.editar_Cart_Amarelo(num_Jogador, num_Cart_Amarelo);
+								System.out.println("O número de cart. Amarelo foi atualizado com sucesso!");
+								
+							} else if (escolhaEdicaoJogador == 3) {
+								int num_Cart_Vermelho = Funcoes.entradaIntRanger("Número de cart. Vermelho: ", 0);
+								JogadorDAO.editar_Cart_Vermelho(num_Jogador, num_Cart_Vermelho);
+								System.out.println("O número de cart. Vermelho foi atualizado com sucesso!");
+								
+							}else if(escolhaEdicaoJogador == 4) {
+								int num_gol = Funcoes.entradaIntRanger("Número de gol(s) marcado(s): ", 0);
+								JogadorDAO.editar_Gol_Marcado(num_Jogador, num_gol);
+								System.out.println("O número de gol(s) marcados foi atualizado com sucesso!");
+								
+							} else if(escolhaEdicaoJogador == 5) {
+								
+								
+							}
+							
+						}
+						break;
+					} else {
+						System.out.println("Não existe nenhum jogador! Crie um antes para ser editado.");
+					}
+
 				}
 				break;
 
@@ -280,11 +326,11 @@ public class Main {
 						} else {
 							System.out.println("\nA operação foi uma falha!\n");
 						}
-					}
-					else {
-						if(JogadorDAO.excluir(new Jogador(Funcoes.entradaString("Digite o Código do jogador: ",false)))) {
+					} else {
+						if (JogadorDAO
+								.excluir(new Jogador(Funcoes.entradaString("Digite o Código do jogador: ", false)))) {
 							System.out.println("\nA operação foi um sucesso!\n");
-						}else {
+						} else {
 							System.out.println("\nA operação foi uma falha! Jogador não encontrado.\n");
 						}
 					}

@@ -12,10 +12,10 @@ public class Funcoes {
 		while (condicao) {
 			System.out.println(texto);
 
-			entradaUsuario = entrada.nextLine();
+			entradaUsuario = entrada.nextLine().strip();
 			if (verificacao == true) {
 				if (entradaUsuario.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+")) {
-					entradaUsuario = Funcoes.captilizeString(entradaUsuario);
+					entradaUsuario = Funcoes.captilizeString(entradaUsuario).strip();
 					condicao = false;
 				} else {
 					System.out.println("Erro! Não digite números ou caracteres.");
