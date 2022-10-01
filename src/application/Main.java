@@ -1,7 +1,5 @@
 package application;
 
-import java.util.Scanner;
-
 //import javafx.application.Application;
 //import javafx.stage.Stage;
 import model.*;
@@ -20,8 +18,6 @@ public class Main {
 	public static void main(String[] args) {
 		// Variaveis para desiginar a escolha do usuario perante as ações que o progama
 		// pode fazer
-		Scanner entrada = new Scanner(System.in); 
-		String corString;
 		int escolha = 0;
 		int escolha_inserir = 0;
 		int escolha_excluir = 0;
@@ -38,7 +34,6 @@ public class Main {
 
 			// Coletando a escolha do usuario atraves de uma função criada
 			escolha = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
-			
 
 			// MENU GERAL
 			switch (escolha) {
@@ -47,28 +42,22 @@ public class Main {
 				// Função para mostrar as opções que o usuario pode escolher e a função que
 				// coleta a escolha do usuario
 				Funcoes.mostrarOpcoes();
-				
-				escolha_inserir = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
-				
+
+				escolha_inserir = Funcoes.entradaIntRanger("Digite o numero relacionado a uma opção acima:", 1, 5);
+
 				// Inserção dividida entre seleção, aribtro, tecnico e jogador
 				switch (escolha_inserir) {
 				// INSERÇÃO SELEÇÃO
 				case 1:
 					// Apenas cria a seleção com o nome que o usuario escolher
-					SelecaoDAO.inserir(new Selecao(Funcoes.entradaString("Digite o nome da Seleção: ")));// Falta
-																											// mostrar
-																											// para o
-																											// usuario
-					
+					SelecaoDAO.inserir(new Selecao(Funcoes.entradaString("Digite o nome da Seleção: ")));
+
 					break;
 
 				// INSERÇÃO ARBITRO
 				case 2:
 					// Apenas cria o arbitro com o nome que o usuario escolher
-					ArbitroDAO.inserir(new Arbitro(Funcoes.entradaString("Digite o nome do arbitro: ")));// Falta
-																											// mostrar
-																											// para o
-																											// usuario
+					ArbitroDAO.inserir(new Arbitro(Funcoes.entradaString("Digite o nome do arbitro: ")));
 					break;
 				// INSERÇÃO TECNICO
 				case 3:
@@ -94,22 +83,33 @@ public class Main {
 					}
 					break;
 				case 4:
-					
+
 					if (SelecaoDAO.quantidadeSelecoes() > 0) {
 						SelecaoDAO.imprimirSelecao();
-						int numSelecao = Funcoes.entradaIntRanger("Digite o numero da seleção que o jogador faz parte: ",0,SelecaoDAO.quantidadeSelecoes());
+						int numSelecao = Funcoes.entradaIntRanger(
+								"Digite o numero da seleção que o jogador faz parte: ", 0,
+								SelecaoDAO.quantidadeSelecoes() - 1);
 						String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ");
-						int quant_Cart_Amarelo = Funcoes.entradaInt("Digite a quantidade ");
-						
-						if (SelecaoDAO.getOneSelecao(numSelecao).equals(null)) {
-							break;
+						int quant_Cart_Amarelo = Funcoes.entradaIntRanger("Digite a quantidade de Cartões Amarelos: ",
+								0);
+						int quant_Cart_Vermelho = Funcoes.entradaIntRanger("Digite a quantidade de Cartões Vermelhos: ",
+								0);
+						int gol_marcado = Funcoes
+								.entradaIntRanger("Digite a quantidade de Gols marcados pelo jogador: ", 0);
+						Selecao modelo_Selecao = SelecaoDAO.getOneSelecao(numSelecao);
+						Jogador modelo_Jogador = new Jogador(nomeJogador, modelo_Selecao, quant_Cart_Vermelho,
+								quant_Cart_Amarelo, gol_marcado);
+						Boolean respostaBoolean = JogadorDAO.inserir(modelo_Jogador, modelo_Selecao);
+						if (respostaBoolean) {
+							System.out.println("\nJogador adicionado com Sucesso!\n");
 						} else {
-							Jogador modelo_Jogador = new Jogador(nomeJogador);
-							Selecao modelo_Selecao = SelecaoDAO.getOneSelecao(numSelecao);
-							JogadorDAO.inserir(modelo_Jogador, SelecaoDAO.getOneSelecao(numSelecao));
+							System.out.println("\nErro! não é possivel adicionar mais de 26 jogadores na seleção.\n");
 						}
-					}
 
+					} else {
+						System.out.println("\nAntes de criar um Jogador, é preciso criar uma seleção!\n");
+					}
+					break;
 				}
 
 				break;
@@ -117,7 +117,8 @@ public class Main {
 			// EDIÇÃO
 			case 2:
 				Funcoes.mostrarOpcoes();
-				escolha_editar = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
+				escolha_editar = Funcoes.entradaIntRanger("Digite o numero relacionado a uma opção acima:", 1, 5);
+				;
 
 				switch (escolha_editar) {
 				// EDIÇÃO SELEÇÃO onde pode ser mudado o nome, o tecnico (se pa lista de
@@ -160,6 +161,7 @@ public class Main {
 						System.out.println("\nOpção digitada invalida!\n");
 					}
 					break;
+
 				// EDIÇÃO ARBITRO onde só pode ter seu nome mudado
 				case 2:
 					ArbitroDAO.listar();
@@ -171,7 +173,7 @@ public class Main {
 					} else {
 						System.out.println("\nA operação foi uma falha!\n");
 					}
-					;
+					
 					break;
 				// EDIÇÂO TECNICO onde poderá mudar seu nome sua seleção
 				case 3:
@@ -214,13 +216,18 @@ public class Main {
 					} else {
 						System.out.println("\nOpção digitada invalida!\n");
 					}
+				case 4:
+					JogadorDAO.listar();
+					
+					break;
 				}
 				break;
 
 			// EXCLUSÃO
 			case 3:
 				Funcoes.mostrarOpcoes();
-				escolha_excluir = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima: ");
+				escolha_excluir = Funcoes.entradaIntRanger("Digite o numero relacionado a uma opção acima:", 1, 5);
+				;
 				switch (escolha_excluir) {
 				// EXCLUSÃO SELEÇÃO
 				case 1:
@@ -253,7 +260,16 @@ public class Main {
 					} else {
 						System.out.println("\nA operação foi uma falha!\n");
 					}
-					;
+					
+					break;
+				// EXCLUSÃO JOGADOR
+				case 4:
+					JogadorDAO.listar();
+					if (JogadorDAO.excluir(Funcoes.entradaInt("Digite o numero do Jogador a ser exlcuido: ")) == true) {
+						System.out.println("\nA operação foi um sucesso!\n");
+					} else {
+						System.out.println("\nA operação foi uma falha!\n");
+					}
 					break;
 				}
 				break;
@@ -261,7 +277,7 @@ public class Main {
 			// LISTAR
 			case 4:
 				Funcoes.mostrarOpcoes();
-				escolha_listar = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima: ");
+				escolha_listar = Funcoes.entradaIntRanger("Digite o numero relacionado a uma opção acima:", 1, 5);
 				switch (escolha_listar) {
 				// LISTAR SELEÇÃO
 				case 1:
@@ -285,7 +301,6 @@ public class Main {
 			// SAIDA
 			case 5:
 				System.out.println("\nSaindo do programa!");
-				entrada.close();
 				break;
 			default:
 				System.out.println("\nLembre-se de digitar apenas os numeros relacionados a opções.\n");

@@ -34,9 +34,7 @@ public class Jogador {
 		return cartaoAmarelo;
 	}
 
-	public void setCartaoAmarelo() {
-		this.cartaoAmarelo += 1;
-	}
+	
 
 	public void setCartaoAmarelo(int numero_Cartao_amarelo) {
 		if (numero_Cartao_amarelo > 0) {
@@ -48,9 +46,6 @@ public class Jogador {
 		return cartaoVermelho;
 	}
 
-	public void setCartaoVermelho() {
-		this.cartaoVermelho += 1;
-	}
 
 	public void setCartaoVermelho(int numero_Cartao_Vermelho) {
 		if (numero_Cartao_Vermelho > 0) {
@@ -62,10 +57,7 @@ public class Jogador {
 		return this.golMarcado;
 	}
 
-	public void setGolmarcado() {
-		this.golMarcado += 1;
-	}
-
+	
 	public boolean setGolmarcado(int gols_Marcados) {
 		if (gols_Marcados > 0) {
 			this.golMarcado += gols_Marcados;
