@@ -96,10 +96,13 @@ public class Main {
 								0);
 						int gol_marcado = Funcoes
 								.entradaIntRanger("Digite a quantidade de Gols marcados pelo jogador: ", 0);
+						int posicaoJogada = Funcoes.entradaIntRanger("[0]- Goleiro\n" + "[1]- Lateral direito\n"
+								+ "[2]-Lateral esquerdo\n" + "[3]-Zagueiro\n" + "[4]- Volante\n" + "[5]- Meia Atacante\n"
+								+ "Digite a sua Opção: ", 0, 5);
 						Selecao modelo_Selecao = SelecaoDAO.getOneSelecao(numSelecao);
 						Jogador modelo_Jogador = new Jogador(nomeJogador, modelo_Selecao, quant_Cart_Vermelho,
-								quant_Cart_Amarelo, gol_marcado);
-						Boolean respostaBoolean = JogadorDAO.inserir(modelo_Jogador, modelo_Selecao);
+								quant_Cart_Amarelo, gol_marcado, posicaoJogada);
+						Boolean respostaBoolean = JogadorDAO.inserir(modelo_Jogador, modelo_Selecao,true);
 						if (respostaBoolean) {
 							System.out.println("\nJogador adicionado com Sucesso!\n");
 						} else {
@@ -173,7 +176,7 @@ public class Main {
 					} else {
 						System.out.println("\nA operação foi uma falha!\n");
 					}
-					
+
 					break;
 				// EDIÇÂO TECNICO onde poderá mudar seu nome sua seleção
 				case 3:
@@ -218,7 +221,7 @@ public class Main {
 					}
 				case 4:
 					JogadorDAO.listar();
-					
+
 					break;
 				}
 				break;
@@ -260,7 +263,7 @@ public class Main {
 					} else {
 						System.out.println("\nA operação foi uma falha!\n");
 					}
-					
+
 					break;
 				// EXCLUSÃO JOGADOR
 				case 4:

@@ -7,13 +7,16 @@ public class JogadorDAO {
 
 	static private List<Jogador> todos_Jogadores = new ArrayList<>();
 
-	public static boolean inserir(Jogador jogador, Selecao selecao) {
+	public static boolean inserir(Jogador jogador, Selecao selecao,boolean menssagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 26;
 			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
+				if(menssagem) {
+					System.out.println("Código do Jogador: "+ jogador.getCodJog());
+				}
 				return true;
 			}
 			return false;
