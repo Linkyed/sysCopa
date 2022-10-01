@@ -1,61 +1,18 @@
 package model;
 
-
-
 public class Testes {
-	
+
 	public static void main(String[] args) {
-		
+
 		Selecao sele = new Selecao("Brasil");
 
 		SelecaoDAO.inserir(sele);
 		Selecao sele1 = new Selecao("França");
 		SelecaoDAO.inserir(sele1);
-
-
-		Jogador jogas = new Jogador("João ALmeida", sele , 10);
-		Jogador jogas1 = new Jogador("Nalbert Santos", sele , 12);
-		Jogador jogas2 = new Jogador("Araujo Leste", sele , 11);
-		Jogador jogas3 = new Jogador("Araujo Leste", sele , 10);
-		Jogador jogador = new Jogador("Nalbert Santos", sele, 25);
-
-		JogadorDAO.inserir(jogas,sele);
-		JogadorDAO.inserir(jogas1,sele);
-		JogadorDAO.inserir(jogas2,sele);
-		System.out.print( JogadorDAO.inserir(jogas3,sele));
-		JogadorDAO.editar_Cart_Amarelo(jogas,1000);
-		JogadorDAO.editar_Gol_Marcado(jogas, 5);
-		JogadorDAO.editar_nome(jogas, jogador);
 		
-
-		JogadorDAO.listar();
-	
-
-
-		JogadorDAO.listar();
-		SelecaoDAO.listar();
-		
-		System.out.println("========================================================================+====");
-
-		JogadorDAO.excluir(jogas);
-		JogadorDAO.listar();
-		SelecaoDAO.listar();
-		System.out.println("========================================================================+====");
-		SelecaoDAO.listar_jogadors();
-		
-		SelecaoDAO.imprimirSelecao();
-		int numSelecao = Funcoes.entradaInt("Digite o numero da seleção que o jogador faz parte: ");
-		String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ");
-
-		
-		
-			Jogador modelo_Jogador = new Jogador(nomeJogador);
-			Selecao modelo_Selecao = SelecaoDAO.getOneSelecao(numSelecao);
-			JogadorDAO.inserir(modelo_Jogador, SelecaoDAO.getOneSelecao(numSelecao));
-		
-
-	
-		
-		}
-
+		int escolha = Funcoes.entradaInt("Escolha: ");
+		System.out.println(escolha);
+		System.out.println(escolha);
+		escolha = Funcoes.entradaInt("Escolha: ");
+	}
 }

@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Scanner;
+
 //import javafx.application.Application;
 //import javafx.stage.Stage;
 import model.*;
@@ -18,6 +20,8 @@ public class Main {
 	public static void main(String[] args) {
 		// Variaveis para desiginar a escolha do usuario perante as ações que o progama
 		// pode fazer
+		Scanner entrada = new Scanner(System.in); 
+		String corString;
 		int escolha = 0;
 		int escolha_inserir = 0;
 		int escolha_excluir = 0;
@@ -34,6 +38,7 @@ public class Main {
 
 			// Coletando a escolha do usuario atraves de uma função criada
 			escolha = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
+			
 
 			// MENU GERAL
 			switch (escolha) {
@@ -42,8 +47,9 @@ public class Main {
 				// Função para mostrar as opções que o usuario pode escolher e a função que
 				// coleta a escolha do usuario
 				Funcoes.mostrarOpcoes();
+				
 				escolha_inserir = Funcoes.entradaInt("Digite o numero relacionado a uma opção acima:");
-
+				
 				// Inserção dividida entre seleção, aribtro, tecnico e jogador
 				switch (escolha_inserir) {
 				// INSERÇÃO SELEÇÃO
@@ -53,6 +59,7 @@ public class Main {
 																											// mostrar
 																											// para o
 																											// usuario
+					
 					break;
 
 				// INSERÇÃO ARBITRO
@@ -87,10 +94,10 @@ public class Main {
 					}
 					break;
 				case 4:
-
+					
 					if (SelecaoDAO.quantidadeSelecoes() > 0) {
 						SelecaoDAO.imprimirSelecao();
-						int numSelecao = Funcoes.entradaInt("Digite o numero da seleção que o jogador faz parte: ");
+						int numSelecao = Funcoes.entradaIntRanger("Digite o numero da seleção que o jogador faz parte: ",0,SelecaoDAO.quantidadeSelecoes());
 						String nomeJogador = Funcoes.entradaString("Digite o nome do Jogador: ");
 						int quant_Cart_Amarelo = Funcoes.entradaInt("Digite a quantidade ");
 						
@@ -278,6 +285,7 @@ public class Main {
 			// SAIDA
 			case 5:
 				System.out.println("\nSaindo do programa!");
+				entrada.close();
 				break;
 			default:
 				System.out.println("\nLembre-se de digitar apenas os numeros relacionados a opções.\n");
