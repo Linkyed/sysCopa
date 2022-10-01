@@ -12,18 +12,22 @@ public class Jogador {
 	private int cartaoAmarelo = 0;
 	private int golMarcado = 0;
 	private Selecao selecao;
-
+	private String posicaoJogada; 
+	private String posicaoJogadorString[] = {"Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro", "Volante", "Meia Atacante"};
 	public Jogador(String nome) {
 		this.nome = nome;
 	}
 
-	public Jogador(String nome, Selecao selecao,int cart_Vermelho, int cart_Amarelo,int gol_Marcado) {
-		
+	public Jogador(String nome, Selecao selecao,int cart_Vermelho, int cart_Amarelo,int gol_Marcado, int posicao) {
+	
 		this.nome = nome;
 		this.selecao = selecao;
 		this.cartaoAmarelo = cart_Amarelo;
 		this.cartaoVermelho = cart_Vermelho;
 		this.golMarcado = gol_Marcado;
+		if(0 <= posicao && posicao <6) {
+			this.setPosicaoJogada(posicaoJogadorString[posicao]);
+		}
 		
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss") ;
 		this.codJog =  dtf.format(LocalDateTime.now());
@@ -92,11 +96,20 @@ public class Jogador {
 	public void setSelecao(Selecao selecao) {
 		this.selecao = selecao;
 	}
+	
+	public String getPosicaoJogada() {
+		return posicaoJogada;
+	}
+
+	public void setPosicaoJogada(String posicaoJogada) {
+		this.posicaoJogada = posicaoJogada;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Nome: " + nome + " || Seleção: " + selecao + "|| Cart. Vermelho " + cartaoVermelho + "|| Cart. Amarelo "
-				+ cartaoAmarelo + "|| Gol Marcado " + golMarcado;
+		return "Nome: " + nome + " || Seleção: " + selecao + "|| Cart. Vermelho: " + cartaoVermelho + "|| Cart. Amarelo: "
+				+ cartaoAmarelo + "|| Gol Marcado: " + golMarcado +"|| Posição: " + posicaoJogada + "|| Cod. do Jogador: " + codJog;
 	}
 
 	@Override
@@ -117,4 +130,5 @@ public class Jogador {
 				Objects.equals(nome, other.nome);
 	}
 
+	
 }
