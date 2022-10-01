@@ -3,61 +3,91 @@ package model;
 import java.util.Scanner;
 
 public class Funcoes {
-	
-	static final Scanner entrada = new Scanner(System.in);
-	
-	public final static String entradaString(String texto) {
-		String entradaUsuario = "";
-		System.out.println(texto);
 
-		entradaUsuario = entrada.nextLine();
-		
+	static final Scanner entrada = new Scanner(System.in);
+
+	public final static String entradaString(String texto) {
+		boolean condicao = true;
+		String entradaUsuario = "";
+		while (condicao) {
+			System.out.println(texto);
+
+			entradaUsuario = entrada.nextLine();
+			if (entradaUsuario.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+")) {
+				entradaUsuario = Funcoes.captilizeString(entradaUsuario);
+				condicao = false;
+			}
+			else {
+				System.out.println("Erro! Não digite números ou caracteres.");
+			}
+		}
+
 		return entradaUsuario;
 	}
 
 	public final static int entradaInt(String texto) {
 		int entradaUsuario = 0;
-
-		while (true) {
+		boolean condicao = true;
+		while (condicao) {
 			try {
 				System.out.print(texto);
 				entradaUsuario = Integer.parseInt(entrada.nextLine());
-
-				break;
+				condicao = false;
 
 			} catch (java.lang.NumberFormatException e) {
 				System.out.println("\nSó digite numeros!\n");
 			}
 
 		}
-		
+
 		return entradaUsuario;
 	}
 
 	public final static int entradaIntRanger(String texto, int inicio, int fim) {
 		int entradaUsuario = 0;
-	
-		while (true) {
+		boolean condicao = true;
+		while (condicao) {
 			try {
 				System.out.print(texto);
 				entradaUsuario = Integer.parseInt(entrada.nextLine());
 				if (inicio <= entradaUsuario && entradaUsuario <= fim) {
-					break;
+					condicao = false;;
 				} else {
-					System.out.println("O número está fora do ranger! Digite novamente.");
+					System.out.println("O número está fora do ranger["+ inicio+"-"+fim+"]" + " ! Digite novamente.");
 				}
 			} catch (java.lang.NumberFormatException e) {
 				System.out.println("\nSó digite numeros!\n");
 			}
 		}
-		
+
+		return entradaUsuario;
+
+	}
+	
+	public final static int entradaIntRanger(String texto, int inicio) {
+		int entradaUsuario = 0;
+		boolean condicao = true;
+		while (condicao) {
+			try {
+				System.out.print(texto);
+				entradaUsuario = Integer.parseInt(entrada.nextLine());
+				if (inicio <= entradaUsuario) {
+					condicao = false;;
+				} else {
+					System.out.println("O número está fora do ranger["+ inicio+" até infinito]" + " ! Digite novamente.");
+				}
+			} catch (java.lang.NumberFormatException e) {
+				System.out.println("\nSó digite numeros!\n");
+			}
+		}
+
 		return entradaUsuario;
 
 	}
 
 	public final static void mostrarOpcoes() {
 
-		System.out.println("[1] Seleção.\n" + "[2] Arbitro.\n" + "[3] Tecnico.\n" + "[4] Jogador.\n");
+		System.out.println("[1] Seleção.\n" + "[2] Arbitro.\n" + "[3] Tecnico.\n" + "[4] Jogador.\n"+ "[5] Voltar.\n");
 	}
 
 	public final static String captilizeString(String texto) {

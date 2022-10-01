@@ -26,9 +26,9 @@ public class JogadorDAO {
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			if(modelo_Jogador.getNome().equalsIgnoreCase(jogador_Novo.getNome())){
+			if (modelo_Jogador.getNome().equalsIgnoreCase(jogador_Novo.getNome())) {
 				return true;
-				}
+			}
 			return false;
 		}
 		return false;
@@ -78,6 +78,18 @@ public class JogadorDAO {
 			return false;
 		}
 	}
+	
+	public static boolean excluir(int posicao) {
+		if (getQuantidade_jogadores() > 0) {
+			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
+			Selecao selecao_modelo = SelecaoDAO.indexSelecao(modelo_Jogador.getSelecao());
+			selecao_modelo.removerJogador(modelo_Jogador);
+			todos_Jogadores.remove(modelo_Jogador);
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public static boolean excluir_Jogador_parcial(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
@@ -87,19 +99,28 @@ public class JogadorDAO {
 			return false;
 		}
 	}
+	
 
 	public static boolean listar() {
-
+		int contador = 0;
 		if (todos_Jogadores.isEmpty()) {
 			System.out.println("Não existe nenhum jogador cadastrado.");
 			return false;
 		} else {
 			System.out.println("Lista de Todos os Jogadores");
 			System.out.println("=================================");
+
 			for (Jogador jogador : todos_Jogadores) {
-				System.out.println(jogador);
+				System.out.println("[" + contador + "] " + jogador);
+				contador++;
 			}
-			return true;
+			System.out.println();
 		}
+		return true;
 	}
+	
+	public static int getQuantidade_jogadores() {
+		return todos_Jogadores.size();
+		}
+	
 }
