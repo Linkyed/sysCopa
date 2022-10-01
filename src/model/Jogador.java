@@ -13,7 +13,7 @@ public class Jogador {
 	private int golMarcado = 0;
 	private Selecao selecao;
 	private String posicaoJogada; 
-	private String posicaoJogadorString[] = {"Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro", "Volante", "Meia Atacante"};
+	private static String posicaoJogadorString[] = {"Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro", "Volante", "Meia Atacante"};
 	
 	public Jogador(String codigo) {
 		this.codJog = codigo;
@@ -101,6 +101,9 @@ public class Jogador {
 		return posicaoJogada;
 	}
 
+	public String[] getListaPosicao() {
+		return posicaoJogadorString;
+	}
 	public void setPosicaoJogada(int posicao) {
 		if(0 <= posicao && posicao <6) {
 			this.posicaoJogada = posicaoJogadorString[posicao];

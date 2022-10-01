@@ -47,4 +47,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 			return arbitros.get(num);			
 		}
 	}
+	static public int contarArbitro() {
+		return arbitros.size();
+	}
 }
