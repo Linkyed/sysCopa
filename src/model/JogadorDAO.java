@@ -7,15 +7,15 @@ public class JogadorDAO {
 
 	static private List<Jogador> todos_Jogadores = new ArrayList<>();
 
-	public static boolean inserir(Jogador jogador, Selecao selecao,boolean menssagem) {
+	public static boolean inserir(Jogador jogador, Selecao selecao, boolean menssagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 26;
 			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
-				if(menssagem) {
-					System.out.println("Código do Jogador: "+ jogador.getCodJog());
+				if (menssagem) {
+					System.out.println("Código do Jogador: " + jogador.getCodJog());
 				}
 				return true;
 			}
@@ -38,12 +38,37 @@ public class JogadorDAO {
 
 	}
 
+	public static boolean editar_nome(int numJogador, String nome) {
+
+		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
+			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
+			if (!todos_Jogadores.contains(modelo_Jogador)) {
+				modelo_Jogador.setNome(nome);
+				return true;
+			}
+			return false;
+		}
+		return false;
+
+	}
+
 	public static boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
 			modelo_Jogador.setCartaoAmarelo(cartao_amarelo);
 			return true;
+		}
+		return false;
+	}
+
+	public static boolean editar_Cart_Amarelo(int numJogador, int cartao_amarelo) {
+		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
+			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
+			if (0 < cartao_amarelo) {
+				modelo_Jogador.setCartaoAmarelo(cartao_amarelo);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -58,6 +83,17 @@ public class JogadorDAO {
 		return false;
 
 	}
+	
+	public static boolean editar_Cart_Vermelho(int numJogador, int cartao_vermelho) {
+		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
+			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
+			if (0 < cartao_vermelho) {
+				modelo_Jogador.setCartaoVermelho(cartao_vermelho);
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
 		if (todos_Jogadores.contains(jogador)) {
@@ -65,6 +101,17 @@ public class JogadorDAO {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
 			modelo_Jogador.setGolmarcado(gol_Marcado);
 			return true;
+		}
+		return false;
+	}
+	
+	public static boolean editar_Gol_Marcado(int numJogador, int gol_Marcado) {
+		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
+			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
+			if (0 < gol_Marcado) {
+				modelo_Jogador.setGolmarcado(gol_Marcado);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -81,7 +128,7 @@ public class JogadorDAO {
 			return false;
 		}
 	}
-	
+
 	public static boolean excluir(int posicao) {
 		if (getQuantidade_jogadores() > 0) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
@@ -102,7 +149,6 @@ public class JogadorDAO {
 			return false;
 		}
 	}
-	
 
 	public static boolean listar() {
 		int contador = 0;
@@ -121,9 +167,9 @@ public class JogadorDAO {
 		}
 		return true;
 	}
-	
+
 	public static int getQuantidade_jogadores() {
 		return todos_Jogadores.size();
-		}
-	
+	}
+
 }

@@ -6,20 +6,25 @@ public class Funcoes {
 
 	static final Scanner entrada = new Scanner(System.in);
 
-	public final static String entradaString(String texto) {
+	public final static String entradaString(String texto, boolean verificacao) {
 		boolean condicao = true;
 		String entradaUsuario = "";
 		while (condicao) {
 			System.out.println(texto);
 
-			entradaUsuario = entrada.nextLine();
-			if (entradaUsuario.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+")) {
-				entradaUsuario = Funcoes.captilizeString(entradaUsuario);
-				condicao = false;
+			entradaUsuario = entrada.nextLine().strip();
+			if (verificacao == true) {
+				if (entradaUsuario.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+")) {
+					entradaUsuario = Funcoes.captilizeString(entradaUsuario).strip();
+					condicao = false;
+				} else {
+					System.out.println("Erro! Não digite números ou caracteres.");
+				}
 			}
 			else {
-				System.out.println("Erro! Não digite números ou caracteres.");
+				condicao = false;
 			}
+			
 		}
 
 		return entradaUsuario;
@@ -51,9 +56,11 @@ public class Funcoes {
 				System.out.print(texto);
 				entradaUsuario = Integer.parseInt(entrada.nextLine());
 				if (inicio <= entradaUsuario && entradaUsuario <= fim) {
-					condicao = false;;
+					condicao = false;
+					;
 				} else {
-					System.out.println("O número está fora do ranger["+ inicio+"-"+fim+"]" + " ! Digite novamente.");
+					System.out.println(
+							"O número está fora do ranger[" + inicio + "-" + fim + "]" + " ! Digite novamente.");
 				}
 			} catch (java.lang.NumberFormatException e) {
 				System.out.println("\nSó digite numeros!\n");
@@ -63,7 +70,7 @@ public class Funcoes {
 		return entradaUsuario;
 
 	}
-	
+
 	public final static int entradaIntRanger(String texto, int inicio) {
 		int entradaUsuario = 0;
 		boolean condicao = true;
@@ -72,9 +79,11 @@ public class Funcoes {
 				System.out.print(texto);
 				entradaUsuario = Integer.parseInt(entrada.nextLine());
 				if (inicio <= entradaUsuario) {
-					condicao = false;;
+					condicao = false;
+					;
 				} else {
-					System.out.println("O número está fora do ranger["+ inicio+" até infinito]" + " ! Digite novamente.");
+					System.out.println(
+							"O número está fora do ranger[" + inicio + " até infinito]" + " ! Digite novamente.");
 				}
 			} catch (java.lang.NumberFormatException e) {
 				System.out.println("\nSó digite numeros!\n");
@@ -87,7 +96,7 @@ public class Funcoes {
 
 	public final static void mostrarOpcoes() {
 
-		System.out.println("[1] Seleção.\n" + "[2] Arbitro.\n" + "[3] Tecnico.\n" + "[4] Jogador.\n"+ "[5] Voltar.\n");
+		System.out.println("[1] Seleção.\n" + "[2] Arbitro.\n" + "[3] Tecnico.\n" + "[4] Jogador.\n" + "[5] Voltar.\n");
 	}
 
 	public final static String captilizeString(String texto) {
