@@ -14,9 +14,11 @@ public class Jogador {
 	private Selecao selecao;
 	private String posicaoJogada; 
 	private String posicaoJogadorString[] = {"Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro", "Volante", "Meia Atacante"};
-	public Jogador(String nome) {
-		this.nome = nome;
+	
+	public Jogador(String codigo) {
+		this.codJog = codigo;
 	}
+	
 
 	public Jogador(String nome, Selecao selecao,int cart_Vermelho, int cart_Amarelo,int gol_Marcado, int posicao) {
 	
@@ -126,7 +128,7 @@ public class Jogador {
 		if (getClass() != obj.getClass())
 			return false;
 		Jogador other = (Jogador) obj;
-		return //Objects.equals(codJog, other.codJog) ||
+		return Objects.equals(codJog, other.codJog) ||
 				Objects.equals(nome, other.nome);
 	}
 
