@@ -15,7 +15,4 @@ public interface ArbitroDAOInterface {
 		
 	}
 	
-	static public Arbitro getOneArbitro(int num) {
-		return null;
-	}
 }

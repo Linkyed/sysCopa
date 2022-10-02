@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Arbitro{
 	private String nome;
 	
+	/**Construtor que obriga a receber um String nome para criar um arbitro**/
 	public Arbitro(String nome){
 		this.nome = Funcoes.captilizeString(nome);
 	}
@@ -22,6 +23,7 @@ public class Arbitro{
 		return false;
 	}
 	
+	/**Metodo para mostrar o Arbitro em String**/
 	public String toString() {
 		return "Nome: " + nome;
 	}

@@ -10,15 +10,12 @@ public class Selecao{
 	private Tecnico tecnico;
 	private String nome;
 	
+	/**Construtor que obriga a receber um String nome para criar uma seleção**/
 	public Selecao(String nome) {
 		this.nome = nome;
 	}
 	
-	Selecao(String nome, Tecnico tecnico) {
-		this.nome = nome;
-		this.tecnico = tecnico;
-	}
-	
+	/**metodo para adicionar um jogador na lista de jogadores da seleção**/
 	public boolean addJogador(Jogador jogador) {
 		if (tamListaJogadores < 26) {
 			tamListaJogadores++;
@@ -28,6 +25,8 @@ public class Selecao{
 			return false;
 		}
 	}
+	
+	/**Metodo para remover um jogador da lista de jogadores da seleção**/
 	public boolean removerJogador(Jogador jogador) {
 		if (jogadores.contains(jogador) == true) {
 			tamListaJogadores--;
@@ -73,6 +72,7 @@ public class Selecao{
 		return Objects.equals(nome, other.nome);
 	}
 
+	/**Metodo para mostrar a Seleção em String**/
 	public String toString() {
 		if (this.tecnico == null) {
 			return "Nome: " + this.nome + " || Tecnico: Vazio";
