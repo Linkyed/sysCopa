@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Funcoes {
 
 	static final Scanner entrada = new Scanner(System.in);
-
+	
+	/**Metodo para mostrar um texto para o usuario e salvar a sua resposta em string**/
 	public final static String entradaString(String texto, boolean verificacao) {
 		boolean condicao = true;
 		String entradaUsuario = "";
@@ -29,7 +30,8 @@ public class Funcoes {
 
 		return entradaUsuario;
 	}
-
+	
+	/**Metodo para mostrar um texto para o usuario e salvar a sua resposta em int, aceitando apenas inteiros**/
 	public final static int entradaInt(String texto) {
 		int entradaUsuario = 0;
 		boolean condicao = true;
@@ -47,7 +49,8 @@ public class Funcoes {
 
 		return entradaUsuario;
 	}
-
+	
+	/**Metodo para mostrar um texto para o usuario e salvar a sua resposta em int, aceitando apenas inteiros em um certo intervalo**/
 	public final static int entradaIntRanger(String texto, int inicio, int fim) {
 		int entradaUsuario = 0;
 		boolean condicao = true;
@@ -70,7 +73,8 @@ public class Funcoes {
 		return entradaUsuario;
 
 	}
-
+	
+	/**Metodo para mostrar um texto para o usuario e salvar a sua resposta em int, aceitando apenas inteiros em um certo intervalo inicial**/
 	public final static int entradaIntRanger(String texto, int inicio) {
 		int entradaUsuario = 0;
 		boolean condicao = true;
@@ -94,11 +98,13 @@ public class Funcoes {
 
 	}
 
+	/**Metodo para mostrar as opções de jogador, tecnico, seleção e arbitro para o usuario**/
 	public final static void mostrarOpcoes() {
 
 		System.out.println("[1] Seleção.\n" + "[2] Arbitro.\n" + "[3] Tecnico.\n" + "[4] Jogador.\n" + "[5] Voltar.\n");
 	}
 
+	/**Metodo para fazer com que todas as letras inicias comecem com letra maiuscula**/
 	public final static String captilizeString(String texto) {
 		String[] c = texto.split(" ");
 		String n = "";
@@ -108,6 +114,7 @@ public class Funcoes {
 		return n.strip();
 	}
 	
+	/**Metodo para fechar o scanner**/
 	public static void fechar() {
 		entrada.close();
 	}

@@ -6,7 +6,7 @@ public class Tecnico{
 	private String nome;
 	private Selecao selecao;
 	
-
+	/**Construtor que obriga a receber uma String nome e uma referencia de uma seleção para criar um tecnico**/
 	public Tecnico (String nome, Selecao selecao){
 		this.nome = Funcoes.captilizeString(nome);
 		this.selecao = selecao;
@@ -48,6 +48,7 @@ public class Tecnico{
 		return Objects.equals(nome, other.nome);
 	}
 
+	/**Metodo para mostrar o Tecnico em String**/
 	public String toString() {
 		return "Nome: " + nome + " | Selecao: " + selecao.getNome();
 	}
