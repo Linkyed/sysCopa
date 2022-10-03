@@ -45,7 +45,7 @@ public class Main {
 				// coleta a escolha do usuario
 				Funcoes.mostrarOpcoes();
 
-				escolha_inserir = Funcoes.entradaIntRanger("Digite o numero relacionado a uma opção acima:", 1, 5);
+				escolha_inserir = Funcoes.entradaIntRanger("Digite o número relacionado a uma opção acima:", 1, 5);
 
 				// Inserção dividida entre seleção, aribtro, tecnico e jogador
 				switch (escolha_inserir) {
@@ -68,7 +68,7 @@ public class Main {
 					int num_SelecoesSemTec = SelecaoDAO.selecoesSemTecnico();
 					if (num_SelecoesSemTec > 0) {
 						SelecaoDAO.imprimirSelecaoSemTecnico();
-						int numSelecao = Funcoes.entradaIntRanger("Digite o numero da seleção que o tecnico faz parte: ",0,num_SelecoesSemTec-1);
+						int numSelecao = Funcoes.entradaIntRanger("Digite o número da seleção que o tecnico faz parte: ",0,num_SelecoesSemTec-1);
 						String nomeTecnico = Funcoes.entradaString("Digite o nome do Tecnico: ", true);
 
 						// Caso o usuario escolha um numero que não refere a nenhuma seleção ele não ira
@@ -185,7 +185,7 @@ public class Main {
 				case 3:
 					TecnicoDAO.listar();
 					int numTecnico = Funcoes.entradaIntRanger("Digite o numero do tecnico a ser editado: ",0,TecnicoDAO.contarTecnicos() - 1);
-					System.out.println("\n[0] Editar o nome\n[1] Editar a seleção\n");
+					System.out.println("\n[0] - Editar o nome\n[1] - Editar a seleção\n");
 					// Parte onde o usuario ira decidir o que mudar no tecnico
 					int escolhaEdicaoTecnico = Funcoes.entradaIntRanger(
 							"\n[0] Editar o nome\n[1] Editar a seleção\n" + "Digite o que deseja editar no tecnico: ",0 , 1);
@@ -204,8 +204,8 @@ public class Main {
 						int num_SelecoesSemTec = SelecaoDAO.selecoesSemTecnico();
 						if (num_SelecoesSemTec == 0) {
 							System.out.println(
-									"Todas seleções já possuem tecnicos, se quiser editar a seleção de um tecnico é preciso exister uma seleção\n"
-											+ "sem tecnico");
+									"\nTodas seleções já possuem tecnicos, se quiser editar a seleção de um tecnico é preciso existir uma seleção"
+											+ "sem tecnico\n");
 						} else {
 							SelecaoDAO.imprimirSelecaoSemTecnico();
 							int numNovaSelecao = Funcoes.entradaIntRanger("Digite o número da seleção nova do tecnico: ",0 , num_SelecoesSemTec);
@@ -217,7 +217,7 @@ public class Main {
 								TecnicoDAO.getOneTecnico(numTecnico)
 										.setSelecao(SelecaoDAO.getOneSelecao(numNovaSelecao));
 							} catch (Exception e) {
-								System.out.println("Tente novamente!\n");
+								System.out.println("\nTente novamente!\n");
 							}
 
 						}
@@ -242,25 +242,25 @@ public class Main {
 								String nomeJogador = Funcoes.entradaString("Ditige o Novo nome do jogador: ", true);
 								Boolean verificadorBoolean = JogadorDAO.editarNome(num_Jogador, nomeJogador);
 								if (verificadorBoolean) {
-									System.out.println("O nome foi atualizado com sucesso!");
+									System.out.println("\nO nome foi atualizado com sucesso!\n");
 								} else {
-									System.out.println("Erro! O nome do jogador já está dentro da lista.");
+									System.out.println("\nErro! O nome do jogador já está dentro da lista.\n");
 								}
 
 							} else if (escolhaEdicaoJogador == 2) {
 								int num_Cart_Amarelo = Funcoes.entradaIntRanger("Número de cart. Amarelo: ", 0);
 								JogadorDAO.editarCartAmarelo(num_Jogador, num_Cart_Amarelo);
-								System.out.println("O número de cart. Amarelo foi atualizado com sucesso!");
+								System.out.println("\nO número de cart. Amarelo foi atualizado com sucesso!\n");
 
 							} else if (escolhaEdicaoJogador == 3) {
 								int num_Cart_Vermelho = Funcoes.entradaIntRanger("Número de cart. Vermelho: ", 0);
 								JogadorDAO.editarCartVermelho(num_Jogador, num_Cart_Vermelho);
-								System.out.println("O número de cart. Vermelho foi atualizado com sucesso!");
+								System.out.println("\nO número de cart. Vermelho foi atualizado com sucesso!\n");
 
 							} else if (escolhaEdicaoJogador == 4) {
 								int num_gol = Funcoes.entradaIntRanger("Número de gol(s) marcado(s): ", 0);
 								JogadorDAO.editarGolMarcado(num_Jogador, num_gol);
-								System.out.println("O número de gol(s) marcados foi atualizado com sucesso!");
+								System.out.println("\nO número de gol(s) marcados foi atualizado com sucesso!\n");
 
 							} else if (escolhaEdicaoJogador == 5) {
 								System.out.println(
@@ -268,7 +268,7 @@ public class Main {
 												+ "[3] - Zagueiro\n" + "[4] - Volante\n" + "[5] - Meia Atacante\n");
 								int num_Posicao = Funcoes.entradaIntRanger("Número da Posição:: ", 0, 5);
 								JogadorDAO.editarPosicao(num_Jogador, num_Posicao);
-								System.out.println("A posição do Jogador foi atualizado com sucesso!");
+								System.out.println("\nA posição do Jogador foi atualizado com sucesso!\n");
 							}
 
 						} else {
@@ -288,33 +288,33 @@ public class Main {
 									Boolean verificadorBoolean = JogadorDAO.editarNome(modelo_jogador,
 											nomeJogadorNovo);
 									if (verificadorBoolean) {
-										System.out.println("O nome foi atualizado com sucesso!");
+										System.out.println("\nO nome foi atualizado com sucesso!\n");
 									} else {
-										System.out.println("Erro! O nome do jogador já está dentro da lista.");
+										System.out.println("\nErro! O nome do jogador já está dentro da lista.\n");
 									}
 
 								} else if (escolhaEdicaoJogador == 2) {
 									int num_Cart_Amarelo = Funcoes.entradaIntRanger("Número de cart. Amarelo: ", 0);
 									JogadorDAO.editarCartAmarelo(modelo_jogador, num_Cart_Amarelo);
-									System.out.println("O número de cart. Amarelo foi atualizado com sucesso!");
+									System.out.println("\nO número de cart. Amarelo foi atualizado com sucesso!\n");
 
 								} else if (escolhaEdicaoJogador == 3) {
 									int num_Cart_Vermelho = Funcoes.entradaIntRanger("Número de cart. Vermelho: ", 0);
 									JogadorDAO.editarCartVermelho(modelo_jogador, num_Cart_Vermelho);
-									System.out.println("O número de cart. Vermelho foi atualizado com sucesso!");
+									System.out.println("\bO número de cart. Vermelho foi atualizado com sucesso!\n");
 
 								} else if (escolhaEdicaoJogador == 4) {
 									int num_gol = Funcoes.entradaIntRanger("Número de gol(s) marcado(s): ", 0);
 									JogadorDAO.editarGolMarcado(modelo_jogador, num_gol);
-									System.out.println("O número de gol(s) marcados foi atualizado com sucesso!");
+									System.out.println("\nO número de gol(s) marcados foi atualizado com sucesso!\n");
 
 								} else if (escolhaEdicaoJogador == 5) {
 									System.out.println(
-											"[0]- Goleiro\n" + "[1]- Lateral direito\n" + "[2] - Lateral esquerdo\n"
+											"[0] - Goleiro\n" + "[1] - Lateral direito\n" + "[2] - Lateral esquerdo\n"
 													+ "[3] - Zagueiro\n" + "[4] - Volante\n" + "[5] - Meia Atacante\n");
 									int num_Posicao = Funcoes.entradaIntRanger("Número da Posição: ", 0, 5);
 									JogadorDAO.editarPosicao(modelo_jogador, num_Posicao);
-									System.out.println("A posição do Jogador foi atualizado com sucesso!");
+									System.out.println("\nA posição do Jogador foi atualizado com sucesso!\n");
 								}
 							} else {
 								System.out.println("\nA operação foi uma falha! Jogador não encontrado.\n");
@@ -323,7 +323,7 @@ public class Main {
 						}
 						break;
 					} else {
-						System.out.println("Não existe nenhum jogador! Crie um antes para ser editado.");
+						System.out.println("\nNão existe nenhum jogador! Crie um antes para ser editado.\n");
 					}
 
 				}
