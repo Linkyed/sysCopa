@@ -3,18 +3,38 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe DAO do jogador Ela inseri o jogador em uma seleção. Ela edita alguns
+ * atributos do jogador. Ela excluir o jogador da seleção. Ela lista todos os
+ * Jogadores.
+ * 
+ * @author Nalbert Santos Araujo
+ * @author Pedro Henrique
+ *
+ */
 public class JogadorDAO {
 
+	/**
+	 * Lista que guarda todos os jogadores
+	 */
 	static private List<Jogador> todos_Jogadores = new ArrayList<>();
 
-	public static boolean inserir(Jogador jogador, Selecao selecao, boolean menssagem) {
+	/**
+	 * inseir: Faz a inserção do jogador na seleção e na lista de todos_Jogadores.
+	 * 
+	 * @param Tipo: Jogador
+	 * @param Tipo: Selecao
+	 * @param Tipo: boolean
+	 * @return true || false
+	 */
+	public static boolean inserir(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 26;
 			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
-				if (menssagem) {
+				if (mensagem) {
 					System.out.println("Código do Jogador: " + jogador.getCodJog());
 				}
 				return true;
@@ -24,6 +44,13 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * editar_nome: Faz a edição do nome do jogador
+	 * 
+	 * @param Tipo: Jogador - jogador_Antigo
+	 * @param Tipo: Jogador - jogador_Novo
+	 * @return true || false
+	 */
 	public static boolean editar_nome(Jogador jogador_Antigo, Jogador jogador_Novo) {
 
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
@@ -37,6 +64,13 @@ public class JogadorDAO {
 
 	}
 
+	/**
+	 * editar_nome: Faz a edição do nome do jogador
+	 * 
+	 * @param Tipo: int - Número do jogador
+	 * @param Tipo: String - Novo nome do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_nome(int numJogador, String nome) {
 
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
@@ -50,16 +84,32 @@ public class JogadorDAO {
 
 	}
 
+	/**
+	 * editar_Cart_Amarelo: Faz a edição do número de cartões Amarelos do jogador
+	 * 
+	 * @param Tipo: Jogador
+	 * @param Tipo: int - O novo número de cartões Amarelos do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			modelo_Jogador.setCartaoAmarelo(cartao_amarelo);
-			return true;
+			if (0 < cartao_amarelo) {
+				modelo_Jogador.setCartaoAmarelo(cartao_amarelo);
+				return true;
+			}
 		}
 		return false;
 	}
 
+	/**
+	 * editar_Cart_Amarelo: Faz a edição do número de cartões Amarelos do jogador
+	 * 
+	 * @param Tipo: int - Número do jogador
+	 * @param Tipo: int - O novo número de cartões Amarelos do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Cart_Amarelo(int numJogador, int cartao_amarelo) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
@@ -71,17 +121,33 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * editar_Cart_Vermelho: Faz a edição do número de cartões Vermelhos do jogador
+	 * 
+	 * @param Tipo: Jogador
+	 * @param Tipo: int - O novo número de cartões Vermelho do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Cart_Vermelho(Jogador jogador, int cartao_vermelho) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			modelo_Jogador.setCartaoVermelho(cartao_vermelho);
+			if (0 < cartao_vermelho) {
+				modelo_Jogador.setCartaoVermelho(cartao_vermelho);
+			}
 			return true;
 		}
 		return false;
 
 	}
 
+	/**
+	 * editar_Cart_Vermelho: Faz a edição do número de cartões Vermelhos do jogador
+	 * 
+	 * @param Tipo: int - Número do jogador
+	 * @param Tipo: int - O novo número de cartões Vermelhos do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Cart_Vermelho(int numJogador, int cartao_vermelho) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
@@ -93,6 +159,13 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * editar_Gol_Marcado: Faz a edição do número de gols marcados pelo jogador
+	 * 
+	 * @param Tipo: Jogador
+	 * @param Tipo: int - O novo número de gols marcados pelo jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
@@ -103,6 +176,13 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * editar_Gol_Marcado: Faz a edição do número de gols marcados pelo jogador
+	 * 
+	 * @param Tipo: int - Número do jogador
+	 * @param Tipo: int - O novo número de gols marcados pelo jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Gol_Marcado(int numJogador, int gol_Marcado) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
@@ -114,6 +194,13 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * editar_Posicao: Faz a edição da posição do jogador
+	 * 
+	 * @param Tipo: int - Número do jogador
+	 * @param Tipo: int - O número da posição do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Posicao(int numJogador, int posicao) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
@@ -125,6 +212,13 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * editar_Posicao: Faz a edição da posição do jogador
+	 * 
+	 * @param Tipo: Jogador
+	 * @param Tipo: int - O número da posição do jogador
+	 * @return true || false
+	 */
 	public static boolean editar_Posicao(Jogador jogador, int posicao) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
@@ -137,6 +231,12 @@ public class JogadorDAO {
 		return false;
 	}
 
+	/**
+	 * excluir: Exclui o jogador da seleção e da lista de todos os jogadores
+	 * 
+	 * @param Tipo: Jogador
+	 * @return true || false
+	 */
 	public static boolean excluir(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
@@ -150,6 +250,12 @@ public class JogadorDAO {
 		}
 	}
 
+	/**
+	 * excluir: Exclui o jogador da seleção e da lista de todos os jogadores
+	 * 
+	 * @param Tipo: int - Número do jogador
+	 * @return true || false
+	 */
 	public static boolean excluir(int posicao) {
 		if (getQuantidade_jogadores() > 0) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
@@ -162,6 +268,12 @@ public class JogadorDAO {
 		}
 	}
 
+	/**
+	 * excluir_Jogador_parcial: Exclui o jogador da lista de todos os jogadores
+	 * 
+	 * @param Tipo: Jogador
+	 * @return true || false
+	 */
 	public static boolean excluir_Jogador_parcial(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			todos_Jogadores.remove(jogador);
@@ -171,6 +283,11 @@ public class JogadorDAO {
 		}
 	}
 
+	/**
+	 * listar: Lista todos os jogadores cadastrados
+	 * 
+	 * @return true || false
+	 */
 	public static boolean listar() {
 		int contador = 0;
 		if (todos_Jogadores.isEmpty()) {
@@ -189,10 +306,21 @@ public class JogadorDAO {
 		return true;
 	}
 
+	/**
+	 * getQuantidade_jogadores: Mostra o número jogadores cadastrados
+	 * 
+	 * @return int
+	 */
 	public static int getQuantidade_jogadores() {
 		return todos_Jogadores.size();
 	}
 
+	/**
+	 * estaNaLista: Mostra se o jogador está na lista de jogadores
+	 * 
+	 * @param Tipo: Jogador
+	 * @return true || false
+	 */
 	public static boolean estaNaLista(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			return true;
@@ -201,6 +329,12 @@ public class JogadorDAO {
 
 	}
 
+	/**
+	 * imprimirJogador: Imprime os dados do jogador
+	 * 
+	 * @param Tipo: Jogador
+	 * @return true || false
+	 */
 	public static void imprimirJogador(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
