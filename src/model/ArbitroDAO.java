@@ -3,6 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe DAO do Arbitro Ela inseri o arbritro em uma lista. 
+ * Ela edita alguns atributos do arbitro. 
+ * Ela excluir o arbitro. 
+ * Ela lista todos os arbitros.
+ * 
+ * @author Nalbert Santos Araujo
+ * @author Pedro Henrique
+ *
+ */
 public class ArbitroDAO implements ArbitroDAOInterface{
 	int a = 0;
 	static private List<Arbitro> arbitros = new ArrayList<>();

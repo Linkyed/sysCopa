@@ -3,7 +3,18 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TecnicoDAO {
+/**
+ * Classe DAO do Tecnico.
+ * Ela inseri o jogador em um tecnico na seleção. 
+ * Ela edita alguns atributos do tecnico. 
+ * Ela excluir o tecnico da seleção. 
+ * Ela lista todos os tecnicos.
+ * 
+ * @author Nalbert Santos Araujo
+ * @author Pedro Henrique
+ *
+ */
+public class TecnicoDAO implements TecnicoDAOInterface{
 	int a = 0;
 	/**Lista para guarda os tecnicos**/
 	static private List<Tecnico> tecnicos = new ArrayList<>();

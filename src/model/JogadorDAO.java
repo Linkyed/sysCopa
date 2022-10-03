@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe DAO do jogador Ela inseri o jogador em uma seleção. Ela edita alguns
- * atributos do jogador. Ela excluir o jogador da seleção. Ela lista todos os
- * Jogadores.
+ * Classe DAO do Jogador.
+ * Ela inseri o jogador em uma seleção. 
+ * Ela edita alguns atributos do jogador. 
+ * Ela excluir o jogador da seleção. 
+ * Ela lista todos os Jogadores.
  * 
  * @author Nalbert Santos Araujo
  * @author Pedro Henrique
  *
  */
-public class JogadorDAO {
+public class JogadorDAO implements JogadorDAOInterface{
 
 	/**
 	 * Lista que guarda todos os jogadores
@@ -51,7 +53,7 @@ public class JogadorDAO {
 	 * @param Tipo: Jogador - jogador_Novo
 	 * @return true || false
 	 */
-	public static boolean editar_nome(Jogador jogador_Antigo, Jogador jogador_Novo) {
+	public static boolean editarNome(Jogador jogador_Antigo, Jogador jogador_Novo) {
 
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
@@ -71,7 +73,7 @@ public class JogadorDAO {
 	 * @param Tipo: String - Novo nome do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_nome(int numJogador, String nome) {
+	public static boolean editarNome(int numJogador, String nome) {
 
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
@@ -85,13 +87,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Cart_Amarelo: Faz a edição do número de cartões Amarelos do jogador
+	 * editarCartAmarelo: Faz a edição do número de cartões Amarelos do jogador
 	 * 
 	 * @param Tipo: Jogador
 	 * @param Tipo: int - O novo número de cartões Amarelos do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Cart_Amarelo(Jogador jogador, int cartao_amarelo) {
+	public static boolean editarCartAmarelo(Jogador jogador, int cartao_amarelo) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -104,13 +106,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Cart_Amarelo: Faz a edição do número de cartões Amarelos do jogador
+	 * editarCartAmarelo: Faz a edição do número de cartões Amarelos do jogador
 	 * 
 	 * @param Tipo: int - Número do jogador
 	 * @param Tipo: int - O novo número de cartões Amarelos do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Cart_Amarelo(int numJogador, int cartao_amarelo) {
+	public static boolean editarCartAmarelo(int numJogador, int cartao_amarelo) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
 			if (0 < cartao_amarelo) {
@@ -122,13 +124,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Cart_Vermelho: Faz a edição do número de cartões Vermelhos do jogador
+	 * editarCartVermelho: Faz a edição do número de cartões Vermelhos do jogador
 	 * 
 	 * @param Tipo: Jogador
 	 * @param Tipo: int - O novo número de cartões Vermelho do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Cart_Vermelho(Jogador jogador, int cartao_vermelho) {
+	public static boolean editarCartVermelho(Jogador jogador, int cartao_vermelho) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -142,13 +144,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Cart_Vermelho: Faz a edição do número de cartões Vermelhos do jogador
+	 * editarCartVermelho: Faz a edição do número de cartões Vermelhos do jogador
 	 * 
 	 * @param Tipo: int - Número do jogador
 	 * @param Tipo: int - O novo número de cartões Vermelhos do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Cart_Vermelho(int numJogador, int cartao_vermelho) {
+	public static boolean editarCartVermelho(int numJogador, int cartao_vermelho) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
 			if (0 < cartao_vermelho) {
@@ -160,13 +162,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Gol_Marcado: Faz a edição do número de gols marcados pelo jogador
+	 * editarGolMarcado: Faz a edição do número de gols marcados pelo jogador
 	 * 
 	 * @param Tipo: Jogador
 	 * @param Tipo: int - O novo número de gols marcados pelo jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Gol_Marcado(Jogador jogador, int gol_Marcado) {
+	public static boolean editarGolMarcado(Jogador jogador, int gol_Marcado) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -177,13 +179,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Gol_Marcado: Faz a edição do número de gols marcados pelo jogador
+	 * editarGolMarcado: Faz a edição do número de gols marcados pelo jogador
 	 * 
 	 * @param Tipo: int - Número do jogador
 	 * @param Tipo: int - O novo número de gols marcados pelo jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Gol_Marcado(int numJogador, int gol_Marcado) {
+	public static boolean editarGolMarcado(int numJogador, int gol_Marcado) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
 			if (0 < gol_Marcado) {
@@ -195,13 +197,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Posicao: Faz a edição da posição do jogador
+	 * editarPosicao: Faz a edição da posição do jogador
 	 * 
 	 * @param Tipo: int - Número do jogador
 	 * @param Tipo: int - O número da posição do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Posicao(int numJogador, int posicao) {
+	public static boolean editarPosicao(int numJogador, int posicao) {
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
 			if (0 <= posicao && posicao < 6) {
@@ -213,13 +215,13 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * editar_Posicao: Faz a edição da posição do jogador
+	 * editarPosicao: Faz a edição da posição do jogador
 	 * 
 	 * @param Tipo: Jogador
 	 * @param Tipo: int - O número da posição do jogador
 	 * @return true || false
 	 */
-	public static boolean editar_Posicao(Jogador jogador, int posicao) {
+	public static boolean editarPosicao(Jogador jogador, int posicao) {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -257,7 +259,7 @@ public class JogadorDAO {
 	 * @return true || false
 	 */
 	public static boolean excluir(int posicao) {
-		if (getQuantidade_jogadores() > 0) {
+		if (getQuantidadeJogadores() > 0) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
 			Selecao selecao_modelo = SelecaoDAO.indexSelecao(modelo_Jogador.getSelecao());
 			selecao_modelo.removerJogador(modelo_Jogador);
@@ -274,7 +276,7 @@ public class JogadorDAO {
 	 * @param Tipo: Jogador
 	 * @return true || false
 	 */
-	public static boolean excluir_Jogador_parcial(Jogador jogador) {
+	public static boolean excluirJogadorParcial(Jogador jogador) {
 		if (todos_Jogadores.contains(jogador)) {
 			todos_Jogadores.remove(jogador);
 			return true;
@@ -311,7 +313,7 @@ public class JogadorDAO {
 	 * 
 	 * @return int
 	 */
-	public static int getQuantidade_jogadores() {
+	public static int getQuantidadeJogadores() {
 		return todos_Jogadores.size();
 	}
 
@@ -330,7 +332,7 @@ public class JogadorDAO {
 	}
 
 	/**
-	 * imprimirJogador: Imprime os dados do jogador
+	 * imprimirJogador: Imprime os dados do jogador//
 	 * 
 	 * @param Tipo: Jogador
 	 * @return true || false

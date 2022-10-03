@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Objects;
-
+/**Classe Arbitror**/
 public class Arbitro{
 	private String nome;
 	
