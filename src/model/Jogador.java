@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-
+/**Classe Jogador**/
 public class Jogador {
 	private String nome;
 	private String codJog;
@@ -15,11 +15,12 @@ public class Jogador {
 	private String posicaoJogada; 
 	private static String posicaoJogadorString[] = {"Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro", "Volante", "Meia Atacante"};
 	
+	/**Construtor do jogador pelo codígo do Jogador**/
 	public Jogador(String codigo) {
 		this.codJog = codigo;
 	}
 	
-
+	/**Construtor do jogador pelo Nome/ Seleção / Num. Cart. Amarelo / Num. Cart. Vermelho / Num. Gols Marcados/ Posição **/
 	public Jogador(String nome, Selecao selecao,int cart_Vermelho, int cart_Amarelo,int gol_Marcado, int posicao) {
 	
 		this.nome = nome;
@@ -112,6 +113,7 @@ public class Jogador {
 
 
 	@Override
+	/**Mostra todos os atributos do jogador**/
 	public String toString() {
 		return "Nome: " + nome + " || Seleção: " + selecao + "|| Cart. Vermelho: " + cartaoVermelho + "|| Cart. Amarelo: "
 				+ cartaoAmarelo + "|| Gol Marcado: " + golMarcado +"|| Posição: " + posicaoJogada + "|| Cod. do Jogador: " + codJog;

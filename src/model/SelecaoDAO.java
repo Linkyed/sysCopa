@@ -3,7 +3,19 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelecaoDAO {
+
+/**
+ * Classe DAO da Selecao. 
+ * Ela inseri a seleção na lista de seleções. 
+ * Ela edita alguns atributos da seleção. 
+ * Ela excluir a seleção. 
+ * Ela lista tados as seleções.
+ * 
+ * @author Nalbert Santos Araujo
+ * @author Pedro Henrique
+ *
+ */
+public class SelecaoDAO implements SelecaoDAOInterface {
 	int a = 0;
 	/**Lista para guarda as seleções**/
 	static private List<Selecao> selecoes = new ArrayList<>();
@@ -33,7 +45,7 @@ public class SelecaoDAO {
 		if (num <= tamanhoLista && num >= 0) {
 			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
 			for (Jogador jogador : jogadores) {
-				JogadorDAO.excluir_Jogador_parcial(jogador);
+				JogadorDAO.excluirJogadorParcial(jogador);
 			}
 			selecoes.remove(num);
 			return true;

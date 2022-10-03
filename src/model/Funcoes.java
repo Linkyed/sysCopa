@@ -2,6 +2,13 @@ package model;
 
 import java.util.Scanner;
 
+/**
+ * Classe de Funções para ajudar na contrução do codígo.
+ * 
+ * @author Nalbert Santos Araujo
+ * @author Pedro Henrique
+ *
+ */
 public class Funcoes {
 
 	static final Scanner entrada = new Scanner(System.in);
