@@ -76,8 +76,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 	public static boolean editarNome(int numJogador, String nome) {
 
 		if (0 <= numJogador && numJogador < todos_Jogadores.size()) {
+			for(Jogador jogador: todos_Jogadores) {
+				if(jogador.getNome().equals(nome)) {
+					return false;
+				}
+			}
 			Jogador modelo_Jogador = todos_Jogadores.get(numJogador);
-			if (!todos_Jogadores.contains(modelo_Jogador)) {
+			if (todos_Jogadores.contains(modelo_Jogador)) {
 				modelo_Jogador.setNome(nome);
 				return true;
 			}
