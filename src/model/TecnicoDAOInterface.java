@@ -29,4 +29,6 @@ public interface TecnicoDAOInterface {
 	static public int contarTecnicos() {
 		return 0;
 	}
+	
+
 }
