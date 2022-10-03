@@ -58,9 +58,8 @@ public class JogadorDAO implements JogadorDAOInterface{
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			if (modelo_Jogador.getNome().equalsIgnoreCase(jogador_Novo.getNome())) {
-				return true;
-			}
+			modelo_Jogador.setNome(jogador_Novo.getNome());
+			return true;
 		}
 		return false;
 
