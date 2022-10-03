@@ -30,8 +30,5 @@ public interface TecnicoDAOInterface {
 		return 0;
 	}
 	
-	public static boolean fl() {
 
-		return false;
-	}
 }
