@@ -126,7 +126,6 @@ public class Main {
 				case 1:
 					SelecaoDAO.listar();
 					int numSelecao = Funcoes.entradaIntRanger("Digite o numero da Seleção a ser editada: ",0 , SelecaoDAO.quantidadeSelecoes() - 1);
-					System.out.println("\n[0] Editar o nome da seleção\n[1] Editar o tecnico da seleção");
 					// Parte onde o usuario vai decidir o que deve ser mudado na seleção
 					int opcaoEditar = Funcoes
 							.entradaIntRanger("\n[0] Editar o nome da seleção\n[1] Editar o tecnico da seleção\n"
@@ -179,7 +178,7 @@ public class Main {
 				case 3:
 					TecnicoDAO.listar();
 					int numTecnico = Funcoes.entradaIntRanger("Digite o numero do tecnico a ser editado: ",0,TecnicoDAO.contarTecnicos() - 1);
-					System.out.println("\n[0] - Editar o nome\n[1] - Editar a seleção\n");
+					
 					// Parte onde o usuario ira decidir o que mudar no tecnico
 					int escolhaEdicaoTecnico = Funcoes.entradaIntRanger(
 							"\n[0] Editar o nome\n[1] Editar a seleção\n" + "Digite o que deseja editar no tecnico: ",0 , 1);
