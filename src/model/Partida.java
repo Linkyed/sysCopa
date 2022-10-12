@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Partida {
 	private String codigoPartida;
 	private Integer dia;
@@ -11,6 +14,9 @@ public class Partida {
 	private Selecao selecao2;
 	private int golSelecao1 = 0;
 	private int golSelecao2 = 0;
+	private Map<Jogador, Integer> cartaoAmareloPartida = new HashMap<>();
+	private Map<Jogador, Integer> cartaoVermelhoPartida = new HashMap<>();
+	private Map<Jogador, Integer> GolsMarcaosPartida = new HashMap<>();
 
 	public Partida(int dia, int mes, String horario, String local, Selecao selecao1, Selecao selecao2, int golSele1,
 			int golSele2) {
@@ -52,9 +58,9 @@ public class Partida {
 		return ano;
 	}
 
-	public void setAno(Integer ano) {
-		if (ano > 0)
-			this.ano = ano;
+	public void setAno(Integer anoCopa) {
+		if (anoCopa > 0)
+			ano = anoCopa;
 	}
 
 	public String getHorario() {
@@ -111,6 +117,23 @@ public class Partida {
 		if (golSelecao2 > 0) {
 			this.golSelecao2 = golSelecao2;
 		}
+	}
+
+	public Map<Jogador, Integer> getCartaoAmareloPartida() {
+		return cartaoAmareloPartida;
+	}
+
+	public Map<Jogador, Integer> getCartaoVermelhoPartida() {
+		return cartaoVermelhoPartida;
+	}
+
+	public Map<Jogador, Integer> getGolsMarcaosPartida() {
+		return GolsMarcaosPartida;
+	}
+
+	@Override
+	public String toString() {
+		return "";
 	}
 
 }

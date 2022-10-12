@@ -2,6 +2,8 @@ package model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 /**Classe Jogador**/
 public class Jogador {
@@ -14,6 +16,7 @@ public class Jogador {
 	private Selecao selecao;
 	private String posicaoJogada; 
 	private static String posicaoJogadorString[] = {"Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro", "Volante", "Meia Atacante"};
+	private List<Partida> listaPartdasList = new ArrayList<>();
 	
 	/**Construtor do jogador pelo codígo do Jogador**/
 	public Jogador(String codigo) {
@@ -111,6 +114,10 @@ public class Jogador {
 		}
 	}
 
+
+	public List<Partida> getListaPartdasList() {
+		return listaPartdasList;
+	}
 
 	@Override
 	/**Mostra todos os atributos do jogador**/
