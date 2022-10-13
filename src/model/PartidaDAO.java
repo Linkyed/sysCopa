@@ -62,6 +62,9 @@ public class PartidaDAO {
 			Selecao selecao2 = partida.getSelecao1();
 			int golSelecao2 = SelecaoDAO.getQuantidadeGols(selecao2) - partida.getGolSelecao2();
 			SelecaoDAO.editarGolsSelecao(selecao2, golSelecao2);
+			partida.getCartaoAmareloPartida().clear();
+			partida.getCartaoVermelhoPartida().clear();
+			partida.getGolsMarcaosPartida().clear();
 			// Falta os editares
 			return true;
 		}
