@@ -16,12 +16,10 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	int a = 0;
 	/** Lista para guarda as seleções **/
 	static private List<Selecao> selecoes = new ArrayList<>();
-	static private int tamanhoLista = 0;
 
 	/** Metodo para inserir uma seleção já criada no banco de dados **/
 	static public boolean inserir(Selecao selecao) {
-		if (tamanhoLista < 32 && !selecoes.contains(selecao)) {
-			tamanhoLista++;
+		if (selecoes.size() <= 32 && !selecoes.contains(selecao)) {
 			selecoes.add(selecao);
 			return true;
 		} else {
@@ -41,7 +39,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para excluir uma seleção existente no banco de dados **/
 	static public boolean excluir(int num) {
-		if (num <= tamanhoLista && num >= 0) {
+		if (num <= selecoes.size() && num >= 0) {
 			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
 			for (Jogador jogador : jogadores) {
 				JogadorDAO.excluirJogadorParcial(jogador);
@@ -79,7 +77,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	 * banco de dados
 	 **/
 	static public Selecao getOneSelecao(int num) {
-		if (num > tamanhoLista - 1 || num < 0) {
+		if (num > selecoes.size() - 1 || num < 0) {
 			System.out.println("\nO numero esta fora da lista!\n");
 			return null;
 		} else {
