@@ -9,6 +9,7 @@ public class Selecao{
 	private int tamListaJogadores = 0;
 	private Tecnico tecnico;
 	private String nome;
+	private List<Partida> listaPartdas = new ArrayList<>();
 	
 	/**Construtor que obriga a receber um String nome para criar uma seleção**/
 	public Selecao(String nome) {
@@ -61,6 +62,11 @@ public class Selecao{
 	public int hashCode() {
 		return Objects.hash(nome);
 	}
+	
+	public List<Partida> getListaPartdasList() {
+		return listaPartdas;
+	}
+
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

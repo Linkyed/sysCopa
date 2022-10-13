@@ -136,5 +136,6 @@ public class Partida {
 	public String toString() {
 		return selecao1.getNome() + " x " + selecao2.getNome();
 	}
+	
 
 }
