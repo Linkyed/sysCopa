@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Partida {
+
 	private String codigoPartida;
 	private Integer dia;
 	private Integer mes;
@@ -133,7 +134,7 @@ public class Partida {
 
 	@Override
 	public String toString() {
-		return "";
+		return selecao1.getNome() + " x " + selecao2.getNome();
 	}
 
 }
