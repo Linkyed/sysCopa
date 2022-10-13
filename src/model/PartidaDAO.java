@@ -40,8 +40,29 @@ public class PartidaDAO {
 	
 	public static boolean excluir(Partida partida) {
 		if(listaPartidas.contains(partida)) {
+			for (Entry<Jogador, Integer> jogadoresGol : partida.getGolsMarcaosPartida().entrySet()) {
+				Jogador modeloJogador = jogadoresGol.getKey();
+				int golMarcadoReduzido = JogadorDAO.getQuantidadeGols(modeloJogador) - jogadoresGol.getValue();
+				JogadorDAO.editarGolMarcado(modeloJogador, golMarcadoReduzido);
+			}
+			for (Entry<Jogador, Integer> jogadoresCartAmarelo : partida.getCartaoAmareloPartida().entrySet()) {
+				Jogador modeloJogador = jogadoresCartAmarelo.getKey();
+				int cartAmareloReduzido =  JogadorDAO.getQuantidadeCartAmarelo(modeloJogador)- jogadoresCartAmarelo.getValue();
+				JogadorDAO.editarCartAmarelo(modeloJogador, cartAmareloReduzido);
+			}
 			
-			listaPartidas.remove(partida);
+			for (Entry<Jogador, Integer> jogadoresCartVermelho : partida.getCartaoAmareloPartida().entrySet()) {
+				Jogador modeloJogador = jogadoresCartVermelho.getKey();
+				int cartVermelhoReduzido =JogadorDAO.getQuantidadeCartVermelho(modeloJogador) - jogadoresCartVermelho.getValue();
+				JogadorDAO.editarCartVermelho(modeloJogador, cartVermelhoReduzido);
+			}
+			Selecao selecao1 = partida.getSelecao1();
+			int golSelecao1 = SelecaoDAO.getQuantidadeGols(selecao1) - partida.getGolSelecao1();
+			SelecaoDAO.editarGolsSelecao(selecao1, golSelecao1);
+			Selecao selecao2 = partida.getSelecao1();
+			int golSelecao2 = SelecaoDAO.getQuantidadeGols(selecao2) - partida.getGolSelecao2();
+			SelecaoDAO.editarGolsSelecao(selecao2, golSelecao2);
+			// Falta os editares
 			return true;
 		}
 		return false;
