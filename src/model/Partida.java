@@ -20,16 +20,14 @@ public class Partida {
 	private Map<Jogador, Integer> cartaoVermelhoPartida = new HashMap<>();
 	private Map<Jogador, Integer> GolsMarcaosPartida = new HashMap<>();
 
-	public Partida(int dia, int mes, String horario, String local, Selecao selecao1, Selecao selecao2, int golSele1,
-			int golSele2) {
+	public Partida(int dia, int mes, String horario, String local, Selecao selecao1, Selecao selecao2) {
 		this.dia = dia;
 		this.mes = mes;
 		this.horario = horario;
 		this.local = local;
 		this.selecao1 = selecao1;
 		this.selecao2 = selecao2;
-		this.golSelecao1 = golSele1;
-		this.golSelecao2 = golSele2;
+
 	}
 
 	public String getCodigoPartida() {

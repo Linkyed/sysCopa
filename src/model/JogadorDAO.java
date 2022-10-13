@@ -334,9 +334,20 @@ public class JogadorDAO implements JogadorDAOInterface{
 		return false;
 
 	}
+	public static int getQuantidadeGols(Jogador jogador) {
+		return jogador.getGolmarcado();
+	}
+	
+	public static int getQuantidadeCartAmarelo(Jogador jogador) {
+		return jogador.getCartaoAmarelo();
+	}
+	public static int getQuantidadeCartVermelho(Jogador jogador) {
+		return jogador.getCartaoVermelho();
+	}
+
 
 	/**
-	 * imprimirJogador: Imprime os dados do jogador//
+	 * imprimirJogador: Imprime os dados do jogador
 	 * 
 	 * @param Tipo: Jogador
 	 * @return true || false
