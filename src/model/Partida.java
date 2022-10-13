@@ -2,6 +2,7 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Partida {
 
@@ -136,6 +137,25 @@ public class Partida {
 	public String toString() {
 		return selecao1.getNome() + " x " + selecao2.getNome();
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dia, mes, selecao1, selecao2);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Partida other = (Partida) obj;
+		return (Objects.equals(dia, other.dia) && Objects.equals(mes, other.mes)
+				&& Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2))
+				|| (Objects.equals(dia, other.dia) && Objects.equals(mes, other.mes)
+						&& Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1));
+	}
 
 }
