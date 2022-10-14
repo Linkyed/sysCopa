@@ -78,14 +78,20 @@ public class GrupoPrimeiraFase {
 		}
 		for (int i = 1; i < 4; i++) {
 			Partida modeloPartida = new Partida(selecoesGrupoList.get(0), selecoesGrupoList.get(i));
+			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(0));
+			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(i));
 			PartidaDAO.inserir(modeloPartida);
 		}
 		for (int i = 2; i < 4; i++) {
 			Partida modeloPartida = new Partida(selecoesGrupoList.get(1), selecoesGrupoList.get(i));
+			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(1));
+			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(i));
 			PartidaDAO.inserir(modeloPartida);
 		}
 		for (int i = 3; i < 4; i++) {
 			Partida modeloPartida = new Partida(selecoesGrupoList.get(2), selecoesGrupoList.get(i));
+			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(2));
+			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(i));
 			PartidaDAO.inserir(modeloPartida);
 		}
 
@@ -189,5 +195,9 @@ public class GrupoPrimeiraFase {
 		listarGrupo(grupoG);
 		System.out.println("H");
 		listarGrupo(grupoH);
+	}
+	
+	public static void distribuirPartdasSelecoes() {
+		
 	}
 }

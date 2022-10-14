@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Partida {
-
+	private boolean status;
 	private String codigoPartida;
 	private Integer dia;
 	private Integer mes;
@@ -144,9 +144,19 @@ public class Partida {
 		this.resultadoSelecao = resultadoSelecao;
 	}
 	
+	public boolean getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(dia, mes, selecao1, selecao2);
+		return Objects.hash(selecao1, selecao2);
 	}
 
 	@Override

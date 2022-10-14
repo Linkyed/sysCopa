@@ -79,7 +79,7 @@ public class Teste {
 		
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
-		PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
+		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
 		PartidaDAO.listaPartidas.get(37).setGolSelecao1(1);
@@ -88,8 +88,9 @@ public class Teste {
 		PartidaDAO.listaPartidas.get(38).setGolSelecao1(4);
 		PartidaDAO.listaPartidas.get(38).setGolSelecao2(0);
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
-		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(37),false);
-		GrupoPrimeiraFase.listaGrupoString("G");
+		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(37),true);
+		GrupoPrimeiraFase.listaGrupoString("G");*/
+		
 	}
 
 }
