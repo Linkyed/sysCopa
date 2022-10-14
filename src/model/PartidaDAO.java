@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map.Entry;
 
 public class PartidaDAO {
-	private static List<Partida> listaPartidas = new ArrayList<>();
+	// Colocar Privado depois de fazer os Testes
+	public static List<Partida> listaPartidas = new ArrayList<>();
 
 	public static boolean inserir(Partida partida) {
 		if (!listaPartidas.contains(partida)) {
@@ -65,7 +66,7 @@ public class PartidaDAO {
 			partida.getCartaoAmareloPartida().clear();
 			partida.getCartaoVermelhoPartida().clear();
 			partida.getGolsMarcaosPartida().clear();
-			// Falta os editares
+			GrupoPrimeiraFase.definirPontos(partida, false);
 			return true;
 		}
 		return false;
@@ -87,7 +88,7 @@ public class PartidaDAO {
 		}else {
 			partida.setResultadoSelecao(null);
 			resultadoList.add(selecao1);
-			resultadoList.add(selecao1);
+			resultadoList.add(selecao2);
 		}
 		return resultadoList;
 	}

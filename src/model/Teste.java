@@ -78,8 +78,18 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
 		GrupoPrimeiraFase.organizadorTodasPartidas();
-		GrupoPrimeiraFase.listarTodosGrupos();
-		
+		//GrupoPrimeiraFase.listarTodosGrupos();
+		PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
+		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
+		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
+		PartidaDAO.listaPartidas.get(37).setGolSelecao1(1);
+		PartidaDAO.listaPartidas.get(37).setGolSelecao2(1);
+		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(37),true);
+		PartidaDAO.listaPartidas.get(38).setGolSelecao1(4);
+		PartidaDAO.listaPartidas.get(38).setGolSelecao2(0);
+		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
+		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(37),false);
+		GrupoPrimeiraFase.listaGrupoString("G");
 	}
 
 }
