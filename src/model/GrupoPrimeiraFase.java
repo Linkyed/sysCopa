@@ -88,4 +88,37 @@ public class GrupoPrimeiraFase {
 
 	}
 
+	public static void definirPontos(Partida partida) {
+		List<Selecao> resultadoList = PartidaDAO.resultadoPartida(partida);
+		if (resultadoList.size() == 1) {
+			if (grupoA.containsKey(resultadoList.get(0))) {
+				int pontos = grupoA.get(resultadoList.get(0)) + 3;
+				grupoA.put(resultadoList.get(0), pontos);
+			} else if (grupoB.containsKey(resultadoList.get(0))) {
+				int pontos = grupoB.get(resultadoList.get(0)) + 3;
+				grupoB.put(resultadoList.get(0), pontos);
+			} else if (grupoC.containsKey(resultadoList.get(0))) {
+				int pontos = grupoC.get(resultadoList.get(0)) + 3;
+				grupoC.put(resultadoList.get(0), pontos);
+			} else if (grupoD.containsKey(resultadoList.get(0))) {
+				int pontos = grupoD.get(resultadoList.get(0)) + 3;
+				grupoD.put(resultadoList.get(0), pontos);
+			} else if (grupoE.containsKey(resultadoList.get(0))) {
+				int pontos = grupoE.get(resultadoList.get(0)) + 3;
+				grupoE.put(resultadoList.get(0), pontos);
+			} else if (grupoF.containsKey(resultadoList.get(0))) {
+				int pontos = grupoF.get(resultadoList.get(0)) + 3;
+				grupoF.put(resultadoList.get(0), pontos);
+			} else if (grupoG.containsKey(resultadoList.get(0))) {
+				int pontos = grupoG.get(resultadoList.get(0)) + 3;
+				grupoG.put(resultadoList.get(0), pontos);
+			} else if (grupoH.containsKey(resultadoList.get(0))) {
+				int pontos = grupoH.get(resultadoList.get(0)) + 3;
+				grupoH.put(resultadoList.get(0), pontos);
+			}
+		}else {
+			
+		}
+	}
+
 }
