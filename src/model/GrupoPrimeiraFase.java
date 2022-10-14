@@ -15,6 +15,27 @@ public class GrupoPrimeiraFase {
 	private static Map<Selecao, Integer> grupoG = new HashMap<>();
 	private static Map<Selecao, Integer> grupoH = new HashMap<>();
 
+	private static Map<Selecao, Integer> selecionarGrupo(Selecao selecao) {
+		if (grupoA.containsKey(selecao)) {
+			return grupoA;
+		} else if (grupoB.containsKey(selecao)) {
+			return grupoB;
+		} else if (grupoC.containsKey(selecao)) {
+			return grupoC;
+		} else if (grupoD.containsKey(selecao)) {
+			return grupoD;
+		} else if (grupoE.containsKey(selecao)) {
+			return grupoE;
+		} else if (grupoF.containsKey(selecao)) {
+			return grupoF;
+		} else if (grupoG.containsKey(selecao)) {
+			return grupoG;
+		} else if (grupoH.containsKey(selecao)) {
+			return grupoH;
+		}
+		return null;
+	}
+
 	public static boolean adicionarSelecao(String grupo, Selecao selecao) {
 		boolean addBoolean = SelecaoDAO.inserir(selecao);
 		if (addBoolean) {
@@ -90,35 +111,74 @@ public class GrupoPrimeiraFase {
 
 	public static void definirPontos(Partida partida) {
 		List<Selecao> resultadoList = PartidaDAO.resultadoPartida(partida);
+		Map<Selecao, Integer> grupoSelecionado = selecionarGrupo(resultadoList.get(0));
 		if (resultadoList.size() == 1) {
-			if (grupoA.containsKey(resultadoList.get(0))) {
-				int pontos = grupoA.get(resultadoList.get(0)) + 3;
-				grupoA.put(resultadoList.get(0), pontos);
-			} else if (grupoB.containsKey(resultadoList.get(0))) {
-				int pontos = grupoB.get(resultadoList.get(0)) + 3;
-				grupoB.put(resultadoList.get(0), pontos);
-			} else if (grupoC.containsKey(resultadoList.get(0))) {
-				int pontos = grupoC.get(resultadoList.get(0)) + 3;
-				grupoC.put(resultadoList.get(0), pontos);
-			} else if (grupoD.containsKey(resultadoList.get(0))) {
-				int pontos = grupoD.get(resultadoList.get(0)) + 3;
-				grupoD.put(resultadoList.get(0), pontos);
-			} else if (grupoE.containsKey(resultadoList.get(0))) {
-				int pontos = grupoE.get(resultadoList.get(0)) + 3;
-				grupoE.put(resultadoList.get(0), pontos);
-			} else if (grupoF.containsKey(resultadoList.get(0))) {
-				int pontos = grupoF.get(resultadoList.get(0)) + 3;
-				grupoF.put(resultadoList.get(0), pontos);
-			} else if (grupoG.containsKey(resultadoList.get(0))) {
-				int pontos = grupoG.get(resultadoList.get(0)) + 3;
-				grupoG.put(resultadoList.get(0), pontos);
-			} else if (grupoH.containsKey(resultadoList.get(0))) {
-				int pontos = grupoH.get(resultadoList.get(0)) + 3;
-				grupoH.put(resultadoList.get(0), pontos);
-			}
-		}else {
-			
+			int pontos = grupoSelecionado.get(resultadoList.get(0)) + 3;
+			grupoSelecionado.put(resultadoList.get(0), pontos);
+		} else {
+			int pontos1 = grupoSelecionado.get(resultadoList.get(0)) + 1;
+			grupoSelecionado.put(resultadoList.get(0), pontos1);
+			int pontos2 = grupoSelecionado.get(resultadoList.get(1)) + 1;
+			grupoSelecionado.put(resultadoList.get(1), pontos2);
 		}
 	}
 
+	public static void listaGrupoString(String grupo) {
+		if (grupo.equalsIgnoreCase("A")) {
+			System.out.println("A");
+			listarGrupo(grupoA);
+		} else if (grupo.equalsIgnoreCase("B")) {
+			System.out.println("B");
+			listarGrupo(grupoB);
+		} else if (grupo.equalsIgnoreCase("C")) {
+			System.out.println("C");
+			listarGrupo(grupoC);
+		} else if (grupo.equalsIgnoreCase("D")) {
+			System.out.println("D");
+			listarGrupo(grupoD);
+		} else if (grupo.equalsIgnoreCase("E")) {
+			System.out.println("E");
+			listarGrupo(grupoE);
+		} else if (grupo.equalsIgnoreCase("F")) {
+			System.out.println("F");
+			listarGrupo(grupoF);
+		} else if (grupo.equalsIgnoreCase("G")) {
+			System.out.println("G");
+			listarGrupo(grupoG);
+		} else if (grupo.equalsIgnoreCase("H")) {
+			System.out.println("H");
+			listarGrupo(grupoH);
+		}else {
+			System.out.println("Grupo não encontrado.");
+		}
+	}
+
+	private static void listarGrupo(Map<Selecao, Integer> grupo) {
+		System.out.println("====================");
+		for (Map.Entry<Selecao, Integer> selecaoEpontos : grupo.entrySet()) {
+			System.out.println("|| " + selecaoEpontos.getKey() + " | " + selecaoEpontos.getValue() + " ||");
+
+		}
+		System.out.println("===================");
+
+	}
+	
+	public static void listarTodosGrupos() {
+		System.out.println("A");
+		listarGrupo(grupoA);
+		System.out.println("B");
+		listarGrupo(grupoB);
+		System.out.println("C");
+		listarGrupo(grupoC);
+		System.out.println("D");
+		listarGrupo(grupoD);
+		System.out.println("E");
+		listarGrupo(grupoE);
+		System.out.println("F");
+		listarGrupo(grupoF);
+		System.out.println("G");
+		listarGrupo(grupoG);
+		System.out.println("H");
+		listarGrupo(grupoH);
+	}
 }

@@ -78,7 +78,7 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
 		GrupoPrimeiraFase.organizadorTodasPartidas();
-		PartidaDAO.listar();
+		GrupoPrimeiraFase.listarTodosGrupos();
 		
 	}
 
