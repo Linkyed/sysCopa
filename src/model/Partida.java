@@ -16,6 +16,7 @@ public class Partida {
 	private Selecao selecao2;
 	private int golSelecao1 = 0;
 	private int golSelecao2 = 0;
+	private Selecao resultadoSelecao;
 	private Map<Jogador, Integer> cartaoAmareloPartida = new HashMap<>();
 	private Map<Jogador, Integer> cartaoVermelhoPartida = new HashMap<>();
 	private Map<Jogador, Integer> GolsMarcaosPartida = new HashMap<>();
@@ -134,6 +135,15 @@ public class Partida {
 		return selecao1.getNome() + " x " + selecao2.getNome();
 	}
 
+	public Selecao getResultadoSelecao() {
+		return resultadoSelecao;
+	}
+
+
+	public void setResultadoSelecao(Selecao resultadoSelecao) {
+		this.resultadoSelecao = resultadoSelecao;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(dia, mes, selecao1, selecao2);
@@ -151,5 +161,8 @@ public class Partida {
 		return (Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2))
 				|| (Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1));
 	}
+
+
+	
 
 }

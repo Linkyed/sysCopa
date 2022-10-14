@@ -3,7 +3,7 @@ package model;
 public class Teste {
 
 	public static void main(String[] args) {
-		/
+		
 		Selecao selecao1 = new Selecao("Qatar");
 		Selecao selecao2 = new Selecao("Ecuador");
 		Selecao selecao3 = new Selecao("Senegal");

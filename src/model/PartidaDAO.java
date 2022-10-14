@@ -71,6 +71,27 @@ public class PartidaDAO {
 		return false;
 	}
 	
+	
+	public static List<Selecao> resultadoPartida(Partida partida) {
+		List<Selecao> resultadoList = new ArrayList<>();
+		Selecao selecao1 = partida.getSelecao1();
+		Selecao selecao2 = partida.getSelecao2();
+		
+		if(partida.getGolSelecao1() > partida.getGolSelecao2()) {
+			partida.setResultadoSelecao(selecao1);
+			resultadoList.add(selecao1);
+			
+		}else if (partida.getGolSelecao1() < partida.getGolSelecao2()) {
+			partida.setResultadoSelecao(selecao2);
+			resultadoList.add(selecao2);
+		}else {
+			partida.setResultadoSelecao(null);
+			resultadoList.add(selecao1);
+			resultadoList.add(selecao1);
+		}
+		return resultadoList;
+	}
+	
 	public static void listar() {
 		if(listaPartidas.size() > 0) {
 			System.out.println("Lista de Partidas:");
