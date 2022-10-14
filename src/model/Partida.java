@@ -20,15 +20,13 @@ public class Partida {
 	private Map<Jogador, Integer> cartaoVermelhoPartida = new HashMap<>();
 	private Map<Jogador, Integer> GolsMarcaosPartida = new HashMap<>();
 
-	public Partida(int dia, int mes, String horario, String local, Selecao selecao1, Selecao selecao2) {
-		this.dia = dia;
-		this.mes = mes;
-		this.horario = horario;
-		this.local = local;
+	public Partida(Selecao selecao1, Selecao selecao2) {
+
 		this.selecao1 = selecao1;
 		this.selecao2 = selecao2;
 
 	}
+
 
 	public String getCodigoPartida() {
 		return codigoPartida;
@@ -150,10 +148,8 @@ public class Partida {
 		if (getClass() != obj.getClass())
 			return false;
 		Partida other = (Partida) obj;
-		return (Objects.equals(dia, other.dia) && Objects.equals(mes, other.mes)
-				&& Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2))
-				|| (Objects.equals(dia, other.dia) && Objects.equals(mes, other.mes)
-						&& Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1));
+		return (Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2))
+				|| (Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1));
 	}
 
 }
