@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Partida {
-	private boolean status;
+	private boolean status = false;
 	private String codigoPartida;
 	private Integer dia;
 	private Integer mes;

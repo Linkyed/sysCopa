@@ -111,4 +111,8 @@ public class PartidaDAO {
 			System.out.println("Não Existe nenhuma partida feita.");
 		}
 	}
+	
+	public static boolean statusAtuaisPartidas(Partida partida) {
+		return partida.getStatus();
+	}
 }
