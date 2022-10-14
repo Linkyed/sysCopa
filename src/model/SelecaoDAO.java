@@ -153,5 +153,9 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		}
 		return false;
 	}
+	
+	public static void adicionarPartidas(Partida partida,Selecao selecao) {
+		selecao.getListaPartdasList().add(partida);
+	}
 
 }
