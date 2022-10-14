@@ -94,12 +94,7 @@ public class Selecao {
 
 	/** Metodo para mostrar a Seleção em String **/
 	public String toString() {
-		if (this.tecnico == null) {
-			return "Nome: " + this.nome + " || Tecnico: Vazio";
-
-		} else {
-			return "Nome: " + this.nome + " || Tecnico: " + this.tecnico.getNome();
-		}
+		return this.nome;
 	}
 
 }
