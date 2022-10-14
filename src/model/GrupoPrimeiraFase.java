@@ -116,25 +116,27 @@ public class GrupoPrimeiraFase {
 	}
 
 	public static void definirPontos(Partida partida, boolean positivo) {
-		int vitoria;
-		int empate;
-		List<Selecao> resultadoList = PartidaDAO.resultadoPartida(partida);
-		Map<Selecao, Integer> grupoSelecionado = selecionarGrupo(resultadoList.get(0));
-		if (positivo) {
-			vitoria = 3;
-			empate = 1;
-		} else {
-			vitoria = -3;
-			empate = -1;
-		}
-		if (resultadoList.size() == 1) {
-			int pontos = grupoSelecionado.get(resultadoList.get(0)) + vitoria;
-			grupoSelecionado.put(resultadoList.get(0), pontos);
-		} else {
-			int pontos1 = grupoSelecionado.get(resultadoList.get(0)) + empate;
-			grupoSelecionado.put(resultadoList.get(0), pontos1);
-			int pontos2 = grupoSelecionado.get(resultadoList.get(1)) + empate;
-			grupoSelecionado.put(resultadoList.get(1), pontos2);
+		if (PartidaDAO.statusAtuaisPartidas(partida)) {
+			int vitoria;
+			int empate;
+			List<Selecao> resultadoList = PartidaDAO.resultadoPartida(partida);
+			Map<Selecao, Integer> grupoSelecionado = selecionarGrupo(resultadoList.get(0));
+			if (positivo) {
+				vitoria = 3;
+				empate = 1;
+			} else {
+				vitoria = -3;
+				empate = -1;
+			}
+			if (resultadoList.size() == 1) {
+				int pontos = grupoSelecionado.get(resultadoList.get(0)) + vitoria;
+				grupoSelecionado.put(resultadoList.get(0), pontos);
+			} else {
+				int pontos1 = grupoSelecionado.get(resultadoList.get(0)) + empate;
+				grupoSelecionado.put(resultadoList.get(0), pontos1);
+				int pontos2 = grupoSelecionado.get(resultadoList.get(1)) + empate;
+				grupoSelecionado.put(resultadoList.get(1), pontos2);
+			}
 		}
 	}
 
@@ -196,8 +198,5 @@ public class GrupoPrimeiraFase {
 		System.out.println("H");
 		listarGrupo(grupoH);
 	}
-	
-	public static void distribuirPartdasSelecoes() {
-		
-	}
+
 }
