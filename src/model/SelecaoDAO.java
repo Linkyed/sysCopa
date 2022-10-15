@@ -158,4 +158,13 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		selecao.getListaPartdasList().add(partida);
 	}
 
+	public static Selecao getSelecaoNome(String nome) {
+		for (Selecao selecao: selecoes) {
+			if (selecao.getNome().equals(nome)) {
+				return selecao;
+			}
+		}
+		return null;
+	}
+	
 }

@@ -77,6 +77,7 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
+	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
 		PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
@@ -96,6 +97,7 @@ public class Teste {
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
 		GrupoPrimeiraFase.listaGrupoString("G");
 		
+		System.out.println(Pesquisa.buscarSelecao());
 	}
 
 }
