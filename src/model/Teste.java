@@ -77,6 +77,7 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
+	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
 		PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
@@ -95,7 +96,11 @@ public class Teste {
 		PartidaDAO.alteracaoDeStatusPartida(false, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
 		GrupoPrimeiraFase.listaGrupoString("G");
-		
+
+		Tecnico tecnico = new Tecnico("jose", selecao1);
+		TecnicoDAO.inserir(tecnico);
+		System.out.println(Pesquisa.buscarSelecao());
+		System.out.println(Pesquisa.buscarPessoa());
 	}
 
 }
