@@ -96,8 +96,11 @@ public class Teste {
 		PartidaDAO.alteracaoDeStatusPartida(false, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
 		GrupoPrimeiraFase.listaGrupoString("G");
-		
+
+		Tecnico tecnico = new Tecnico("jose", selecao1);
+		TecnicoDAO.inserir(tecnico);
 		System.out.println(Pesquisa.buscarSelecao());
+		System.out.println(Pesquisa.buscarPessoa());
 	}
 
 }
