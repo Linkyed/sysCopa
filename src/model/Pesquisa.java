@@ -31,12 +31,12 @@ public class Pesquisa {
 		int escolha = Funcoes.entradaIntRanger("[1] Tecnico\n[2] Arbitro\n[3] Jogador\nDigite o numero relacionado uma opção acima para fazer sua busca: ", 1, 3);
 		String nome = "";
 		if (escolha == 1) {
-			System.out.println("teste");
 			nome = Funcoes.entradaString("Digite o nome de um tecnico para ser buscado no banco de dados: ", true);
 			return buscarTecnico(nome);
-		} else {
-			return "A"
-;		}
+		} else if (escolha == 2) {
+			nome = Funcoes.entradaString("Digite o nome de um arbitro para ser buscado no banco de dados: ", true);
+			return buscarArbitro(nome);
+		} else { return "";}
 	}
 	
 	private static String buscarTecnico(String nome) {
@@ -47,5 +47,17 @@ public class Pesquisa {
 		return "\nO tecnico " + tecnico.getNome() + " foi encontrado e essas são suas informações: " + 
 		"\nNome: " + tecnico.getNome() +
 		"\nSelecao: " + tecnico.getSelecao().getNome();
-	}		
+	}	
+	
+	private static String buscarArbitro(String nome) {
+		Arbitro arbitro = ArbitroDAO.getArbitroNome(nome);
+		if (arbitro == null) {
+			return "\nArbitro não encontrado, tente outro nome!\n";
+		}
+		return "\nO arbitro " + arbitro.getNome() + " foi encontrado e essas são suas informações: " +
+		"\nNome: " + arbitro.getNome() +
+		"\nPartidas que participou: ";
+
+	}
+	
 }
