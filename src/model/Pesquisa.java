@@ -31,12 +31,15 @@ public class Pesquisa {
 		int escolha = Funcoes.entradaIntRanger("[1] Tecnico\n[2] Arbitro\n[3] Jogador\nDigite o numero relacionado uma opção acima para fazer sua busca: ", 1, 3);
 		String nome = "";
 		if (escolha == 1) {
-			nome = Funcoes.entradaString("Digite o nome de um tecnico para ser buscado no banco de dados: ", true);
+			nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome de um tecnico para ser buscado no banco de dados: ", true));
 			return buscarTecnico(nome);
 		} else if (escolha == 2) {
-			nome = Funcoes.entradaString("Digite o nome de um arbitro para ser buscado no banco de dados: ", true);
+			nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome de um arbitro para ser buscado no banco de dados: ", true));
 			return buscarArbitro(nome);
-		} else { return "";}
+		} else{ 
+			nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome de um jogador para ser buscado no banco de dados: ", true));
+			return buscarJogador(nome);
+		}
 	}
 	
 	private static String buscarTecnico(String nome) {
@@ -57,7 +60,21 @@ public class Pesquisa {
 		return "\nO arbitro " + arbitro.getNome() + " foi encontrado e essas são suas informações: " +
 		"\nNome: " + arbitro.getNome() +
 		"\nPartidas que participou: ";
-
+	}
+	
+	private static String buscarJogador(String nome) {
+		Jogador jogador = JogadorDAO.getJogadorNome(nome);
+		if (jogador == null) {
+			return "\nJogador não encontrado, tente outro nome!\n";
+		}
+		return "\nO jogador " + jogador.getNome() + " foi encontrado e essas são suas informações: " +
+		"\nNome: " + jogador.getNome() +
+		"\nSeleção: " + jogador.getSelecao().getNome() +
+		"\nGols Marcados: " + jogador.getGolmarcado() +
+		"\nCartões Amarelos: " + jogador.getCartaoAmarelo() +
+		"\nCartões Vermelhos: " + jogador.getCartaoVermelho() +
+		"\nPosição: " + jogador.getPosicaoJogada() +
+		"\nPartidas Jogadas: ";
 	}
 	
 }
