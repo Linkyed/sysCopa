@@ -1,5 +1,7 @@
 package model;
 
+import application.MainArbitro;
+
 public class Teste {
 
 	public static void main(String[] args) {
@@ -103,6 +105,8 @@ public class Teste {
 		ArbitroDAO.inserir(arbitro);
 		Jogador jogador = new Jogador("Matias", selecao1, 0, 0, 0, 0);
 		JogadorDAO.inserir(jogador, selecao1, true);
+		MainArbitro.inserirArbitro();
+		MainArbitro.editarArbitro();
 		//System.out.println(Pesquisa.buscarSelecao());
 		System.out.println(Pesquisa.buscarPessoa());
 	
