@@ -20,9 +20,13 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	
 	/**Metodo para inserir um arbitro já criado, no banco de dados**/
 	static public boolean inserir(Arbitro arbitro) {
-		arbitros.add(arbitro);
-		tamanhoLista++;
-		return true;
+		if (!veriricarNomeArbitro(arbitro.getNome())) {
+			arbitros.add(arbitro);
+			tamanhoLista++;
+			return true;	
+		} else {
+			return false;
+		}
 	}
 	/**Metodo para editar um arbitro que já existente no banco de dados, passando a referencia dele e o novo nome que ele deve receber**/
 	static public boolean editar(Arbitro arbitro, String nome) {
@@ -75,5 +79,14 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 			
 		}
 		return null;
+	}
+	
+	private static boolean veriricarNomeArbitro(String nome) {
+		for (Arbitro arbitro: arbitros) {
+			if (arbitro.getNome().equals(nome)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
