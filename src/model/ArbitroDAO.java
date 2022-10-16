@@ -30,7 +30,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	}
 	/**Metodo para editar um arbitro que já existente no banco de dados, passando a referencia dele e o novo nome que ele deve receber**/
 	static public boolean editar(Arbitro arbitro, String nome) {
-		if (arbitro.getNome().equals(nome)) {
+		if (arbitro.getNome().equals(nome) || veriricarNomeArbitro(nome)) {
 			return false;
 		}else {
 			arbitro.setNome(nome);
@@ -66,7 +66,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 			return arbitros.get(num);			
 		}
 	}
-	/**Metodo para contar e retorna a quantidade de tecnicos presentes no banco de dados**/
+	/**Metodo para contar e retorna a quantidade de arbitros presentes no banco de dados**/
 	static public int contarArbitro() {
 		return arbitros.size();
 	}

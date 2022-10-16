@@ -34,7 +34,7 @@ public class Funcoes {
 			}
 			
 		}
-
+		System.out.println();
 		return entradaUsuario;
 	}
 	
