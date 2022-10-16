@@ -26,4 +26,14 @@ public class MainArbitro {
 			System.out.println("\nO arbitro não foi editado, verifica que o novo nome é diferente do antigo ou se ele não existe na lista!\n");
 		}
 	}
+	
+	public static void excluirArbitro() {
+		ArbitroDAO.listar();
+		int escolhaArbitro = Funcoes.entradaIntRanger("Digite o numero correspondete a um arbitro para ser excluido: ", 0, ArbitroDAO.contarArbitro()-1);
+		if (ArbitroDAO.excluir(escolhaArbitro)) {
+			System.out.println("\nO arbitro foi excluido com sucesso!\n");
+		} else {
+			System.out.println("\nO arbitro não pode ser exlcuido, tente novamente!\n");
+		}
+	}
 }

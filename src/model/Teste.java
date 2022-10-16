@@ -107,6 +107,7 @@ public class Teste {
 		JogadorDAO.inserir(jogador, selecao1, true);
 		MainArbitro.inserirArbitro();
 		MainArbitro.editarArbitro();
+		MainArbitro.excluirArbitro();
 		//System.out.println(Pesquisa.buscarSelecao());
 		System.out.println(Pesquisa.buscarPessoa());
 	
