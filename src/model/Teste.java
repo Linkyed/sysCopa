@@ -99,8 +99,11 @@ public class Teste {
 
 		Tecnico tecnico = new Tecnico("jose", selecao1);
 		TecnicoDAO.inserir(tecnico);
-		System.out.println(Pesquisa.buscarSelecao());
+		Arbitro arbitro = new Arbitro("Josias Malafaia");
+		ArbitroDAO.inserir(arbitro);
+		//System.out.println(Pesquisa.buscarSelecao());
 		System.out.println(Pesquisa.buscarPessoa());
+	
 	}
 
 }

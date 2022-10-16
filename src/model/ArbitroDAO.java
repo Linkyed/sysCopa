@@ -66,4 +66,14 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	static public int contarArbitro() {
 		return arbitros.size();
 	}
+	
+	public static Arbitro getArbitroNome(String nome) {
+		for(Arbitro arbitro: arbitros) {
+			if (arbitro.getNome().equals(nome)) {
+				return arbitro;
+			}
+			
+		}
+		return null;
+	}
 }
