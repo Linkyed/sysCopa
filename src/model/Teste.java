@@ -101,6 +101,8 @@ public class Teste {
 		TecnicoDAO.inserir(tecnico);
 		Arbitro arbitro = new Arbitro("Josias Malafaia");
 		ArbitroDAO.inserir(arbitro);
+		Jogador jogador = new Jogador("Matias", selecao1, 0, 0, 0, 0);
+		JogadorDAO.inserir(jogador, selecao1, true);
 		//System.out.println(Pesquisa.buscarSelecao());
 		System.out.println(Pesquisa.buscarPessoa());
 	
