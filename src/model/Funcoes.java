@@ -18,7 +18,7 @@ public class Funcoes {
 		boolean condicao = true;
 		String entradaUsuario = "";
 		while (condicao) {
-			System.out.println(texto);
+			System.out.print(texto);
 
 			entradaUsuario = entrada.nextLine().strip();
 			if (verificacao == true) {
@@ -34,7 +34,7 @@ public class Funcoes {
 			}
 			
 		}
-
+		System.out.println();
 		return entradaUsuario;
 	}
 	

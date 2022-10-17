@@ -1,5 +1,8 @@
 package model;
 
+import application.MainArbitro;
+import application.Menu;
+
 public class Teste {
 
 	public static void main(String[] args) {
@@ -77,6 +80,7 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
+	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
 		PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
@@ -95,7 +99,24 @@ public class Teste {
 		PartidaDAO.alteracaoDeStatusPartida(false, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
 		GrupoPrimeiraFase.listaGrupoString("G");
-		
+
+		Tecnico tecnico = new Tecnico("jose", selecao1);
+		TecnicoDAO.inserir(tecnico);
+		Arbitro arbitro = new Arbitro("Josias Malafaia");
+		ArbitroDAO.inserir(arbitro);
+		Jogador jogador = new Jogador("Matias", selecao1, 0, 0, 0, 0);
+		JogadorDAO.inserir(jogador, selecao1, true);
+		//MainArbitro.inserirArbitro();
+		//MainArbitro.editarArbitro();
+		//MainArbitro.excluirArbitro();
+		//System.out.println(Pesquisa.buscarSelecao());
+		//System.out.println(Pesquisa.buscarPessoa());
+		ArbitroDAO.listar();
+		while (true) {
+			Menu.escolhaPrincipal();
+			
+		}
+	
 	}
 
 }
