@@ -1,13 +1,24 @@
 package model;
 
+import java.util.List;
+
 public class Pesquisa {
 
 	static public String buscarSelecao() {
 		String nomeBusca = Funcoes.entradaString("Digite o nome da seleção que deseja procurar no banco de dados: ", true);
-		Selecao selecaoBuscada = SelecaoDAO.getSelecaoNome(nomeBusca);
-		if (selecaoBuscada == null) {
-			return "\nSeleção não encontrada, tente outro nome!\n";
+		List<Selecao> listaBuscada = SelecaoDAO.getSelecaoNome(nomeBusca);
+		int selecaoEscolhida = 0;
+		if (listaBuscada.size() == 0) {
+			return "\nNenhuma seleção com este nome foi encontrada, tente outro nome!\n";
+		} else if (listaBuscada.size() > 1) {
+			System.out.println();
+			for (Selecao selecao: listaBuscada) {
+				System.out.println("[" + listaBuscada.indexOf(selecao) + "] " + selecao.getNome());
+			}
+			selecaoEscolhida = Funcoes.entradaIntRanger("Foram achadas essas seleções que possuem o nome " + nomeBusca + "nelas, digite o numero para escolher uma delas: ", 
+					0, listaBuscada.size()-1);
 		}
+		Selecao selecaoBuscada = listaBuscada.get(selecaoEscolhida);
 		String jogadores = "";
 		String nomeTecnico = "";
 		for(Jogador jogador: selecaoBuscada.getJogadores()) {
