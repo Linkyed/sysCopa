@@ -112,7 +112,10 @@ public class Teste {
 		//System.out.println(Pesquisa.buscarSelecao());
 		//System.out.println(Pesquisa.buscarPessoa());
 		ArbitroDAO.listar();
-		Menu.escolhaPrincipal();
+		while (true) {
+			Menu.escolhaPrincipal();
+			
+		}
 	
 	}
 
