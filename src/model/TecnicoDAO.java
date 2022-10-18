@@ -85,12 +85,13 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		return tecnicos.size();
 	}
 	
-	public static Tecnico getTecnicoNome(String nome) {
+	public static List<Tecnico> getTecnicoNome(String nome) {
+		List<Tecnico> listaTecnico = new ArrayList<>();
 		for (Tecnico tecnico: tecnicos) {
-			if (tecnico.getNome().equals(nome)) {
-				return tecnico;
+			if (tecnico.getNome().contains(nome)) {
+				listaTecnico.add(tecnico);
 			}
 		}
-		return null;
+		return listaTecnico;
 	}
 }

@@ -54,37 +54,62 @@ public class Pesquisa {
 	}
 	
 	private static String buscarTecnico(String nome) {
-		Tecnico tecnico = TecnicoDAO.getTecnicoNome(nome);
-		if (tecnico == null) {
-			return "\nTecnico não encontrado, tente outro nome!\n";
+		List<Tecnico> listaBuscada = TecnicoDAO.getTecnicoNome(nome);
+		int tecnicoEscolhido = 0;
+		if (listaBuscada.size() == 0) {
+			return "\nNenhum ecnico com o nome " + nome + " foi encontrado, tente outro nome!\n";
+		} else if (listaBuscada.size() > 1) {
+			System.out.println();
+			for (Tecnico tecnico: listaBuscada) {
+				System.out.println("[" + listaBuscada.indexOf(tecnico) + "] " + tecnico.getNome());
+			}
+			tecnicoEscolhido = Funcoes.entradaIntRanger("Foram achados esses arbitros que possuem o nome " + nome + "neles, digite o numero para escolher um deles: ", 
+					0, listaBuscada.size()-1);
 		}
-		return "\nO tecnico " + tecnico.getNome() + " foi encontrado e essas são suas informações: " + 
-		"\nNome: " + tecnico.getNome() +
-		"\nSelecao: " + tecnico.getSelecao().getNome();
+		return "\nO tecnico " + listaBuscada.get(tecnicoEscolhido).getNome() + " foi encontrado e essas são suas informações: " + 
+		"\nNome: " + listaBuscada.get(tecnicoEscolhido).getNome() +
+		"\nSelecao: " + listaBuscada.get(tecnicoEscolhido).getSelecao().getNome();
 	}	
 	
 	private static String buscarArbitro(String nome) {
-		Arbitro arbitro = ArbitroDAO.getArbitroNome(nome);
-		if (arbitro == null) {
-			return "\nArbitro não encontrado, tente outro nome!\n";
+		List<Arbitro> listaBuscada = ArbitroDAO.getArbitroNome(nome);
+		int arbitroEscolhido = 0;
+		if (listaBuscada.size() == 0) {
+			return "\nNenhum arbitro com o nome " + nome + " foi encontrado, tente outro nome!\n";
+		} else if (listaBuscada.size() > 1) {
+			System.out.println();
+			for (Arbitro arbitro: listaBuscada) {
+				System.out.println("[" + listaBuscada.indexOf(arbitro) + "] " + arbitro.getNome());
+			}
+			arbitroEscolhido = Funcoes.entradaIntRanger("Foram achados esses arbitros que possuem o nome " + nome + "neles, digite o numero para escolher um deles: ", 
+					0, listaBuscada.size()-1);
 		}
-		return "\nO arbitro " + arbitro.getNome() + " foi encontrado e essas são suas informações: " +
-		"\nNome: " + arbitro.getNome() +
+		return "\nO arbitro " + listaBuscada.get(arbitroEscolhido).getNome() + " foi encontrado e essas são suas informações: " +
+		"\nNome: " + listaBuscada.get(arbitroEscolhido).getNome() +
 		"\nPartidas que participou: ";
 	}
 	
 	private static String buscarJogador(String nome) {
-		Jogador jogador = JogadorDAO.getJogadorNome(nome);
-		if (jogador == null) {
-			return "\nJogador não encontrado, tente outro nome!\n";
+		List<Jogador> listaBuscada = JogadorDAO.getJogadorNome(nome);
+		int jogadorEscolhido = 0;
+		if (listaBuscada.size() == 0) {
+			return "\nNenhum jogador com o nome " + nome + " foi encontrado, tente outro nome!\n";
+		} else if (listaBuscada.size() > 1) {
+			System.out.println();
+			for (Jogador jogador: listaBuscada) {
+				System.out.println("[" + listaBuscada.indexOf(jogador) + "] " + jogador.getNome());
+			}
+			jogadorEscolhido = Funcoes.entradaIntRanger("Foram achados esses jogadores que possuem o nome " + nome + "neles, digite o numero para escolher um deles: ", 
+					0, listaBuscada.size()-1);
 		}
-		return "\nO jogador " + jogador.getNome() + " foi encontrado e essas são suas informações: " +
-		"\nNome: " + jogador.getNome() +
-		"\nSeleção: " + jogador.getSelecao().getNome() +
-		"\nGols Marcados: " + jogador.getGolmarcado() +
-		"\nCartões Amarelos: " + jogador.getCartaoAmarelo() +
-		"\nCartões Vermelhos: " + jogador.getCartaoVermelho() +
-		"\nPosição: " + jogador.getPosicaoJogada() +
+		
+		return "\nO jogador " + listaBuscada.get(jogadorEscolhido).getNome() + " foi encontrado e essas são suas informações: " +
+		"\nNome: " + listaBuscada.get(jogadorEscolhido).getNome() +
+		"\nSeleção: " + listaBuscada.get(jogadorEscolhido).getSelecao().getNome() +
+		"\nGols Marcados: " + listaBuscada.get(jogadorEscolhido).getGolmarcado() +
+		"\nCartões Amarelos: " + listaBuscada.get(jogadorEscolhido).getCartaoAmarelo() +
+		"\nCartões Vermelhos: " + listaBuscada.get(jogadorEscolhido).getCartaoVermelho() +
+		"\nPosição: " + listaBuscada.get(jogadorEscolhido).getPosicaoJogada() +
 		"\nPartidas Jogadas: ";
 	}
 	

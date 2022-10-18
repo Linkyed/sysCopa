@@ -71,14 +71,15 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		return arbitros.size();
 	}
 	
-	public static Arbitro getArbitroNome(String nome) {
+	public static List<Arbitro> getArbitroNome(String nome) {
+		List<Arbitro> listaArbitro = new ArrayList<>();
 		for(Arbitro arbitro: arbitros) {
-			if (arbitro.getNome().equals(nome)) {
-				return arbitro;
+			if (arbitro.getNome().contains(nome)) {
+				listaArbitro.add(arbitro);
 			}
 			
 		}
-		return null;
+		return listaArbitro;
 	}
 	
 	private static boolean veriricarNomeArbitro(String nome) {

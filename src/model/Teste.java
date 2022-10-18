@@ -100,22 +100,33 @@ public class Teste {
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
 		GrupoPrimeiraFase.listaGrupoString("G");
 
-		Tecnico tecnico = new Tecnico("jose", selecao1);
+		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
 		TecnicoDAO.inserir(tecnico);
+		Tecnico tecnico1 = new Tecnico("jose joão", selecao3);
+		TecnicoDAO.inserir(tecnico1);
 		Arbitro arbitro = new Arbitro("Josias Malafaia");
 		ArbitroDAO.inserir(arbitro);
-		Jogador jogador = new Jogador("Matias", selecao1, 0, 0, 0, 0);
+		Jogador jogador = new Jogador("Matias Raiten", selecao1, 0, 0, 0, 0);
 		JogadorDAO.inserir(jogador, selecao1, true);
+		
 		//MainArbitro.inserirArbitro();
 		//MainArbitro.editarArbitro();
 		//MainArbitro.excluirArbitro();
-		System.out.println(Pesquisa.buscarSelecao());
-		//System.out.println(Pesquisa.buscarPessoa());
-		ArbitroDAO.listar();
+		//System.out.println(Pesquisa.buscarSelecao());
+		
+		System.out.println(Pesquisa.buscarPessoa());
+		Jogador jogador1 = new Jogador("Matias Binnoto", selecao2, 1, 2, 0, 3);
+		JogadorDAO.inserir(jogador1, selecao2, true);
+		JogadorDAO.listar();
 		while (true) {
-			Menu.escolhaPrincipal();
+			System.out.println(Pesquisa.buscarPessoa());
 			
 		}
+		//ArbitroDAO.listar();
+		//while (true) {
+			//Menu.escolhaPrincipal();
+			
+		//}
 	
 	}
 
