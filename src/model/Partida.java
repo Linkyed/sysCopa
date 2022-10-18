@@ -1,6 +1,8 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -20,6 +22,7 @@ public class Partida {
 	private Map<Jogador, Integer> cartaoAmareloPartida = new HashMap<>();
 	private Map<Jogador, Integer> cartaoVermelhoPartida = new HashMap<>();
 	private Map<Jogador, Integer> GolsMarcaosPartida = new HashMap<>();
+	private List<Arbitro> arbitrosPartida = new ArrayList<>();
 
 	public Partida(Selecao selecao1, Selecao selecao2) {
 
@@ -151,6 +154,16 @@ public class Partida {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+
+	public List<Arbitro> getArbitrosPartida() {
+		return arbitrosPartida;
+	}
+
+
+	public void setArbitrosPartida(List<Arbitro> arbitrosPartida) {
+		this.arbitrosPartida = arbitrosPartida;
 	}
 
 
