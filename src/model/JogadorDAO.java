@@ -359,12 +359,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 			System.out.println(modelo_Jogador);
 		}
 	}
-	public static Jogador getJogadorNome(String nome) {
+	public static List<Jogador> getJogadorNome(String nome) {
+		List<Jogador> listaJogadores = new ArrayList<>();
 		for (Jogador jogador: todos_Jogadores) {
-			if(jogador.getNome().equals(nome)) {
-				return jogador;
+			if(jogador.getNome().contains(nome)) {
+				listaJogadores.add(jogador);
 			}
 		}
-		return null;
+		return listaJogadores;
 	}
 }
