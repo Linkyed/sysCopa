@@ -69,6 +69,7 @@ public class PartidaDAO {
 			partida.getCartaoAmareloPartida().clear();
 			partida.getCartaoVermelhoPartida().clear();
 			partida.getGolsMarcaosPartida().clear();
+			partida.getListaArbitro().clear();
 			GrupoPrimeiraFase.definirPontos(partida, false);
 			partida.setStatus(false);
 			return true;
