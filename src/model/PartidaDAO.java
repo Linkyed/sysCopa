@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 public class PartidaDAO {
@@ -28,16 +29,96 @@ public class PartidaDAO {
 						+ JogadorDAO.getQuantidadeCartVermelho(modeloJogador);
 				JogadorDAO.editarCartVermelho(modeloJogador, cartVermelho);
 			}
-			Selecao modeloSelecao1 = partida.getSelecao1();
-			int golsAtuaisSele1 = SelecaoDAO.getQuantidadeGols(modeloSelecao1) + partida.getGolSelecao1();
-			SelecaoDAO.editarGolsSelecao(modeloSelecao1, golsAtuaisSele1);
+		}
+		return false;
+	}
 
-			Selecao modeloSelecao2 = partida.getSelecao1();
-			int golsAtuaisSele2 = SelecaoDAO.getQuantidadeGols(modeloSelecao2) + partida.getGolSelecao2();
-			SelecaoDAO.editarGolsSelecao(modeloSelecao2, golsAtuaisSele2);
+	public static boolean editarAno(int ano) {
+		if (ano > 0) {
+			Partida.setAno(ano);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean editarMes(int mes, Partida partida) {
+		if (0 < mes && mes < 13) {
+			partida.setMes(mes);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static boolean editarDia(int dia, Partida partida) {
+		int mes = partida.getMes();
+		if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+			if (0 < dia && dia < 32) {
+				partida.setDia(dia);
+				return true;
+			}
+			return false;
+		} else if (mes == 2) {
+			if (0 < dia && dia < 29) {
+				partida.setDia(dia);
+				return true;
+			}
+			return false;
+		} else {
+			if (0 < dia && dia < 31) {
+				partida.setDia(dia);
+				return true;
+			}
+			return false;
+		}
+	}
+
+	public static boolean editarHorario(int hora, int minuto, Partida partida) {
+		if (0 <= hora && hora <= 23 && 0 <= minuto && minuto <= 59) {
+			partida.setHorario(hora);
+			partida.setHorarioM(minuto);
 			return true;
 		}
 		return false;
+	}
+
+	public static boolean editarLocal(String local, Partida partida) {
+		if (local.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+")) {
+			partida.setLocal(local);
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean editarGol(Map<Jogador, Integer> golsJogador, Partida partida, int numSelecao ) {
+		Selecao modeloSelecao;
+		int golSelecao;
+		if(numSelecao == 0) {
+			modeloSelecao = partida.getSelecao1();
+			
+		}else if (numSelecao == 1) {
+			modeloSelecao = partida.getSelecao2();
+		}
+		else {
+			return false;
+		}
+		for (Map.Entry<Jogador, Integer> entry : golsJogador.entrySet()) {
+			Integer gol = entry.getValue();
+			if(gol < 0) {
+				return false;
+			}
+		}
+		for (Map.Entry<Jogador, Integer> entry : golsJogador.entrySet()) {
+			return true;
+		}
+		return false;
+	}
+	private static void distribuidorGols(Selecao selecao) {
+		List<Partida> partidas = SelecaoDAO.listaPartidas(selecao);
+		for (Partida partida : partidas) {
+			
+		}
 	}
 
 	public static boolean excluir(Partida partida) {
@@ -112,7 +193,7 @@ public class PartidaDAO {
 			System.out.println("Não Existe nenhuma partida feita.");
 		}
 	}
-	
+
 	public static boolean statusAtuaisPartidas(Partida partida) {
 		return partida.getStatus();
 	}

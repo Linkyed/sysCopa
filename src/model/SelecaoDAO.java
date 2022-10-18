@@ -157,6 +157,10 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	public static void adicionarPartidas(Partida partida,Selecao selecao) {
 		selecao.getListaPartdasList().add(partida);
 	}
+	
+	public static List<Partida> listaPartidas(Selecao selecao){
+		return selecao.getListaPartdasList();
+	}
 
 	public static List<Selecao> getSelecaoNome(String nome) {
 		List<Selecao> lista = new ArrayList<Selecao>();
