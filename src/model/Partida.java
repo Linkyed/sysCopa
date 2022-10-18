@@ -11,8 +11,9 @@ public class Partida {
 	private String codigoPartida;
 	private Integer dia;
 	private Integer mes;
-	static private Integer ano;
-	private String horario;
+	private static Integer ano;
+	private int horarioH;
+	private int horarioM;
 	private String local;
 	private Selecao selecao1;
 	private Selecao selecao2;
@@ -60,17 +61,17 @@ public class Partida {
 		return ano;
 	}
 
-	public void setAno(Integer anoCopa) {
+	public static void setAno(Integer anoCopa) {
 		if (anoCopa > 0)
 			ano = anoCopa;
 	}
 
-	public String getHorario() {
-		return horario;
+	public int getHorario() {
+		return horarioH;
 	}
 
-	public void setHorario(String horario) {
-		this.horario = horario;
+	public void setHorario(int horario) {
+		this.horarioH = horario;
 	}
 
 	public String getLocal() {
@@ -154,6 +155,16 @@ public class Partida {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+
+	public int getHorarioM() {
+		return horarioM;
+	}
+
+
+	public void setHorarioM(int horarioM) {
+		this.horarioM = horarioM;
 	}
 
 
