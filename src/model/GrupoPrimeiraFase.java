@@ -1,9 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GrupoPrimeiraFase {
 	private static Map<Selecao, Integer> grupoA = new HashMap<>();
@@ -170,11 +176,14 @@ public class GrupoPrimeiraFase {
 		}
 	}
 
+	
 	private static void listarGrupo(Map<Selecao, Integer> grupo) {
 		System.out.println("====================");
-		for (Map.Entry<Selecao, Integer> selecaoEpontos : grupo.entrySet()) {
+		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
+		list.sort(Entry.comparingByValue());
+		Collections.reverse(list);
+		for (Entry<Selecao, Integer> selecaoEpontos : list) {
 			System.out.println("|| " + selecaoEpontos.getKey() + " | " + selecaoEpontos.getValue() + " ||");
-
 		}
 		System.out.println("===================");
 

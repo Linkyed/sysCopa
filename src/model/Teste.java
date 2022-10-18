@@ -83,15 +83,15 @@ public class Teste {
 	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
-		PartidaDAO.listaPartidas.get(36).setGolSelecao1(4);
+		PartidaDAO.listaPartidas.get(36).setGolSelecao1(0);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
 		PartidaDAO.listaPartidas.get(37).setGolSelecao1(1);
-		PartidaDAO.listaPartidas.get(37).setGolSelecao2(1);
+		PartidaDAO.listaPartidas.get(37).setGolSelecao2(3);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(37));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(37),true);
-		PartidaDAO.listaPartidas.get(38).setGolSelecao1(4);
+		PartidaDAO.listaPartidas.get(38).setGolSelecao1(0);
 		PartidaDAO.listaPartidas.get(38).setGolSelecao2(0);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(38));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
