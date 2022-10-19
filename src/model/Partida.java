@@ -110,7 +110,7 @@ public class Partida {
 	}
 
 	public void setGolSelecao1(int golSelecao1) {
-		if (golSelecao1 > 0) {
+		if (golSelecao1 >= 0) {
 			this.golSelecao1 = golSelecao1;
 		}
 	}
@@ -120,7 +120,7 @@ public class Partida {
 	}
 
 	public void setGolSelecao2(int golSelecao2) {
-		if (golSelecao2 > 0) {
+		if (golSelecao2 >= 0) {
 			this.golSelecao2 = golSelecao2;
 		}
 	}

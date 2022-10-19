@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -13,7 +14,7 @@ public class PartidaDAO {
 		if (!listaPartidas.contains(partida)) {
 			listaPartidas.add(partida);
 			return true;
-		
+
 		}
 		return false;
 	}
@@ -76,9 +77,41 @@ public class PartidaDAO {
 		return false;
 	}
 
-	
+	public static boolean editarGol(Partida partida, Map<Jogador, Integer> jogasMap, int numSelecao) {
+		if (numSelecao == 1) {
+			diminuirGols(partida.getGolsMarcadosSelecao1());
+			distribuirGols(jogasMap, partida, 1);
+			return true;
+		} else if (numSelecao == 2) {
+			diminuirGols(partida.getGolsMarcadosSelecao2());
+			distribuirGols(jogasMap, partida, 2);
+			return true;
+		}
+		return false;
 
-	
+	}
+
+	private static void diminuirGols(Map<Jogador, Integer> map) {
+		for (Entry<Jogador, Integer> jogadoresGol : map.entrySet()) {
+			Jogador modeloJogador = jogadoresGol.getKey();
+			int golMarcadoReduzido = modeloJogador.getGolmarcado() - jogadoresGol.getValue();
+			JogadorDAO.editarGolMarcado(modeloJogador, golMarcadoReduzido);
+		}
+	}
+
+	public static void distribuirGols(Map<Jogador, Integer> jogasMap, Partida partida, int numSelecao) {
+		for (Entry<Jogador, Integer> jogadoresGol : jogasMap.entrySet()) {
+			Jogador modeloJogador = jogadoresGol.getKey();
+			int golMarcado = modeloJogador.getGolmarcado() + jogadoresGol.getValue();
+			JogadorDAO.editarGolMarcado(modeloJogador, golMarcado);
+		}
+		if (numSelecao == 1) {
+			partida.setGolsMarcadosSelecao1(jogasMap);
+		} else if (numSelecao == 2) {
+			partida.setGolsMarcadosSelecao2(jogasMap);
+		}
+
+	}
 
 	public static boolean excluir(Partida partida) {
 		if (listaPartidas.contains(partida)) {

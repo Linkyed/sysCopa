@@ -86,7 +86,7 @@ public class Teste {
 	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
-		PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
+		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
@@ -98,7 +98,7 @@ public class Teste {
 		PartidaDAO.listaPartidas.get(38).setGolSelecao2(1);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(38));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
-		GrupoPrimeiraFase.listaGrupoString("G");
+		GrupoPrimeiraFase.listaGrupoString("G");*/
 
 		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
 		TecnicoDAO.inserir(tecnico);
@@ -131,15 +131,17 @@ public class Teste {
 		Jogador jogador10 = new Jogador("Matias Binnotoz", selecao25,1);
 		JogadorDAO.inserir(jogador10, selecao25, false);
 		
-		SelecaoDAO.listarJogadors();
+
 		
 		Map<Jogador, Integer> jogasMap = new HashMap<Jogador, Integer>();
-		jogasMap.put(jogador, 2);
-		jogasMap.put(jogador1, 2);
+		jogasMap.put(jogador3, 2);
+		jogasMap.put(jogador2, 2);
 		Map<Jogador, Integer> jogasMap1 = new HashMap<Jogador, Integer>();
-		jogasMap1.put(jogador, 6);
-		jogasMap1.put(jogador6, 2);
-		
+		jogasMap1.put(jogador10, 9);
+		jogasMap1.put(jogador1, 2);
+		PartidaDAO.distribuirGols(jogasMap, PartidaDAO.listaPartidas.get(36),1);
+		SelecaoDAO.listarJogadors();
+		PartidaDAO.editarGol(PartidaDAO.listaPartidas.get(36),jogasMap1,1);
 
 		SelecaoDAO.listarJogadors();
 		//MainArbitro.inserirArbitro();

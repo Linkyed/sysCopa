@@ -44,8 +44,8 @@ public class Jogador {
 	}
 
 	public void setCartaoAmarelo(int numero_Cartao_amarelo) {
-		if (numero_Cartao_amarelo > 0) {
-			this.cartaoAmarelo += numero_Cartao_amarelo;
+		if (numero_Cartao_amarelo >= 0) {
+			this.cartaoAmarelo = numero_Cartao_amarelo;
 		}
 	}
 
@@ -54,8 +54,8 @@ public class Jogador {
 	}
 
 	public void setCartaoVermelho(int numero_Cartao_Vermelho) {
-		if (numero_Cartao_Vermelho > 0) {
-			this.cartaoAmarelo += numero_Cartao_Vermelho;
+		if (numero_Cartao_Vermelho >= 0) {
+			this.cartaoAmarelo = numero_Cartao_Vermelho;
 		}
 	}
 
@@ -64,8 +64,8 @@ public class Jogador {
 	}
 
 	public boolean setGolmarcado(int gols_Marcados) {
-		if (gols_Marcados > 0) {
-			this.golMarcado += gols_Marcados;
+		if (gols_Marcados >= 0) {
+			this.golMarcado = gols_Marcados;
 			return true;
 		}
 		return false;
