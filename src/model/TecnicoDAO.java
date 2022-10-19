@@ -41,6 +41,18 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 			return true;
 		}
 	}
+	
+	public static boolean editar(Tecnico tecnico, Selecao selecao) {
+		if (selecao.getTecnico() == null) {
+			tecnico.getSelecao().setTecnico(null);
+			tecnico.setSelecao(selecao);
+			selecao.setTecnico(tecnico);
+			return true;			
+		} else {
+			return false;
+		}
+	}
+	
 	/**Metodo para excluir um tecnico existente no banco de dados**/
 	static public boolean excluir(int num) {
 		if (num <= tamanhoLista && num >= 0) {
@@ -56,10 +68,15 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	
 	/**Metodo para mostrar todos os tecnicos que estão no banco de dados**/
 	static public void listar() {
-		System.out.println("\nTECNICOS:");
-		int contador = 0;
-		for (Tecnico tecnico: tecnicos) {
-			System.out.println("["+ contador +"]" + tecnico);	
+		if (tecnicos.size() > 0) {
+			System.out.println("\nTECNICOS:");
+			int contador = 0;
+			for (Tecnico tecnico: tecnicos) {
+				System.out.println("["+ contador +"]" + tecnico);	
+				contador++;
+			}			
+		} else {
+			System.out.println("\nO sistema ainda não possui nenhum tecnico salvo!\n");
 		}
 		System.out.println();
 	}
