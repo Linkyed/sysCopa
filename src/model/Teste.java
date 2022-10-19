@@ -114,13 +114,13 @@ public class Teste {
 		//MainArbitro.excluirArbitro();
 		//System.out.println(Pesquisa.buscarSelecao());
 		
-		System.out.println(Pesquisa.buscarPessoa());
-		Jogador jogador1 = new Jogador("Matias Binnoto", selecao2, 1, 2, 0, 3);
-		JogadorDAO.inserir(jogador1, selecao2, true);
-		JogadorDAO.listar();
+		//System.out.println(Pesquisa.buscarPessoa());
+		//Jogador jogador1 = new Jogador("Matias Binnoto", selecao2, 1, 2, 0, 3);
+		//JogadorDAO.inserir(jogador1, selecao2, true);
+		//JogadorDAO.listar();
 		while (true) {
-			System.out.println(Pesquisa.buscarPessoa());
-			
+			//System.out.println(Pesquisa.buscarPessoa());
+			Menu.escolhaPrincipal();
 		}
 		
 		

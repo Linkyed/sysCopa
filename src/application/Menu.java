@@ -36,7 +36,7 @@ public class Menu {
 	private static void insercaoObjetos() {
 		int inserir = escolhaDoObjeto();
 		if (inserir == 1) {
-			System.out.println();
+			MainSelecao.inserirSelecao();
 		} else if (inserir == 2) {
 			System.out.println();
 		} else if (inserir == 3) {
@@ -49,7 +49,7 @@ public class Menu {
 	private static void edicaoObjetos() {
 		int editar = escolhaDoObjeto();
 		if (editar == 1) {
-			System.out.println();
+			MainSelecao.editarSelecao();
 		} else if (editar == 2) {
 			System.out.println();
 		} else if (editar == 3) {
@@ -62,7 +62,7 @@ public class Menu {
 	private static void exclusaoObjetos() {
 		int excluir = escolhaDoObjeto();
 		if (excluir == 1) {
-			System.out.println();
+			MainSelecao.excluirSelecao();
 		} else if (excluir == 2) {
 			System.out.println();
 		} else if (excluir == 3) {

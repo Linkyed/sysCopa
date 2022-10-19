@@ -19,7 +19,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para inserir uma seleção já criada no banco de dados **/
 	static public boolean inserir(Selecao selecao) {
-		if (selecoes.size() <= 32 && !selecoes.contains(selecao)) {
+		if (selecoes.size() < 32 && !selecoes.contains(selecao)) {
 			selecoes.add(selecao);
 			return true;
 		} else {
@@ -29,7 +29,8 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para editar uma seleção que já existente no banco de dados **/
 	static public boolean editar(Selecao selecao, String nome) {
-		if (nome.isEmpty() == true || selecao == null) {
+		Selecao verificar = new Selecao(nome);
+		if (nome.isEmpty() == true || selecao == null || existeSelecao(verificar) == true) {
 			return false;
 		} else {
 			selecao.setNome(nome);
