@@ -29,7 +29,7 @@ public class Menu {
 	}
 	
 	private static int escolhaDoObjeto() {
-		System.out.println("\n[1] Seleção\n[2] Tecnicon\n[3] Jogador\n[4] Arbitro\n");
+		System.out.println("\n[1] Seleção\n[2] Tecnico\n[3] Jogador\n[4] Arbitro\n");
 		return Funcoes.entradaIntRanger("Escolha um numero relacionado as opções acima: ", 1, 4);
 	}
 	
@@ -38,7 +38,7 @@ public class Menu {
 		if (inserir == 1) {
 			MainSelecao.inserirSelecao();
 		} else if (inserir == 2) {
-			System.out.println();
+			MainTecnico.inserirTecnico();
 		} else if (inserir == 3) {
 			System.out.println();
 		} else {
@@ -51,7 +51,7 @@ public class Menu {
 		if (editar == 1) {
 			MainSelecao.editarSelecao();
 		} else if (editar == 2) {
-			System.out.println();
+			MainTecnico.editarTecnico();
 		} else if (editar == 3) {
 			System.out.println();
 		} else {
@@ -64,7 +64,7 @@ public class Menu {
 		if (excluir == 1) {
 			MainSelecao.excluirSelecao();
 		} else if (excluir == 2) {
-			System.out.println();
+			MainTecnico.excluirTecnico();
 		} else if (excluir == 3) {
 			System.out.println();
 		} else {

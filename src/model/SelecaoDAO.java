@@ -54,12 +54,15 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para mostrar todas as seleções que estão no banco de dados **/
 	static public void listar() {
-
-		System.out.println("\nSELEÇÕES:");
-		int contador = 0;
-		for (Selecao selecao : selecoes) {
-			System.out.println("[" + contador + "] " + selecao);
-			contador++;
+		if (selecoes.size() > 0) {
+			System.out.println("\nSELEÇÕES:");
+			int contador = 0;
+			for (Selecao selecao : selecoes) {
+				System.out.println("[" + contador + "] " + selecao);
+				contador++;
+			}			
+		} else {
+			System.out.println("\nO sistema ainda não possui nenhuma seleção salva!\n");
 		}
 		System.out.println();
 	}
