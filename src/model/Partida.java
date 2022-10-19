@@ -20,9 +20,12 @@ public class Partida {
 	private int golSelecao1 = 0;
 	private int golSelecao2 = 0;
 	private Selecao resultadoSelecao;
-	private Map<Jogador, Integer> cartaoAmareloPartida = new HashMap<>();
-	private Map<Jogador, Integer> cartaoVermelhoPartida = new HashMap<>();
-	private Map<Jogador, Integer> GolsMarcaosPartida = new HashMap<>();
+	private Map<Jogador, Integer> cartaoAmareloSelecao1 = new HashMap<>();
+	private Map<Jogador, Integer> cartaoVermelhoSelecao1 = new HashMap<>();
+	private Map<Jogador, Integer> GolsMarcadosSelecao1 = new HashMap<>();
+	private Map<Jogador, Integer> cartaoAmareloSelecao2 = new HashMap<>();
+	private Map<Jogador, Integer> cartaoVermelhoSelecao2 = new HashMap<>();
+	private Map<Jogador, Integer> GolsMarcadosSelecao2 = new HashMap<>();
 	private List<Arbitro> listaArbitro = new ArrayList<>();
 
 	public Partida(Selecao selecao1, Selecao selecao2) {
@@ -122,16 +125,16 @@ public class Partida {
 		}
 	}
 
-	public Map<Jogador, Integer> getCartaoAmareloPartida() {
-		return cartaoAmareloPartida;
+	public Map<Jogador, Integer> getCartaoAmareloSelecao1() {
+		return cartaoAmareloSelecao1;
 	}
 
-	public Map<Jogador, Integer> getCartaoVermelhoPartida() {
-		return cartaoVermelhoPartida;
+	public Map<Jogador, Integer> getCartaoVermelhoSelecao1() {
+		return cartaoVermelhoSelecao1;
 	}
 
-	public Map<Jogador, Integer> getGolsMarcaosPartida() {
-		return GolsMarcaosPartida;
+	public Map<Jogador, Integer> getGolsMarcadosSelecao1() {
+		return GolsMarcadosSelecao1;
 	}
 
 	@Override
@@ -170,6 +173,51 @@ public class Partida {
 
 	public List<Arbitro> getListaArbitro() {
 		return listaArbitro;
+	}
+
+
+	public void setCartaoAmareloSelecao1(Map<Jogador, Integer> cartaoAmareloPartida) {
+		this.cartaoAmareloSelecao1 = cartaoAmareloPartida;
+	}
+
+
+	public void setCartaoVermelhoSelecao1(Map<Jogador, Integer> cartaoVermelhoPartida) {
+		this.cartaoVermelhoSelecao1 = cartaoVermelhoPartida;
+	}
+
+
+	public void setGolsMarcadosSelecao1(Map<Jogador, Integer> golsMarcaosPartida) {
+		GolsMarcadosSelecao1 = golsMarcaosPartida;
+	}
+
+
+	public Map<Jogador, Integer> getCartaoAmareloSelecao2() {
+		return cartaoAmareloSelecao2;
+	}
+
+
+	public void setCartaoAmareloSelecao2(Map<Jogador, Integer> cartaoAmareloSelecao2) {
+		this.cartaoAmareloSelecao2 = cartaoAmareloSelecao2;
+	}
+
+
+	public Map<Jogador, Integer> getCartaoVermelhoSelecao2() {
+		return cartaoVermelhoSelecao2;
+	}
+
+
+	public void setCartaoVermelhoSelecao2(Map<Jogador, Integer> cartaoVermelhoSelecao2) {
+		this.cartaoVermelhoSelecao2 = cartaoVermelhoSelecao2;
+	}
+
+
+	public Map<Jogador, Integer> getGolsMarcadosSelecao2() {
+		return GolsMarcadosSelecao2;
+	}
+
+
+	public void setGolsMarcadosSelecao2(Map<Jogador, Integer> golsMarcadosSelecao2) {
+		GolsMarcadosSelecao2 = golsMarcadosSelecao2;
 	}
 
 

@@ -12,23 +12,8 @@ public class PartidaDAO {
 	public static boolean inserir(Partida partida) {
 		if (!listaPartidas.contains(partida)) {
 			listaPartidas.add(partida);
-			for (Entry<Jogador, Integer> jogadoresGol : partida.getGolsMarcaosPartida().entrySet()) {
-				Jogador modeloJogador = jogadoresGol.getKey();
-				int golMarcado = jogadoresGol.getValue() + JogadorDAO.getQuantidadeGols(modeloJogador);
-				JogadorDAO.editarGolMarcado(modeloJogador, golMarcado);
-			}
-			for (Entry<Jogador, Integer> jogadoresCartAmarelo : partida.getCartaoAmareloPartida().entrySet()) {
-				Jogador modeloJogador = jogadoresCartAmarelo.getKey();
-				int cartAmarelo = jogadoresCartAmarelo.getValue() + JogadorDAO.getQuantidadeCartAmarelo(modeloJogador);
-				JogadorDAO.editarCartAmarelo(modeloJogador, cartAmarelo);
-			}
-
-			for (Entry<Jogador, Integer> jogadoresCartVermelho : partida.getCartaoAmareloPartida().entrySet()) {
-				Jogador modeloJogador = jogadoresCartVermelho.getKey();
-				int cartVermelho = jogadoresCartVermelho.getValue()
-						+ JogadorDAO.getQuantidadeCartVermelho(modeloJogador);
-				JogadorDAO.editarCartVermelho(modeloJogador, cartVermelho);
-			}
+			return true;
+		
 		}
 		return false;
 	}
@@ -91,51 +76,43 @@ public class PartidaDAO {
 		return false;
 	}
 
-	public static boolean editarGol(Map<Jogador, Integer> golsJogador, Partida partida, int numSelecao ) {
-		Selecao modeloSelecao;
-		int golSelecao;
-		if(numSelecao == 0) {
-			modeloSelecao = partida.getSelecao1();
-			
-		}else if (numSelecao == 1) {
-			modeloSelecao = partida.getSelecao2();
-		}
-		else {
-			return false;
-		}
-		for (Map.Entry<Jogador, Integer> entry : golsJogador.entrySet()) {
-			Integer gol = entry.getValue();
-			if(gol < 0) {
-				return false;
-			}
-		}
-		for (Map.Entry<Jogador, Integer> entry : golsJogador.entrySet()) {
-			return true;
-		}
-		return false;
-	}
-	private static void distribuidorGols(Selecao selecao) {
-		List<Partida> partidas = SelecaoDAO.listaPartidas(selecao);
-		for (Partida partida : partidas) {
-			
-		}
-	}
+	
+
+	
 
 	public static boolean excluir(Partida partida) {
 		if (listaPartidas.contains(partida)) {
-			for (Entry<Jogador, Integer> jogadoresGol : partida.getGolsMarcaosPartida().entrySet()) {
+			for (Entry<Jogador, Integer> jogadoresGol : partida.getGolsMarcadosSelecao1().entrySet()) {
 				Jogador modeloJogador = jogadoresGol.getKey();
 				int golMarcadoReduzido = JogadorDAO.getQuantidadeGols(modeloJogador) - jogadoresGol.getValue();
 				JogadorDAO.editarGolMarcado(modeloJogador, golMarcadoReduzido);
 			}
-			for (Entry<Jogador, Integer> jogadoresCartAmarelo : partida.getCartaoAmareloPartida().entrySet()) {
+			for (Entry<Jogador, Integer> jogadoresCartAmarelo : partida.getCartaoAmareloSelecao1().entrySet()) {
 				Jogador modeloJogador = jogadoresCartAmarelo.getKey();
 				int cartAmareloReduzido = JogadorDAO.getQuantidadeCartAmarelo(modeloJogador)
 						- jogadoresCartAmarelo.getValue();
 				JogadorDAO.editarCartAmarelo(modeloJogador, cartAmareloReduzido);
 			}
 
-			for (Entry<Jogador, Integer> jogadoresCartVermelho : partida.getCartaoAmareloPartida().entrySet()) {
+			for (Entry<Jogador, Integer> jogadoresCartVermelho : partida.getCartaoVermelhoSelecao1().entrySet()) {
+				Jogador modeloJogador = jogadoresCartVermelho.getKey();
+				int cartVermelhoReduzido = JogadorDAO.getQuantidadeCartVermelho(modeloJogador)
+						- jogadoresCartVermelho.getValue();
+				JogadorDAO.editarCartVermelho(modeloJogador, cartVermelhoReduzido);
+			}
+			for (Entry<Jogador, Integer> jogadoresGol : partida.getGolsMarcadosSelecao2().entrySet()) {
+				Jogador modeloJogador = jogadoresGol.getKey();
+				int golMarcadoReduzido = JogadorDAO.getQuantidadeGols(modeloJogador) - jogadoresGol.getValue();
+				JogadorDAO.editarGolMarcado(modeloJogador, golMarcadoReduzido);
+			}
+			for (Entry<Jogador, Integer> jogadoresCartAmarelo : partida.getCartaoAmareloSelecao2().entrySet()) {
+				Jogador modeloJogador = jogadoresCartAmarelo.getKey();
+				int cartAmareloReduzido = JogadorDAO.getQuantidadeCartAmarelo(modeloJogador)
+						- jogadoresCartAmarelo.getValue();
+				JogadorDAO.editarCartAmarelo(modeloJogador, cartAmareloReduzido);
+			}
+
+			for (Entry<Jogador, Integer> jogadoresCartVermelho : partida.getCartaoVermelhoSelecao2().entrySet()) {
 				Jogador modeloJogador = jogadoresCartVermelho.getKey();
 				int cartVermelhoReduzido = JogadorDAO.getQuantidadeCartVermelho(modeloJogador)
 						- jogadoresCartVermelho.getValue();
@@ -147,9 +124,12 @@ public class PartidaDAO {
 			Selecao selecao2 = partida.getSelecao1();
 			int golSelecao2 = SelecaoDAO.getQuantidadeGols(selecao2) - partida.getGolSelecao2();
 			SelecaoDAO.editarGolsSelecao(selecao2, golSelecao2);
-			partida.getCartaoAmareloPartida().clear();
-			partida.getCartaoVermelhoPartida().clear();
-			partida.getGolsMarcaosPartida().clear();
+			partida.getCartaoAmareloSelecao1().clear();
+			partida.getCartaoVermelhoSelecao1().clear();
+			partida.getGolsMarcadosSelecao1().clear();
+			partida.getCartaoAmareloSelecao2().clear();
+			partida.getCartaoVermelhoSelecao2().clear();
+			partida.getGolsMarcadosSelecao2().clear();
 			partida.getListaArbitro().clear();
 			GrupoPrimeiraFase.definirPontos(partida, false);
 			partida.setStatus(false);

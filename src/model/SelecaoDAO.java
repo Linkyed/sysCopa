@@ -172,4 +172,10 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	protected static void zerarGols(Selecao selecao) {
+		for (Jogador jogador : selecao.getJogadores()) {
+			JogadorDAO.editarGolMarcado(jogador, 0);
+		}
+	}
+	
 }

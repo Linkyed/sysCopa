@@ -28,13 +28,10 @@ public class Jogador {
 	 * Construtor do jogador pelo Nome/ Seleção / Num. Cart. Amarelo / Num. Cart.
 	 * Vermelho / Num. Gols Marcados/ Posição
 	 **/
-	public Jogador(String nome, Selecao selecao, int cart_Vermelho, int cart_Amarelo, int gol_Marcado, int posicao) {
+	public Jogador(String nome, Selecao selecao, int posicao) {
 
 		this.nome = nome;
 		this.selecao = selecao;
-		this.cartaoAmarelo = cart_Amarelo;
-		this.cartaoVermelho = cart_Vermelho;
-		this.golMarcado = gol_Marcado;
 		this.posicaoJogada = posicaoJogadorString[posicao];
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
@@ -135,7 +132,8 @@ public class Jogador {
 		if (getClass() != obj.getClass())
 			return false;
 		Jogador other = (Jogador) obj;
-		return Objects.equals(codJog, other.codJog) || Objects.equals(nome, other.nome);
+		return //Objects.equals(codJog, other.codJog) || 
+				Objects.equals(nome, other.nome);
 	}
 
 }
