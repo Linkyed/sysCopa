@@ -19,7 +19,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para inserir uma seleção já criada no banco de dados **/
 	static public boolean inserir(Selecao selecao) {
-		if (selecoes.size() <= 32 && !selecoes.contains(selecao)) {
+		if (selecoes.size() < 32 && !selecoes.contains(selecao)) {
 			selecoes.add(selecao);
 			return true;
 		} else {
@@ -29,7 +29,8 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para editar uma seleção que já existente no banco de dados **/
 	static public boolean editar(Selecao selecao, String nome) {
-		if (nome.isEmpty() == true || selecao == null) {
+		Selecao verificar = new Selecao(nome);
+		if (nome.isEmpty() == true || selecao == null || existeSelecao(verificar) == true) {
 			return false;
 		} else {
 			selecao.setNome(nome);
@@ -53,12 +54,15 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para mostrar todas as seleções que estão no banco de dados **/
 	static public void listar() {
-
-		System.out.println("\nSELEÇÕES:");
-		int contador = 0;
-		for (Selecao selecao : selecoes) {
-			System.out.println("[" + contador + "] " + selecao);
-			contador++;
+		if (selecoes.size() > 0) {
+			System.out.println("\nSELEÇÕES:");
+			int contador = 0;
+			for (Selecao selecao : selecoes) {
+				System.out.println("[" + contador + "] " + selecao);
+				contador++;
+			}			
+		} else {
+			System.out.println("\nO sistema ainda não possui nenhuma seleção salva!\n");
 		}
 		System.out.println();
 	}

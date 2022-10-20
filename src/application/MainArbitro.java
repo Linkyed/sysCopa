@@ -12,7 +12,7 @@ public class MainArbitro {
 		if (ArbitroDAO.inserir(arbitro)) {
 			System.out.println("\nArbitro inserido com sucesso!\n");
 		} else {
-			System.out.println("\nO arbitro " + nome + " já esta presente na lista!");
+			System.out.println("\nO arbitro já esta presente na lista!");
 		}
 	}
 	

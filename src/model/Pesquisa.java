@@ -5,7 +5,7 @@ import java.util.List;
 public class Pesquisa {
 
 	static public String buscarSelecao() {
-		String nomeBusca = Funcoes.entradaString("Digite o nome da seleção que deseja procurar no banco de dados: ", true);
+		String nomeBusca = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome da seleção que deseja procurar no banco de dados: ", true).strip());
 		List<Selecao> listaBuscada = SelecaoDAO.getSelecaoNome(nomeBusca);
 		int selecaoEscolhida = 0;
 		if (listaBuscada.size() == 0) {
@@ -35,7 +35,8 @@ public class Pesquisa {
 		"\nNome: " + selecaoBuscada.getNome() + 
 		"\nTecnico: " + nomeTecnico +
 		"\nJogadores: " + jogadores +
-		"\nPartidas: ";
+		"\nPartidas: "+
+		"\n";
 	}
 	
 	public static String buscarPessoa() {
@@ -68,7 +69,8 @@ public class Pesquisa {
 		}
 		return "\nO tecnico " + listaBuscada.get(tecnicoEscolhido).getNome() + " foi encontrado e essas são suas informações: " + 
 		"\nNome: " + listaBuscada.get(tecnicoEscolhido).getNome() +
-		"\nSelecao: " + listaBuscada.get(tecnicoEscolhido).getSelecao().getNome();
+		"\nSelecao: " + listaBuscada.get(tecnicoEscolhido).getSelecao().getNome() +
+		"\n";
 	}	
 	
 	private static String buscarArbitro(String nome) {
@@ -86,7 +88,8 @@ public class Pesquisa {
 		}
 		return "\nO arbitro " + listaBuscada.get(arbitroEscolhido).getNome() + " foi encontrado e essas são suas informações: " +
 		"\nNome: " + listaBuscada.get(arbitroEscolhido).getNome() +
-		"\nPartidas que participou: ";
+		"\nPartidas que participou: " +
+		"\n";
 	}
 	
 	private static String buscarJogador(String nome) {
@@ -110,7 +113,8 @@ public class Pesquisa {
 		"\nCartões Amarelos: " + listaBuscada.get(jogadorEscolhido).getCartaoAmarelo() +
 		"\nCartões Vermelhos: " + listaBuscada.get(jogadorEscolhido).getCartaoVermelho() +
 		"\nPosição: " + listaBuscada.get(jogadorEscolhido).getPosicaoJogada() +
-		"\nPartidas Jogadas: ";
+		"\nPartidas Jogadas: " +
+		"\n";
 	}
 	
 }

@@ -49,11 +49,15 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	}
 	/**Metodo para mostrar todos os arbitros que estão no banco de dados**/
 	static public void listar() {
-		System.out.println("\nARBITROS:");
-		int contador = 0;
-		for (Arbitro arbitro: arbitros) {
-			System.out.println("[" + contador + "] " + arbitro);	
-			contador++;
+		if (arbitros.size() > 0) {
+			System.out.println("\nARBITROS:");
+			int contador = 0;
+			for (Arbitro arbitro: arbitros) {
+				System.out.println("[" + contador + "] " + arbitro);	
+				contador++;
+			}			
+		} else {
+			System.out.println("\nO sistema ainda não possui nenhum arbitro salvo!\n");
 		}
 		System.out.println();
 	}
