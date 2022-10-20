@@ -3,18 +3,21 @@ package application;
 import model.ArbitroDAO;
 import model.Funcoes;
 import model.JogadorDAO;
+import model.Pesquisa;
 import model.SelecaoDAO;
 import model.TecnicoDAO;
 
 public class Menu {
 
 	public static void escolhaPrincipal() {
-		int escolha = Funcoes.entradaIntRanger("Bem vindo ao Syscopa, o menu para realizar as ações do programa sera mostrado a seguir:\n"+
-				"[1] Inserir um(a) nova(o) Seleção, Tecnico, Jogador ou Arbitro\n" +
+		int escolha = Funcoes.entradaIntRanger("[1] Inserir um(a) nova(o) Seleção, Tecnico, Jogador ou Arbitro\n" +
 				"[2] Editar um(a) Seleção, Tecnico, Jogador ou Arbitro\n" +
 				"[3] Excluir um(a) Seleção, Tecnico, Jogador ou Arbitro\n" +
 				"[4] Listar as(os) Seleção, Tecnico, Jogador ou Arbitro\n" +
-				"Digite o numero relacionado a uma das opções acima: ", 1, 4);
+				"[5] Fazer pesquisa por nome\n" +
+				"Digite o numero relacionado a uma das opções acima: ", 1, 5);
+	
+		System.out.println();
 		
 		if (escolha == 1) {
 			insercaoObjetos();
@@ -22,8 +25,10 @@ public class Menu {
 			edicaoObjetos();
 		} else if (escolha == 3) {
 			exclusaoObjetos();
-		} else {
+		} else if (escolha == 4){
 			mostrarObjetos();
+		} else if (escolha == 5){
+			sistemaDePesquisa();
 		}
 		
 	}
@@ -82,6 +87,15 @@ public class Menu {
 			JogadorDAO.listar();
 		} else {
 			ArbitroDAO.listar();;
+		}
+	}
+	
+	private static void sistemaDePesquisa() {
+		int escolha = Funcoes.entradaIntRanger("[1] Pesquisar por uma seleção\n[2] Pesquisar por uma pessoa\nDigite o numero relacionado uma forma de pesquisa: ", 1, 2);
+		if (escolha == 1) {
+			System.out.println(Pesquisa.buscarSelecao());
+		} else if (escolha == 2) {
+			System.out.println(Pesquisa.buscarPessoa());
 		}
 	}
 	

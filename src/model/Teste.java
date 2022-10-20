@@ -118,6 +118,7 @@ public class Teste {
 		//Jogador jogador1 = new Jogador("Matias Binnoto", selecao2, 1, 2, 0, 3);
 		//JogadorDAO.inserir(jogador1, selecao2, true);
 		//JogadorDAO.listar();
+		System.out.println("Bem vindo ao Syscopa, o menu para realizar as ações do programa sera mostrado a seguir:\n");
 		while (true) {
 			//System.out.println(Pesquisa.buscarPessoa());
 			Menu.escolhaPrincipal();
