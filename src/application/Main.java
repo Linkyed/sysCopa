@@ -98,8 +98,7 @@ public class Main {
 								+ "[2]-Lateral esquerdo\n" + "[3]- Zagueiro\n" + "[4]- Volante\n"
 								+ "[5]- Meia Atacante\n" + "Digite a sua Opção: ", 0, 5);
 						Selecao modelo_Selecao = SelecaoDAO.getOneSelecao(numSelecao);
-						Jogador modelo_Jogador = new Jogador(nomeJogador, modelo_Selecao, quant_Cart_Vermelho,
-								quant_Cart_Amarelo, gol_marcado, posicaoJogada);
+						Jogador modelo_Jogador = new Jogador(nomeJogador, modelo_Selecao, posicaoJogada);
 						Boolean respostaBoolean = JogadorDAO.inserir(modelo_Jogador, modelo_Selecao, true);
 						if (respostaBoolean) {
 							System.out.println("\nJogador adicionado com Sucesso!\n");
@@ -277,7 +276,7 @@ public class Main {
 								if (escolhaEdicaoJogador == 1) {
 
 									String nomeJogador = Funcoes.entradaString("Ditige o Novo nome do jogador: ", true);
-									Jogador nomeJogadorNovo = new Jogador(nomeJogador, null, 0, 0, 0, 0);
+									Jogador nomeJogadorNovo = new Jogador(nomeJogador,null,  0);
 									Boolean verificadorBoolean = JogadorDAO.editarNome(modelo_jogador,
 											nomeJogadorNovo);
 									if (verificadorBoolean) {

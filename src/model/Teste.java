@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import application.MainArbitro;
 import application.Menu;
 
@@ -83,22 +86,19 @@ public class Teste {
 	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
-		PartidaDAO.listaPartidas.get(36).setGolSelecao1(0);
+		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
-		PartidaDAO.listaPartidas.get(37).setGolSelecao1(1);
+		PartidaDAO.listaPartidas.get(37).setGolSelecao1(4);
 		PartidaDAO.listaPartidas.get(37).setGolSelecao2(3);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(37));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(37),true);
-		PartidaDAO.listaPartidas.get(38).setGolSelecao1(0);
-		PartidaDAO.listaPartidas.get(38).setGolSelecao2(0);
+		PartidaDAO.listaPartidas.get(38).setGolSelecao1(8);
+		PartidaDAO.listaPartidas.get(38).setGolSelecao2(1);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(38));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
-		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
-		PartidaDAO.alteracaoDeStatusPartida(false, PartidaDAO.listaPartidas.get(36));
-		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),false);
-		GrupoPrimeiraFase.listaGrupoString("G");
+		GrupoPrimeiraFase.listaGrupoString("G");*/
 
 		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
 		TecnicoDAO.inserir(tecnico);
@@ -106,23 +106,50 @@ public class Teste {
 		TecnicoDAO.inserir(tecnico1);
 		Arbitro arbitro = new Arbitro("Josias Malafaia");
 		ArbitroDAO.inserir(arbitro);
-		Jogador jogador = new Jogador("Matias Raiten", selecao1, 0, 0, 0, 0);
-		JogadorDAO.inserir(jogador, selecao1, true);
 		
+		
+		Jogador jogador = new Jogador("Matias Raiten", selecao25,1);
+		JogadorDAO.inserir(jogador, selecao25, false);
+		Jogador jogador1 = new Jogador("Matias Binnotom", selecao25,1);
+		JogadorDAO.inserir(jogador1, selecao25, false);
+		Jogador jogador2 = new Jogador("Matias Binnotok", selecao25,1);
+		JogadorDAO.inserir(jogador2, selecao25, false);
+		Jogador jogador3 = new Jogador("Matias Binnotol", selecao25,1);
+		JogadorDAO.inserir(jogador3, selecao25, false);
+		Jogador jogador4 = new Jogador("Matias Binnotoo", selecao25,1);
+		JogadorDAO.inserir(jogador4, selecao25, false);
+		Jogador jogador5 = new Jogador("Matias Binnotoi", selecao25,1);
+		JogadorDAO.inserir(jogador5, selecao25,false);
+		Jogador jogador6 = new Jogador("Matias Binnotop", selecao25,1);
+		JogadorDAO.inserir(jogador6, selecao25, false);
+		Jogador jogador7 = new Jogador("Matias Binnotoy", selecao25,1);
+		JogadorDAO.inserir(jogador7, selecao25, false);
+		Jogador jogador8 = new Jogador("Matias Binnotou", selecao25,1);
+		JogadorDAO.inserir(jogador8, selecao25, false);
+		Jogador jogador9 = new Jogador("Matias Binnotoj", selecao25,1);
+		JogadorDAO.inserir(jogador9, selecao25, false);
+		Jogador jogador10 = new Jogador("Matias Binnotoz", selecao25,1);
+		JogadorDAO.inserir(jogador10, selecao25, false);
+		
+
+		
+		Map<Jogador, Integer> jogasMap = new HashMap<Jogador, Integer>();
+		jogasMap.put(jogador3, 2);
+		jogasMap.put(jogador2, 2);
+		Map<Jogador, Integer> jogasMap1 = new HashMap<Jogador, Integer>();
+		jogasMap1.put(jogador10, 9);
+		jogasMap1.put(jogador1, 2);
+		PartidaDAO.distribuirGols(jogasMap, PartidaDAO.listaPartidas.get(36),1);
+		SelecaoDAO.listarJogadors();
+		PartidaDAO.editarGol(PartidaDAO.listaPartidas.get(36),jogasMap1,1);
+
+		SelecaoDAO.listarJogadors();
 		//MainArbitro.inserirArbitro();
 		//MainArbitro.editarArbitro();
 		//MainArbitro.excluirArbitro();
 		//System.out.println(Pesquisa.buscarSelecao());
 		
-		//System.out.println(Pesquisa.buscarPessoa());
-		//Jogador jogador1 = new Jogador("Matias Binnoto", selecao2, 1, 2, 0, 3);
-		//JogadorDAO.inserir(jogador1, selecao2, true);
-		//JogadorDAO.listar();
-		System.out.println("Bem vindo ao Syscopa, o menu para realizar as ações do programa sera mostrado a seguir:\n");
-		while (true) {
-			//System.out.println(Pesquisa.buscarPessoa());
-			Menu.escolhaPrincipal();
-		}
+
 		
 		
 		//ArbitroDAO.listar();
