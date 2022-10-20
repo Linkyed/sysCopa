@@ -139,7 +139,7 @@ public class Teste {
 		Map<Jogador, Integer> jogasMap1 = new HashMap<Jogador, Integer>();
 		jogasMap1.put(jogador10, 9);
 		jogasMap1.put(jogador1, 2);
-		PartidaDAO.distribuirGols(jogasMap, PartidaDAO.listaPartidas.get(36),1);
+		PartidaDAO.editarGol(PartidaDAO.listaPartidas.get(36),jogasMap,1);
 		SelecaoDAO.listarJogadors();
 		PartidaDAO.editarGol(PartidaDAO.listaPartidas.get(36),jogasMap1,1);
 
