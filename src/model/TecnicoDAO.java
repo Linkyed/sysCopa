@@ -18,13 +18,11 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	int a = 0;
 	/**Lista para guarda os tecnicos**/
 	static private List<Tecnico> tecnicos = new ArrayList<>();
-	static private int tamanhoLista = 0;
 	
 	/**Metodo para inserir um tecnico já criado no banco de dados**/
 	static public boolean inserir(Tecnico tecnico) {
-		if (tamanhoLista < 32){
+		if (tecnicos.size() <= 32){
 			tecnicos.add(tecnico);
-			tamanhoLista++;
 			return true;
 		}else {
 			return false;
@@ -55,10 +53,9 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	
 	/**Metodo para excluir um tecnico existente no banco de dados**/
 	static public boolean excluir(int num) {
-		if (num <= tamanhoLista && num >= 0) {
+		if (num <= tecnicos.size() && num >= 0) {
 			tecnicos.get(num).getSelecao().setTecnico(null);
 			tecnicos.remove(num);
-			tamanhoLista--;
 			return true;
 		} else {
 			return false;
@@ -83,7 +80,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	
 	/**Metodo para retornar um tecnico com base em um numero dado para procurar no banco de dados**/
 	static public Tecnico getOneTecnico(int num) {
-		if (num > tamanhoLista-1 || num < 0) {
+		if (num > tecnicos.size() - 1 || num < 0) {
 			System.out.println("\nO numero esta fora da lista!\n");
 			return null;
 		} else {
