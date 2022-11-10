@@ -18,7 +18,7 @@ public class MainJogador {
 		if (JogadorDAO.inserir(jogador, selecao, true)) {
 			System.out.println("\nO joador foi inserido com sucesso!\n");
 		} else {
-			System.out.println("\nO jogador não pode ser inserido! Ou ele já está na cadastrado ou a seleção esta cheia!\n");
+			System.out.println("\nO jogador não pode ser inserido! Ele já está na cadastrado!\n");
 		}	
 	}	
 	

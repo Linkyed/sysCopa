@@ -2,14 +2,14 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import application.*;
 import application.MainArbitro;
 import application.Menu;
 
 public class Teste {
 
 	public static void main(String[] args) {
-		/*
+		
 		Selecao selecao1 = new Selecao("Qatar");
 		Selecao selecao2 = new Selecao("Ecuador");
 		Selecao selecao3 = new Selecao("Senegal");
@@ -83,7 +83,7 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
-	
+	/*
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
 		PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
@@ -153,10 +153,10 @@ public class Teste {
 		*/
 		
 		//ArbitroDAO.listar();
-		while (true) {
-			Menu.escolhaPrincipal();
-			
-		}
+		
+		
+		MainPartida.criarPrimeiraFase();
+		MainPartida.excluirPartida();
 	
 	}
 

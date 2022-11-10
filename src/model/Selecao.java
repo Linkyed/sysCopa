@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class Selecao {
 	private List<Jogador> jogadores = new ArrayList<>();
-	private int tamListaJogadores = 0;
 	private Tecnico tecnico;
 	private String nome;
 	private List<Partida> listaPartdas = new ArrayList<>();
@@ -19,8 +18,7 @@ public class Selecao {
 
 	/** metodo para adicionar um jogador na lista de jogadores da seleção **/
 	public boolean addJogador(Jogador jogador) {
-		if (tamListaJogadores < 26) {
-			tamListaJogadores++;
+		if (jogadores.size() <= 11 ) {
 			jogadores.add(jogador);
 			return true;
 		} else {
@@ -31,7 +29,6 @@ public class Selecao {
 	/** Metodo para remover um jogador da lista de jogadores da seleção **/
 	public boolean removerJogador(Jogador jogador) {
 		if (jogadores.contains(jogador) == true) {
-			tamListaJogadores--;
 			jogadores.remove(jogador);
 			return true;
 		} else {
@@ -52,7 +49,7 @@ public class Selecao {
 	}
 
 	public int getTamanho() {
-		return tamListaJogadores;
+		return jogadores.size();
 	}
 
 	public void setNome(String nome) {

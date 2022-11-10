@@ -16,8 +16,8 @@ public class Menu {
 				+ "tecnicos, jogadores e arbitros\nsejam adicionados antes das simulações das partidas acontecerem!\n");
 
 		int escolha = 0;
-
-		while (SelecaoDAO.quantidadeSelecoes() < 32) {
+		int quantSelecoes = 32;
+		while (SelecaoDAO.quantidadeSelecoes() < quantSelecoes) {
 			criarSelecaoCompleta();
 
 			while (escolha != 3) {
@@ -28,10 +28,10 @@ public class Menu {
 					edicaoObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n", 1, 3);
 				} else if (escolha == 2) {
 					MainSelecao.excluirSelecao();
-				} else if (escolha == 3 && (32 - SelecaoDAO.quantidadeSelecoes()) > 0) {
-					System.out.println("\nFalta " + (32 - SelecaoDAO.quantidadeSelecoes()) + " serem criadas "
+				} else if (escolha == 3 && (quantSelecoes - SelecaoDAO.quantidadeSelecoes()) > 0) {
+					System.out.println("\nFalta " + (quantSelecoes - SelecaoDAO.quantidadeSelecoes()) + " serem criadas "
 							+ "para dar inicio as simulações das partidas!\n");
-				} else if (escolha == 3 && (32 - SelecaoDAO.quantidadeSelecoes()) == 0) {
+				} else if (escolha == 3 && (quantSelecoes - SelecaoDAO.quantidadeSelecoes()) == 0) {
 					System.out
 							.println("\nTodas seleções foram inseridas! Agora as simulações poderão ser realizadas!\n");
 				}

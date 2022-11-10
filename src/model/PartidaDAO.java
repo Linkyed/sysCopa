@@ -248,12 +248,34 @@ public class PartidaDAO {
 		if (listaPartidas.size() > 0) {
 			System.out.println("Lista de Partidas:");
 			System.out.println("=======================================");
+			int contador = 1;
 			for (Partida partida : listaPartidas) {
-				System.out.println(partida);
+				System.out.println("["+contador+"]- "+partida);
+				contador++;
 			}
 		} else {
 			System.out.println("Não Existe nenhuma partida feita.");
 		}
+	}
+	
+	public static void listarPartidaGrupo(int inicio,int fim) {
+		if (listaPartidas.size() > 0) {
+			System.out.println("Lista de Partidas:");
+			System.out.println("=======================================");
+			System.out.println();
+			int contador = 1;
+			for (int i = inicio; i <= fim; i++ ) {
+				System.out.println("["+contador+"]- "+listaPartidas.get(i));
+				contador++;
+			}
+			System.out.println();
+		} else {
+			System.out.println("Não Existe nenhuma partida feita.");
+		}
+	}
+	
+	private static boolean buscarPartidaIndex() {
+		
 	}
 
 	public static boolean statusAtuaisPartidas(Partida partida) {
