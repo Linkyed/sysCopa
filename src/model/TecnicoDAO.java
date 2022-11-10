@@ -21,7 +21,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	
 	/**Metodo para inserir um tecnico já criado no banco de dados**/
 	static public boolean inserir(Tecnico tecnico) {
-		if (tecnicos.size() <= 32){
+		if (tecnicos.size() <= 32 && !existeTecnico(tecnico)){
 			tecnicos.add(tecnico);
 			return true;
 		}else {
@@ -95,7 +95,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	}
 	
 	/**Metodo para contar e retorna a quantidade de tecnicos presentes no banco de dados**/
-	static public int contarTecnicos() {
+	static public int quantidadeTecnicos() {
 		return tecnicos.size();
 	}
 	
@@ -107,5 +107,13 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 			}
 		}
 		return listaTecnico;
+	}
+	
+	public static boolean existeTecnico(Tecnico tecnico) {
+		return tecnicos.contains(tecnico);
+	}
+	
+	public static void resetarLista() {
+		tecnicos = new ArrayList<Tecnico>();
 	}
 }

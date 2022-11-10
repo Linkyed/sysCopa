@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Scanner;
-
+import java.util.List;
 /**
  * Classe de Funções para ajudar na contrução do codígo.
  * 
@@ -103,6 +103,25 @@ public class Funcoes {
 
 		return entradaUsuario;
 
+	}
+	
+	public final static int entradaIntList(String text, List<Integer> numerosPossiveis) {
+		boolean condicao = true;
+		Integer entradaUsuario = 0;
+		while (condicao) {
+			try {
+				System.out.println(text);
+				entradaUsuario = Integer.parseInt(entrada.nextLine());
+				if(numerosPossiveis.contains(entradaUsuario)) {
+					condicao = false;
+				} else {
+					System.out.println("\nO numero digitado não esta ligado a nenhuma opção, tenta novamente!\n");
+				}
+			} catch (Exception e) {
+				System.out.println("\nDigite apenas numeros!\n");
+			}
+		}
+		return entradaUsuario;
 	}
 
 	/**Metodo para mostrar as opções de jogador, tecnico, seleção e arbitro para o usuario**/

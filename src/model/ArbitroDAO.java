@@ -66,12 +66,12 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		if (num > tamanhoLista-1 || num < 0) {
 			return null;
 		}else {
-			System.out.println("\nO numero esta fora da lista!\n");
+			//System.out.println("\nO numero esta fora da lista!\n");
 			return arbitros.get(num);			
 		}
 	}
 	/**Metodo para contar e retorna a quantidade de arbitros presentes no banco de dados**/
-	static public int contarArbitro() {
+	static public int quantidadeArbitro() {
 		return arbitros.size();
 	}
 	
@@ -93,5 +93,9 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 			}
 		}
 		return false;
+	}
+	
+	public static void resetarLista() {
+		arbitros = new ArrayList<Arbitro>();
 	}
 }

@@ -9,7 +9,7 @@ import application.Menu;
 public class Teste {
 
 	public static void main(String[] args) {
-		
+		/*
 		Selecao selecao1 = new Selecao("Qatar");
 		Selecao selecao2 = new Selecao("Ecuador");
 		Selecao selecao3 = new Selecao("Senegal");
@@ -86,7 +86,7 @@ public class Teste {
 	
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		//GrupoPrimeiraFase.listarTodosGrupos();
-		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
+		PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
@@ -98,7 +98,7 @@ public class Teste {
 		PartidaDAO.listaPartidas.get(38).setGolSelecao2(1);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(38));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
-		GrupoPrimeiraFase.listaGrupoString("G");*/
+		GrupoPrimeiraFase.listaGrupoString("G");
 
 		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
 		TecnicoDAO.inserir(tecnico);
@@ -150,13 +150,13 @@ public class Teste {
 		//System.out.println(Pesquisa.buscarSelecao());
 		
 
-		
+		*/
 		
 		//ArbitroDAO.listar();
-		//while (true) {
-			//Menu.escolhaPrincipal();
+		while (true) {
+			Menu.escolhaPrincipal();
 			
-		//}
+		}
 	
 	}
 
