@@ -101,10 +101,14 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	 * Metodo para retornar uma seleção do banco de dados com base no index de uma
 	 * seleção
 	 **/
-	static public Selecao indexSelecao(Selecao selecao) {
+	static public Selecao getSelecaoPorSelecao(Selecao selecao) {
 		return selecoes.get(selecoes.indexOf(selecao));
 	}
 
+	static public int getIndexSelecao(Selecao selecao) {
+		return selecoes.indexOf(selecao);
+	}
+	
 	/**
 	 * Metodo para retornar a quantidade de seleções presentes no banco de dados
 	 **/
@@ -176,5 +180,17 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	public static void resetarLista() {
+		selecoes = new ArrayList<Selecao>();
+	}
 	
+	public static List<Selecao> selecoesComVagaJogador(){
+		List<Selecao> lista = new ArrayList<>();
+		for (Selecao selecao: selecoes) {
+			if (selecao.getJogadores().size() < 11) {
+				lista.add(selecao);
+			}
+		}
+		return lista;
+	}
 }
