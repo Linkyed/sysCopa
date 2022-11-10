@@ -31,8 +31,8 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 */
 	public static boolean inserir(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
-			int tamanho_Max = 26;
-			Selecao selecao_Modelo = SelecaoDAO.indexSelecao(selecao);
+			int tamanho_Max = 11;
+			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
@@ -248,7 +248,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			Selecao selecao_modelo = SelecaoDAO.indexSelecao(modelo_Jogador.getSelecao());
+			Selecao selecao_modelo = SelecaoDAO.getSelecaoPorSelecao(modelo_Jogador.getSelecao());
 			selecao_modelo.removerJogador(modelo_Jogador);
 			todos_Jogadores.remove(modelo_Jogador);
 			return true;
@@ -266,7 +266,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 	public static boolean excluir(int posicao) {
 		if (getQuantidadeJogadores() > 0) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
-			Selecao selecao_modelo = SelecaoDAO.indexSelecao(modelo_Jogador.getSelecao());
+			Selecao selecao_modelo = SelecaoDAO.getSelecaoPorSelecao(modelo_Jogador.getSelecao());
 			selecao_modelo.removerJogador(modelo_Jogador);
 			todos_Jogadores.remove(modelo_Jogador);
 			return true;
