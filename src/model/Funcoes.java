@@ -38,6 +38,34 @@ public class Funcoes {
 		return entradaUsuario;
 	}
 	
+	public final static String entradaLetraGrupo(String texto, boolean verificacao) {
+		boolean condicao = true;
+		String entradaUsuario = "";
+		while (condicao) {
+			System.out.print(texto);
+
+			entradaUsuario = entrada.nextLine().strip();
+			if (verificacao == true) {
+				if(entradaUsuario.length() != 1) {
+					System.out.println("Digite Apenas 1 caracter!");
+				}
+				else if (entradaUsuario.matches("[a-hA-H]")) {
+					entradaUsuario = Funcoes.captilizeString(entradaUsuario).strip();
+					condicao = false;
+				} else {
+					System.out.println("Erro! digite caracteres dentro de [A-H] e  não digite números.");
+				}
+			}
+			else {
+				condicao = false;
+			}
+			
+		}
+		System.out.println();
+		return entradaUsuario;
+	}
+	
+	
 	/**Metodo para mostrar um texto para o usuario e salvar a sua resposta em int, aceitando apenas inteiros**/
 	public final static int entradaInt(String texto) {
 		int entradaUsuario = 0;
