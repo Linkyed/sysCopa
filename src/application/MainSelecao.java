@@ -1,6 +1,6 @@
 package application;
 
-import model.ArbitroDAO;
+
 import model.Funcoes;
 import model.Selecao;
 import model.SelecaoDAO;
@@ -8,14 +8,19 @@ import model.SelecaoDAO;
 public class MainSelecao {
 
 	public static Selecao inserirSelecao() {
-		String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome da seleção que será inserida: ", true));
-		Selecao selecao = new Selecao(nome);
-		if (SelecaoDAO.inserir(selecao)) {
-			System.out.println("\nSeleção foi inserida com sucesso!\n");
-		} else {
-			System.out.println("\nA seleção não pode ser inserida, a lista de seleções está cheia ou esse seleção já existe na lista!\n");
+		boolean condicao = true;
+		while (condicao) {
+			String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome da seleção que será inserida: ", true));
+			Selecao selecao = new Selecao(nome);
+			if (SelecaoDAO.inserir(selecao)) {
+				System.out.println("\nSeleção foi inserida com sucesso!\n");
+				return selecao;
+			} else {
+				System.out.println("\nA seleção não pode ser inserida! Essa seleção já existe na lista!\n");
+			}
 		}
-		return selecao;
+		return null;
+
 	}	
 	
 	public static void editarSelecao() {

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-
 public class GrupoPrimeiraFase {
 	private static Map<Selecao, Integer> grupoA = new HashMap<>();
 	private static Map<Selecao, Integer> grupoB = new HashMap<>();
@@ -40,37 +39,32 @@ public class GrupoPrimeiraFase {
 	}
 
 	public static boolean adicionarSelecao(String grupo, Selecao selecao) {
-		boolean addBoolean = SelecaoDAO.inserir(selecao);
-		if (addBoolean) {
-			if (grupo.equalsIgnoreCase("A") && grupoA.size() < 5) {
-				grupoA.put(selecao, 0);
-			} else if (grupo.equalsIgnoreCase("B") && grupoB.size() < 5) {
-				grupoB.put(selecao, 0);
-			} else if (grupo.equalsIgnoreCase("C") && grupoC.size() < 5) {
-				grupoC.put(selecao, 0);
+		if (grupo.equalsIgnoreCase("A") && grupoA.size() < 5) {
+			grupoA.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("B") && grupoB.size() < 5) {
+			grupoB.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("C") && grupoC.size() < 5) {
+			grupoC.put(selecao, 0);
 
-			} else if (grupo.equalsIgnoreCase("D") && grupoD.size() < 5) {
-				grupoD.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("D") && grupoD.size() < 5) {
+			grupoD.put(selecao, 0);
 
-			} else if (grupo.equalsIgnoreCase("E") && grupoE.size() < 5) {
-				grupoE.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("E") && grupoE.size() < 5) {
+			grupoE.put(selecao, 0);
 
-			} else if (grupo.equalsIgnoreCase("F") && grupoF.size() < 5) {
-				grupoF.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("F") && grupoF.size() < 5) {
+			grupoF.put(selecao, 0);
 
-			} else if (grupo.equalsIgnoreCase("G") && grupoG.size() < 5) {
-				grupoG.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("G") && grupoG.size() < 5) {
+			grupoG.put(selecao, 0);
 
-			} else if (grupo.equalsIgnoreCase("H") && grupoH.size() < 5) {
-				grupoH.put(selecao, 0);
+		} else if (grupo.equalsIgnoreCase("H") && grupoH.size() < 5) {
+			grupoH.put(selecao, 0);
 
-			} else {
-				return false;
-			}
-			return true;
+		} else {
+			return false;
 		}
-
-		return false;
+		return true;
 	}
 
 	private static void organizadorGrupo(Map<Selecao, Integer> grupo) {
@@ -173,7 +167,6 @@ public class GrupoPrimeiraFase {
 		}
 	}
 
-	
 	private static void listarGrupo(Map<Selecao, Integer> grupo) {
 		System.out.println("====================");
 		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
@@ -203,6 +196,29 @@ public class GrupoPrimeiraFase {
 		listarGrupo(grupoG);
 		System.out.println("H");
 		listarGrupo(grupoH);
+	}
+	
+	public static int quantidadeGupo(String grupo) {
+		if (grupo.equalsIgnoreCase("A")) {
+			return grupoA.size();
+		} else if (grupo.equalsIgnoreCase("B")) {
+			return grupoB.size();
+		} else if (grupo.equalsIgnoreCase("C")) {
+			return grupoC.size();
+		} else if (grupo.equalsIgnoreCase("D")) {
+			return grupoD.size();
+		} else if (grupo.equalsIgnoreCase("E")) {
+			return grupoE.size();
+		} else if (grupo.equalsIgnoreCase("F")) {
+			return grupoF.size();
+		} else if (grupo.equalsIgnoreCase("G")) {
+			return grupoG.size();
+		} else if (grupo.equalsIgnoreCase("H")) {
+			return grupoH.size();
+		} else {
+			System.out.println("Grupo não encontrado.");
+			return 0;
+		}
 	}
 
 }
