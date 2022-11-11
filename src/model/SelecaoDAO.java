@@ -98,10 +98,14 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return selecoes.contains(selecao);
 	}
 
+	
 	/**
 	 * Metodo para retornar uma seleção do banco de dados com base no index de uma
 	 * seleção
 	 **/
+	
+	
+	
 	static public Selecao getSelecaoPorSelecao(Selecao selecao) {
 		return selecoes.get(selecoes.indexOf(selecao));
 	}
@@ -182,5 +186,9 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 			}
 		}
 		return lista;
+	}
+	
+	public static void imprimirCaracteristicas(int numSelecao) {
+		selecoes.get(numSelecao).listarJogadores();
 	}
 }

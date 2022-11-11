@@ -1,5 +1,7 @@
 package model;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -104,7 +106,7 @@ public class PartidaDAO {
 			Jogador modeloJogador = jogadoresGol.getKey();
 			int golMarcado = modeloJogador.getGolmarcado() + jogadoresGol.getValue();
 			JogadorDAO.editarGolMarcado(modeloJogador, golMarcado);
-			gols+=jogasMap.get(modeloJogador);
+			gols += jogasMap.get(modeloJogador);
 		}
 		if (numSelecao == 1) {
 			partida.setGolsMarcadosSelecao1(jogasMap);
@@ -332,6 +334,44 @@ public class PartidaDAO {
 			return null;
 		}
 
+	}
+
+	public static int quantidadePartidasNaoRealizada() {
+		int contador = 0;
+		for (Partida partida : listaPartidas) {
+			if (partida.getStatus() == false) {
+				contador++;
+			}
+		}
+		return contador;
+	}
+	
+	public static int quantidadePartidasRealizada() {
+		int contador = 0;
+		for (Partida partida : listaPartidas) {
+			if (partida.getStatus() == true) {
+				contador++;
+			}
+		}
+		return contador;
+	}
+	
+	public static Partida partidaRealizadas() {
+		for (Partida partida : listaPartidas) {
+			if (partida.getStatus() == true) {
+				return partida;
+			}
+		}
+		return null;
+	}
+	
+	public static Partida partidaSemRealizar() {
+		for (Partida partida : listaPartidas) {
+			if (partida.getStatus() == false) {
+				return partida;
+			}
+		}
+		return null;
 	}
 
 	public static boolean statusAtuaisPartidas(Partida partida) {

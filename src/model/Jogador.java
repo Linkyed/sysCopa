@@ -109,6 +109,10 @@ public class Jogador {
 			this.posicaoJogada = posicaoJogadorString[posicao];
 		}
 	}
+	
+	public String listarCaracteristicas() {
+		return "Nome: "+nome+"| Gols: "+ golMarcado + "|Cartões Amarelo: " + cartaoAmarelo+ "|Cartões Vermelho: " + cartaoVermelho;
+	}
 
 	@Override
 	/** Mostra todos os atributos do jogador **/

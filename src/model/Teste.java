@@ -83,9 +83,6 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
-		SelecaoDAO.listar();
-		MainPartida.criarPrimeiraFase();
-		PartidaDAO.listar();
 		//GrupoPrimeiraFase.listarTodosGrupos();
 		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
@@ -100,41 +97,109 @@ public class Teste {
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(38));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);*/
 		
-		System.out.println(PartidaDAO.listaPartidas.get(36));
 		
+		SelecaoDAO.inserir(selecao1);
+		SelecaoDAO.inserir(selecao2);
+		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserir(selecao4);
+		SelecaoDAO.inserir(selecao5);
+		SelecaoDAO.inserir(selecao6);
+		SelecaoDAO.inserir(selecao7);
+		SelecaoDAO.inserir(selecao8);
+		SelecaoDAO.inserir(selecao9);
+		SelecaoDAO.inserir(selecao10);
+		SelecaoDAO.inserir(selecao11);
+		SelecaoDAO.inserir(selecao12);
+		SelecaoDAO.inserir(selecao13);
+		SelecaoDAO.inserir(selecao14);
+		SelecaoDAO.inserir(selecao15);
+		SelecaoDAO.inserir(selecao16);
+		SelecaoDAO.inserir(selecao17);
+		SelecaoDAO.inserir(selecao18);
+		SelecaoDAO.inserir(selecao19);
+		SelecaoDAO.inserir(selecao20);
+		SelecaoDAO.inserir(selecao21);
+		SelecaoDAO.inserir(selecao22);
+		SelecaoDAO.inserir(selecao23);
+		SelecaoDAO.inserir(selecao24);
 		SelecaoDAO.inserir(selecao25);
 		SelecaoDAO.inserir(selecao26);
-		Jogador jogador = new Jogador("Matias Raiten", selecao25,1);
-		JogadorDAO.inserir(jogador, selecao25, false);
-		Jogador jogador1 = new Jogador("Matias Binnotom", selecao25,1);
-		JogadorDAO.inserir(jogador1, selecao25, false);
-		Jogador jogador2 = new Jogador("Matias Binnotok", selecao25,1);
-		JogadorDAO.inserir(jogador2, selecao25, false);
-		Jogador jogador3 = new Jogador("Matias Binnotol", selecao25,1);
-		JogadorDAO.inserir(jogador3, selecao25, false);
-		Jogador jogador4 = new Jogador("Matias Binnotoo", selecao25,1);
-		JogadorDAO.inserir(jogador4, selecao25, false);
-		Jogador jogador5 = new Jogador("Matias Binnotoi", selecao25,1);
-		JogadorDAO.inserir(jogador5, selecao25,false);
-		Jogador jogador6 = new Jogador("Matias Binnotop", selecao25,1);
-		JogadorDAO.inserir(jogador6, selecao25, false);
-		Jogador jogador7 = new Jogador("Matias Binnotoy", selecao25,1);
-		JogadorDAO.inserir(jogador7, selecao25, false);
-		Jogador jogador8 = new Jogador("Matias Binnotou", selecao25,1);
-		JogadorDAO.inserir(jogador8, selecao25, false);
-		Jogador jogador9 = new Jogador("Matias Binnotoj", selecao25,1);
-		JogadorDAO.inserir(jogador9, selecao25, false);
-		Jogador jogador10 = new Jogador("Matias Binnotoz", selecao25,1);
-		JogadorDAO.inserir(jogador10, selecao26, false);
-		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
-		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36));
-		GrupoPrimeiraFase.listaGrupoString("G");
-		System.out.println("Gols"+ jogador.getGolmarcado());
-		System.out.println(PartidaDAO.listaPartidas.get(36).getGolSelecao1());
-		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36));
-		GrupoPrimeiraFase.listaGrupoString("G");
+		SelecaoDAO.inserir(selecao27);
+		SelecaoDAO.inserir(selecao28);
+		SelecaoDAO.inserir(selecao29);
+		SelecaoDAO.inserir(selecao30);
+		SelecaoDAO.inserir(selecao31);
+		SelecaoDAO.inserir(selecao32);
 		
-		System.out.println(PartidaDAO.listaPartidas.get(36).getGolSelecao1());
+		Jogador jogador = new Jogador("Matias Raiten", selecao1,1);
+		JogadorDAO.inserir(jogador, selecao1, false);
+		Jogador jogador1 = new Jogador("Matias Binnotom", selecao2,1);
+		JogadorDAO.inserir(jogador1, selecao2, false);
+		Jogador jogador2 = new Jogador("Matias Binnotok", selecao3,1);
+		JogadorDAO.inserir(jogador2, selecao3, false);
+		Jogador jogador3 = new Jogador("Matias Binnotol", selecao4,1);
+		JogadorDAO.inserir(jogador3, selecao4, false);
+		Jogador jogador4 = new Jogador("Matias Binnotoo", selecao5,1);
+		JogadorDAO.inserir(jogador4, selecao5, false);
+		Jogador jogador5 = new Jogador("Matias Binnotoi", selecao6,1);
+		JogadorDAO.inserir(jogador5, selecao6,false);
+		Jogador jogador6 = new Jogador("Matias Binnotop", selecao7,1);
+		JogadorDAO.inserir(jogador6, selecao7, false);
+		Jogador jogador7 = new Jogador("Matias Binnotoy", selecao8,1);
+		JogadorDAO.inserir(jogador7, selecao8, false);
+		Jogador jogador8 = new Jogador("Matias Binnotou", selecao9,1);
+		JogadorDAO.inserir(jogador8, selecao9, false);
+		Jogador jogador9 = new Jogador("Matias Binnotoj", selecao10,1);
+		JogadorDAO.inserir(jogador9, selecao10, false);
+		Jogador jogador10 = new Jogador("Matias Binnotoz", selecao11,1);
+		JogadorDAO.inserir(jogador10, selecao11, false);
+		Jogador jogador11 = new Jogador("Galio", selecao12,1);
+		JogadorDAO.inserir(jogador11, selecao12, false);
+		Jogador jogador12 = new Jogador("Matias Binnotom", selecao25,1);
+		JogadorDAO.inserir(jogador12, selecao25, false);
+		Jogador jogador13 = new Jogador("Matias Binnotok", selecao25,1);
+		JogadorDAO.inserir(jogador2, selecao25, false);
+		Jogador jogador14 = new Jogador("Matias Binnotol", selecao25,1);
+		JogadorDAO.inserir(jogador3, selecao25, false);
+		Jogador jogador15 = new Jogador("Matias Binnotoo", selecao25,1);
+		JogadorDAO.inserir(jogador4, selecao25, false);
+		Jogador jogador16 = new Jogador("Matias Binnotoi", selecao25,1);
+		JogadorDAO.inserir(jogador5, selecao25,false);
+		Jogador jogador17 = new Jogador("Matias Binnotop", selecao25,1);
+		JogadorDAO.inserir(jogador6, selecao25, false);
+		Jogador jogador18 = new Jogador("Matias Binnotoy", selecao25,1);
+		JogadorDAO.inserir(jogador7, selecao25, false);
+		Jogador jogador19 = new Jogador("Matias Binnotou", selecao25,1);
+		JogadorDAO.inserir(jogador8, selecao25, false);
+		Jogador jogador20 = new Jogador("Matias Binnotoj", selecao25,1);
+		JogadorDAO.inserir(jogador9, selecao25, false);
+		Jogador jogador21 = new Jogador("Matias Binnotoz", selecao25,1);
+		JogadorDAO.inserir(jogador10, selecao26, false);
+		Jogador jogador22 = new Jogador("Matias Raiten", selecao25,1);
+		JogadorDAO.inserir(jogador, selecao25, false);
+		Jogador jogador23 = new Jogador("Matias Binnotom", selecao25,1);
+		JogadorDAO.inserir(jogador1, selecao25, false);
+		Jogador jogador24 = new Jogador("Matias Binnotok", selecao25,1);
+		JogadorDAO.inserir(jogador2, selecao25, false);
+		Jogador jogador25 = new Jogador("Matias Binnotol", selecao25,1);
+		JogadorDAO.inserir(jogador3, selecao25, false);
+		Jogador jogador26 = new Jogador("Matias Binnotoo", selecao25,1);
+		JogadorDAO.inserir(jogador4, selecao25, false);
+		Jogador jogador27 = new Jogador("Matias Binnotoi", selecao25,1);
+		JogadorDAO.inserir(jogador5, selecao25,false);
+		Jogador jogador28 = new Jogador("Matias Binnotop", selecao25,1);
+		JogadorDAO.inserir(jogador6, selecao25, false);
+		Jogador jogador29 = new Jogador("Matias Binnotoy", selecao25,1);
+		JogadorDAO.inserir(jogador7, selecao25, false);
+		Jogador jogador30 = new Jogador("Matias Binnotou", selecao25,1);
+		JogadorDAO.inserir(jogador8, selecao25, false);
+		Jogador jogador31 = new Jogador("Matias Binnotoj", selecao25,1);
+		JogadorDAO.inserir(jogador9, selecao25, false);
+		Jogador jogador32 = new Jogador("Matias Binnotoz", selecao25,1);
+		JogadorDAO.inserir(jogador10, selecao26, false);
+		
+		
+		MenuFaseGrupo.MenuPrincipal();
 		/*
 		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
 		TecnicoDAO.inserir(tecnico);
@@ -170,12 +235,6 @@ public class Teste {
 		//ArbitroDAO.listar();
 		
 		
-		
-		MainPartida.excluirPartida();
-		GrupoPrimeiraFase.listaGrupoString("G");
-		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36));
-		GrupoPrimeiraFase.listaGrupoString("G");
-		System.out.println("Gols "+ jogador.getGolmarcado());
 		
 	}
 
