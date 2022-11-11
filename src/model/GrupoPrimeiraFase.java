@@ -38,6 +38,27 @@ public class GrupoPrimeiraFase {
 		return null;
 	}
 	
+	public static String grupoSelecao(Selecao selecao) {
+		if (grupoA.containsKey(selecao)) {
+			return "A";
+		} else if (grupoB.containsKey(selecao)) {
+			return "B";
+		} else if (grupoC.containsKey(selecao)) {
+			return "C";
+		} else if (grupoD.containsKey(selecao)) {
+			return "D";
+		} else if (grupoE.containsKey(selecao)) {
+			return "E";
+		} else if (grupoF.containsKey(selecao)) {
+			return "F";
+		} else if (grupoG.containsKey(selecao)) {
+			return "G";
+		} else if (grupoH.containsKey(selecao)) {
+			return "H";
+		} else {
+			return "0";
+		}
+	}	
 	public static void excluirSelecaoGrupo(Selecao selecao) {
 		Map<Selecao, Integer> grupoMap = selecionarGrupo(selecao);
 		if(grupoMap != null) {

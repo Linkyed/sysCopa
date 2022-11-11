@@ -29,10 +29,14 @@ public class MainTecnico {
 	
 	public static void inserirTecnico(Selecao selecao) {
 		if (SelecaoDAO.selecoesSemTecnico() > 0) {
-			String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do tecnico que será inserido: ", true));
-			Tecnico tecnico = new Tecnico(nome, selecao);
-			TecnicoDAO.inserir(tecnico);
-			System.out.println("\nTecnico inserido com sucesso!\n");
+			while (true) {
+				String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do tecnico que será inserido: ", true));
+				Tecnico tecnico = new Tecnico(nome, selecao);
+				if (TecnicoDAO.inserir(tecnico)) {
+					System.out.println("\nTecnico inserido com sucesso!\n");
+					break;
+				}				
+			}
 		} else {
 			System.out.println("\nUm tecnico ainda não pode ser inserido pois ou não existem seleções ou não existe vagas para tecnicos disponiveis!\n");
 		}
@@ -53,18 +57,24 @@ public class MainTecnico {
 		}
 	}
 	
-	public static void excluirTecnico() {
+	public static Selecao excluirTecnico() {
 		TecnicoDAO.listar();
+		Selecao selecao = null;
 		if (TecnicoDAO.quantidadeTecnicos() > 0) {
 			int escolhaTecnico = Funcoes.entradaIntRanger("Digite o numero relacionado a um tecnico para ser excluido: ", 0, TecnicoDAO.quantidadeTecnicos()-1);
-			if (TecnicoDAO.excluir(escolhaTecnico)) {
-				System.out.println("\nTecnico excluido com sucesso!\n");
-			} else {
-				System.out.println("\nTecnico não pode ser excluido, tente novamente!\n");
-			}			
+			selecao = TecnicoDAO.getOneTecnico(escolhaTecnico).getSelecao();
+			boolean exclusao = TecnicoDAO.excluir(escolhaTecnico);
+			while (exclusao == false) {
+				System.out.println("\nTecnico não pode ser excluido, tente novamente!\n");		
+				escolhaTecnico = Funcoes.entradaIntRanger("Digite o numero relacionado a um tecnico para ser excluido: ", 0, TecnicoDAO.quantidadeTecnicos()-1);
+				selecao = TecnicoDAO.getOneTecnico(escolhaTecnico).getSelecao();
+				exclusao = TecnicoDAO.excluir(escolhaTecnico);
+			} 
+			System.out.println("\nTecnico excluido com sucesso!\n");
 		} else {
 			System.out.println("\nNão existe nenhum tecnico para ser excluido!\n");
 		}
+		return selecao;
 	}
 	
 }

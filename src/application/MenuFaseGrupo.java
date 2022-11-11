@@ -98,7 +98,7 @@ public class MenuFaseGrupo {
 					+ "[4]- Para exibir os dados dos jogadores de uma seleção\n"
 					+ "[5]- Menu de edições de partidas realizadas\n[6]- Excluir os dados de uma partida\n[7]- Pesquisar Partida\n"
 					+ "[8] Sair do Programa\nEscolha: ",
-					1, 7);
+					1, 8);
 			if (escolha == 1) {
 				Partida partida = PartidaDAO.partidaSemRealizar();
 				if (!partida.equals(null)) {

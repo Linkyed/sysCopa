@@ -202,7 +202,7 @@ public class Teste {
 		ArbitroDAO.inserir(arbitro);
 		
 		
-		MenuFaseGrupo.MenuPrincipal();
+		//MenuFaseGrupo.MenuPrincipal();
 		/*
 		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
 		TecnicoDAO.inserir(tecnico);
@@ -232,7 +232,8 @@ public class Teste {
 		//MainArbitro.excluirArbitro();
 		//System.out.println(Pesquisa.buscarSelecao());
 		
-
+		Menu.MenuPrincipal();
+		MenuFaseGrupo.MenuPrincipal();
 		
 		
 		//ArbitroDAO.listar();
