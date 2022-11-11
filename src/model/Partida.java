@@ -10,8 +10,8 @@ public class Partida {
 	private static int id = 1000;
 	private boolean status = false;
 	private String codigoPartida;
-	private Integer dia;
-	private Integer mes;
+	private Integer dia = 1;
+	private Integer mes = 1;
 	private static Integer ano;
 	private int horarioH;
 	private int horarioM;
