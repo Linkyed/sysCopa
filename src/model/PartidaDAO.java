@@ -99,15 +99,19 @@ public class PartidaDAO {
 	}
 
 	private static void distribuirGols(Map<Jogador, Integer> jogasMap, Partida partida, int numSelecao) {
+		int gols = 0;
 		for (Entry<Jogador, Integer> jogadoresGol : jogasMap.entrySet()) {
 			Jogador modeloJogador = jogadoresGol.getKey();
 			int golMarcado = modeloJogador.getGolmarcado() + jogadoresGol.getValue();
 			JogadorDAO.editarGolMarcado(modeloJogador, golMarcado);
+			gols+=jogasMap.get(modeloJogador);
 		}
 		if (numSelecao == 1) {
 			partida.setGolsMarcadosSelecao1(jogasMap);
+			partida.setGolSelecao1(gols);
 		} else if (numSelecao == 2) {
 			partida.setGolsMarcadosSelecao2(jogasMap);
+			partida.setGolSelecao2(gols);
 		}
 
 	}
@@ -138,7 +142,7 @@ public class PartidaDAO {
 		for (Entry<Jogador, Integer> jogadoresCartAmarelo : jogasMap.entrySet()) {
 			Jogador modeloJogador = jogadoresCartAmarelo.getKey();
 			int cartAmarelo = modeloJogador.getCartaoAmarelo() + jogadoresCartAmarelo.getValue();
-			JogadorDAO.editarGolMarcado(modeloJogador, cartAmarelo);
+			JogadorDAO.editarCartAmarelo(modeloJogador, cartAmarelo);
 		}
 		if (numSelecao == 1) {
 			partida.setCartaoAmareloSelecao1(jogasMap);
@@ -174,7 +178,7 @@ public class PartidaDAO {
 		for (Entry<Jogador, Integer> jogadoresCartVermelho : jogasMap.entrySet()) {
 			Jogador modeloJogador = jogadoresCartVermelho.getKey();
 			int cartVermelho = modeloJogador.getCartaoVermelho() + jogadoresCartVermelho.getValue();
-			JogadorDAO.editarGolMarcado(modeloJogador, cartVermelho);
+			JogadorDAO.editarCartVermelho(modeloJogador, cartVermelho);
 		}
 		if (numSelecao == 1) {
 			partida.setCartaoVermelhoSelecao1(jogasMap);
@@ -183,9 +187,9 @@ public class PartidaDAO {
 		}
 
 	}
-	
+
 	public static boolean editarArbitros(List<Arbitro> arbitros, Partida partida) {
-		if(!arbitros.equals(null)){
+		if (!arbitros.equals(null)) {
 			partida.setListaArbitro(arbitros);
 			return true;
 		}
@@ -200,12 +204,6 @@ public class PartidaDAO {
 			diminuirCartaoAmarelo(partida.getCartaoAmareloSelecao2());
 			diminuirCartaoVermelho(partida.getCartaoVermelhoSelecao1());
 			diminuirCartaoVermelho(partida.getCartaoVermelhoSelecao2());
-			Selecao selecao1 = partida.getSelecao1();
-			int golSelecao1 = SelecaoDAO.getQuantidadeGols(selecao1) - partida.getGolSelecao1();
-			SelecaoDAO.editarGolsSelecao(selecao1, golSelecao1);
-			Selecao selecao2 = partida.getSelecao1();
-			int golSelecao2 = SelecaoDAO.getQuantidadeGols(selecao2) - partida.getGolSelecao2();
-			SelecaoDAO.editarGolsSelecao(selecao2, golSelecao2);
 			partida.getCartaoAmareloSelecao1().clear();
 			partida.getCartaoVermelhoSelecao1().clear();
 			partida.getGolsMarcadosSelecao1().clear();
@@ -250,22 +248,22 @@ public class PartidaDAO {
 			System.out.println("=======================================");
 			int contador = 1;
 			for (Partida partida : listaPartidas) {
-				System.out.println("["+contador+"]- "+partida);
+				System.out.println("[" + contador + "]- " + partida);
 				contador++;
 			}
 		} else {
 			System.out.println("Não Existe nenhuma partida feita.");
 		}
 	}
-	
-	public static void listarPartidaGrupo(int inicio,int fim) {
+
+	public static void listarPartidaGrupo(int inicio, int fim) {
 		if (listaPartidas.size() > 0) {
 			System.out.println("Lista de Partidas:");
 			System.out.println("=======================================");
 			System.out.println();
 			int contador = 1;
-			for (int i = inicio; i <= fim; i++ ) {
-				System.out.println("["+contador+"]- "+listaPartidas.get(i));
+			for (int i = inicio; i <= fim; i++) {
+				System.out.println("[" + contador + "]- " + listaPartidas.get(i));
 				contador++;
 			}
 			System.out.println();
@@ -273,9 +271,67 @@ public class PartidaDAO {
 			System.out.println("Não Existe nenhuma partida feita.");
 		}
 	}
-	
-	private static boolean buscarPartidaIndex() {
-		
+
+	public static void listarGrupo(String grupo) {
+		if (grupo.equalsIgnoreCase("A")) {
+			listarPartidaGrupo(0, 5);
+		} else if (grupo.equalsIgnoreCase("B")) {
+			listarPartidaGrupo(6, 11);
+		} else if (grupo.equalsIgnoreCase("C")) {
+			listarPartidaGrupo(12, 17);
+		} else if (grupo.equalsIgnoreCase("D")) {
+			listarPartidaGrupo(18, 23);
+		} else if (grupo.equalsIgnoreCase("E")) {
+			listarPartidaGrupo(24, 29);
+		} else if (grupo.equalsIgnoreCase("F")) {
+			listarPartidaGrupo(30, 35);
+		} else if (grupo.equalsIgnoreCase("G")) {
+			listarPartidaGrupo(36, 41);
+		} else if (grupo.equalsIgnoreCase("H")) {
+			listarPartidaGrupo(42, 47);
+		} else {
+			System.out.println("Grupo não encontrado.");
+		}
+
+	}
+
+	public static Partida procurarPartida(String grupo, int numeroPartida) {
+		if (grupo.equalsIgnoreCase("A")) {
+			Partida partida = listaPartidas.get(0 + numeroPartida - 1);
+			return partida;
+		} else if (grupo.equalsIgnoreCase("B")) {
+			Partida partida = listaPartidas.get(6 + numeroPartida - 1);
+			return partida;
+
+		} else if (grupo.equalsIgnoreCase("C")) {
+			Partida partida = listaPartidas.get(12 + numeroPartida - 1);
+			return partida;
+
+		} else if (grupo.equalsIgnoreCase("D")) {
+			Partida partida = listaPartidas.get(18 + numeroPartida - 1);
+			return partida;
+
+		} else if (grupo.equalsIgnoreCase("E")) {
+			Partida partida = listaPartidas.get(24 + numeroPartida - 1);
+			return partida;
+
+		} else if (grupo.equalsIgnoreCase("F")) {
+			Partida partida = listaPartidas.get(30 + numeroPartida - 1);
+			return partida;
+
+		} else if (grupo.equalsIgnoreCase("G")) {
+			Partida partida = listaPartidas.get(36 + numeroPartida - 1);
+			return partida;
+
+		} else if (grupo.equalsIgnoreCase("H")) {
+			Partida partida = listaPartidas.get(42 + numeroPartida - 1);
+			return partida;
+
+		} else {
+			System.out.println("Grupo não encontrado.");
+			return null;
+		}
+
 	}
 
 	public static boolean statusAtuaisPartidas(Partida partida) {

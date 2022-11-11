@@ -113,9 +113,7 @@ public class Jogador {
 	@Override
 	/** Mostra todos os atributos do jogador **/
 	public String toString() {
-		return "Nome: " + nome + " || Seleção: " + selecao + "|| Cart. Vermelho: " + cartaoVermelho
-				+ "|| Cart. Amarelo: " + cartaoAmarelo + "|| Gol Marcado: " + golMarcado + "|| Posição: "
-				+ posicaoJogada + "|| Cod. do Jogador: " + codJog;
+		return nome ;
 	}
 
 	@Override

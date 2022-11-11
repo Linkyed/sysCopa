@@ -9,7 +9,6 @@ public class Selecao {
 	private Tecnico tecnico;
 	private String nome;
 	private List<Partida> listaPartdas = new ArrayList<>();
-	private int golSelecao = 0;
 
 	/** Construtor que obriga a receber um String nome para criar uma seleção **/
 	public Selecao(String nome) {
@@ -60,15 +59,6 @@ public class Selecao {
 		return jogadores;
 	}
 
-	public int getGolSelecao() {
-		return golSelecao;
-	}
-
-	public void setGolSelecao(int golSelecao) {
-		if (golSelecao > 0) {
-			this.golSelecao = golSelecao;
-		}
-	}
 
 	public int hashCode() {
 		return Objects.hash(nome);

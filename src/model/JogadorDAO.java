@@ -33,7 +33,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 11;
 			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
-			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
+			if (selecao_Modelo.getTamanho() <= tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
 				if (mensagem) {
