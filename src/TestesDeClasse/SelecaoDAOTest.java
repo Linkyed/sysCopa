@@ -1,8 +1,11 @@
-package model;
+package TestesDeClasse;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import model.Selecao;
+import model.SelecaoDAO;
 
 public class SelecaoDAOTest {
 
