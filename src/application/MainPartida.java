@@ -181,7 +181,7 @@ public class MainPartida {
 	}
 
 	public static void editarHoraMinuto(Partida partida) {
-		int hora = Funcoes.entradaIntRanger("Digite o horario da partida: ", 0, 23);
+		int hora = Funcoes.entradaIntRanger("Digite a hora da partida: ", 0, 23);
 		int minuto = Funcoes.entradaIntRanger("Digite o minuto da partida", 0, 59);
 		PartidaDAO.editarHorario(hora, minuto, partida);
 	}
@@ -206,6 +206,7 @@ public class MainPartida {
 	}
 
 	public static void excluirPartida() {
+		GrupoPrimeiraFase.listarTodosGrupos();
 		String letraGrupo = Funcoes.entradaLetraGrupo("Digite a Letra do grupo que a seleção pertence [A-H]: ", true);
 		PartidaDAO.listarGrupo(letraGrupo);
 		int escolha = Funcoes.entradaIntRanger("Ditige o número da partida para excui-la [1-6]: ", 1, 6);

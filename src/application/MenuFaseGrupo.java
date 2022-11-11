@@ -1,16 +1,17 @@
 package application;
 
+import model.Funcoes;
 import model.GrupoPrimeiraFase;
 import model.Partida;
 import model.PartidaDAO;
+import model.SelecaoDAO;
 
 public class MenuFaseGrupo {
-	
-	
-	public static void definirPartida(Partida partida) {
+
+	private static void definirPartida(Partida partida) {
 		if (PartidaDAO.statusAtuaisPartidas(partida) == false) {
 			PartidaDAO.alteracaoDeStatusPartida(true, partida);
-			System.out.println("\n| "+partida+" |\n");
+			System.out.println("\n| " + partida + " |\n");
 			MainPartida.editarLugar(partida);
 			System.out.println();
 			MainPartida.editarData(partida);
@@ -25,48 +26,128 @@ public class MenuFaseGrupo {
 			System.out.println();
 			MainPartida.editarArbitros(partida);
 			System.out.println();
-		}
-		else {
+		} else {
 			System.out.println("Erro! A partida já foi feita.\n");
 		}
 	}
-	public static void editarGols(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarGols(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		GrupoPrimeiraFase.definirPontos(partida, false);
 		MainPartida.editarGols(partida);
 		System.out.println();
 	}
-	public static void editarCartaoAm(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarCartaoAm(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarCartaoAmarelo(partida);
 		System.out.println();
 	}
-	public static void editarCartVer(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarCartVer(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarCartaoVermelho(partida);
 		System.out.println();
 	}
-	public static void editarArbi(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarArbi(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarArbitros(partida);
 		System.out.println();
 	}
-	public static void editarHorarios(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarHorarios(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarHoraMinuto(partida);
 		System.out.println();
 	}
-	public static void editarData(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarData(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarData(partida);
 		System.out.println();
 	}
-	public static void editarLugar(Partida partida) {
-		System.out.println("\n| "+partida+" |\n");
+
+	private static void editarLugar(Partida partida) {
+		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarLugar(partida);
 		System.out.println();
 	}
-	
-	
-	
+
+	public static void MenuPrincipal() {
+		System.out.println("\n=-=-=-=-=--| Bem Vindo a Copa do mundo |=-=-=-=-=--\n");
+		MainPartida.criarPrimeiraFase();
+		while (PartidaDAO.quantidadePartidasNaoRealizada() != 0) {
+			int escolha = Funcoes.entradaIntRanger(
+					"Digite:\n[1]- Para Cadastrar dados de uma partida\n"
+					+ "[2]- Para exibir a pontuação de um grupo\n"
+					+ "[3]- Para exibir todos os grupos\n"
+					+ "[4]- Para exibir os dados dos jogadores de uma seleção\n"
+					+ "[5]- Menu de edições de partidas realizadas\n[6]- Excluir os dados de uma partida\n[7]- Sair do Programa\nEscolha: ",
+					1, 7);
+			if(escolha == 1) {
+				Partida partida = PartidaDAO.partidaSemRealizar();
+				if(!partida.equals(null)){
+					definirPartida(partida);
+				}else {
+					System.out.println("Todas as partidas já foram realizadas.\n");
+				}
+			}else if (escolha == 2) {
+				String letraGrupo = Funcoes.entradaLetraGrupo("Digite a Letra do grupo que a seleção pertence [A-H]: ", true);
+				GrupoPrimeiraFase.listaGrupoString(letraGrupo);;
+			}else if (escolha == 3) {
+				GrupoPrimeiraFase.listarTodosGrupos();
+			}else if (escolha == 4) {
+				SelecaoDAO.listar();
+				int numSelecao = Funcoes.entradaIntRanger("Digite o número da seleção: ", 0, SelecaoDAO.quantidadeSelecoes()-1);
+				SelecaoDAO.imprimirCaracteristicas(numSelecao);
+			}else if (escolha == 5) {
+				if(PartidaDAO.quantidadePartidasRealizada() > 0) {
+					GrupoPrimeiraFase.listarTodosGrupos();
+					String letraGrupo = Funcoes.entradaLetraGrupo("Digite a Letra do grupo que a seleção pertence [A-H]: ", true);
+					PartidaDAO.listarGrupo(letraGrupo);
+					int numPartida = Funcoes.entradaIntRanger("Ditige o número da partida para excui-la [1-6]: ", 1, 6);
+					Partida modeloPartida = PartidaDAO.procurarPartida(letraGrupo, numPartida);
+					int escolhaEditar = Funcoes.entradaIntRanger("Digite:\n[1]- Para editar o local\n"
+							+ "[2]- Para editar o horario\n"
+							+ "[3]- Para editar a data\n"
+							+ "[4]- Para editar os gols da partida\n"
+							+ "[5]- Para editar os cartões Amarelo\n[6]- Para editar os cartões Vermelho\n[7]- Para editar os Arbitros\nEscolha: ",
+							1, 7);
+					if(escolhaEditar == 1)
+						editarLugar(modeloPartida);
+					else if (escolhaEditar == 2) 
+						editarHorarios(modeloPartida);
+					else if(escolhaEditar == 3)
+						editarData(modeloPartida);
+					else if(escolhaEditar == 4)
+						editarGols(modeloPartida);
+					else if(escolhaEditar == 5)
+						editarCartaoAm(modeloPartida);
+					else if(escolhaEditar == 6)
+						editarCartVer(modeloPartida);
+					else if(escolhaEditar == 7)
+						editarArbi(modeloPartida);
+					else 
+						System.out.println("Número fora do range!");
+					
+				}
+				else {
+					System.out.println("Erro!Nenhuma partida foi realizada.\nRealize uma partida para poder edita-la.");
+				}
+				
+			}
+			else if (escolha == 6) {
+				MainPartida.excluirPartida();
+			}
+			else if (escolha == 7) {
+				System.out.println("Fim do Programa!");
+				break;
+			}else {
+				System.out.println("Número fora do range!");
+			}
+		}
+
+	}
+
 }

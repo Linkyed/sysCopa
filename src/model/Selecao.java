@@ -63,6 +63,13 @@ public class Selecao {
 	public int hashCode() {
 		return Objects.hash(nome);
 	}
+	
+	public void listarJogadores() {
+		System.out.println("Lista de Jogadores da "+ nome);
+		for (Jogador jogador : jogadores) {
+			System.out.println(jogador.listarCaracteristicas());
+		}
+	}
 
 	public List<Partida> getListaPartdasList() {
 		return listaPartdas;

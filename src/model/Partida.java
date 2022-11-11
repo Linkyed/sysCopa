@@ -140,7 +140,7 @@ public class Partida {
 
 	@Override
 	public String toString() {
-		return selecao1.getNome() + " x " + selecao2.getNome() + " - " + codigoPartida;
+		return selecao1.getNome() + " x " + selecao2.getNome();
 	}
 
 	public Selecao getResultadoSelecao() {
