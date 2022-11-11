@@ -38,9 +38,14 @@ public class GrupoPrimeiraFase {
 		return null;
 	}
 	
+	public static void excluirSelecaoGrupo(Selecao selecao) {
+		Map<Selecao, Integer> grupoMap = selecionarGrupo(selecao);
+		grupoMap.remove(selecao);
+	}
+	
+	
 	public static int pontuacaoSelecao(Selecao selecao) {
 		int pontos = selecionarGrupo(selecao).get(selecao);
-		System.out.println("ds---"+ pontos);
 		return pontos;
 	}
 

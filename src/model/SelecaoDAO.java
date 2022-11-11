@@ -45,6 +45,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 			for (Jogador jogador : jogadores) {
 				JogadorDAO.excluirJogadorParcial(jogador);
 			}
+			GrupoPrimeiraFase.excluirSelecaoGrupo(selecoes.get(num));
 			selecoes.remove(num);
 			return true;
 		} else {

@@ -30,7 +30,7 @@ public class MainSelecao {
 			if (SelecaoDAO.editar(SelecaoDAO.getOneSelecao(escolhaSelecao), Funcoes.entradaString("Digite o novo nome da seleção: ", true))) {
 				System.out.println("\nNome da seleção foi editado com sucesso!\n");
 			} else {
-				System.out.println("\nO nome da seleção não pode ser editado, o novo nome já pode existir em outra seleção ou nada foi digitado!\n");
+				System.out.println("\nO nome da seleção não pode ser editado! O novo nome já pode existir em outra seleção ou nada foi digitado!\n");
 			}
 		} else {
 			System.out.println("\nNão existe nenhuma seleção para ser editada!\n");
