@@ -94,16 +94,16 @@ public class MainPartida {
 
 		Map<Jogador, Integer> jogadorCartaoAmarelo2 = new HashMap<>();
 		int cartAmareloSelecao2 = Funcoes.entradaIntRanger(
-				"Digite o número de Cartões Amarelo da Seleção |" + partida.getSelecao1() + "| : ", 0);
+				"Digite o número de Cartões Amarelo da Seleção |" + partida.getSelecao2() + "| : ", 0);
 		int cont2 = 1;
-		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+		for (Jogador jogador : partida.getSelecao2().getJogadores()) {
 			System.out.println("[" + cont2 + "]- " + jogador);
 			cont2++;
 		}
 		for (int i = 0; i < cartAmareloSelecao2; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
 					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão Amarelo: ", 1, 11);
-			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
+			Jogador modeloJogador = partida.getSelecao2().getJogadores().get(numJogador - 1);
 			if (jogadorCartaoAmarelo2.containsKey(modeloJogador)) {
 				int cartAmareloJogador = jogadorCartaoAmarelo2.get(modeloJogador);
 				jogadorCartaoAmarelo2.put(modeloJogador, cartAmareloJogador + 1);
@@ -140,16 +140,16 @@ public class MainPartida {
 
 		Map<Jogador, Integer> jogadorCartaoVermelho2 = new HashMap<>();
 		int cartVermelhoSelecao2 = Funcoes.entradaIntRanger(
-				"Digite o número de Cartões Vermelho da Seleção |" + partida.getSelecao1() + "| : ", 0);
+				"Digite o número de Cartões Vermelho da Seleção |" + partida.getSelecao2() + "| : ", 0);
 		int cont2 = 1;
-		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+		for (Jogador jogador : partida.getSelecao2().getJogadores()) {
 			System.out.println("[" + cont2 + "]- " + jogador);
 			cont2++;
 		}
 		for (int i = 0; i < cartVermelhoSelecao2; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
 					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão vermelho: ", 1, 11);
-			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
+			Jogador modeloJogador = partida.getSelecao2().getJogadores().get(numJogador - 1);
 			if (jogadorCartaoVermelho2.containsKey(modeloJogador)) {
 				int cartVermelhoJogador = jogadorCartaoVermelho2.get(modeloJogador);
 				jogadorCartaoVermelho2.put(modeloJogador, cartVermelhoJogador + 1);

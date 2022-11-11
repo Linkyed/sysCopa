@@ -131,6 +131,7 @@ public class Teste {
 		SelecaoDAO.inserir(selecao31);
 		SelecaoDAO.inserir(selecao32);
 		
+		
 		Jogador jogador = new Jogador("Matias Raiten", selecao1,1);
 		JogadorDAO.inserir(jogador, selecao1, false);
 		Jogador jogador1 = new Jogador("Matias Binnotom", selecao2,1);
@@ -197,6 +198,8 @@ public class Teste {
 		JogadorDAO.inserir(jogador9, selecao25, false);
 		Jogador jogador32 = new Jogador("Matias Binnotoz", selecao25,1);
 		JogadorDAO.inserir(jogador10, selecao26, false);
+		Arbitro arbitro = new Arbitro("Julio");
+		ArbitroDAO.inserir(arbitro);
 		
 		
 		MenuFaseGrupo.MenuPrincipal();
