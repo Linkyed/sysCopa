@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import model.Arbitro;
 import model.ArbitroDAO;
 import model.Funcoes;
@@ -26,10 +25,12 @@ public class MainPartida {
 		Map<Jogador, Integer> jogadorGolsMap = new HashMap<>();
 		int golSelecao1 = Funcoes
 				.entradaIntRanger("Digite o número de gols da Seleção |" + partida.getSelecao1() + "| : ", 0);
-		int cont = 1;
-		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
-			System.out.println("[" + cont + "]- " + jogador);
-			cont++;
+		if (golSelecao1 > 0) {
+			int cont = 1;
+			for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+				System.out.println("[" + cont + "]- " + jogador);
+				cont++;
+			}
 		}
 		for (int i = 0; i < golSelecao1; i++) {
 			int numJogador = Funcoes.entradaIntRanger("Ditige o número do jogador que marcou o " + (i + 1) + "° gol: ",
@@ -47,10 +48,12 @@ public class MainPartida {
 		Map<Jogador, Integer> jogadorGolsMap2 = new HashMap<>();
 		int golSelecao2 = Funcoes
 				.entradaIntRanger("Digite o número de gols da Seleção |" + partida.getSelecao2() + "| : ", 0);
-		int cont2 = 1;
-		for (Jogador jogador : partida.getSelecao2().getJogadores()) {
-			System.out.println("[" + cont2 + "]- " + jogador);
-			cont2++;
+		if (golSelecao2 > 0) {
+			int cont2 = 1;
+			for (Jogador jogador : partida.getSelecao2().getJogadores()) {
+				System.out.println("[" + cont2 + "]- " + jogador);
+				cont2++;
+			}
 		}
 		for (int i = 0; i < golSelecao2; i++) {
 			int numJogador = Funcoes.entradaIntRanger("Ditige o número do jogador que marcou o " + (i + 1) + "° gol: ",
@@ -74,10 +77,12 @@ public class MainPartida {
 		Map<Jogador, Integer> jogadorCartaoAmarelo1 = new HashMap<>();
 		int cartAmareloSelecao1 = Funcoes.entradaIntRanger(
 				"Digite o número de Cartões Amarelo da Seleção |" + partida.getSelecao1() + "| : ", 0);
-		int cont = 1;
-		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
-			System.out.println("[" + cont + "]- " + jogador);
-			cont++;
+		if (cartAmareloSelecao1 > 0) {
+			int cont = 1;
+			for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+				System.out.println("[" + cont + "]- " + jogador);
+				cont++;
+			}
 		}
 		for (int i = 0; i < cartAmareloSelecao1; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
@@ -95,10 +100,12 @@ public class MainPartida {
 		Map<Jogador, Integer> jogadorCartaoAmarelo2 = new HashMap<>();
 		int cartAmareloSelecao2 = Funcoes.entradaIntRanger(
 				"Digite o número de Cartões Amarelo da Seleção |" + partida.getSelecao2() + "| : ", 0);
-		int cont2 = 1;
-		for (Jogador jogador : partida.getSelecao2().getJogadores()) {
-			System.out.println("[" + cont2 + "]- " + jogador);
-			cont2++;
+		if (cartAmareloSelecao2 > 0) {
+			int cont2 = 1;
+			for (Jogador jogador : partida.getSelecao2().getJogadores()) {
+				System.out.println("[" + cont2 + "]- " + jogador);
+				cont2++;
+			}
 		}
 		for (int i = 0; i < cartAmareloSelecao2; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
@@ -120,10 +127,12 @@ public class MainPartida {
 		Map<Jogador, Integer> jogadorCartaoVermelho1 = new HashMap<>();
 		int cartVermelhoSelecao1 = Funcoes.entradaIntRanger(
 				"Digite o número de Cartões Vermelho da Seleção |" + partida.getSelecao1() + "| : ", 0);
-		int cont = 1;
-		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
-			System.out.println("[" + cont + "]- " + jogador);
-			cont++;
+		if (cartVermelhoSelecao1 > 0) {
+			int cont = 1;
+			for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+				System.out.println("[" + cont + "]- " + jogador);
+				cont++;
+			}
 		}
 		for (int i = 0; i < cartVermelhoSelecao1; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
@@ -139,12 +148,15 @@ public class MainPartida {
 		PartidaDAO.editarCartVermelho(partida, jogadorCartaoVermelho1, 1);
 
 		Map<Jogador, Integer> jogadorCartaoVermelho2 = new HashMap<>();
+
 		int cartVermelhoSelecao2 = Funcoes.entradaIntRanger(
 				"Digite o número de Cartões Vermelho da Seleção |" + partida.getSelecao2() + "| : ", 0);
-		int cont2 = 1;
-		for (Jogador jogador : partida.getSelecao2().getJogadores()) {
-			System.out.println("[" + cont2 + "]- " + jogador);
-			cont2++;
+		if (cartVermelhoSelecao2 > 0) {
+			int cont2 = 1;
+			for (Jogador jogador : partida.getSelecao2().getJogadores()) {
+				System.out.println("[" + cont2 + "]- " + jogador);
+				cont2++;
+			}
 		}
 		for (int i = 0; i < cartVermelhoSelecao2; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
@@ -196,9 +208,9 @@ public class MainPartida {
 		int numArbitroPartida = Funcoes.entradaIntRanger("Digite o número de arbitros na partida: ", 1,
 				ArbitroDAO.quantidadeArbitro());
 		ArbitroDAO.listar();
-		
+
 		for (int i = 0; i < numArbitroPartida; i++) {
-			int quantArb = Funcoes.entradaIntRanger("Digite o número do arbitro "+(i+1)+"° arbitro: ", 0,
+			int quantArb = Funcoes.entradaIntRanger("Digite o número do arbitro " + (i + 1) + "° arbitro: ", 0,
 					ArbitroDAO.quantidadeArbitro() - 1);
 			arbitros.add(ArbitroDAO.listaArbitros().get(quantArb));
 		}
