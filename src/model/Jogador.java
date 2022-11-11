@@ -55,7 +55,7 @@ public class Jogador {
 
 	public void setCartaoVermelho(int numero_Cartao_Vermelho) {
 		if (numero_Cartao_Vermelho >= 0) {
-			this.cartaoAmarelo = numero_Cartao_Vermelho;
+			this.cartaoVermelho = numero_Cartao_Vermelho;
 		}
 	}
 

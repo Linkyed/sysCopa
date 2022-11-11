@@ -40,7 +40,9 @@ public class GrupoPrimeiraFase {
 	
 	public static void excluirSelecaoGrupo(Selecao selecao) {
 		Map<Selecao, Integer> grupoMap = selecionarGrupo(selecao);
-		grupoMap.remove(selecao);
+		if(grupoMap != null) {
+			grupoMap.remove(selecao);			
+		}
 	}
 	
 	
