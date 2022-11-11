@@ -16,13 +16,13 @@ import java.util.List;
 public class ArbitroDAO implements ArbitroDAOInterface{
 	int a = 0;
 	static private List<Arbitro> arbitros = new ArrayList<>();
-	static private int tamanhoLista = 0;
+	
 	
 	/**Metodo para inserir um arbitro já criado, no banco de dados**/
 	static public boolean inserir(Arbitro arbitro) {
 		if (!veriricarNomeArbitro(arbitro.getNome())) {
 			arbitros.add(arbitro);
-			tamanhoLista++;
+	
 			return true;	
 		} else {
 			return false;
@@ -39,9 +39,9 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	}
 	/**Metodo para excluir um arbitro existente no banco de dados com base no index do mesmo**/
 	static public boolean excluir(int num) {
-		if (num <= tamanhoLista-1 && num >= 0) {
+		if (num <= arbitros.size()-1 && num >= 0) {
 			arbitros.remove(num);
-			tamanhoLista--;
+
 			return true;
 		} else {
 			return false;
@@ -63,7 +63,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	}
 	/**Metodo para retornar um arbitro com base em um numero dado para procurar no banco de dados**/
 	static public Arbitro getOneArbitro(int num) {
-		if (num > tamanhoLista-1 || num < 0) {
+		if (num > arbitros.size() - 1 || num < 0) {
 			return null;
 		}else {
 			//System.out.println("\nO numero esta fora da lista!\n");
@@ -93,6 +93,10 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 			}
 		}
 		return false;
+	}
+	
+	public static List<Arbitro> listaArbitros(){
+		return arbitros;
 	}
 	
 	public static void resetarLista() {

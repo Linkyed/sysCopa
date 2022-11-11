@@ -1,8 +1,12 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import model.Arbitro;
+import model.ArbitroDAO;
 import model.Funcoes;
 import model.GrupoPrimeiraFase;
 import model.Jogador;
@@ -185,6 +189,20 @@ public class MainPartida {
 	public static void editarLugar(Partida partida) {
 		String lugarString = Funcoes.entradaString("Digite o nome do Local da partida: ", true);
 		PartidaDAO.editarLocal(lugarString, partida);
+	}
+
+	public static void editarArbitros(Partida partida) {
+		List<Arbitro> arbitros = new ArrayList<>();
+		int numArbitroPartida = Funcoes.entradaIntRanger("Digite o número de arbitros na partida: ", 1,
+				ArbitroDAO.quantidadeArbitro());
+		ArbitroDAO.listar();
+		
+		for (int i = 0; i < numArbitroPartida; i++) {
+			int quantArb = Funcoes.entradaIntRanger("Digite o número do arbitro "+(i+1)+"° arbitro: ", 0,
+					ArbitroDAO.quantidadeArbitro() - 1);
+			arbitros.add(ArbitroDAO.listaArbitros().get(quantArb));
+		}
+		PartidaDAO.editarArbitros(arbitros, partida);
 	}
 
 	public static void excluirPartida() {
