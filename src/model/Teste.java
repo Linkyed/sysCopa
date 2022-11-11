@@ -85,6 +85,7 @@ public class Teste {
 		
 		SelecaoDAO.listar();
 		MainPartida.criarPrimeiraFase();
+		PartidaDAO.listar();
 		//GrupoPrimeiraFase.listarTodosGrupos();
 		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
@@ -102,6 +103,7 @@ public class Teste {
 		System.out.println(PartidaDAO.listaPartidas.get(36));
 		
 		SelecaoDAO.inserir(selecao25);
+		SelecaoDAO.inserir(selecao26);
 		Jogador jogador = new Jogador("Matias Raiten", selecao25,1);
 		JogadorDAO.inserir(jogador, selecao25, false);
 		Jogador jogador1 = new Jogador("Matias Binnotom", selecao25,1);
@@ -123,13 +125,13 @@ public class Teste {
 		Jogador jogador9 = new Jogador("Matias Binnotoj", selecao25,1);
 		JogadorDAO.inserir(jogador9, selecao25, false);
 		Jogador jogador10 = new Jogador("Matias Binnotoz", selecao25,1);
-		JogadorDAO.inserir(jogador10, selecao25, false);
+		JogadorDAO.inserir(jogador10, selecao26, false);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
-		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36),true);
+		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.listaGrupoString("G");
 		System.out.println("Gols"+ jogador.getGolmarcado());
 		System.out.println(PartidaDAO.listaPartidas.get(36).getGolSelecao1());
-		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36),false);
+		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.listaGrupoString("G");
 		
 		System.out.println(PartidaDAO.listaPartidas.get(36).getGolSelecao1());
@@ -171,10 +173,10 @@ public class Teste {
 		
 		MainPartida.excluirPartida();
 		GrupoPrimeiraFase.listaGrupoString("G");
-		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36),true);
+		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.listaGrupoString("G");
 		System.out.println("Gols "+ jogador.getGolmarcado());
-	
+		
 	}
 
 }

@@ -158,7 +158,7 @@ public class PartidaDAO {
 			distribuirCartaoVermelho(jogasMap, partida, numSelecao);
 			return true;
 		} else if (numSelecao == 2) {
-			diminuirCartaoAmarelo(partida.getCartaoVermelhoSelecao1());
+			diminuirCartaoVermelho(partida.getCartaoVermelhoSelecao2());
 			distribuirCartaoVermelho(jogasMap, partida, numSelecao);
 			return true;
 		}

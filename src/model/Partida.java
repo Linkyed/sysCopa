@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Partida {
+	private static int id = 1000;
 	private boolean status = false;
 	private String codigoPartida;
 	private Integer dia;
@@ -29,9 +30,10 @@ public class Partida {
 	private List<Arbitro> listaArbitro = new ArrayList<>();
 
 	public Partida(Selecao selecao1, Selecao selecao2) {
-
 		this.selecao1 = selecao1;
 		this.selecao2 = selecao2;
+		this.codigoPartida = Integer.toString(id);
+		id+=23;
 
 	}
 
@@ -138,7 +140,7 @@ public class Partida {
 
 	@Override
 	public String toString() {
-		return selecao1.getNome() + " x " + selecao2.getNome();
+		return selecao1.getNome() + " x " + selecao2.getNome() + " - " + codigoPartida;
 	}
 
 	public Selecao getResultadoSelecao() {

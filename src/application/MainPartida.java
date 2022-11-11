@@ -5,20 +5,20 @@ import java.util.Map;
 
 import model.Funcoes;
 import model.GrupoPrimeiraFase;
-import model.SelecaoDAO;
-import model.Selecao;
 import model.Jogador;
 import model.Partida;
 import model.PartidaDAO;
 
 public class MainPartida {
+
 	public static void criarPrimeiraFase() {
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		GrupoPrimeiraFase.listarTodosGrupos();
 
 	}
 
-	public static void editarGols(Partida partida, boolean verificaoAddPonto) {
+	public static void editarGols(Partida partida) {
+		PartidaDAO.alteracaoDeStatusPartida(true, partida);
 		Map<Jogador, Integer> jogadorGolsMap = new HashMap<>();
 		int golSelecao1 = Funcoes
 				.entradaIntRanger("Digite o número de gols da Seleção |" + partida.getSelecao1() + "| : ", 0);
@@ -28,8 +28,8 @@ public class MainPartida {
 			cont++;
 		}
 		for (int i = 0; i < golSelecao1; i++) {
-			int numJogador = Funcoes.entradaIntRanger("Ditige o número do jogador que marcou o " + i + 1 + "° gol: ", 1,
-					11);
+			int numJogador = Funcoes.entradaIntRanger("Ditige o número do jogador que marcou o " + (i + 1) + "° gol: ",
+					1, 11);
 			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
 			if (jogadorGolsMap.containsKey(modeloJogador)) {
 				int golJogador = jogadorGolsMap.get(modeloJogador);
@@ -39,11 +39,152 @@ public class MainPartida {
 			}
 		}
 		PartidaDAO.editarGol(partida, jogadorGolsMap, 1);
-		if (verificaoAddPonto == false) {
-			GrupoPrimeiraFase.definirPontos(partida, false);
+
+		Map<Jogador, Integer> jogadorGolsMap2 = new HashMap<>();
+		int golSelecao2 = Funcoes
+				.entradaIntRanger("Digite o número de gols da Seleção |" + partida.getSelecao2() + "| : ", 0);
+		int cont2 = 1;
+		for (Jogador jogador : partida.getSelecao2().getJogadores()) {
+			System.out.println("[" + cont2 + "]- " + jogador);
+			cont2++;
 		}
+		for (int i = 0; i < golSelecao2; i++) {
+			int numJogador = Funcoes.entradaIntRanger("Ditige o número do jogador que marcou o " + (i + 1) + "° gol: ",
+					1, 11);
+			Jogador modeloJogador = partida.getSelecao2().getJogadores().get(numJogador - 1);
+			if (jogadorGolsMap2.containsKey(modeloJogador)) {
+				int golJogador = jogadorGolsMap2.get(modeloJogador);
+				jogadorGolsMap2.put(modeloJogador, golJogador + 1);
+			} else {
+				jogadorGolsMap2.put(modeloJogador, 1);
+			}
+		}
+		PartidaDAO.editarGol(partida, jogadorGolsMap2, 2);
+
 		GrupoPrimeiraFase.definirPontos(partida, true);
 
+	}
+
+	public static void editarCartaoAmarelo(Partida partida) {
+		PartidaDAO.alteracaoDeStatusPartida(true, partida);
+		Map<Jogador, Integer> jogadorCartaoAmarelo1 = new HashMap<>();
+		int cartAmareloSelecao1 = Funcoes.entradaIntRanger(
+				"Digite o número de Cartões Amarelo da Seleção |" + partida.getSelecao1() + "| : ", 0);
+		int cont = 1;
+		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+			System.out.println("[" + cont + "]- " + jogador);
+			cont++;
+		}
+		for (int i = 0; i < cartAmareloSelecao1; i++) {
+			int numJogador = Funcoes.entradaIntRanger(
+					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão Amarelo: ", 1, 11);
+			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
+			if (jogadorCartaoAmarelo1.containsKey(modeloJogador)) {
+				int cartAmareloJogador = jogadorCartaoAmarelo1.get(modeloJogador);
+				jogadorCartaoAmarelo1.put(modeloJogador, cartAmareloJogador + 1);
+			} else {
+				jogadorCartaoAmarelo1.put(modeloJogador, 1);
+			}
+		}
+		PartidaDAO.editarCartAmarelo(partida, jogadorCartaoAmarelo1, 1);
+
+		Map<Jogador, Integer> jogadorCartaoAmarelo2 = new HashMap<>();
+		int cartAmareloSelecao2 = Funcoes.entradaIntRanger(
+				"Digite o número de Cartões Amarelo da Seleção |" + partida.getSelecao1() + "| : ", 0);
+		int cont2 = 1;
+		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+			System.out.println("[" + cont2 + "]- " + jogador);
+			cont2++;
+		}
+		for (int i = 0; i < cartAmareloSelecao2; i++) {
+			int numJogador = Funcoes.entradaIntRanger(
+					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão Amarelo: ", 1, 11);
+			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
+			if (jogadorCartaoAmarelo2.containsKey(modeloJogador)) {
+				int cartAmareloJogador = jogadorCartaoAmarelo2.get(modeloJogador);
+				jogadorCartaoAmarelo2.put(modeloJogador, cartAmareloJogador + 1);
+			} else {
+				jogadorCartaoAmarelo2.put(modeloJogador, 1);
+			}
+		}
+		PartidaDAO.editarCartAmarelo(partida, jogadorCartaoAmarelo2, 2);
+
+	}
+
+	public static void editarCartaoVermelho(Partida partida) {
+		PartidaDAO.alteracaoDeStatusPartida(true, partida);
+		Map<Jogador, Integer> jogadorCartaoVermelho1 = new HashMap<>();
+		int cartVermelhoSelecao1 = Funcoes.entradaIntRanger(
+				"Digite o número de Cartões Vermelho da Seleção |" + partida.getSelecao1() + "| : ", 0);
+		int cont = 1;
+		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+			System.out.println("[" + cont + "]- " + jogador);
+			cont++;
+		}
+		for (int i = 0; i < cartVermelhoSelecao1; i++) {
+			int numJogador = Funcoes.entradaIntRanger(
+					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão vermelho: ", 1, 11);
+			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
+			if (jogadorCartaoVermelho1.containsKey(modeloJogador)) {
+				int cartVermelhoJogador = jogadorCartaoVermelho1.get(modeloJogador);
+				jogadorCartaoVermelho1.put(modeloJogador, cartVermelhoJogador + 1);
+			} else {
+				jogadorCartaoVermelho1.put(modeloJogador, 1);
+			}
+		}
+		PartidaDAO.editarCartVermelho(partida, jogadorCartaoVermelho1, 1);
+
+		Map<Jogador, Integer> jogadorCartaoVermelho2 = new HashMap<>();
+		int cartVermelhoSelecao2 = Funcoes.entradaIntRanger(
+				"Digite o número de Cartões Vermelho da Seleção |" + partida.getSelecao1() + "| : ", 0);
+		int cont2 = 1;
+		for (Jogador jogador : partida.getSelecao1().getJogadores()) {
+			System.out.println("[" + cont2 + "]- " + jogador);
+			cont2++;
+		}
+		for (int i = 0; i < cartVermelhoSelecao2; i++) {
+			int numJogador = Funcoes.entradaIntRanger(
+					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão vermelho: ", 1, 11);
+			Jogador modeloJogador = partida.getSelecao1().getJogadores().get(numJogador - 1);
+			if (jogadorCartaoVermelho2.containsKey(modeloJogador)) {
+				int cartVermelhoJogador = jogadorCartaoVermelho2.get(modeloJogador);
+				jogadorCartaoVermelho2.put(modeloJogador, cartVermelhoJogador + 1);
+			} else {
+				jogadorCartaoVermelho2.put(modeloJogador, 1);
+			}
+		}
+		PartidaDAO.editarCartVermelho(partida, jogadorCartaoVermelho2, 2);
+
+	}
+
+	public static void editarData(Partida partida) {
+		int ano = Funcoes.entradaIntRanger("Digite o Ano da Copa do mundo: ", 0);
+		PartidaDAO.editarAno(ano);
+		int mes = Funcoes.entradaIntRanger("Digite o número do mês [1-12]: ", 1, 12);
+		PartidaDAO.editarMes(mes, partida);
+		int inicio = 1;
+		int fim = 0;
+		if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+			fim = 31;
+		} else if (mes == 2) {
+			fim = 29;
+		} else {
+			fim = 30;
+		}
+		int dia = Funcoes.entradaIntRanger("Digite o número do dia: ", inicio, fim);
+		PartidaDAO.editarDia(dia, partida);
+
+	}
+
+	public static void editarHoraMinuto(Partida partida) {
+		int hora = Funcoes.entradaIntRanger("Digite o horario da partida: ", 0, 23);
+		int minuto = Funcoes.entradaIntRanger("Digite o minuto da partida", 0, 59);
+		PartidaDAO.editarHorario(hora, minuto, partida);
+	}
+
+	public static void editarLugar(Partida partida) {
+		String lugarString = Funcoes.entradaString("Digite o nome do Local da partida: ", true);
+		PartidaDAO.editarLocal(lugarString, partida);
 	}
 
 	public static void excluirPartida() {
