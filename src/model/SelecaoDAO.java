@@ -150,17 +150,6 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return contador;
 	}
 
-	public static int getQuantidadeGols(Selecao selecao) {
-		return selecao.getGolSelecao();
-	}
-
-	public static boolean editarGolsSelecao(Selecao selecao, int gols) {
-		if (gols > 0) {
-			selecao.setGolSelecao(gols);
-			return true;
-		}
-		return false;
-	}
 	
 	public static void adicionarPartidas(Partida partida,Selecao selecao) {
 		selecao.getListaPartdasList().add(partida);

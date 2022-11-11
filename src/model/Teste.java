@@ -83,10 +83,10 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
 		
-	/*
-		GrupoPrimeiraFase.organizadorTodasPartidas();
+		SelecaoDAO.listar();
+		MainPartida.criarPrimeiraFase();
 		//GrupoPrimeiraFase.listarTodosGrupos();
-		PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
+		/*PartidaDAO.listaPartidas.get(36).setGolSelecao1(2);
 		PartidaDAO.listaPartidas.get(36).setGolSelecao2(0);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
 		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(36),true);
@@ -97,17 +97,11 @@ public class Teste {
 		PartidaDAO.listaPartidas.get(38).setGolSelecao1(8);
 		PartidaDAO.listaPartidas.get(38).setGolSelecao2(1);
 		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(38));
-		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);
-		GrupoPrimeiraFase.listaGrupoString("G");
-
-		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
-		TecnicoDAO.inserir(tecnico);
-		Tecnico tecnico1 = new Tecnico("jose joão", selecao3);
-		TecnicoDAO.inserir(tecnico1);
-		Arbitro arbitro = new Arbitro("Josias Malafaia");
-		ArbitroDAO.inserir(arbitro);
+		GrupoPrimeiraFase.definirPontos(PartidaDAO.listaPartidas.get(38),true);*/
 		
+		System.out.println(PartidaDAO.listaPartidas.get(36));
 		
+		SelecaoDAO.inserir(selecao25);
 		Jogador jogador = new Jogador("Matias Raiten", selecao25,1);
 		JogadorDAO.inserir(jogador, selecao25, false);
 		Jogador jogador1 = new Jogador("Matias Binnotom", selecao25,1);
@@ -130,9 +124,27 @@ public class Teste {
 		JogadorDAO.inserir(jogador9, selecao25, false);
 		Jogador jogador10 = new Jogador("Matias Binnotoz", selecao25,1);
 		JogadorDAO.inserir(jogador10, selecao25, false);
+		PartidaDAO.alteracaoDeStatusPartida(true, PartidaDAO.listaPartidas.get(36));
+		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36),true);
+		GrupoPrimeiraFase.listaGrupoString("G");
+		System.out.println("Gols"+ jogador.getGolmarcado());
+		System.out.println(PartidaDAO.listaPartidas.get(36).getGolSelecao1());
+		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36),false);
+		GrupoPrimeiraFase.listaGrupoString("G");
+		
+		System.out.println(PartidaDAO.listaPartidas.get(36).getGolSelecao1());
+		/*
+		Tecnico tecnico = new Tecnico("jose lucas", selecao1);
+		TecnicoDAO.inserir(tecnico);
+		Tecnico tecnico1 = new Tecnico("jose joão", selecao3);
+		TecnicoDAO.inserir(tecnico1);
+		Arbitro arbitro = new Arbitro("Josias Malafaia");
+		ArbitroDAO.inserir(arbitro);
+		
+		
+		
 		
 
-		
 		Map<Jogador, Integer> jogasMap = new HashMap<Jogador, Integer>();
 		jogasMap.put(jogador3, 2);
 		jogasMap.put(jogador2, 2);
@@ -144,19 +156,24 @@ public class Teste {
 		PartidaDAO.editarGol(PartidaDAO.listaPartidas.get(36),jogasMap1,1);
 
 		SelecaoDAO.listarJogadors();
+		*/
 		//MainArbitro.inserirArbitro();
 		//MainArbitro.editarArbitro();
 		//MainArbitro.excluirArbitro();
 		//System.out.println(Pesquisa.buscarSelecao());
 		
 
-		*/
+		
 		
 		//ArbitroDAO.listar();
 		
 		
-		MainPartida.criarPrimeiraFase();
+		
 		MainPartida.excluirPartida();
+		GrupoPrimeiraFase.listaGrupoString("G");
+		MainPartida.editarGols(PartidaDAO.listaPartidas.get(36),true);
+		GrupoPrimeiraFase.listaGrupoString("G");
+		System.out.println("Gols "+ jogador.getGolmarcado());
 	
 	}
 
