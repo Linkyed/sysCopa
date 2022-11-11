@@ -84,16 +84,7 @@ public class SelecaoDAOTest {
 		assertEquals(4, SelecaoDAO.selecoesSemTecnico());
 		SelecaoDAO.resetarLista();
 	}
-	@Test
-	public void editarGolsSelecaoTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
-		SelecaoDAO.editarGolsSelecao(selecao0, 3);
-		assertEquals(3, SelecaoDAO.getQuantidadeGols(selecao0));
-		SelecaoDAO.resetarLista();
-	}
+	
 	@Test
 	public void getSelecaoNomeTest() {
 		SelecaoDAO.inserir(selecao0);
