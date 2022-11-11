@@ -33,7 +33,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 11;
 			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
-			if (selecao_Modelo.getTamanho() <= tamanho_Max && !todos_Jogadores.contains(jogador)) {
+			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
 				if (mensagem) {
@@ -264,7 +264,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @return true || false
 	 */
 	public static boolean excluir(int posicao) {
-		if (getQuantidadeJogadores() > 0) {
+		if (getQuantidadeJogadores() > 0 && (posicao >= 0 && posicao < todos_Jogadores.size())) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
 			Selecao selecao_modelo = SelecaoDAO.getSelecaoPorSelecao(modelo_Jogador.getSelecao());
 			selecao_modelo.removerJogador(modelo_Jogador);
@@ -369,5 +369,18 @@ public class JogadorDAO implements JogadorDAOInterface{
 			}
 		}
 		return listaJogadores;
+	}
+	
+	public static void resetarLista() {
+		todos_Jogadores.clear();
+		SelecaoDAO.resetarLista();
+	}
+	
+	public static Jogador getOneJogador(int num) {
+		if (num >= 0 && num < todos_Jogadores.size()) {
+			return todos_Jogadores.get(num);
+		} else {
+			return null;
+		}
 	}
 }
