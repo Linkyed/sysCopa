@@ -1,8 +1,13 @@
-package model;
+package TestesDeClasse;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import model.Jogador;
+import model.JogadorDAO;
+import model.Selecao;
+import model.SelecaoDAO;
 
 public class JogadorDAOTest {
 	Selecao selecao0 = new Selecao("Brasil");
