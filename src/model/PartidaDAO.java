@@ -376,4 +376,15 @@ public class PartidaDAO {
 	public static boolean statusAtuaisPartidas(Partida partida) {
 		return partida.getStatus();
 	}
+	
+	public static List<Partida> getPartidaData(int dia, int mes){
+		List<Partida> lista = new ArrayList<Partida>();
+		for (Partida partida: listaPartidas) {
+			if ((partida.getDia().equals(dia) && partida.getMes().equals(mes)) && partida.getStatus()) {
+				lista.add(partida);
+			}
+		}
+		return lista;
+	}
+
 }

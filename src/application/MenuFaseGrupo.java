@@ -4,6 +4,7 @@ import model.Funcoes;
 import model.GrupoPrimeiraFase;
 import model.Partida;
 import model.PartidaDAO;
+import model.Pesquisa;
 import model.SelecaoDAO;
 
 public class MenuFaseGrupo {
@@ -74,6 +75,20 @@ public class MenuFaseGrupo {
 		System.out.println();
 	}
 
+	private static void sistemaDePesquisa() {
+		int escolha = Funcoes.entradaIntRanger(
+				"[1] Pesquisar por uma seleção\n[2] Pesquisar por uma pessoa\n[3] Pesquisar por uma partida\n"
+				+ "Digite o numero relacionado uma forma de pesquisa: ",
+				1, 3);
+		if (escolha == 1) {
+			System.out.println(Pesquisa.buscarSelecao());
+		} else if (escolha == 2) {
+			System.out.println(Pesquisa.buscarPessoa());
+		} else if (escolha == 3) {
+			System.out.println(Pesquisa.buscarPartida());
+		}
+	}
+	
 	public static void MenuPrincipal() {
 		System.out.println("\n=-=-=-=-=--| Bem Vindo a Copa do mundo |=-=-=-=-=--\n");
 		MainPartida.criarPrimeiraFase();
@@ -81,7 +96,8 @@ public class MenuFaseGrupo {
 			int escolha = Funcoes.entradaIntRanger("Digite:\n[1]- Para Cadastrar dados de uma partida\n"
 					+ "[2]- Para exibir a pontuação de um grupo\n" + "[3]- Para exibir todos os grupos\n"
 					+ "[4]- Para exibir os dados dos jogadores de uma seleção\n"
-					+ "[5]- Menu de edições de partidas realizadas\n[6]- Excluir os dados de uma partida\n[7]- Sair do Programa\nEscolha: ",
+					+ "[5]- Menu de edições de partidas realizadas\n[6]- Excluir os dados de uma partida\n[7]- Pesquisar Partida\n"
+					+ "[8] Sair do Programa\nEscolha: ",
 					1, 7);
 			if (escolha == 1) {
 				Partida partida = PartidaDAO.partidaSemRealizar();
@@ -143,10 +159,12 @@ public class MenuFaseGrupo {
 			} else if (escolha == 6) {
 				MainPartida.excluirPartida();
 			} else if (escolha == 7) {
+				sistemaDePesquisa();
+			} else if (escolha == 8){
 				System.out.println("Fim do Programa!");
 				break;
 			} else {
-				System.out.println("Número fora do range!");
+				System.out.println("Número fora do range!");				
 			}
 		}
 
