@@ -37,6 +37,12 @@ public class GrupoPrimeiraFase {
 		}
 		return null;
 	}
+	
+	public static int pontuacaoSelecao(Selecao selecao) {
+		int pontos = selecionarGrupo(selecao).get(selecao);
+		System.out.println("ds---"+ pontos);
+		return pontos;
+	}
 
 	public static boolean adicionarSelecao(String grupo, Selecao selecao) {
 		if (grupo.equalsIgnoreCase("A") && grupoA.size() < 5) {
@@ -122,6 +128,7 @@ public class GrupoPrimeiraFase {
 				vitoria = 3;
 				empate = 1;
 			} else {
+				
 				vitoria = -3;
 				empate = -1;
 			}
