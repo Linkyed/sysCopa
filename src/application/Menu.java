@@ -11,11 +11,12 @@ import model.GrupoPrimeiraFase;
 
 public class Menu {
 
-	public static void escolhaPrincipal() {
+	public static void MenuPrincipal() {
 		System.out.println("Bem vindo ao SysCopa, agora será necesario que todas as seleções,"
 				+ "tecnicos, jogadores e arbitros\nsejam adicionados antes das simulações das partidas acontecerem!\n");
 
 		int escolha = 0;
+
 		int quantSelecoes = 32;
 		while (SelecaoDAO.quantidadeSelecoes() < quantSelecoes) {
 			criarSelecaoCompleta();
@@ -39,33 +40,37 @@ public class Menu {
 			}
 			escolha = 0;
 		}
-
-		escolha = Funcoes.entradaIntRanger("[1] Inserir um(a) nova(o) Seleção, Tecnico, Jogador ou Arbitro\n"
-				+ "[2] Editar um(a) Seleção, Tecnico, Jogador ou Arbitro\n"
-				+ "[3] Excluir um(a) Seleção, Tecnico, Jogador ou Arbitro\n"
-				+ "[4] Listar as(os) Seleção, Tecnico, Jogador ou Arbitro\n" + "[5] Fazer pesquisa por nome\n"
-				+ "Digite o numero relacionado a uma das opções acima: ", 1, 5);
-
-		System.out.println();
-
-		if (escolha == 1) {
-			insercaoObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
-		} else if (escolha == 2) {
-			edicaoObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
-		} else if (escolha == 3) {
-			exclusaoObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
-		} else if (escolha == 4) {
-			mostrarObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
-		} else if (escolha == 5) {
-			sistemaDePesquisa();
+		
+		int quantArbitros = Funcoes.entradaIntRanger("(Só sera aceitos numeros maiores que 1) Digite quantos arbitros deseja inserir: ", 1);
+		for (int i = 0; i < quantArbitros; i++) {
+			MainArbitro.inserirArbitro();
 		}
-
+		
+		while (escolha != 5) {
+			escolha = Funcoes.entradaIntRanger("[1] Editar um(a) Seleção, Tecnico, Jogador ou Arbitro\n"
+					+ "[2] Excluir um(a) Seleção, Tecnico, Jogador ou Arbitro\n"
+					+ "[3] Listar as(os) Seleção, Tecnico, Jogador ou Arbitro\n" + "[4] Fazer pesquisa por nome\n"
+					+ "[5] Simular Partidas"
+					+ "Digite o numero relacionado a uma das opções acima: ", 1, 5);
+			
+			System.out.println();
+			
+			if (escolha == 1) {
+				edicaoObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
+			} else if (escolha == 2) {
+				exclusaoObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
+			} else if (escolha == 3) {
+				mostrarObjetos("[1] Selecao\n[2] Tecnico\n[3] Jogador\n[4] Arbitro", 1, 4);
+			} else if (escolha == 4) {
+				sistemaDePesquisa();
+			}
+		}
 	}
 
 	private static void criarSelecaoCompleta() {
 		Selecao selecao = MainSelecao.inserirSelecao();
 		MainTecnico.inserirTecnico(selecao);
-		int tamanhoTime = 2;
+		int tamanhoTime = 11;
 
 		while (selecao.getJogadores().size() < tamanhoTime) {
 			MainJogador.inserirJogador(selecao);
@@ -89,6 +94,23 @@ public class Menu {
 			letraGrupo = Funcoes.entradaLetraGrupo("Digite a Letra do grupo que a seleção pertence [A-H]: ", true);
 		}
 		GrupoPrimeiraFase.adicionarSelecao(letraGrupo, selecao);
+	}
+	
+	private static void criarSelecaoCompleta(String letra) {
+		Selecao selecao = MainSelecao.inserirSelecao();
+		MainTecnico.inserirTecnico(selecao);
+		int tamanhoTime = 11;
+
+		while (selecao.getJogadores().size() < tamanhoTime) {
+			MainJogador.inserirJogador(selecao);
+			if (selecao.getJogadores().size() == tamanhoTime) {
+				System.out.println("\nA seleção foi completada com sucesso!\n");
+			} else {
+				System.out
+						.println("\nFalta " + (tamanhoTime - selecao.getJogadores().size() + " serem adicionados!\n"));
+			}
+		}
+		GrupoPrimeiraFase.adicionarSelecao(letra, selecao);
 	}
 
 	private static int escolhaDoObjeto(String texto, int menorEscolha, int maiorEscolha) {
@@ -125,13 +147,23 @@ public class Menu {
 	private static int exclusaoObjetos(String texto, int menorEscolha, int maiorEscolha) {
 		int excluir = escolhaDoObjeto(texto, menorEscolha, maiorEscolha);
 		if (excluir == 1) {
-			MainSelecao.excluirSelecao();
+			String letra = MainSelecao.excluirSelecao();
+			if (letra != "0") {
+				criarSelecaoCompleta(letra);				
+			}
 		} else if (excluir == 2) {
-			MainTecnico.excluirTecnico();
+			Selecao selecao = MainTecnico.excluirTecnico();
+			if (selecao != null) {
+				MainTecnico.inserirTecnico(selecao);
+			}
 		} else if (excluir == 3) {
-			MainJogador.excluirJogador();
+			Selecao selecao = MainJogador.excluirJogador();
+			if (selecao != null) {
+				MainJogador.inserirJogador(selecao);
+			}
 		} else {
 			MainArbitro.excluirArbitro();
+			MainArbitro.inserirArbitro();
 		}
 		return excluir;
 	}

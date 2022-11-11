@@ -6,6 +6,7 @@ import java.util.List;
 import model.Funcoes;
 import model.Jogador;
 import model.JogadorDAO;
+import model.JogadorDAOTest;
 import model.Selecao;
 import model.SelecaoDAO;
 
@@ -69,17 +70,24 @@ public class MainJogador {
 		}
 	}
 	
-	public static void excluirJogador() {
+	public static Selecao excluirJogador() {
 		JogadorDAO.listar();
+		Selecao selecao = null;
 		if(JogadorDAO.getQuantidadeJogadores()> 0) {
 			int escolhaJogador = Funcoes.entradaIntRanger("Digite o numero correspondete a um jogador para ser excluido: ", 0, JogadorDAO.getQuantidadeJogadores()-1);
-			if (JogadorDAO.excluir(escolhaJogador)) {
-				System.out.println("\nJogador foi excluido com sucesso!\n");
-			} else {
-				System.out.println("\nO jogador não pode ser excluida, tente novamente!\n");
-			}			
+			selecao = JogadorDAO.getOneJogador(escolhaJogador).getSelecao();
+			boolean exclusao = JogadorDAO.excluir(escolhaJogador);
+			while (exclusao == false) {
+				System.out.println("\nO jogador não pode ser excluido, tente novamente!\n");
+				escolhaJogador = Funcoes.entradaIntRanger("Digite o numero correspondete a um jogador para ser excluido: ", 0, JogadorDAO.getQuantidadeJogadores()-1);
+				selecao = JogadorDAO.getOneJogador(escolhaJogador).getSelecao();
+				exclusao = JogadorDAO.excluir(escolhaJogador);
+			} 
+			System.out.println("\nJogador foi excluido com sucesso!\n");
+						
 		} else {
 			System.out.println("\nNão existe nenhum jogador para ser excluido!\n");
 		}
+		return selecao;
 	}
 }
