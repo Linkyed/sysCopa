@@ -117,4 +117,31 @@ public class Pesquisa {
 		"\n";
 	}
 	
+	public static String buscarPartida() {
+		int dia = Funcoes.entradaIntRanger("Digite o dia da partida: ", 1, 31);
+		int mes = Funcoes.entradaIntRanger("Digite o mes da partida: ", 1, 12);
+		List<Partida> listaBuscada = PartidaDAO.getPartidaData(dia, mes);
+		int partidaEscolhida = 0;
+		if (listaBuscada.size() == 0) {
+			return "\nNenhuma partida na data foi encontrada, tente outro outra!\n";
+		} else if (listaBuscada.size() > 1) {
+			System.out.println();
+			for (Partida partida: listaBuscada) {
+				System.out.println("[" + listaBuscada.indexOf(partida) + "] " + partida.getGolSelecao1()
+				+ " X " + partida.getGolSelecao2() + " (" + partida.getDia() + "/" + partida.getMes() + "/" + partida.getAno() + ")");
+			}
+			partidaEscolhida = Funcoes.entradaIntRanger("Foram achados essas partida no dia " + dia + " e mes " + mes + " , digite o numero para escolher uma delas: ", 
+					0, listaBuscada.size()-1);
+		}
+		String vencedor = "";
+		if (listaBuscada.get(partidaEscolhida).getResultadoSelecao() == null) {
+			vencedor = "A partida foi empatada";
+		} else {
+			vencedor = "Vencedor da partida foi " + listaBuscada.get(partidaEscolhida).getResultadoSelecao();
+		}
+		return  ("%s (%d) X (%d) %s\n"
+				+ "Vencedor: %s").formatted(listaBuscada.get(partidaEscolhida).getSelecao1(), listaBuscada.get(partidaEscolhida).getGolSelecao1(),
+				listaBuscada.get(partidaEscolhida).getGolSelecao2(), listaBuscada.get(partidaEscolhida).getSelecao2(),
+				vencedor);
+	}
 }
