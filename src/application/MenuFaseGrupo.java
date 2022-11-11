@@ -27,6 +27,7 @@ public class MenuFaseGrupo {
 			System.out.println();
 			MainPartida.editarArbitros(partida);
 			System.out.println();
+			System.out.println("Partida realizada com Sucesso!");
 		} else {
 			System.out.println("Erro! A partida já foi feita.\n");
 		}
