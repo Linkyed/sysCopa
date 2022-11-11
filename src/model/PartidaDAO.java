@@ -1,6 +1,5 @@
 package model;
 
-import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
