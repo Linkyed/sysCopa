@@ -32,7 +32,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	/**Metodo para editar um tecnico que já existente no banco de dados**/
 	static public boolean editar(Tecnico tecnico, String nome) {
 
-		if (tecnico.getNome() == nome || nome.isEmpty() == true || nome == null) {
+		if (tecnico.getNome() == nome || nome.isEmpty() == true || nome == null || verificarNome(nome)) {
 			return false;
 		}else {
 			tecnico.setNome(nome);
@@ -115,6 +115,15 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	
 	public static boolean existeTecnico(Tecnico tecnico) {
 		return tecnicos.contains(tecnico);
+	}
+	
+	public static boolean verificarNome(String nome) {
+		for (Tecnico tecnico: tecnicos) {
+			if (tecnico.getNome().equals(nome)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static void resetarLista() {

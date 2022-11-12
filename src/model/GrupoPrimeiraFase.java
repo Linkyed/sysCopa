@@ -61,9 +61,12 @@ public class GrupoPrimeiraFase {
 	}	
 	public static void excluirSelecaoGrupo(Selecao selecao) {
 		Map<Selecao, Integer> grupoMap = selecionarGrupo(selecao);
+		System.out.println("CHEGOU NA HORA + " + grupoMap.size());
 		if(grupoMap != null) {
+			System.out.println("EXCLUIR ? + " + grupoMap.size());
 			grupoMap.remove(selecao);			
 		}
+		System.out.println(grupoMap.containsKey(selecao) + ""+ grupoMap.size());
 	}
 	
 	
@@ -73,26 +76,26 @@ public class GrupoPrimeiraFase {
 	}
 
 	public static boolean adicionarSelecao(String grupo, Selecao selecao) {
-		if (grupo.equalsIgnoreCase("A") && grupoA.size() < 5) {
+		if (grupo.equalsIgnoreCase("A") && grupoA.size() < 4) {
 			grupoA.put(selecao, 0);
-		} else if (grupo.equalsIgnoreCase("B") && grupoB.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("B") && grupoB.size() < 4) {
 			grupoB.put(selecao, 0);
-		} else if (grupo.equalsIgnoreCase("C") && grupoC.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("C") && grupoC.size() < 4) {
 			grupoC.put(selecao, 0);
 
-		} else if (grupo.equalsIgnoreCase("D") && grupoD.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("D") && grupoD.size() < 4) {
 			grupoD.put(selecao, 0);
 
-		} else if (grupo.equalsIgnoreCase("E") && grupoE.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("E") && grupoE.size() < 4) {
 			grupoE.put(selecao, 0);
 
-		} else if (grupo.equalsIgnoreCase("F") && grupoF.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("F") && grupoF.size() < 4) {
 			grupoF.put(selecao, 0);
 
-		} else if (grupo.equalsIgnoreCase("G") && grupoG.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("G") && grupoG.size() < 4) {
 			grupoG.put(selecao, 0);
 
-		} else if (grupo.equalsIgnoreCase("H") && grupoH.size() < 5) {
+		} else if (grupo.equalsIgnoreCase("H") && grupoH.size() < 4) {
 			grupoH.put(selecao, 0);
 
 		} else {
