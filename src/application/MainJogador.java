@@ -10,6 +10,7 @@ import model.Selecao;
 import model.SelecaoDAO;
 
 public class MainJogador {
+	/** Metodo para inserir um jogador com uma seleção pre definida **/
 	public static void inserirJogador(Selecao selecao) {
 		String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do jogador que será inserido: ", true));
 		int posicao = Funcoes.entradaIntRanger("[0] Goleiro\n[1] Lateral direito\n[2] Lateral esquerdo\n"+
@@ -22,6 +23,7 @@ public class MainJogador {
 		}	
 	}	
 	
+	/** Metodo para inserir um jogador sem uma seleção pre definida **/
 	public static void inserirJogador() {
 		if (SelecaoDAO.selecoesComVagaJogador().size() > 0) {
 			String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do jogador que será inserido: ", true));
@@ -43,6 +45,7 @@ public class MainJogador {
 		}
 	}	
 	
+	/** Metodo para editar o nome ou a posição de um jogador **/
 	public static void editarJogador() {
 		JogadorDAO.listar();
 		if (JogadorDAO.getQuantidadeJogadores() > 0) {
@@ -69,6 +72,7 @@ public class MainJogador {
 		}
 	}
 	
+	/** Metodo para excluir um jogador **/
 	public static Selecao excluirJogador() {
 		JogadorDAO.listar();
 		Selecao selecao = null;

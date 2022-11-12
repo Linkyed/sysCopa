@@ -9,6 +9,7 @@ import model.TecnicoDAO;
 
 public class MainTecnico {
 
+	/** Metodo para inserir um tecnico sem uma seleção pre definida **/
 	public static void inserirTecnico() {
 		if (SelecaoDAO.selecoesSemTecnico() > 0) {
 			System.out.println("As seguintes seleções ainda não possuem tecnicos:");
@@ -27,6 +28,7 @@ public class MainTecnico {
 		}
 	}
 	
+	/** Metodo para inserir um tecnico com uma seleção já definida **/
 	public static void inserirTecnico(Selecao selecao) {
 		if (SelecaoDAO.selecoesSemTecnico() > 0) {
 			while (true) {
@@ -42,6 +44,7 @@ public class MainTecnico {
 		}
 	}
 	
+	/** Metodo para editar o nome de um tecnico**/
 	public static void editarTecnico() {
 		TecnicoDAO.listar();
 		if (TecnicoDAO.quantidadeTecnicos() > 0) {
@@ -57,6 +60,7 @@ public class MainTecnico {
 		}
 	}
 	
+	/** Metodo para excluir um tecnico **/
 	public static Selecao excluirTecnico() {
 		TecnicoDAO.listar();
 		Selecao selecao = null;

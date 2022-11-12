@@ -240,7 +240,7 @@ public class MainPartida {
 		for (int i = 0; i < numArbitroPartida; i++) {
 			int quantArb = Funcoes.entradaIntRanger("Digite o número do arbitro " + (i + 1) + "° arbitro: ", 0,
 					ArbitroDAO.quantidadeArbitro() - 1);
-			arbitros.add(ArbitroDAO.listaArbitros().get(quantArb));
+			arbitros.add(ArbitroDAO.getOneArbitro(quantArb));
 		}
 		PartidaDAO.editarArbitros(arbitros, partida);
 	}

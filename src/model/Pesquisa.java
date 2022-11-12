@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Pesquisa {
 
+	/** Metodo para buscar uma seleção com base numa string escrita pelo usuario **/
 	static public String buscarSelecao() {
 		String nomeBusca = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome da seleção que deseja procurar no banco de dados: ", true).strip());
 		List<Selecao> listaBuscada = SelecaoDAO.getSelecaoNome(nomeBusca);
@@ -39,6 +40,7 @@ public class Pesquisa {
 		"\n";
 	}
 	
+	/** Metodo para buscar uma pessoa dentro dos bancos de dados, tendo que escolher entre um arbitro, jogador ou tecnico **/
 	public static String buscarPessoa() {
 		int escolha = Funcoes.entradaIntRanger("[1] Tecnico\n[2] Arbitro\n[3] Jogador\nDigite o numero relacionado uma opção acima para fazer sua busca: ", 1, 3);
 		String nome = "";
@@ -54,6 +56,7 @@ public class Pesquisa {
 		}
 	}
 	
+	/** Metodo para buscar por um tecnico com base numa string **/
 	private static String buscarTecnico(String nome) {
 		List<Tecnico> listaBuscada = TecnicoDAO.getTecnicoNome(nome);
 		int tecnicoEscolhido = 0;
@@ -73,6 +76,7 @@ public class Pesquisa {
 		"\n";
 	}	
 	
+	/** Metodo para buscar por um Arbitro com base numa string **/
 	private static String buscarArbitro(String nome) {
 		List<Arbitro> listaBuscada = ArbitroDAO.getArbitroNome(nome);
 		int arbitroEscolhido = 0;
@@ -92,6 +96,7 @@ public class Pesquisa {
 		"\n";
 	}
 	
+	/** Metodo para buscar por um jogador com base numa string **/
 	private static String buscarJogador(String nome) {
 		List<Jogador> listaBuscada = JogadorDAO.getJogadorNome(nome);
 		int jogadorEscolhido = 0;
@@ -117,6 +122,7 @@ public class Pesquisa {
 		"\n";
 	}
 	
+	/** Metodo para buscar por uma partida com base na data de acontecimento**/
 	public static String buscarPartida() {
 		int dia = Funcoes.entradaIntRanger("Digite o dia da partida: ", 1, 31);
 		int mes = Funcoes.entradaIntRanger("Digite o mes da partida: ", 1, 12);
