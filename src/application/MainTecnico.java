@@ -37,7 +37,8 @@ public class MainTecnico {
 				if (TecnicoDAO.inserir(tecnico)) {
 					System.out.println("\nTecnico inserido com sucesso!\n");
 					break;
-				}				
+				}
+				System.out.println("\nTecnico já existe na lista, tente outro!\n");
 			}
 		} else {
 			System.out.println("\nUm tecnico ainda não pode ser inserido pois ou não existem seleções ou não existe vagas para tecnicos disponiveis!\n");
@@ -49,11 +50,15 @@ public class MainTecnico {
 		TecnicoDAO.listar();
 		if (TecnicoDAO.quantidadeTecnicos() > 0) {
 			int escolhaTecnico = Funcoes.entradaIntRanger("Digite o numero relacionado a um tecnico para ser editado: ", 0, TecnicoDAO.quantidadeTecnicos()-1);
-			String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do tecnico que será inserido: ", true));
-			if (TecnicoDAO.editar(TecnicoDAO.getOneTecnico(escolhaTecnico), nome)) {
-				System.out.println("\nNome do tecnico editado com sucesso!\n");
-			} else {
-				System.out.println("\nNome não editado, ou o tecnico já possui o nome igual ao novo ou nada foi digitado!\n");
+			while (true) {
+				String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do tecnico que será editado: ", true));
+				if (TecnicoDAO.editar(TecnicoDAO.getOneTecnico(escolhaTecnico), nome)) {
+					System.out.println("\nNome do tecnico editado com sucesso!\n");
+					break;
+				} else {
+					System.out.println("\nNome não editado, ou o tecnico já possui o nome igual ao novo ou nada foi digitado!\n");
+				}
+				
 			}
 		} else {
 			System.out.println("\nNão existe nenhum tecnico para ser editado!\n");
