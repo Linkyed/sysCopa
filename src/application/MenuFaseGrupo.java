@@ -7,8 +7,14 @@ import model.PartidaDAO;
 import model.Pesquisa;
 import model.SelecaoDAO;
 
+/**
+ * Classe para produzir o menu da fase de grupos
+ **/
 public class MenuFaseGrupo {
 
+	/**
+	 * Função para fazer o preenchimento dos dados da partida
+	 **/
 	private static void definirPartida(Partida partida) {
 		if (PartidaDAO.statusAtuaisPartidas(partida) == false) {
 			PartidaDAO.alteracaoDeStatusPartida(true, partida);
@@ -33,6 +39,9 @@ public class MenuFaseGrupo {
 		}
 	}
 
+	/**
+	 * Função para editar os gols da partida
+	 **/
 	private static void editarGols(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		GrupoPrimeiraFase.definirPontos(partida, false);
@@ -40,42 +49,63 @@ public class MenuFaseGrupo {
 		System.out.println();
 	}
 
+	/**
+	 * Função para editar os cartões Amarelo da partida
+	 **/
 	private static void editarCartaoAm(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarCartaoAmarelo(partida);
 		System.out.println();
 	}
 
+	/**
+	 * Função para editar os cartões Vermelho da partida
+	 **/
 	private static void editarCartVer(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarCartaoVermelho(partida);
 		System.out.println();
 	}
 
+	/**
+	 * Função para editar os Arbitros da partida
+	 **/
 	private static void editarArbi(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarArbitros(partida);
 		System.out.println();
 	}
 
+	/**
+	 * Função para editar o horario da partida
+	 **/
 	private static void editarHorarios(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarHoraMinuto(partida);
 		System.out.println();
 	}
 
+	/**
+	 * Função para editar a data da partida
+	 **/
 	private static void editarData(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarData(partida);
 		System.out.println();
 	}
 
+	/**
+	 * Função para editar o lugar da partida
+	 **/
 	private static void editarLugar(Partida partida) {
 		System.out.println("\n| " + partida + " |\n");
 		MainPartida.editarLugar(partida);
 		System.out.println();
 	}
 
+	/**
+	 * Função para Fazer a pesquisa na partida
+	 **/
 	private static void sistemaDePesquisa() {
 		int escolha = Funcoes.entradaIntRanger(
 				"[1] Pesquisar por uma seleção\n[2] Pesquisar por uma pessoa\n[3] Pesquisar por uma partida\n"
@@ -90,6 +120,9 @@ public class MenuFaseGrupo {
 		}
 	}
 
+	/**
+	 * Função Main
+	 **/
 	public static void MenuPrincipal() {
 		System.out.println("\n=-=-=-=-=--| Bem Vindo a Copa do mundo |=-=-=-=-=--\n");
 		MainPartida.criarPrimeiraFase();
@@ -171,6 +204,7 @@ public class MenuFaseGrupo {
 			GrupoPrimeiraFase.listarTodosGrupos();
 			System.out.println("Fim da Fase de Grupos!!!");
 		}
+		Funcoes.fechar();
 
 	}
 

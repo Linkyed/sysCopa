@@ -6,7 +6,6 @@ import java.util.List;
 import model.Funcoes;
 import model.Jogador;
 import model.JogadorDAO;
-import model.JogadorDAOTest;
 import model.Selecao;
 import model.SelecaoDAO;
 

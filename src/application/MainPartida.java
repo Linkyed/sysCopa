@@ -12,14 +12,23 @@ import model.Jogador;
 import model.Partida;
 import model.PartidaDAO;
 
+/** 
+ *  Função complementar de partida
+ *  **/
 public class MainPartida {
 
+	/** 
+	 *  Função que inicializa o processo da formação das partidas do grupo.
+	 *  **/
 	public static void criarPrimeiraFase() {
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 		GrupoPrimeiraFase.listarTodosGrupos();
 
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a edição de gols
+	 *  **/
 	public static void editarGols(Partida partida) {
 		PartidaDAO.alteracaoDeStatusPartida(true, partida);
 		Map<Jogador, Integer> jogadorGolsMap = new HashMap<>();
@@ -72,6 +81,9 @@ public class MainPartida {
 
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a edição de cartões Amarelo
+	 *  **/
 	public static void editarCartaoAmarelo(Partida partida) {
 		PartidaDAO.alteracaoDeStatusPartida(true, partida);
 		Map<Jogador, Integer> jogadorCartaoAmarelo1 = new HashMap<>();
@@ -122,6 +134,9 @@ public class MainPartida {
 
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a edição de cartões Vermelho
+	 *  **/
 	public static void editarCartaoVermelho(Partida partida) {
 		PartidaDAO.alteracaoDeStatusPartida(true, partida);
 		Map<Jogador, Integer> jogadorCartaoVermelho1 = new HashMap<>();
@@ -174,6 +189,9 @@ public class MainPartida {
 
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a edição da Data - Ano/mes/dia
+	 *  **/
 	public static void editarData(Partida partida) {
 		int ano = Funcoes.entradaIntRanger("Digite o Ano da Copa do mundo: ", 0);
 		PartidaDAO.editarAno(ano);
@@ -192,18 +210,27 @@ public class MainPartida {
 		PartidaDAO.editarDia(dia, partida);
 
 	}
-
+	
+	/** 
+	 *  Função para fazer a coleta de dados para a edição do horário - Hora/min
+	 *  **/
 	public static void editarHoraMinuto(Partida partida) {
 		int hora = Funcoes.entradaIntRanger("Digite a hora da partida: ", 0, 23);
 		int minuto = Funcoes.entradaIntRanger("Digite o minuto da partida", 0, 59);
 		PartidaDAO.editarHorario(hora, minuto, partida);
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a edição do lugar da partida
+	 *  **/
 	public static void editarLugar(Partida partida) {
 		String lugarString = Funcoes.entradaString("Digite o nome do Local da partida: ", true);
 		PartidaDAO.editarLocal(lugarString, partida);
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a edição da lista de Arbitros da partida
+	 *  **/
 	public static void editarArbitros(Partida partida) {
 		List<Arbitro> arbitros = new ArrayList<>();
 		int numArbitroPartida = Funcoes.entradaIntRanger("Digite o número de arbitros na partida: ", 1,
@@ -218,6 +245,9 @@ public class MainPartida {
 		PartidaDAO.editarArbitros(arbitros, partida);
 	}
 
+	/** 
+	 *  Função para fazer a coleta de dados para a exclusão dos dados da partida
+	 *  **/
 	public static void excluirPartida() {
 		GrupoPrimeiraFase.listarTodosGrupos();
 		String letraGrupo = Funcoes.entradaLetraGrupo("Digite a Letra do grupo que a seleção pertence [A-H]: ", true);
