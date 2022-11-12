@@ -38,6 +38,7 @@ public class Funcoes {
 		return entradaUsuario;
 	}
 	
+	/**Metodo para mostrar um texto para o usuario e salvar a sua resposta em string com 1 caracter**/
 	public final static String entradaLetraGrupo(String texto, boolean verificacao) {
 		boolean condicao = true;
 		String entradaUsuario = "";

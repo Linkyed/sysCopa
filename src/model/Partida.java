@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**Classe Partida**/
 public class Partida {
 	private static int id = 1000;
 	private boolean status = false;
