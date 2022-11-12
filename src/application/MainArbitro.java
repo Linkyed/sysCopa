@@ -6,6 +6,7 @@ import model.Funcoes;
 
 public class MainArbitro {
 
+	/** Metodo para criar e inserir um arbitro **/
 	public static void inserirArbitro() {
 		String nome = Funcoes.captilizeString(Funcoes.entradaString("Digite o nome do arbitro que será inserido: ", true));
 		Arbitro arbitro = new Arbitro(nome);
@@ -16,6 +17,7 @@ public class MainArbitro {
 		}
 	}
 	
+	/** Metodo para editar o nome de um arbitro **/
 	public static void editarArbitro() {
 		ArbitroDAO.listar();
 		if (ArbitroDAO.quantidadeArbitro() > 0) {
@@ -31,6 +33,7 @@ public class MainArbitro {
 		}
 	}
 	
+	/** Metodo para excluir um arbitro **/
 	public static void excluirArbitro() {
 		ArbitroDAO.listar();
 		if (ArbitroDAO.quantidadeArbitro() > 0) {

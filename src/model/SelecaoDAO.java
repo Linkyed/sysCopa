@@ -156,15 +156,15 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return contador;
 	}
 
-	
+	/** Metodo para adicionar partida em uma determinada seleção **/
 	public static void adicionarPartidas(Partida partida,Selecao selecao) {
 		selecao.getListaPartdasList().add(partida);
 	}
-	
+	/** Metodo para retornar as partidas de uma seleção**/
 	public static List<Partida> listaPartidas(Selecao selecao){
 		return selecao.getListaPartdasList();
 	}
-
+	/** Metodo para retornar uma lista contendo todas as seleções que possuam uma parte de uma string no nome delas **/
 	public static List<Selecao> getSelecaoNome(String nome) {
 		List<Selecao> lista = new ArrayList<Selecao>();
 		for (Selecao selecao: selecoes) {
@@ -175,10 +175,12 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	/** Metodo para resetar a lista de seleções **/
 	public static void resetarLista() {
-		selecoes = new ArrayList<Selecao>();
+		selecoes.clear();;
 	}
 	
+	/** Metodo para retornar as seleções que ainda tem vagas para jogadores **/
 	public static List<Selecao> selecoesComVagaJogador(){
 		List<Selecao> lista = new ArrayList<>();
 		for (Selecao selecao: selecoes) {
@@ -189,6 +191,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	/** Metodo para imprimir todas caracteristicas de uma seleção **/
 	public static void imprimirCaracteristicas(int numSelecao) {
 		selecoes.get(numSelecao).listarJogadores();
 	}

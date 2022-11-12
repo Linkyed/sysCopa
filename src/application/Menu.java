@@ -11,6 +11,8 @@ import model.GrupoPrimeiraFase;
 
 public class Menu {
 
+	/** Menu principal onde o usuario terá que inserir seleções, jogadores, tecnios e arbitros e poderá exlcuir, editar, listar
+	 * e pesquisar pelos mesmos durante o funcionamente, até que seja escolhido partir para a simulação de partidas **/
 	public static void MenuPrincipal() {
 		System.out.println("Bem vindo ao SysCopa, agora será necesario que todas as seleções,"
 				+ "tecnicos, jogadores e arbitros\nsejam adicionados antes das simulações das partidas acontecerem!\n");
@@ -18,6 +20,8 @@ public class Menu {
 		int escolha = 0;
 
 		int quantSelecoes = 32;
+		/** Loop da criação de todas as 32 seleções, criando juntamente o tecnico e os jogadores, e apos a criação
+		 * de uma seleção o usuario podera editar um dos objetos ou então exlcuir uma seleção**/
 		while (SelecaoDAO.quantidadeSelecoes() < quantSelecoes) {
 			criarSelecaoCompleta();
 
@@ -40,12 +44,15 @@ public class Menu {
 			}
 			escolha = 0;
 		}
-		
+		/** Parte onde o usuario ira pre definir quantos arbitros farão parte da copa e ira criar a quantidade
+		 * que ele escolheu **/
 		int quantArbitros = Funcoes.entradaIntRanger("(Só sera aceitos numeros maiores que 1) Digite quantos arbitros deseja inserir: ", 1);
 		for (int i = 0; i < quantArbitros; i++) {
 			MainArbitro.inserirArbitro();
 		}
 		
+		/** Loop onde o usuario podera ficar editando, excluindo e listando jogadores, seleções, arbitros e tecnicos
+		 * até ele ir para a parte de simulação de partida **/
 		while (escolha != 5) {
 			escolha = Funcoes.entradaIntRanger("[1] Editar um(a) Seleção, Tecnico, Jogador ou Arbitro\n"
 					+ "[2] Excluir um(a) Seleção, Tecnico, Jogador ou Arbitro\n"
@@ -67,6 +74,8 @@ public class Menu {
 		}
 	}
 
+	/** Metodo para criar uma seleção inteira, com tecnico, e todos os jogadores de forma sequencial e escolhendo de que
+	 * grupo ela faz parte**/
 	private static void criarSelecaoCompleta() {
 		Selecao selecao = MainSelecao.inserirSelecao();
 		MainTecnico.inserirTecnico(selecao);
@@ -96,6 +105,8 @@ public class Menu {
 		GrupoPrimeiraFase.adicionarSelecao(letraGrupo, selecao);
 	}
 	
+	/** Metodo para criar uma seleção completa, com tecnico e jogadores de forma sequencial porem com um grupo já pre
+	 * definido **/
 	private static void criarSelecaoCompleta(String letra) {
 		Selecao selecao = MainSelecao.inserirSelecao();
 		MainTecnico.inserirTecnico(selecao);
@@ -113,11 +124,13 @@ public class Menu {
 		GrupoPrimeiraFase.adicionarSelecao(letra, selecao);
 	}
 
+	/** Metodo para o usuario escolher que tipo de objeto ele ira escolher para realizar uma determinada ação **/
 	private static int escolhaDoObjeto(String texto, int menorEscolha, int maiorEscolha) {
 		System.out.println(texto);
 		return Funcoes.entradaIntRanger("Escolha um numero relacionado as opções acima: ", menorEscolha, maiorEscolha);
 	}
-
+	
+	/** Metodo para um usuario inserir um jogador, tecnico, arbitro ou seleção **/
 	private static void insercaoObjetos(String texto, int menorEscolha, int maiorEscolha) {
 		int inserir = escolhaDoObjeto(texto, menorEscolha, maiorEscolha);
 		if (inserir == 1) {
@@ -131,6 +144,7 @@ public class Menu {
 		}
 	}
 
+	/** Metodo para um usuario editar um jogador, tecnico, arbitro ou seleção **/
 	private static void edicaoObjetos(String texto, int menorEscolha, int maiorEscolha) {
 		int editar = escolhaDoObjeto(texto, menorEscolha, maiorEscolha);
 		if (editar == 1) {
@@ -144,6 +158,7 @@ public class Menu {
 		}
 	}
 
+	/** Metodo para um usuario excluir um jogador, tecnico, arbitro ou seleção **/
 	private static int exclusaoObjetos(String texto, int menorEscolha, int maiorEscolha) {
 		int excluir = escolhaDoObjeto(texto, menorEscolha, maiorEscolha);
 		if (excluir == 1) {
@@ -168,6 +183,7 @@ public class Menu {
 		return excluir;
 	}
 
+	/** Metodo para um usuario listar um jogador, tecnico, arbitro ou seleção **/
 	private static void mostrarObjetos(String texto, int menorEscolha, int maiorEscolha) {
 		int listar = escolhaDoObjeto(texto, menorEscolha, maiorEscolha);
 		if (listar == 1) {
@@ -184,6 +200,7 @@ public class Menu {
 		}
 	}
 
+	/** Metodo para um usuario pesquisar por um jogador, tecnico, arbitro ou seleção **/
 	private static void sistemaDePesquisa() {
 		int escolha = Funcoes.entradaIntRanger(
 				"[1] Pesquisar por uma seleção\n[2] Pesquisar por uma pessoa\nDigite o numero relacionado uma forma de pesquisa: ",

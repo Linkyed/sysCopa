@@ -335,13 +335,17 @@ public class JogadorDAO implements JogadorDAOInterface{
 		return false;
 
 	}
+	/** Metodo para retorna a quantidades de gol de um jogador **/
 	public static int getQuantidadeGols(Jogador jogador) {
 		return jogador.getGolmarcado();
 	}
 	
+	/** Metodo para retorna a quantidade de cartões amarelo de um jogador **/
 	public static int getQuantidadeCartAmarelo(Jogador jogador) {
 		return jogador.getCartaoAmarelo();
 	}
+	
+	/** Metodo para retorna a quantidade de cartões vermelhos de um jogador **/
 	public static int getQuantidadeCartVermelho(Jogador jogador) {
 		return jogador.getCartaoVermelho();
 	}
@@ -361,6 +365,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 	}
 	
+	/** Metodo para retorna uma lista de jogadores que possuem uma determinada string no nome **/
 	public static List<Jogador> getJogadorNome(String nome) {
 		List<Jogador> listaJogadores = new ArrayList<>();
 		for (Jogador jogador: todos_Jogadores) {
@@ -371,11 +376,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 		return listaJogadores;
 	}
 	
+	/** Metodo para resetar a lista **/
 	public static void resetarLista() {
 		todos_Jogadores.clear();
 		SelecaoDAO.resetarLista();
 	}
 	
+	/** Metodo para retorna um jogador da lista com base em um index **/
 	public static Jogador getOneJogador(int num) {
 		if (num >= 0 && num < todos_Jogadores.size()) {
 			return todos_Jogadores.get(num);

@@ -40,16 +40,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		}
 	}
 	
-	public static boolean editar(Tecnico tecnico, Selecao selecao) {
-		if (selecao.getTecnico() == null) {
-			tecnico.getSelecao().setTecnico(null);
-			tecnico.setSelecao(selecao);
-			selecao.setTecnico(tecnico);
-			return true;			
-		} else {
-			return false;
-		}
-	}
+
 	
 	/**Metodo para excluir um tecnico existente no banco de dados**/
 	static public boolean excluir(int num) {
@@ -94,6 +85,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		return tecnicos.get(tecnicos.indexOf(tecnico));
 	}
 	
+	/** Metodo para retorna um index de um tecnico com base em um tecnico enviado **/
 	static public int getIndexPorTecnico(Tecnico tecnico) {
 		return tecnicos.indexOf(tecnico);
 	}
@@ -103,6 +95,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		return tecnicos.size();
 	}
 	
+	/** Metodo para retornar uma lista de tecnicos que possuem uma determinada string no nome **/
 	public static List<Tecnico> getTecnicoNome(String nome) {
 		List<Tecnico> listaTecnico = new ArrayList<>();
 		for (Tecnico tecnico: tecnicos) {
@@ -113,11 +106,13 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		return listaTecnico;
 	}
 	
+	/** Metodo para verificar se existe um determinado tecnico na lista **/
 	public static boolean existeTecnico(Tecnico tecnico) {
 		return tecnicos.contains(tecnico);
 	}
 	
+	/** Metodo para resetar a lista **/
 	public static void resetarLista() {
-		tecnicos = new ArrayList<Tecnico>();
+		tecnicos.clear();
 	}
 }

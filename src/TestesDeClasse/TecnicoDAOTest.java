@@ -52,17 +52,6 @@ public class TecnicoDAOTest {
 		TecnicoDAO.resetarLista();
 	}
 	@Test
-	public void editarSelecaoTest() {
-		Selecao selecao = new Selecao("A");
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
-		TecnicoDAO.editar(tecnico0, selecao);
-		assertEquals(tecnico0, selecao.getTecnico());
-		TecnicoDAO.resetarLista();
-	}
-	@Test
 	public void excluirTest() {
 		TecnicoDAO.inserir(tecnico0);
 		TecnicoDAO.inserir(tecnico1);
