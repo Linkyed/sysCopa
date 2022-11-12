@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	static public int quantidadeArbitro() {
 		return arbitros.size();
 	}
-	
+	/** Metodo para retorna uma lista de arbitros que possuem uma determina string no nome **/
 	public static List<Arbitro> getArbitroNome(String nome) {
 		List<Arbitro> listaArbitro = new ArrayList<>();
 		for(Arbitro arbitro: arbitros) {
@@ -86,6 +87,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		return listaArbitro;
 	}
 	
+	/** Metodo para verificar se algum arbitro possui um determinado nome **/
 	private static boolean veriricarNomeArbitro(String nome) {
 		for (Arbitro arbitro: arbitros) {
 			if (arbitro.getNome().equals(nome)) {
@@ -94,12 +96,8 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		}
 		return false;
 	}
-	
-	public static List<Arbitro> listaArbitros(){
-		return arbitros;
-	}
-	
+	/** Metodo para resetar a lista de arbitros **/
 	public static void resetarLista() {
-		arbitros = new ArrayList<Arbitro>();
+		arbitros.clear();
 	}
 }
