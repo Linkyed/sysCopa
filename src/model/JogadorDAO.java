@@ -31,6 +31,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 */
 	public static boolean inserir(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
+
 			int tamanho_Max = 11;
 			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
@@ -41,7 +42,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 				}
 				return true;
 			}
+
 			return false;
+			
 		}
 		return false;
 	}
@@ -176,7 +179,6 @@ public class JogadorDAO implements JogadorDAOInterface{
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			System.out.println(gol_Marcado);
 			modelo_Jogador.setGolmarcado(gol_Marcado);
 			return true;
 		}

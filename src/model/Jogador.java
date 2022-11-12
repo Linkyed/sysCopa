@@ -134,8 +134,7 @@ public class Jogador {
 		if (getClass() != obj.getClass())
 			return false;
 		Jogador other = (Jogador) obj;
-		return //Objects.equals(codJog, other.codJog) || 
-				Objects.equals(nome, other.nome);
+		return Objects.equals(nome, other.nome);
 	}
 
 }

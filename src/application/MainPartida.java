@@ -158,6 +158,7 @@ public class MainPartida {
 				cont2++;
 			}
 		}
+		
 		for (int i = 0; i < cartVermelhoSelecao2; i++) {
 			int numJogador = Funcoes.entradaIntRanger(
 					"Ditige o número do jogador que recebeu o " + (i + 1) + "° cartão vermelho: ", 1, 11);
