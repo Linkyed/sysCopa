@@ -95,7 +95,9 @@ public class PartidaDAO {
 		for (Entry<Jogador, Integer> jogadoresGol : map.entrySet()) {
 			Jogador modeloJogador = jogadoresGol.getKey();
 			int golMarcadoReduzido = modeloJogador.getGolmarcado() - jogadoresGol.getValue();
+
 			JogadorDAO.editarGolMarcado(modeloJogador, golMarcadoReduzido);
+			
 		}
 	}
 
@@ -372,10 +374,20 @@ public class PartidaDAO {
 		}
 		return null;
 	}
+	
+	public static Partida encontrar(int num) {
+		return listaPartidas.get(num);
+		
+	}
 
 	public static boolean statusAtuaisPartidas(Partida partida) {
 		return partida.getStatus();
 	}
+	
+	public static void resetarLista() {
+		listaPartidas.clear(); 
+	}
+	
 	
 	public static List<Partida> getPartidaData(int dia, int mes){
 		List<Partida> lista = new ArrayList<Partida>();
