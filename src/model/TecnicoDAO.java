@@ -90,8 +90,12 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	}
 	
 	/**Metodo para retornar um tecnico do banco de dados com base no index de um tecnico**/
-	static public Tecnico getTecnicoIndes(Tecnico tecnico) {
+	static public Tecnico getTecnicoPorTecnico(Tecnico tecnico) {
 		return tecnicos.get(tecnicos.indexOf(tecnico));
+	}
+	
+	static public int getIndexPorTecnico(Tecnico tecnico) {
+		return tecnicos.indexOf(tecnico);
 	}
 	
 	/**Metodo para contar e retorna a quantidade de tecnicos presentes no banco de dados**/
