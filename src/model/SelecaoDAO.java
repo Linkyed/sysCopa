@@ -40,7 +40,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 
 	/** Metodo para excluir uma seleção existente no banco de dados **/
 	static public boolean excluir(int num) {
-		if (num <= selecoes.size() && num >= 0) {
+		if (num < selecoes.size() && num >= 0) {
 			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
 			for (Jogador jogador : jogadores) {
 				JogadorDAO.excluirJogadorParcial(jogador);
