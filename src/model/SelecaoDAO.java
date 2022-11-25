@@ -72,9 +72,12 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	/** Metodo para mostrar todos os jogadores das seleções **/
 	static public void listarJogadors() {
 		for (Selecao selecao : selecoes) {
+			System.out.println(selecao);
+			System.out.println(selecao.getTamanho());
 			for (Jogador jogador : selecao.getJogadores()) {
 				System.out.println(jogador);
 			}
+			System.out.println();
 		}
 	}
 
