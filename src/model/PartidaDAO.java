@@ -419,5 +419,9 @@ public class PartidaDAO {
 		}
 		return lista;
 	}
+	
+	public static Selecao GanhadorPartida(Partida partida) {
+		return partida.getResultadoSelecao();
+	}
 
 }

@@ -14,7 +14,7 @@ public class PartidaDAOTest {
 	public void testInserir() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		PartidaDAO.inserir(partida);
 		assertEquals(partida, PartidaDAO.encontrar(0));
 		PartidaDAO.resetarLista();
@@ -24,7 +24,7 @@ public class PartidaDAOTest {
 	public void testAno() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		PartidaDAO.editarAno(2018);
 		assertEquals(partida.getAno(), 2018, 0);
 	}
@@ -33,7 +33,7 @@ public class PartidaDAOTest {
 	public void testMes() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		PartidaDAO.editarMes(12,partida);
 		assertEquals(partida.getMes(), 12, 0);
 		PartidaDAO.resetarLista();
@@ -43,7 +43,7 @@ public class PartidaDAOTest {
 	public void testDia() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		PartidaDAO.editarMes(12,partida);
 		PartidaDAO.editarDia(31,partida);
 		assertEquals(partida.getDia(), 31, 0);
@@ -57,7 +57,7 @@ public class PartidaDAOTest {
 	public void testHorario() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		PartidaDAO.editarHorario(12, 59, partida);
 		assertEquals(partida.getHorario(), 12, 0);
 		assertEquals(partida.getHorarioM(), 59, 0);
@@ -70,7 +70,7 @@ public class PartidaDAOTest {
 	public void testLocal() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		PartidaDAO.editarLocal("Feira de Santana", partida);
 		assertEquals(partida.getLocal(),"Feira de Santana");
 	}
@@ -80,7 +80,7 @@ public class PartidaDAOTest {
 	public void testGol() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		Map<Jogador, Integer> jogasMap1 = new HashMap<>();
 		Map<Jogador, Integer> jogasMap2 = new HashMap<>();
 		Jogador jogador1 = new Jogador("Nasus");
@@ -102,7 +102,7 @@ public class PartidaDAOTest {
 		Selecao selecao2 = new Selecao("Argentina");
 		SelecaoDAO.inserir(selecao1);
 		SelecaoDAO.inserir(selecao2);
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		Jogador jogador3 = new Jogador("AaTrox"); 
 		jogasMap2.put(jogador3, 3);
 		JogadorDAO.inserir(jogador3, selecao2, false);
@@ -119,7 +119,7 @@ public class PartidaDAOTest {
 		Selecao selecao2 = new Selecao("Argentina");
 		SelecaoDAO.inserir(selecao1);
 		SelecaoDAO.inserir(selecao2);
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		Jogador jogador3 = new Jogador("AaTrox"); 
 		jogasMap2.put(jogador3, 6);
 		JogadorDAO.inserir(jogador3, selecao2, false);
@@ -133,7 +133,7 @@ public class PartidaDAOTest {
 	public void testExcuir() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		Map<Jogador, Integer> jogasMap1 = new HashMap<>();
 		Map<Jogador, Integer> jogasMap2 = new HashMap<>();
 		Jogador jogador1 = new Jogador("Nasus");
@@ -156,7 +156,7 @@ public class PartidaDAOTest {
 	public void testResultado() {
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		Partida partida = new Partida(selecao1, selecao2);
+		Partida partida = new Partida(selecao1, selecao2,0);
 		partida.setGolSelecao1(3);
 		partida.setGolSelecao1(0);
 		Selecao selecao = PartidaDAO.resultadoPartida(partida).get(0);

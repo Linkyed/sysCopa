@@ -229,8 +229,8 @@ public class Partida {
 		if (getClass() != obj.getClass())
 			return false;
 		Partida other = (Partida) obj;
-		return (Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2))
-				|| (Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1));
+		return (Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2) && Objects.equals(fasePartida, other.fasePartida))
+				|| (Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1)&& Objects.equals(fasePartida, other.fasePartida));
 	}
 
 	public String getFasePartida() {
