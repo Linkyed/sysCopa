@@ -20,6 +20,14 @@ public class OitavasDeFinal {
 		for (Partida partidaOitava : partidasOitavas) {
 			PartidaDAO.inserir(partidaOitava);
 		}
+		
+	}
 	
+	public static List<Selecao> selecoesClassificadasOitavas() {
+		List<Selecao> selecoesClassificadas = new ArrayList<>();
+		for (Partida partidaOitava : partidasOitavas) {
+			selecoesClassificadas.add(PartidaDAO.GanhadorPartida(partidaOitava));
+		}
+		return selecoesClassificadas;
 	}
 }
