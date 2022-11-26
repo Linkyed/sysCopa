@@ -19,6 +19,8 @@ public class Partida {
 	private String local;
 	private Selecao selecao1;
 	private Selecao selecao2;
+	private String fasePartida;
+	private static String[] fase= {"FaseDeGrupo","Oitavas","Quartas","Semi","Final"};
 	private int golSelecao1 = 0;
 	private int golSelecao2 = 0;
 	private Selecao resultadoSelecao;
@@ -30,10 +32,11 @@ public class Partida {
 	private Map<Jogador, Integer> GolsMarcadosSelecao2 = new HashMap<>();
 	private List<Arbitro> listaArbitro = new ArrayList<>();
 
-	public Partida(Selecao selecao1, Selecao selecao2) {
+	public Partida(Selecao selecao1, Selecao selecao2,int posicao) {
 		this.selecao1 = selecao1;
 		this.selecao2 = selecao2;
 		this.codigoPartida = Integer.toString(id);
+		this.fasePartida = fase[posicao];
 		id+=23;
 
 	}
@@ -228,6 +231,10 @@ public class Partida {
 		Partida other = (Partida) obj;
 		return (Objects.equals(selecao1, other.selecao1) && Objects.equals(selecao2, other.selecao2))
 				|| (Objects.equals(selecao1, other.selecao2) && Objects.equals(selecao2, other.selecao1));
+	}
+
+	public String getFasePartida() {
+		return fasePartida;
 	}
 
 }
