@@ -6,7 +6,7 @@ import java.util.List;
 public class SemiFinal {
 	private static List<Partida> partidasSemi = new ArrayList<>();
 
-	public static void organizarPartidasQuartas() {
+	public static void organizarPartidasSemi() {
 		List<Selecao> selecoesQuartas = QuartasDeFinal.ClassificadosQuartas();
 		for (int i = 0, c = 1; i < 4; i+=2, c+=2) {
 			partidasSemi.add(new Partida(selecoesQuartas.get(i), selecoesQuartas.get(c), 3));
@@ -24,5 +24,11 @@ public class SemiFinal {
 		return selecoesClassificadas;
 	}
 	
-	
+	public static void listarPartidasSemi() {
+		int contador = 1;
+		for (Partida partida : partidasSemi) {
+			System.out.println("SemiFinal "+contador+": "+ partida);
+			contador++;
+		}
+	}
 }

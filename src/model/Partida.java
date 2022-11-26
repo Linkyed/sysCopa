@@ -219,7 +219,11 @@ public class Partida {
 	public int hashCode() {
 		return Objects.hash(selecao1, selecao2);
 	}
-
+	
+	public void setGanhador(Selecao selecao) {
+		 resultadoSelecao = selecao;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

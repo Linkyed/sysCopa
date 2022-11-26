@@ -30,4 +30,12 @@ public class OitavasDeFinal {
 		}
 		return selecoesClassificadas;
 	}
+	
+	public static void listarPartidasOitavas() {
+		int contador = 1;
+		for (Partida partida : partidasOitavas) {
+			System.out.println("Oitavas de Final "+contador+": "+ partida);
+			contador++;
+		}
+	}
 }

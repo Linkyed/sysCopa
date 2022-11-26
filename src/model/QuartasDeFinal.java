@@ -25,5 +25,11 @@ public class QuartasDeFinal {
 		}
 		return selecoesClassificadas;
 	}
-	
+	public static void listarPartidasQuartas() {
+		int contador = 1;
+		for (Partida partida : partidasQuartas) {
+			System.out.println("Quartas de Final "+contador+": "+ partida);
+			contador++;
+		}
+	}
 }

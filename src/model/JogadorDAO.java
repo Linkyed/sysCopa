@@ -176,7 +176,6 @@ public class JogadorDAO implements JogadorDAOInterface{
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
-			System.out.println(gol_Marcado);
 			modelo_Jogador.setGolmarcado(gol_Marcado);
 			return true;
 		}
