@@ -12,4 +12,15 @@ public class Final {
 		PartidaDAO.inserir(finalPartida);
 	}
 	
+	public static void partidaFinal() {
+		System.out.println("Grande final: "+ grandeFinalPartida);
+	}
+	
+	public static void campeaoDelMundo() {
+		System.out.println("Campeão do Mundo: "+ grandeFinalPartida.getResultadoSelecao());
+	}
+	public static Selecao CampeaoMundo() {
+		return grandeFinalPartida.getResultadoSelecao();
+	}
+	
 }

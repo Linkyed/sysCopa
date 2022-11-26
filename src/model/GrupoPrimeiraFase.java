@@ -224,9 +224,10 @@ public class GrupoPrimeiraFase {
 		List<Selecao> selecaoClassificada = new ArrayList<>();
 		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
 		list.sort(Entry.comparingByValue());
+		Collections.reverse(list);
 		int contador = 0;
 		for (Entry<Selecao, Integer> selecaoEpontos : list) {
-			if(contador == 2 || contador == 3) {
+			if(contador == 0 || contador == 1) {
 				selecaoClassificada.add(selecaoEpontos.getKey());
 			}
 			contador++;
