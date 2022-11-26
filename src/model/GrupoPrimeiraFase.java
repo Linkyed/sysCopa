@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+
 public class GrupoPrimeiraFase {
 	private static Map<Selecao, Integer> grupoA = new HashMap<>();
 	private static Map<Selecao, Integer> grupoB = new HashMap<>();
@@ -16,6 +17,8 @@ public class GrupoPrimeiraFase {
 	private static Map<Selecao, Integer> grupoF = new HashMap<>();
 	private static Map<Selecao, Integer> grupoG = new HashMap<>();
 	private static Map<Selecao, Integer> grupoH = new HashMap<>();
+	
+	private static List<Partida> partidasGrupo =  new ArrayList<>();
 
 	private static Map<Selecao, Integer> selecionarGrupo(Selecao selecao) {
 		if (grupoA.containsKey(selecao)) {
@@ -61,12 +64,9 @@ public class GrupoPrimeiraFase {
 	}	
 	public static void excluirSelecaoGrupo(Selecao selecao) {
 		Map<Selecao, Integer> grupoMap = selecionarGrupo(selecao);
-		System.out.println("CHEGOU NA HORA + " + grupoMap.size());
 		if(grupoMap != null) {
-			System.out.println("EXCLUIR ? + " + grupoMap.size());
 			grupoMap.remove(selecao);			
 		}
-		System.out.println(grupoMap.containsKey(selecao) + ""+ grupoMap.size());
 	}
 	
 	
@@ -111,21 +111,24 @@ public class GrupoPrimeiraFase {
 			selecoesGrupoList.add(selecao);
 		}
 		for (int i = 1; i < 4; i++) {
-			Partida modeloPartida = new Partida(selecoesGrupoList.get(0), selecoesGrupoList.get(i));
+			Partida modeloPartida = new Partida(selecoesGrupoList.get(0), selecoesGrupoList.get(i),0);
 			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(0));
 			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(i));
+			partidasGrupo.add(modeloPartida);
 			PartidaDAO.inserir(modeloPartida);
 		}
 		for (int i = 2; i < 4; i++) {
-			Partida modeloPartida = new Partida(selecoesGrupoList.get(1), selecoesGrupoList.get(i));
+			Partida modeloPartida = new Partida(selecoesGrupoList.get(1), selecoesGrupoList.get(i),0);
 			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(1));
 			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(i));
+			partidasGrupo.add(modeloPartida);
 			PartidaDAO.inserir(modeloPartida);
 		}
 		for (int i = 3; i < 4; i++) {
-			Partida modeloPartida = new Partida(selecoesGrupoList.get(2), selecoesGrupoList.get(i));
+			Partida modeloPartida = new Partida(selecoesGrupoList.get(2), selecoesGrupoList.get(i),0);
 			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(2));
 			SelecaoDAO.adicionarPartidas(modeloPartida, selecoesGrupoList.get(i));
+			partidasGrupo.add(modeloPartida);
 			PartidaDAO.inserir(modeloPartida);
 		}
 
@@ -216,6 +219,20 @@ public class GrupoPrimeiraFase {
 		System.out.println("===================");
 
 	}
+	
+	private static List<Selecao> maisPontosGrupo(Map<Selecao, Integer> grupo) {
+		List<Selecao> selecaoClassificada = new ArrayList<>();
+		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
+		list.sort(Entry.comparingByValue());
+		int contador = 0;
+		for (Entry<Selecao, Integer> selecaoEpontos : list) {
+			if(contador == 2 || contador == 3) {
+				selecaoClassificada.add(selecaoEpontos.getKey());
+			}
+			contador++;
+		}
+		return selecaoClassificada;
+	}
 
 	public static void listarTodosGrupos() {
 		System.out.println("A");
@@ -257,6 +274,19 @@ public class GrupoPrimeiraFase {
 			System.out.println("Grupo não encontrado.");
 			return 0;
 		}
+	}
+	
+	public static List<List<Selecao>> ganhadoresFasedeGrupos() {
+		List<List<Selecao>> listaSelecoesClassificadas = new ArrayList<>();
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoA));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoB));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoC));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoD));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoE));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoF));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoG));
+		listaSelecoesClassificadas.add( maisPontosGrupo(grupoH));
+		return listaSelecoesClassificadas;
 	}
 
 }
