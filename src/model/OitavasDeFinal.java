@@ -34,7 +34,7 @@ public class OitavasDeFinal {
 	public static void listarPartidasOitavas() {
 		int contador = 1;
 		for (Partida partida : partidasOitavas) {
-			System.out.println("Oitavas de Final "+contador+": "+ partida);
+			System.out.println("Oitavas de Final "+contador+": "+ partida.getGolSelecao1() +" "+partida+" " +partida.getGolSelecao2() );
 			contador++;
 		}
 	}

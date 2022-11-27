@@ -28,7 +28,7 @@ public class QuartasDeFinal {
 	public static void listarPartidasQuartas() {
 		int contador = 1;
 		for (Partida partida : partidasQuartas) {
-			System.out.println("Quartas de Final "+contador+": "+ partida);
+			System.out.println("Quartas de Final"+contador+": "+ partida.getGolSelecao1() +" "+partida+" " +partida.getGolSelecao2() );
 			contador++;
 		}
 	}
