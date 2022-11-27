@@ -10,6 +10,8 @@ public class Final {
 		Partida finalPartida = new Partida(partidaFinal.get(0), partidaFinal.get(1), 4);
 		grandeFinalPartida = finalPartida;
 		PartidaDAO.inserir(finalPartida);
+		SelecaoDAO.adicionarPartidas(finalPartida, finalPartida.getSelecao1());
+		SelecaoDAO.adicionarPartidas(finalPartida, finalPartida.getSelecao2());
 	}
 	
 	public static void partidaFinal() {
@@ -19,8 +21,10 @@ public class Final {
 	public static void campeaoDelMundo() {
 		System.out.println("Campeão do Mundo: "+ grandeFinalPartida.getResultadoSelecao());
 	}
+	
 	public static Selecao CampeaoMundo() {
 		return grandeFinalPartida.getResultadoSelecao();
 	}
+
 	
 }

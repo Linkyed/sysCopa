@@ -13,6 +13,8 @@ public class SemiFinal {
 		}
 		for (Partida partida : partidasSemi) {
 			PartidaDAO.inserir(partida);
+			SelecaoDAO.adicionarPartidas(partida, partida.getSelecao1());
+			SelecaoDAO.adicionarPartidas(partida, partida.getSelecao2());
 		}
 		
 	}

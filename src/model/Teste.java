@@ -942,6 +942,14 @@ public class Teste {
 		RandomPartida(1, false);
 		Final.partidaFinal();
 		Final.campeaoDelMundo();
+		System.out.println("====================================");
+		for(Partida partida:SelecaoDAO.listaPartidas(Final.CampeaoMundo())) {
+			System.out.println(partida);
+		}
+		System.out.println("====================================");
+		Final.CampeaoMundo().listarJogadores();
+		
+		
 	}
 
 }
