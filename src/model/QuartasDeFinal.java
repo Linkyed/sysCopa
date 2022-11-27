@@ -15,6 +15,8 @@ public class QuartasDeFinal {
 		}
 		for (Partida partida : partidasQuartas) {
 			PartidaDAO.inserir(partida);
+			SelecaoDAO.adicionarPartidas(partida, partida.getSelecao1());
+			SelecaoDAO.adicionarPartidas(partida, partida.getSelecao2());
 		}
 	}
 	

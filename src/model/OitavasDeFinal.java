@@ -19,6 +19,8 @@ public class OitavasDeFinal {
 
 		for (Partida partidaOitava : partidasOitavas) {
 			PartidaDAO.inserir(partidaOitava);
+			SelecaoDAO.adicionarPartidas(partidaOitava, partidaOitava.getSelecao1());
+			SelecaoDAO.adicionarPartidas(partidaOitava, partidaOitava.getSelecao2());
 		}
 		
 	}
