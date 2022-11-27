@@ -13,7 +13,7 @@ public class Final {
 	}
 	
 	public static void partidaFinal() {
-		System.out.println("Grande final: "+ grandeFinalPartida);
+		System.out.println("Quartas de Final: "+ grandeFinalPartida.getGolSelecao1() +" "+grandeFinalPartida+" " +grandeFinalPartida.getGolSelecao2());
 	}
 	
 	public static void campeaoDelMundo() {

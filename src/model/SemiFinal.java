@@ -27,7 +27,7 @@ public class SemiFinal {
 	public static void listarPartidasSemi() {
 		int contador = 1;
 		for (Partida partida : partidasSemi) {
-			System.out.println("SemiFinal "+contador+": "+ partida);
+			System.out.println("SeimiFinal"+contador+": "+ partida.getGolSelecao1() +" "+partida+" " +partida.getGolSelecao2() );
 			contador++;
 		}
 	}

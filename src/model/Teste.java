@@ -920,25 +920,27 @@ public class Teste {
 
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 
-		Random rand = new Random();
-
 		RandomPartida(48, true);
 		GrupoPrimeiraFase.listarTodosGrupos();
 		OitavasDeFinal.OrganizarPartidasOitavas();
-		OitavasDeFinal.listarPartidasOitavas();
+		
 		RandomPartida(8, false);
+		OitavasDeFinal.listarPartidasOitavas();
 		QuartasDeFinal.organizarPartidasQuartas();
 		System.out.println("====================================");
-		QuartasDeFinal.listarPartidasQuartas();
+		
 		RandomPartida(4, false);
+		QuartasDeFinal.listarPartidasQuartas();
 		System.out.println("====================================");
 		SemiFinal.organizarPartidasSemi();
-		SemiFinal.listarPartidasSemi();
+		
 		RandomPartida(2, false);
+		SemiFinal.listarPartidasSemi();
 		System.out.println("====================================");
 		Final.partidaGrandeFinal();
-		Final.partidaFinal();
+		
 		RandomPartida(1, false);
+		Final.partidaFinal();
 		Final.campeaoDelMundo();
 	}
 

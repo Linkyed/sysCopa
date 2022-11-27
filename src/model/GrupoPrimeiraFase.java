@@ -217,7 +217,6 @@ public class GrupoPrimeiraFase {
 			System.out.println("|| " + selecaoEpontos.getKey() + " | " + selecaoEpontos.getValue() + " ||");
 		}
 		System.out.println("===================");
-
 	}
 	
 	private static List<Selecao> maisPontosGrupo(Map<Selecao, Integer> grupo) {
