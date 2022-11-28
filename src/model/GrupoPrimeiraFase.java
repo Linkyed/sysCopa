@@ -376,7 +376,7 @@ public class GrupoPrimeiraFase {
 			nomesSelecoes.add("Vazio");
 		}
 		
-		if (grupoH.size() > 0) {
+		if (grupoH.size() > 0) { 
 			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoH.entrySet());
 			list.sort(Entry.comparingByValue());
 			Collections.reverse(list);
