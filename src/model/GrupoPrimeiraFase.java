@@ -289,4 +289,105 @@ public class GrupoPrimeiraFase {
 		return listaSelecoesClassificadas;
 	}
 
+	public static List<String> selecoesTodosGrupos(){
+		List<String> nomesSelecoes = new ArrayList<>();
+		String grupo = "";
+		if (grupoA.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoA.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<4) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoB.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoB.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<8) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoC.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoC.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<12) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoD.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoD.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<16) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoE.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoE.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<20) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoF.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoF.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<24) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoG.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoG.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<28) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		if (grupoH.size() > 0) {
+			List<Entry<Selecao, Integer>> list = new ArrayList<>(grupoH.entrySet());
+			list.sort(Entry.comparingByValue());
+			Collections.reverse(list);
+			for (Entry<Selecao, Integer> selecaoEpontos : list) {
+				nomesSelecoes.add(selecaoEpontos.getKey().getNome());
+			}
+		}
+		while (nomesSelecoes.size()<32) {
+			nomesSelecoes.add("Vazio");
+		}
+		
+		return nomesSelecoes;
+	}
 }
