@@ -34,7 +34,7 @@ import javafx.stage.Stage;
 
 public class InsercaoSelecao {
 
-		public static int quantidadeSelecoes = 0;
+		public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
 	
 	   @FXML
 	    private Button btnInserirSelecao;
