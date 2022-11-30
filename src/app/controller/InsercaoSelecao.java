@@ -184,6 +184,7 @@ public class InsercaoSelecao {
 		atualizarGrupos();
     	atualizarComboBoxSelecao();
 		atualizarBarraProgresso();
+		
 	   	//this.tabelaGruposAD.getColumns().addAll(colunaA, colunaB, colunaC, colunaD);
 	   	//this.tabelaGruposAD.setItems(selecoesGruposAD);
 		//this.tabelaGruposEH.getColumns().addAll(colunaE, colunaF, colunaG, colunaH);
