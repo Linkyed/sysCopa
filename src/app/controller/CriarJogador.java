@@ -54,7 +54,7 @@ public class CriarJogador {
     
     @FXML
     void btnProximoAction(ActionEvent event) {
-    	Jogador jogador = new Jogador(nomeJogador.getText(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
+    	Jogador jogador = new Jogador(nomeJogador.getText().strip(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
     	
     	try {
     		JogadorDAO.inserir(jogador, CriarSelecao.selecaoAtual, true);
