@@ -42,7 +42,7 @@ public class MenuPrincipal {
     	ArbitroDAO.resetarLista();
     	GrupoPrimeiraFase.resetarGrupos();
     	FXMLLoader loader = new FXMLLoader();
-		URL xmlURL = getClass().getResource("/app/view/InsercaoSelecao.fxml");
+		URL xmlURL = getClass().getResource("/app/view/criarCopa/InsercaoSelecao.fxml");
 		
 		loader.setLocation(xmlURL);
 		
@@ -56,7 +56,7 @@ public class MenuPrincipal {
     void btnUsarDadosPreCarregados(ActionEvent event) throws IOException {
     	Teste.preDefinicao();
     	FXMLLoader loader = new FXMLLoader();
-		URL xmlURL = getClass().getResource("/app/view/InsercaoSelecao.fxml");
+		URL xmlURL = getClass().getResource("/app/view/criarCopa/InsercaoSelecao.fxml");
 		
 		loader.setLocation(xmlURL);
 		
