@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import model.*;
+import app.model.*;
 public class PartidaDAOTest {
 
 	@Test
@@ -100,12 +100,12 @@ public class PartidaDAOTest {
 		Map<Jogador, Integer> jogasMap2 = new HashMap<>();
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
 		Partida partida = new Partida(selecao1, selecao2,0);
 		Jogador jogador3 = new Jogador("AaTrox"); 
 		jogasMap2.put(jogador3, 3);
-		JogadorDAO.inserir(jogador3, selecao2, false);
+		JogadorDAO.inserirConsole(jogador3, selecao2, false);
 		PartidaDAO.editarCartAmarelo(partida, jogasMap2, 2);
 		assertEquals(jogador3.getCartaoAmarelo(),3,0);
 		SelecaoDAO.resetarLista();
@@ -117,12 +117,12 @@ public class PartidaDAOTest {
 		Map<Jogador, Integer> jogasMap2 = new HashMap<>();
 		Selecao selecao1 = new Selecao("Brasil");
 		Selecao selecao2 = new Selecao("Argentina");
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
 		Partida partida = new Partida(selecao1, selecao2,0);
 		Jogador jogador3 = new Jogador("AaTrox"); 
 		jogasMap2.put(jogador3, 6);
-		JogadorDAO.inserir(jogador3, selecao2, false);
+		JogadorDAO.inserirConsole(jogador3, selecao2, false);
 		PartidaDAO.editarCartVermelho(partida, jogasMap2, 2);
 		assertEquals(jogador3.getCartaoVermelho(),6,0);
 		SelecaoDAO.resetarLista();

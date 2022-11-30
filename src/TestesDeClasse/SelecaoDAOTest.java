@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.Selecao;
-import model.SelecaoDAO;
+import app.model.Selecao;
+import app.model.SelecaoDAO;
 
 public class SelecaoDAOTest {
 
@@ -16,73 +16,73 @@ public class SelecaoDAOTest {
 	
 	@Test
 	public void inserirTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		assertEquals(selecao0, SelecaoDAO.getOneSelecao(0));
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void inserirMaximoTest() {
 		for (int i = 0; i< 32; i++) {
-			SelecaoDAO.inserir(new Selecao("a" + i));
+			SelecaoDAO.inserirConsole(new Selecao("a" + i));
 		}
-		assertFalse(SelecaoDAO.inserir(new Selecao("Marco")));
+		assertFalse(SelecaoDAO.inserirConsole(new Selecao("Marco")));
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void editarTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		SelecaoDAO.editar(selecao2, "Marrocos");
 		assertEquals(selecao2.getNome(), "Marrocos");
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void excluirTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		assertTrue(SelecaoDAO.excluir(0));
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void getOneSelecaoTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		assertEquals(SelecaoDAO.getOneSelecao(0), selecao0);
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void existeSelecaoTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		assertTrue(SelecaoDAO.existeSelecao(selecao0));
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void getSelecaoPorSelecaoTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		assertEquals(SelecaoDAO.getSelecaoPorSelecao(selecao0), selecao0);
 		SelecaoDAO.resetarLista();
 	}
 	@Test
 	public void selecoesSemTecnicoTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		SelecaoDAO.listar();
 		assertEquals(4, SelecaoDAO.selecoesSemTecnico());
 		SelecaoDAO.resetarLista();
@@ -90,10 +90,10 @@ public class SelecaoDAOTest {
 	
 	@Test
 	public void getSelecaoNomeTest() {
-		SelecaoDAO.inserir(selecao0);
-		SelecaoDAO.inserir(selecao1);
-		SelecaoDAO.inserir(selecao2);
-		SelecaoDAO.inserir(selecao3);
+		SelecaoDAO.inserirConsole(selecao0);
+		SelecaoDAO.inserirConsole(selecao1);
+		SelecaoDAO.inserirConsole(selecao2);
+		SelecaoDAO.inserirConsole(selecao3);
 		assertEquals(SelecaoDAO.getSelecaoNome("Brasil").size(), 1);
 		SelecaoDAO.resetarLista();
 	}

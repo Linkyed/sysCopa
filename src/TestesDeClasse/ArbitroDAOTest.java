@@ -3,8 +3,8 @@ package TestesDeClasse;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import model.Arbitro;
-import model.ArbitroDAO;
+import app.model.Arbitro;
+import app.model.ArbitroDAO;
 
 public class ArbitroDAOTest {
 

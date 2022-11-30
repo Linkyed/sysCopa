@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.Selecao;
-import model.Tecnico;
-import model.TecnicoDAO;
+import app.model.Selecao;
+import app.model.Tecnico;
+import app.model.TecnicoDAO;
 
 public class TecnicoDAOTest {
 	Selecao selecao0 = new Selecao("Brasil");
@@ -21,32 +21,32 @@ public class TecnicoDAOTest {
 	
 	@Test
 	public void inserirTest() {
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		TecnicoDAO.listar();
 		assertEquals(tecnico0, TecnicoDAO.getOneTecnico(0));
 		TecnicoDAO.resetarLista();
 	}
 	@Test
 	public void inserirMaximoTest() {
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		for (int i = 0; i< 32; i++) {
-			TecnicoDAO.inserir(new Tecnico("a" + i, new Selecao("a" + i)));
+			TecnicoDAO.inserirConsole(new Tecnico("a" + i, new Selecao("a" + i)));
 		}
-		assertFalse(TecnicoDAO.inserir(new Tecnico("ab", new Selecao("ab"))));
+		assertFalse(TecnicoDAO.inserirConsole(new Tecnico("ab", new Selecao("ab"))));
 		TecnicoDAO.resetarLista();
 	}
 	@Test
 	public void editarNomeTest() {
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		TecnicoDAO.editar(tecnico0, "Jose");
 		assertEquals("Jose", TecnicoDAO.getOneTecnico(0).getNome());
 		TecnicoDAO.resetarLista();
@@ -54,38 +54,38 @@ public class TecnicoDAOTest {
 	@Test
 	public void editarSelecaoTest() {
 		Selecao selecao = new Selecao("A");
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		TecnicoDAO.editar(tecnico0, selecao);
 		assertEquals(tecnico0, selecao.getTecnico());
 		TecnicoDAO.resetarLista();
 	}
 	@Test
 	public void excluirTest() {
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		assertTrue(TecnicoDAO.excluir(0));
 		TecnicoDAO.resetarLista();
 	}
 	@Test
 	public void getOneTecnicoTest() {
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		assertEquals(tecnico0, TecnicoDAO.getOneTecnico(0));
 		TecnicoDAO.resetarLista();
 	}
 	@Test
 	public void getTecnicoNomeTest() {
-		TecnicoDAO.inserir(tecnico0);
-		TecnicoDAO.inserir(tecnico1);
-		TecnicoDAO.inserir(tecnico2);
-		TecnicoDAO.inserir(tecnico3);
+		TecnicoDAO.inserirConsole(tecnico0);
+		TecnicoDAO.inserirConsole(tecnico1);
+		TecnicoDAO.inserirConsole(tecnico2);
+		TecnicoDAO.inserirConsole(tecnico3);
 		assertEquals(TecnicoDAO.getTecnicoNome("Ma").size(), 2);
 		TecnicoDAO.resetarLista();
 	}
