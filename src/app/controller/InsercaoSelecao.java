@@ -126,7 +126,7 @@ public class InsercaoSelecao {
 	void btnInserirSelecaoAction(ActionEvent event) throws IOException {
 		//Iniciando o precesso de inserir uma seleção em uma tela separada
 		FXMLLoader loaderSelecao = new FXMLLoader();
-		URL xmlURLSelecao = getClass().getResource("/app/view/CriarSelecao.fxml");
+		URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/CriarSelecao.fxml");
 		loaderSelecao.setLocation(xmlURLSelecao);
 	 	Parent rootSelecao = loaderSelecao.load();
 	 	Stage windowSelecao = new Stage();
@@ -138,7 +138,7 @@ public class InsercaoSelecao {
 
 	 	//Iniciando o precesso de inserir um Tecnico em uma tela separada
 	 	FXMLLoader loaderTecnico = new FXMLLoader();
-	 	URL xmlURLTecnico = getClass().getResource("/app/view/CriarTecnico.fxml");
+	 	URL xmlURLTecnico = getClass().getResource("/app/view/criarCopa/CriarTecnico.fxml");
 	 	loaderTecnico.setLocation(xmlURLTecnico);
 	 	Parent rootTecnico = loaderTecnico.load();
 	 	Stage windowTecnico = new Stage();
@@ -151,7 +151,7 @@ public class InsercaoSelecao {
 	 	for (int i = 0; i < 11; i++) {
 	 		CriarSelecao.quantidadeJoadores = i;
 	 		FXMLLoader loaderJogador = new FXMLLoader();
-	 		URL xmlURLJogador = getClass().getResource("/app/view/CriarJogador.fxml");
+	 		URL xmlURLJogador = getClass().getResource("/app/view/criarCopa/CriarJogador.fxml");
 	 		loaderJogador.setLocation(xmlURLJogador);
 	 		Parent rootJogador = loaderJogador.load();
 	 		Stage windowJogador = new Stage();
@@ -169,7 +169,7 @@ public class InsercaoSelecao {
     void btnEditarSelecaoAction(ActionEvent event) throws IOException {
 		//Iniciando o precesso de inserir uma seleção em uma tela separada
 		FXMLLoader loaderSelecao = new FXMLLoader();
-		URL xmlURLSelecao = getClass().getResource("/app/view/EdicaoNaInsercao.fxml");
+		URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/EdicaoGeral.fxml");
 		loaderSelecao.setLocation(xmlURLSelecao);
 		Parent rootSelecao = loaderSelecao.load();
 		Stage windowSelecao = new Stage();
@@ -184,7 +184,7 @@ public class InsercaoSelecao {
     @FXML
     void btnVoltarMenuAction(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
-        URL xmlURL = getClass().getResource("/app/view/MenuCriarCopa.fxml");
+        URL xmlURL = getClass().getResource("/app/view/MenuPrincipal.fxml");
 
         loader.setLocation(xmlURL);
 
