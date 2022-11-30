@@ -20,7 +20,24 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	static private List<Tecnico> tecnicos = new ArrayList<>();
 	
 	/**Metodo para inserir um tecnico já criado no banco de dados**/
-	static public boolean inserir(Tecnico tecnico) {
+	static public void inserir(Tecnico tecnico, Selecao selecao) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException {
+		if (tecnico.getNome().isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(tecnico.getNome(), "O nome só aceita letras!");			
+		}
+		
+		if (tecnicos.size() == 32) {
+			throw new ListaCheiaException("A lista de tenicos já esta cheia!");
+		} else if (tecnicos.contains(tecnico)) {
+			throw new ObjetoJaExisteException("O tecnico já existe na lista!");
+		} else {
+			tecnicos.add(tecnico);
+			selecao.setTecnico(tecnico);
+		}
+	}
+	
+	static public boolean inserirConsole(Tecnico tecnico) {
 		if (tecnicos.size() <= 32 && !existeTecnico(tecnico)){
 			tecnicos.add(tecnico);
 			return true;

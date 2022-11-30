@@ -390,4 +390,34 @@ public class GrupoPrimeiraFase {
 		
 		return nomesSelecoes;
 	}
+	
+	public static List<String> gruposVazios(){
+		List<String> lista = new ArrayList<>();
+		if (grupoA.size() < 4) {
+			lista.add("A");
+		}
+		if (grupoB.size() < 4) {
+			lista.add("B");
+		}
+		if (grupoC.size() < 4) {
+			lista.add("C");
+		}
+		if (grupoD.size() < 4) {
+			lista.add("D");
+		}
+		if (grupoE.size() < 4) {
+			lista.add("E");
+		}
+		if (grupoF.size() < 4) {
+			lista.add("F");
+		}
+		if (grupoG.size() < 4) {
+			lista.add("G");
+		}
+		if (grupoH.size() < 4) {
+			lista.add("H");
+		}
+		return lista;
+	}
+	
 }

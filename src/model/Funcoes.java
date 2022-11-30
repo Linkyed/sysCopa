@@ -174,4 +174,11 @@ public class Funcoes {
 		entrada.close();
 	}
 
+	public static String verificarString(String nome, String mensagem) throws CaracterInvalidoException{
+	    if (!nome.matches("[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+")) {
+	    	throw new CaracterInvalidoException(mensagem);
+	    }
+	    return nome;
+	}
+	
 }

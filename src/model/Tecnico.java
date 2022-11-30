@@ -8,11 +8,12 @@ public class Tecnico{
 	
 	/**Construtor que obriga a receber uma String nome e uma referencia de uma seleção para criar um tecnico**/
 	public Tecnico (String nome, Selecao selecao){
-		this.nome = Funcoes.captilizeString(nome);
-		this.selecao = selecao;
-		if (selecao.getTecnico() == null) {
-			selecao.setTecnico(this);
+		if (nome.isEmpty()) {
+			this.nome = "";
+		} else {
+			this.nome = Funcoes.captilizeString(nome);
 		}
+		this.selecao = selecao;
 	}
 	
 	public String getNome() {

@@ -30,9 +30,28 @@ public class Jogador {
 	 **/
 	public Jogador(String nome, Selecao selecao, int posicao) {
 
-		this.nome = nome;
+		if (nome.isEmpty()) {
+			this.nome = " ";			
+		} else {
+			this.nome = Funcoes.captilizeString(nome);
+		}
 		this.selecao = selecao;
 		this.posicaoJogada = posicaoJogadorString[posicao];
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+		this.codJog = dtf.format(LocalDateTime.now());
+
+	}
+	
+	public Jogador(String nome, Selecao selecao, String posicao) {
+
+		if (nome.isEmpty()) {
+			this.nome = " ";			
+		} else {
+			this.nome = Funcoes.captilizeString(nome);
+		}
+		this.selecao = selecao;
+		this.posicaoJogada = posicao;
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 		this.codJog = dtf.format(LocalDateTime.now());

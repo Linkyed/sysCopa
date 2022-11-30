@@ -12,12 +12,16 @@ public class Selecao {
 
 	/** Construtor que obriga a receber um String nome para criar uma seleção **/
 	public Selecao(String nome) {
-		this.nome = nome;
+		if (nome.isEmpty()) {
+			this.nome = " ";			
+		} else {
+			this.nome = Funcoes.captilizeString(nome);
+		}
 	}
 
-	/** metodo para adicionar um jogador na lista de jogadores da seleção **/
+	/** metodo para adicionar um jogador na lista de jogadores da seleï¿½ï¿½o **/
 	public boolean addJogador(Jogador jogador) {
-		if (jogadores.size() <= 11 ) {
+		if (jogadores.size() < 11 ) {
 			jogadores.add(jogador);
 			return true;
 		} else {

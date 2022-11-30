@@ -29,7 +29,35 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @param Tipo: boolean
 	 * @return true || false
 	 */
-	public static boolean inserir(Jogador jogador, Selecao selecao, boolean mensagem) {
+	public static void inserir(Jogador jogador, Selecao selecao, boolean mensagem) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException {
+		if (jogador.getNome().isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(jogador.getNome(), "O nome só aceita letras!");			
+		}
+		
+		
+		if (todos_Jogadores.contains(jogador)) {
+			throw new ObjetoJaExisteException("O jogador já existe na lista!");
+		} else if (SelecaoDAO.existeSelecao(selecao) == true) {
+			int tamanho_Max = 11;
+			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			if (selecao_Modelo.getTamanho() < tamanho_Max) {
+				selecao_Modelo.addJogador(jogador);
+				todos_Jogadores.add(jogador);
+				if (mensagem) {
+					System.out.println("Cï¿½digo do Jogador: " + jogador.getCodJog());
+				}
+				
+			} else {
+				throw new ListaCheiaException("A lista de jogadores da seleção já esta cheia!");
+			}
+	
+		}
+
+	}
+	
+	public static boolean inserirConsole(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 11;
 			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);

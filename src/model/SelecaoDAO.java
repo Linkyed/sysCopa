@@ -18,7 +18,23 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	static private List<Selecao> selecoes = new ArrayList<>();
 
 	/** Metodo para inserir uma seleção já criada no banco de dados **/
-	static public boolean inserir(Selecao selecao) {
+	static public void inserir(Selecao selecao) throws ObjetoJaExisteException, CaracterInvalidoException, ListaCheiaException, StringVaziaException{
+		if (selecao.getNome().isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(selecao.getNome(), "O nome só aceita letras!");			
+		}
+		
+		if (selecoes.size() == 32) {
+			throw new ListaCheiaException("A lista de seleções já esta cheia!");
+		} else if (selecoes.contains(selecao)) {
+			throw new ObjetoJaExisteException("A seleção já existe na lista!");
+		} else {
+			selecoes.add(selecao);
+		}
+	}
+
+	static public boolean inserirConsole(Selecao selecao) {
 		if (selecoes.size() < 32 && !selecoes.contains(selecao)) {
 			selecoes.add(selecao);
 			return true;
@@ -27,6 +43,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		}
 	}
 
+	
 	/** Metodo para editar uma seleção que já existente no banco de dados **/
 	static public boolean editar(Selecao selecao, String nome) {
 		Selecao verificar = new Selecao(nome);
@@ -195,4 +212,13 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	public static void imprimirCaracteristicas(int numSelecao) {
 		selecoes.get(numSelecao).listarJogadores();
 	}
+	
+	public static List<String> selecoesExistentes(){
+		List<String> lista = new ArrayList<>();
+		for (Selecao selecao: selecoes) {
+			lista.add(selecao.getNome());
+		}
+		return lista;
+	}
+	
 }
