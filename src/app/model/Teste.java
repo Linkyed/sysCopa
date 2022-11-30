@@ -42,9 +42,8 @@ public class Teste {
 			
 		}
 	}
-
-	public static void main(String[] args) {
-
+	
+	public static void preDefinicao() {
 		Selecao selecao1 = new Selecao("Qatar");
 		SelecaoDAO.inserirConsole(selecao1);
 		Jogador Q1Jogador = new Jogador("Saad Al-Sheeb", selecao1, 0);
@@ -917,6 +916,11 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao30);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
+	}
+
+	public static void main(String[] args) {
+
+		preDefinicao();
 
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 
