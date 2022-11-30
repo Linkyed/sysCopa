@@ -195,7 +195,7 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Editar Seleção" />
+                  <Button fx:id="btnEditarSelecao" mnemonicParsing="false" onAction="#btnEditarSelecaoAction" prefHeight="25.0" prefWidth="140.0" text="Editar Seleção" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Excluir Seleção" />
                </children>
             </HBox>

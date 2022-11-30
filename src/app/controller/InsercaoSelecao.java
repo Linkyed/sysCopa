@@ -37,131 +37,150 @@ import javafx.stage.WindowEvent;
 
 public class InsercaoSelecao {
 
-		public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
-	
-	   @FXML
-	    private Button btnInserirSelecao;
+	public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
+	public static Selecao selecaoComboBox;
+	@FXML
+	private Button btnEditarSelecao;
+
+		
+	@FXML
+	private Button btnInserirSelecao;
 	   
 	
-	  @FXML
-	    private Button btnVoltarMenu;
+	@FXML
+	private Button btnVoltarMenu;
 	  
-	  @FXML
-	    private ComboBox<String> comboBoxSelecoes;
+	@FXML
+	private ComboBox<String> comboBoxSelecoes;
 	
-	    @FXML
-	    private Label labelNomeJogador1;
+	@FXML
+	private Label labelNomeJogador1;
 
-	    @FXML
-	    private Label labelNomeJogador10;
+	@FXML
+	private Label labelNomeJogador10;
 
-	    @FXML
-	    private Label labelNomeJogador11;
+	@FXML
+	private Label labelNomeJogador11;
 
-	    @FXML
-	    private Label labelNomeJogador2;
+	@FXML
+	private Label labelNomeJogador2;
 
-	    @FXML
-	    private Label labelNomeJogador3;
+	@FXML
+	private Label labelNomeJogador3;
 
-	    @FXML
-	    private Label labelNomeJogador4;
+	@FXML
+	private Label labelNomeJogador4;
 
-	    @FXML
-	    private Label labelNomeJogador5;
+	@FXML
+	private Label labelNomeJogador5;
 
-	    @FXML
-	    private Label labelNomeJogador6;
+	@FXML
+	private Label labelNomeJogador6;
 
-	    @FXML
-	    private Label labelNomeJogador7;
+	@FXML
+	private Label labelNomeJogador7;
 
-	    @FXML
-	    private Label labelNomeJogador8;
+	@FXML
+	private Label labelNomeJogador8;
 
-	    @FXML
-	    private Label labelNomeJogador9;
+	@FXML
+	private Label labelNomeJogador9;
 
-	    @FXML
-	    private Label labelNomeSelecao;
+	@FXML
+	private Label labelNomeSelecao;
 
-	    @FXML
-	    private Label labelNomeTecnico;
+	@FXML
+	private Label labelNomeTecnico;
 
-	    @FXML
-	    private ProgressBar progressoSelecoesCriadas;
+	@FXML
+	private ProgressBar progressoSelecoesCriadas;
 
-	    @FXML
-	    private Label quantidadeSelecoesCriadas;
+	@FXML
+	private Label quantidadeSelecoesCriadas;
 
-	    @FXML
-	    private ListView<String> listaGrupoA;
+	@FXML
+	private ListView<String> listaGrupoA;
 
-	    @FXML
-	    private ListView<String> listaGrupoB;
+	@FXML
+	private ListView<String> listaGrupoB;
 
-	    @FXML
-	    private ListView<String> listaGrupoC;
+	@FXML
+	private ListView<String> listaGrupoC;
 
-	    @FXML
-	    private ListView<String> listaGrupoD;
+	@FXML
+	private ListView<String> listaGrupoD;
 
-	    @FXML
-	    private ListView<String> listaGrupoE;
+	@FXML
+	private ListView<String> listaGrupoE;
 
-	    @FXML
-	    private ListView<String> listaGrupoF;
+	@FXML
+	private ListView<String> listaGrupoF;
 
-	    @FXML
-	    private ListView<String> listaGrupoG;
+	@FXML
+	private ListView<String> listaGrupoG;
 
-	    @FXML
-	    private ListView<String> listaGrupoH;
+	@FXML
+	private ListView<String> listaGrupoH;
 	    
-	    @FXML
-	    void btnInserirSelecaoAction(ActionEvent event) throws IOException {
-	    	//Iniciando o precesso de inserir uma seleção em uma tela separada
-	    	FXMLLoader loaderSelecao = new FXMLLoader();
-	        URL xmlURLSelecao = getClass().getResource("/app/view/CriarSelecao.fxml");
-	        loaderSelecao.setLocation(xmlURLSelecao);
-	        Parent rootSelecao = loaderSelecao.load();
-	        Stage windowSelecao = new Stage();
-	        windowSelecao.resizableProperty().setValue(false);
-	        windowSelecao.initModality(Modality.APPLICATION_MODAL);
-	        windowSelecao.setScene(new Scene(rootSelecao, 250, 150));
-	        impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-	        windowSelecao.showAndWait();
-	        
-	        //Iniciando o precesso de inserir um Tecnico em uma tela separada
-	        FXMLLoader loaderTecnico = new FXMLLoader();
-	        URL xmlURLTecnico = getClass().getResource("/app/view/CriarTecnico.fxml");
-	        loaderTecnico.setLocation(xmlURLTecnico);
-	        Parent rootTecnico = loaderTecnico.load();
-	        Stage windowTecnico = new Stage();
-	        windowTecnico.initModality(Modality.APPLICATION_MODAL);
-	        windowTecnico.setScene(new Scene(rootTecnico, 250, 150));
-	        impedirFechamento(windowTecnico, "ERROR", "Termine a inserção para sair desta tela!");
-	        windowTecnico.showAndWait();
-	        
-	        //Iniciando o processo de de inserir um jogador em uma tela separada
-	        for (int i = 0; i < 11; i++) {
-	        	CriarSelecao.quantidadeJoadores = i;
-	        	FXMLLoader loaderJogador = new FXMLLoader();
-	        	URL xmlURLJogador = getClass().getResource("/app/view/CriarJogador.fxml");
-	        	loaderJogador.setLocation(xmlURLJogador);
-	        	Parent rootJogador = loaderJogador.load();
-	        	Stage windowJogador = new Stage();
-	        	windowJogador.initModality(Modality.APPLICATION_MODAL);
-	        	windowJogador.setScene(new Scene(rootJogador, 250, 210));
-	        	impedirFechamento(windowJogador, "ERROR", "Termine a inserção para sair desta tela!");
-	        	windowJogador.showAndWait();
-	        }
-	        atualizarGrupos();
-	        atualizarComboBoxSelecao();
-	        atualizarBarraProgresso();
+	@FXML
+	void btnInserirSelecaoAction(ActionEvent event) throws IOException {
+		//Iniciando o precesso de inserir uma seleção em uma tela separada
+		FXMLLoader loaderSelecao = new FXMLLoader();
+		URL xmlURLSelecao = getClass().getResource("/app/view/CriarSelecao.fxml");
+		loaderSelecao.setLocation(xmlURLSelecao);
+	 	Parent rootSelecao = loaderSelecao.load();
+	 	Stage windowSelecao = new Stage();
+	 	windowSelecao.resizableProperty().setValue(false);
+	 	windowSelecao.initModality(Modality.APPLICATION_MODAL);
+	 	windowSelecao.setScene(new Scene(rootSelecao, 250, 150));
+	 	impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
+	 	windowSelecao.showAndWait();
+
+	 	//Iniciando o precesso de inserir um Tecnico em uma tela separada
+	 	FXMLLoader loaderTecnico = new FXMLLoader();
+	 	URL xmlURLTecnico = getClass().getResource("/app/view/CriarTecnico.fxml");
+	 	loaderTecnico.setLocation(xmlURLTecnico);
+	 	Parent rootTecnico = loaderTecnico.load();
+	 	Stage windowTecnico = new Stage();
+	 	windowTecnico.initModality(Modality.APPLICATION_MODAL);
+	 	windowTecnico.setScene(new Scene(rootTecnico, 250, 150));
+	 	impedirFechamento(windowTecnico, "ERROR", "Termine a inserção para sair desta tela!");
+	 	windowTecnico.showAndWait();
+
+	 	//Iniciando o processo de de inserir um jogador em uma tela separada
+	 	for (int i = 0; i < 11; i++) {
+	 		CriarSelecao.quantidadeJoadores = i;
+	 		FXMLLoader loaderJogador = new FXMLLoader();
+	 		URL xmlURLJogador = getClass().getResource("/app/view/CriarJogador.fxml");
+	 		loaderJogador.setLocation(xmlURLJogador);
+	 		Parent rootJogador = loaderJogador.load();
+	 		Stage windowJogador = new Stage();
+	 		windowJogador.initModality(Modality.APPLICATION_MODAL);
+	 		windowJogador.setScene(new Scene(rootJogador, 250, 210));
+	 		impedirFechamento(windowJogador, "ERROR", "Termine a inserção para sair desta tela!");
+	 		windowJogador.showAndWait();
+	 	}
+	 	atualizarGrupos();
+	 	atualizarComboBoxSelecao();
+	 	atualizarBarraProgresso();
 	    }
    
-
+	@FXML
+    void btnEditarSelecaoAction(ActionEvent event) throws IOException {
+		//Iniciando o precesso de inserir uma seleção em uma tela separada
+		FXMLLoader loaderSelecao = new FXMLLoader();
+		URL xmlURLSelecao = getClass().getResource("/app/view/EdicaoNaInsercao.fxml");
+		loaderSelecao.setLocation(xmlURLSelecao);
+		Parent rootSelecao = loaderSelecao.load();
+		Stage windowSelecao = new Stage();
+		windowSelecao.resizableProperty().setValue(false);
+		windowSelecao.initModality(Modality.APPLICATION_MODAL);
+		windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
+		//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
+		windowSelecao.showAndWait();
+	}
+	
+	
     @FXML
     void btnVoltarMenuAction(ActionEvent event) throws IOException {
     	FXMLLoader loader = new FXMLLoader();
@@ -179,6 +198,7 @@ public class InsercaoSelecao {
     @FXML
     void comboBoxTrocarLabelsAction(ActionEvent event) {
     	atualizarLabelsSelecaoEscolhida();
+    	selecaoComboBox = SelecaoDAO.getSelecaoPorSelecao(new Selecao(comboBoxSelecoes.getValue().toString()));
     }
     
     
