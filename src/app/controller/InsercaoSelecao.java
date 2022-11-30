@@ -11,6 +11,7 @@ import app.model.SelecaoDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -31,6 +32,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class InsercaoSelecao {
 
@@ -120,15 +123,14 @@ public class InsercaoSelecao {
 	    	//Iniciando o precesso de inserir uma seleção em uma tela separada
 	    	FXMLLoader loaderSelecao = new FXMLLoader();
 	        URL xmlURLSelecao = getClass().getResource("/app/view/CriarSelecao.fxml");
-
 	        loaderSelecao.setLocation(xmlURLSelecao);
-
 	        Parent rootSelecao = loaderSelecao.load();
-
-	        Stage window = new Stage();
-	        window.initModality(Modality.APPLICATION_MODAL);
-	        window.setScene(new Scene(rootSelecao, 250, 150));
-	        window.showAndWait();
+	        Stage windowSelecao = new Stage();
+	        windowSelecao.resizableProperty().setValue(false);
+	        windowSelecao.initModality(Modality.APPLICATION_MODAL);
+	        windowSelecao.setScene(new Scene(rootSelecao, 250, 150));
+	        impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
+	        windowSelecao.showAndWait();
 	        
 	        //Iniciando o precesso de inserir um Tecnico em uma tela separada
 	        FXMLLoader loaderTecnico = new FXMLLoader();
@@ -138,10 +140,10 @@ public class InsercaoSelecao {
 	        Stage windowTecnico = new Stage();
 	        windowTecnico.initModality(Modality.APPLICATION_MODAL);
 	        windowTecnico.setScene(new Scene(rootTecnico, 250, 150));
+	        impedirFechamento(windowTecnico, "ERROR", "Termine a inserção para sair desta tela!");
 	        windowTecnico.showAndWait();
 	        
 	        //Iniciando o processo de de inserir um jogador em uma tela separada
-	        
 	        for (int i = 0; i < 11; i++) {
 	        	CriarSelecao.quantidadeJoadores = i;
 	        	FXMLLoader loaderJogador = new FXMLLoader();
@@ -151,6 +153,7 @@ public class InsercaoSelecao {
 	        	Stage windowJogador = new Stage();
 	        	windowJogador.initModality(Modality.APPLICATION_MODAL);
 	        	windowJogador.setScene(new Scene(rootJogador, 250, 210));
+	        	impedirFechamento(windowJogador, "ERROR", "Termine a inserção para sair desta tela!");
 	        	windowJogador.showAndWait();
 	        }
 	        atualizarGrupos();
@@ -256,5 +259,15 @@ public class InsercaoSelecao {
     private void atualizarBarraProgresso() {
     	quantidadeSelecoesCriadas.setText("Quantidade de Seleções criadas: %d".formatted(quantidadeSelecoes));
     	progressoSelecoesCriadas.setProgress((1/32.0)*quantidadeSelecoes);
+    }
+    
+    private void impedirFechamento(Stage window, String titulo, String mensagem) {
+    	 window.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	        	@Override
+	        	public void handle(WindowEvent event) {
+	        		AlertBox.display(titulo, mensagem);
+	        		event.consume();
+	        	}
+	        });
     }
 }

@@ -31,7 +31,7 @@ public class Jogador {
 	public Jogador(String nome, Selecao selecao, int posicao) {
 
 		if (nome.isEmpty()) {
-			this.nome = " ";			
+			this.nome = "";
 		} else {
 			this.nome = Funcoes.captilizeString(nome);
 		}
@@ -46,7 +46,7 @@ public class Jogador {
 	public Jogador(String nome, Selecao selecao, String posicao) {
 
 		if (nome.isEmpty()) {
-			this.nome = " ";			
+			this.nome = "";			
 		} else {
 			this.nome = Funcoes.captilizeString(nome);
 		}
