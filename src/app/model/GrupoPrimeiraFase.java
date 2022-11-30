@@ -420,4 +420,16 @@ public class GrupoPrimeiraFase {
 		return lista;
 	}
 	
+	public static void resetarGrupos() {
+		grupoA.clear();
+		grupoB.clear();
+		grupoC.clear();
+		grupoD.clear();
+		grupoE.clear();
+		grupoF.clear();
+		grupoG.clear();
+		grupoH.clear();
+		
+	}
+	
 }
