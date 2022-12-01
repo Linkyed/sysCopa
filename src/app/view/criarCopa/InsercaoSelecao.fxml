@@ -92,7 +92,7 @@
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <children>
                   <Button fx:id="btnInserirSelecao" mnemonicParsing="false" onAction="#btnInserirSelecaoAction" prefHeight="25.0" prefWidth="300.0" text="Inserir Nova Seleção" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" text="Ir para menu de Alterações" />
+                  <Button fx:id="btnMenuAlteracoes" disable="true" mnemonicParsing="false" onAction="#btnMenuAlteracoesAction" prefHeight="25.0" prefWidth="300.0" text="Ir para menu de Alterações" />
                   <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenuAction" prefHeight="25.0" prefWidth="300.0" text="Voltar para o Menu" />
                   <Label fx:id="quantidadeSelecoesCriadas" text="Quantidade de Seleções criadas: %d">
                      <font>
@@ -193,10 +193,18 @@
                   <Font name="System Italic" size="14.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+            <Label fx:id="labelErrorEditDel">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-15.0" top="10.0" />
+               </padding>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="290.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnEditarSelecao" mnemonicParsing="false" onAction="#btnEditarSelecaoAction" prefHeight="25.0" prefWidth="140.0" text="Editar Seleção" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="140.0" text="Excluir Seleção" />
+                  <Button fx:id="btnEditarSelecao" disable="true" mnemonicParsing="false" onAction="#btnEditarSelecaoAction" prefHeight="25.0" prefWidth="140.0" text="Editar Seleção" />
+                  <Button fx:id="btnExcluirSelecao" disable="true" mnemonicParsing="false" onAction="#btnExcluirSelecaoAction" prefHeight="25.0" prefWidth="140.0" text="Excluir Seleção" />
                </children>
             </HBox>
          </children>

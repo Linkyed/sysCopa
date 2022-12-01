@@ -84,6 +84,21 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 			return false;
 		}
 	}
+	
+	static public void excluir(Selecao selecao) throws ObjetoNaoExisteException {
+		if (selecoes.contains(selecao)) {
+			selecao = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			List<Jogador> jogadores = selecao.getJogadores();
+			for (Jogador jogador : jogadores) {
+				JogadorDAO.excluirJogadorParcial(jogador);
+			}
+			TecnicoDAO.excluir(TecnicoDAO.getIndexPorTecnico(selecao.getTecnico()));
+			GrupoPrimeiraFase.excluirSelecaoGrupo(selecao);
+			selecoes.remove(selecao);
+		} else {
+			throw new ObjetoNaoExisteException("Seleção não existe na lista");
+		}
+	}
 
 	/** Metodo para mostrar todas as seleções que estão no banco de dados **/
 	static public void listar() {
@@ -137,12 +152,18 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	/**
 	 * Metodo para retornar uma seleção do banco de dados com base no index de uma
 	 * seleção
+	 * @throws ObjetoNaoExisteException 
 	 **/
 	
 	
 	
-	static public Selecao getSelecaoPorSelecao(Selecao selecao) {
-		return selecoes.get(selecoes.indexOf(selecao));
+	static public Selecao getSelecaoPorSelecao(Selecao selecao) throws ObjetoNaoExisteException {
+		if (selecoes.contains(selecao)) {
+			return selecoes.get(selecoes.indexOf(selecao));			
+		}
+		else {
+			throw new ObjetoNaoExisteException("Não existe");
+		}
 	}
 
 	static public int getIndexSelecao(Selecao selecao) {

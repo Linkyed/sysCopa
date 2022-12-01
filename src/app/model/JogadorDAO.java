@@ -34,8 +34,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @param Tipo: Selecao
 	 * @param Tipo: boolean
 	 * @return true || false
+	 * @throws ObjetoNaoExisteException 
 	 */
-	public static void inserir(Jogador jogador, Selecao selecao, boolean mensagem) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException {
+	public static void inserir(Jogador jogador, Selecao selecao, boolean mensagem) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException, ObjetoNaoExisteException {
 		if (jogador.getNome().isEmpty()) {
 			throw new StringVaziaException("O nome está vazio!");
 		} else {
@@ -66,7 +67,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 	public static boolean inserirConsole(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 11;
-			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			Selecao selecao_Modelo = null;
+			try {
+				selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			} catch (ObjetoNaoExisteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
@@ -298,8 +305,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * 
 	 * @param Tipo: Jogador
 	 * @return true || false
+	 * @throws ObjetoNaoExisteException 
 	 */
-	public static boolean excluir(Jogador jogador) {
+	public static boolean excluir(Jogador jogador) throws ObjetoNaoExisteException {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -317,8 +325,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * 
 	 * @param Tipo: int - Número do jogador
 	 * @return true || false
+	 * @throws ObjetoNaoExisteException 
 	 */
-	public static boolean excluir(int posicao) {
+	public static boolean excluir(int posicao) throws ObjetoNaoExisteException {
 		if (getQuantidadeJogadores() > 0 && (posicao >= 0 && posicao < todos_Jogadores.size())) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
 			Selecao selecao_modelo = SelecaoDAO.getSelecaoPorSelecao(modelo_Jogador.getSelecao());

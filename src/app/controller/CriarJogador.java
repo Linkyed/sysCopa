@@ -8,6 +8,7 @@ import app.model.JogadorDAO;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,6 +78,8 @@ public class CriarJogador {
 			errorShow.setText(e.getMessage());
 		} catch (StringIndexOutOfBoundsException e) {
 			errorShow.setText("O Nome esta vazio!");
+		} catch (ObjetoNaoExisteException e) {
+			errorShow.setText("A seleção nao existe!");
 		}
     	JogadorDAO.listar();
     }
