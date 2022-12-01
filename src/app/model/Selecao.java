@@ -12,11 +12,7 @@ public class Selecao {
 
 	/** Construtor que obriga a receber um String nome para criar uma seleção **/
 	public Selecao(String nome) {
-		if (nome.isEmpty()) {
-			this.nome = " ";			
-		} else {
-			this.nome = Funcoes.captilizeString(nome);
-		}
+		this.nome = Funcoes.captilizeString(nome);
 	}
 
 	/** metodo para adicionar um jogador na lista de jogadores da seleï¿½ï¿½o **/

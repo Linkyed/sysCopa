@@ -42,8 +42,8 @@ public class CriarTecnico {
     	if (CriarSelecao.selecaoAtual != null) {
     		selecao = CriarSelecao.selecaoAtual;
     	}
-    	Tecnico tecnico = new Tecnico(nomeTecnico.getText().strip(), selecao);
     	try {
+    		Tecnico tecnico = new Tecnico(nomeTecnico.getText().strip(), selecao);
     		TecnicoDAO.inserir(tecnico, selecao);
     		System.out.println("Aceito!");
     		Stage window = (Stage)btnProximo.getScene().getWindow();
@@ -54,13 +54,14 @@ public class CriarTecnico {
 		} catch (ObjetoJaExisteException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
-		}
-    	catch (ListaCheiaException e) {
+		} catch (ListaCheiaException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
 		} catch (StringVaziaException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
+		} catch (StringIndexOutOfBoundsException e) {
+			errorShow.setText("O Nome esta vazio!");
 		}
     	TecnicoDAO.listar();
     }
