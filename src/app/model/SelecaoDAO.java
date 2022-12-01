@@ -6,6 +6,7 @@ import java.util.List;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 
 /**
@@ -23,7 +24,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	static private List<Selecao> selecoes = new ArrayList<>();
 
 	/** Metodo para inserir uma seleção já criada no banco de dados **/
-	static public void inserir(Selecao selecao) throws ObjetoJaExisteException, CaracterInvalidoException, ListaCheiaException, StringVaziaException{
+	static public void inserir(Selecao selecao) throws ObjetoJaExisteException, CaracterInvalidoException, ListaCheiaException, StringVaziaException, StringIndexOutOfBoundsException{
 		if (selecao.getNome().isEmpty()) {
 			throw new StringVaziaException("O nome está vazio!");
 		} else {
@@ -49,15 +50,23 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	}
 
 	
-	/** Metodo para editar uma seleção que já existente no banco de dados **/
-	static public boolean editar(Selecao selecao, String nome) {
-		Selecao verificar = new Selecao(nome);
-		if (nome.isEmpty() == true || selecao == null || existeSelecao(verificar) == true) {
-			return false;
+	/** Metodo para editar uma seleção que já existente no banco de dados 
+	 * @throws ObjetoJaExisteException 
+	 * @throws ObjetoNaoExisteException 
+	 * @throws CaracterInvalidoException 
+	 * @throws StringVaziaException **/
+	static public void editar(Selecao selecao, String nome) throws ObjetoJaExisteException, ObjetoNaoExisteException, CaracterInvalidoException, StringVaziaException {
+		if (nome.isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
 		} else {
-			selecao.setNome(nome);
-			return true;
+			Funcoes.verificarString(nome, "O nome só aceita letras!");
 		}
+		if (selecao == null) {
+			throw new ObjetoNaoExisteException("Seleção não existe!");
+		} else if (SelecaoDAO.existeSelecao(new Selecao(nome))) {
+			throw new ObjetoJaExisteException("A Seleção já existe na lista!");
+		}
+		selecao.setNome(nome);
 	}
 
 	/** Metodo para excluir uma seleção existente no banco de dados **/

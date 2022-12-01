@@ -54,9 +54,9 @@ public class CriarJogador {
     
     @FXML
     void btnProximoAction(ActionEvent event) {
-    	Jogador jogador = new Jogador(nomeJogador.getText().strip(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
     	
     	try {
+    		Jogador jogador = new Jogador(nomeJogador.getText().strip(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
     		JogadorDAO.inserir(jogador, CriarSelecao.selecaoAtual, true);
     		System.out.println("Aceito!");
     		
@@ -75,6 +75,8 @@ public class CriarJogador {
 		} catch (StringVaziaException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
+		} catch (StringIndexOutOfBoundsException e) {
+			errorShow.setText("O Nome esta vazio!");
 		}
     	JogadorDAO.listar();
     }

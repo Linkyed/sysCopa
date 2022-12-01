@@ -4,9 +4,16 @@ package app.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.model.Funcoes;
 import app.model.Jogador;
+import app.model.JogadorDAO;
 import app.model.Selecao;
 import app.model.SelecaoDAO;
+import app.model.TecnicoDAO;
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
+import app.model.exceptions.StringVaziaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,6 +29,8 @@ public class EdicaoGeralCriarCopa {
 
 	private boolean objetosJaCriados= false;
 	private boolean textoPosicaoCriado = false;
+	
+	public static String nomeSelecaoEditada = "";
 	
 	@FXML
 	private VBox VBox;
@@ -39,6 +48,9 @@ public class EdicaoGeralCriarCopa {
     private Label labelSelecao;
 
     @FXML
+    private Label labelError;
+    
+    @FXML
     private ComboBox<String> cbEscolhaEdicao;
     
     @FXML
@@ -51,12 +63,6 @@ public class EdicaoGeralCriarCopa {
     void btnVoltarAction(ActionEvent event) {
 
     }
-    
-    @FXML
-    void btnEditarAction(ActionEvent event) {
-
-    }
-
     
     //Objetos usados na hora da escolha do que será editado
     TextField novoNome = new TextField();
@@ -71,21 +77,23 @@ public class EdicaoGeralCriarCopa {
     	Selecao selecao = SelecaoDAO.getSelecaoPorSelecao(InsercaoSelecao.selecaoComboBox);
     	String escolha = cbEscolhaEdicao.getValue().toString();
     	if (!objetosJaCriados) {
+    		novoNome.setMaxWidth(150);
+    		escolhaPosicao.setMinWidth(150);
+    		
     		for (Jogador jogador: selecao.getJogadores()) {
     			escolhaJogador.getItems().add(jogador.getNome());
     		}
+    		escolhaJogador.setValue(escolhaJogador.getItems().get(0));
     		labelPosicao.setText("Escolha a nova posição do Jogador");  	
     		escolhaPosicao.getItems().addAll("Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro",
     					"Volante", "Meia Atacante" );
+    		escolhaPosicao.setValue("Goleiro");
     		
     		labelJogador.setText("Escolha um dos jogadores da seleção");
-    		escolhaPosicao.setMinWidth(150);
-    		VBox.getChildren().add(labelNovoNome);
-    		VBox.getChildren().add(novoNome);
-    		novoNome.setMaxWidth(150);
     		VBox.getChildren().remove(btnVoltar);
     		VBox.getChildren().remove(btnEditar);
-    		VBox.getChildren().addAll(btnEditar, btnVoltar); 
+    		VBox.getChildren().remove(labelError);
+    		VBox.getChildren().addAll(labelNovoNome, novoNome, labelError, btnEditar, btnVoltar); 
     		objetosJaCriados = true;
     	}
     	if (escolha.equals("Seleção")) {
@@ -117,12 +125,44 @@ public class EdicaoGeralCriarCopa {
 				VBox.getChildren().remove(novoNome);
 				VBox.getChildren().remove(btnVoltar);
 				VBox.getChildren().remove(btnEditar);
+				VBox.getChildren().remove(labelError);
 				
-				VBox.getChildren().addAll(labelJogador, escolhaJogador, labelNovoNome, novoNome ,labelPosicao, escolhaPosicao, btnEditar, btnVoltar);
+				VBox.getChildren().addAll(labelJogador, escolhaJogador, labelNovoNome, novoNome ,labelPosicao, escolhaPosicao, labelError, btnEditar, btnVoltar);
 				textoPosicaoCriado = true;			    			
 			}
     		
     	}
+    }
+    
+    @FXML
+    void btnEditarAction(ActionEvent event) {
+    	try {
+    		if (cbEscolhaEdicao.getValue().toString().equals("Seleção")) {
+    			SelecaoDAO.editar(InsercaoSelecao.selecaoComboBox, Funcoes.captilizeString(novoNome.getText().strip()));
+    			nomeSelecaoEditada = Funcoes.captilizeString(novoNome.getText().strip());
+    			InsercaoSelecao.alteracaoSelecao = true;
+    		} else if (cbEscolhaEdicao.getValue().toString().equals("Tecnico")) {
+    			TecnicoDAO.editar(InsercaoSelecao.selecaoComboBox.getTecnico(), Funcoes.captilizeString(novoNome.getText().strip()));
+    		} else if (cbEscolhaEdicao.getValue().toString().equals("Jogador")) {
+    			Jogador jogador = JogadorDAO.getJogadorPorNome(escolhaJogador.getValue().toString().strip());
+    			JogadorDAO.editarNome(jogador, Funcoes.captilizeString(novoNome.getText().strip()));
+    			JogadorDAO.editarPosicao(jogador, escolhaPosicao.getValue().toString());
+    		}
+    		
+    		Stage window = (Stage)btnVoltar.getScene().getWindow();
+    		window.close();
+    	} catch (ObjetoJaExisteException e) {
+    		labelError.setText(e.getMessage());
+    	} catch (ObjetoNaoExisteException e) {
+    		labelError.setText(e.getMessage());
+    	} catch (StringVaziaException e) {
+    		labelError.setText(e.getMessage());
+    	} catch (CaracterInvalidoException e) {
+    		labelError.setText(e.getMessage());
+    	} catch (StringIndexOutOfBoundsException e) {
+    		labelError.setText("O nome está vazio!");
+    	}
+    	
     }
 
     @FXML

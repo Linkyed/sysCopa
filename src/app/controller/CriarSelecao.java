@@ -51,9 +51,9 @@ public class CriarSelecao {
     
     @FXML
     void btnProximoAction(ActionEvent event) throws IOException {
-    	Selecao selecao = new Selecao(nomeSelecao.getText().strip());
     	try {
     		//Inserindo a seleção
+    		Selecao selecao = new Selecao(nomeSelecao.getText().strip());
     		SelecaoDAO.inserir(selecao);
     		GrupoPrimeiraFase.adicionarSelecao(grupoSelecao.getValue().toString(), selecao);
     		GrupoPrimeiraFase.listarTodosGrupos();
@@ -69,13 +69,14 @@ public class CriarSelecao {
 		} catch (ObjetoJaExisteException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
-		}
-    	catch (ListaCheiaException e) {
+		} catch (ListaCheiaException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
 		} catch (StringVaziaException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
+		} catch (StringIndexOutOfBoundsException e) {
+			errorShow.setText("O Nome esta vazio!");
 		}
     	SelecaoDAO.listar();
     }

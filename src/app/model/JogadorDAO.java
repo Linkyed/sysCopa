@@ -6,6 +6,7 @@ import java.util.List;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 
 /**
@@ -88,6 +89,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 */
 	public static boolean editarNome(Jogador jogador_Antigo, Jogador jogador_Novo) {
 
+
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -121,6 +123,18 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 		return false;
 
+	}
+	
+	public static void editarNome(Jogador jogador, String novoNome) throws ObjetoNaoExisteException, StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException{
+		if (novoNome.isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(novoNome, "O nome só aceita letras!");			
+		}
+		existeJogadorComNome(novoNome);		
+		jogador.setNome(novoNome);
+		
+		
 	}
 
 	/**
@@ -268,6 +282,15 @@ public class JogadorDAO implements JogadorDAOInterface{
 			}
 		}
 		return false;
+	}
+	public static void editarPosicao(Jogador jogador, String posicao) throws ObjetoNaoExisteException {
+		if (todos_Jogadores.contains(jogador)) {
+			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
+			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
+			modelo_Jogador.setPosicaoJogada(posicao);
+		} else {
+			throw new ObjetoNaoExisteException("O jogador não existe na lista!");
+		}
 	}
 
 	/**
@@ -421,5 +444,23 @@ public class JogadorDAO implements JogadorDAOInterface{
 		} else {
 			return null;
 		}
+	}
+	
+	public static Jogador getJogadorPorNome(String nome) throws ObjetoNaoExisteException {
+		for (Jogador jogador: todos_Jogadores) {
+			if (jogador.getNome().equals(nome)) {
+				return jogador;
+			}
+		}
+		throw new ObjetoNaoExisteException("O jogador não existe na lista!");
+	}
+	
+	public static boolean existeJogadorComNome(String nome) throws ObjetoJaExisteException {
+		for (Jogador jogador: todos_Jogadores) {
+			if (jogador.getNome().equals(nome)) {
+				throw new ObjetoJaExisteException("O jogador já existe na lista!");
+			}
+		}
+		return false;
 	}
 }

@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,8 @@ public class InsercaoSelecao {
 
 	public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
 	public static Selecao selecaoComboBox;
+	public static boolean alteracaoSelecao = false;
+	
 	@FXML
 	private Button btnEditarSelecao;
 
@@ -178,6 +181,21 @@ public class InsercaoSelecao {
 		windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
 		//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
 		windowSelecao.showAndWait();
+		
+		if(alteracaoSelecao) {
+			comboBoxSelecoes.getItems().add(EdicaoGeralCriarCopa.nomeSelecaoEditada);
+			comboBoxSelecoes.setValue(EdicaoGeralCriarCopa.nomeSelecaoEditada);
+			int x = comboBoxSelecoes.getItems().size()-2;
+			for (int i = x; i >= 0; i--) {
+				comboBoxSelecoes.getItems().remove(i);
+			}			
+			atualizarComboBoxSelecao();
+			atualizarGrupos();
+		}
+		
+		//comboBoxSelecoes.getItems().clear();
+		atualizarLabelsSelecaoEscolhida();
+		alteracaoSelecao = false;
 	}
 	
 	
@@ -207,7 +225,6 @@ public class InsercaoSelecao {
 		atualizarGrupos();
     	atualizarComboBoxSelecao();
 		atualizarBarraProgresso();
-		
 	   	//this.tabelaGruposAD.getColumns().addAll(colunaA, colunaB, colunaC, colunaD);
 	   	//this.tabelaGruposAD.setItems(selecoesGruposAD);
 		//this.tabelaGruposEH.getColumns().addAll(colunaE, colunaF, colunaG, colunaH);
@@ -242,17 +259,20 @@ public class InsercaoSelecao {
     }
     
     private void atualizarComboBoxSelecao() {
+    	//comboBoxSelecoes.getItems().clear();
+    	
     	List<String> listaSelecoes = SelecaoDAO.selecoesExistentes();
     	if(listaSelecoes.size() == 0) {
     		comboBoxSelecoes.setValue("Nenhuma");
     	} else {
-    		comboBoxSelecoes.setValue(listaSelecoes.get(0));    
-    		if (listaSelecoes.size() > 1) {
+    		//comboBoxSelecoes.setValue(listaSelecoes.get(0));    
+    		if (listaSelecoes.size() > 0) {
     			for(String selecao: listaSelecoes) {
-    				comboBoxSelecoes.getItems().add(selecao);
+    				if (!comboBoxSelecoes.getItems().contains(selecao)) {
+    					comboBoxSelecoes.getItems().add(selecao);    					
+    				}
     			}    			
     		}
-    		
     	}
     	
     }
@@ -290,4 +310,5 @@ public class InsercaoSelecao {
 	        	}
 	        });
     }
+
 }
