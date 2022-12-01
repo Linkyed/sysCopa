@@ -74,7 +74,13 @@ public class EdicaoGeralCriarCopa {
     @FXML
     void cbEscolhaEdicaoAction(ActionEvent event) {
     	Stage window = (Stage)btnVoltar.getScene().getWindow();
-    	Selecao selecao = SelecaoDAO.getSelecaoPorSelecao(InsercaoSelecao.selecaoComboBox);
+    	Selecao selecao = null;
+		try {
+			selecao = SelecaoDAO.getSelecaoPorSelecao(InsercaoSelecao.selecaoComboBox);
+		} catch (ObjetoNaoExisteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	String escolha = cbEscolhaEdicao.getValue().toString();
     	if (!objetosJaCriados) {
     		novoNome.setMaxWidth(150);

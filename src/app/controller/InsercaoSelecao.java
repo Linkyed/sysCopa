@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import app.model.GrupoPrimeiraFase;
 import app.model.Selecao;
 import app.model.SelecaoDAO;
+import app.model.exceptions.ObjetoNaoExisteException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,12 +51,20 @@ public class InsercaoSelecao {
 	@FXML
 	private Button btnInserirSelecao;
 	   
+	@FXML
+    private Button btnExcluirSelecao;
 	
+	@FXML
+	private Button btnMenuAlteracoes;
+
 	@FXML
 	private Button btnVoltarMenu;
 	  
 	@FXML
 	private ComboBox<String> comboBoxSelecoes;
+	
+    @FXML
+    private Label labelErrorEditDel;
 	
 	@FXML
 	private Label labelNomeJogador1;
@@ -164,38 +174,47 @@ public class InsercaoSelecao {
 	 		windowJogador.showAndWait();
 	 	}
 	 	atualizarGrupos();
-	 	atualizarComboBoxSelecao();
+	 	atualizarComboBoxSelecao(CriarSelecao.selecaoAtual.getNome());
 	 	atualizarBarraProgresso();
+	 	atualizarBotoes();
 	    }
    
 	@FXML
     void btnEditarSelecaoAction(ActionEvent event) throws IOException {
-		//Iniciando o precesso de inserir uma seleção em uma tela separada
-		FXMLLoader loaderSelecao = new FXMLLoader();
-		URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/EdicaoGeral.fxml");
-		loaderSelecao.setLocation(xmlURLSelecao);
-		Parent rootSelecao = loaderSelecao.load();
-		Stage windowSelecao = new Stage();
-		windowSelecao.resizableProperty().setValue(false);
-		windowSelecao.initModality(Modality.APPLICATION_MODAL);
-		windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
-		//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-		windowSelecao.showAndWait();
-		
-		if(alteracaoSelecao) {
-			comboBoxSelecoes.getItems().add(EdicaoGeralCriarCopa.nomeSelecaoEditada);
-			comboBoxSelecoes.setValue(EdicaoGeralCriarCopa.nomeSelecaoEditada);
-			int x = comboBoxSelecoes.getItems().size()-2;
-			for (int i = x; i >= 0; i--) {
-				comboBoxSelecoes.getItems().remove(i);
-			}			
-			atualizarComboBoxSelecao();
-			atualizarGrupos();
+		try {
+			comboBoxSelecoes.getValue();
+			labelErrorEditDel.setText("");
+			//Iniciando o precesso de inserir uma seleção em uma tela separada
+			FXMLLoader loaderSelecao = new FXMLLoader();
+			URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/EdicaoGeral.fxml");
+			loaderSelecao.setLocation(xmlURLSelecao);
+			Parent rootSelecao = loaderSelecao.load();
+			Stage windowSelecao = new Stage();
+			windowSelecao.resizableProperty().setValue(false);
+			windowSelecao.initModality(Modality.APPLICATION_MODAL);
+			windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
+			//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
+			windowSelecao.showAndWait();
+			
+			if(alteracaoSelecao) {		
+				comboBoxSelecoes.getItems().add(EdicaoGeralCriarCopa.nomeSelecaoEditada);
+                comboBoxSelecoes.setValue(EdicaoGeralCriarCopa.nomeSelecaoEditada);
+                int x = comboBoxSelecoes.getItems().size()-2;
+                for (int i = x; i >= 0; i--) {
+                    comboBoxSelecoes.getItems().remove(i);
+                }
+				atualizarComboBoxSelecao(EdicaoGeralCriarCopa.nomeSelecaoEditada);
+				atualizarGrupos();
+			}
+			
+			//comboBoxSelecoes.getItems().clear();
+			atualizarLabelsSelecaoEscolhida();
+			atualizarBotoes();
+			alteracaoSelecao = false;
+		} catch (Exception e) {
+			labelErrorEditDel.setText("Selecione uma seleção acima para ser editada!");
 		}
 		
-		//comboBoxSelecoes.getItems().clear();
-		atualizarLabelsSelecaoEscolhida();
-		alteracaoSelecao = false;
 	}
 	
 	
@@ -211,20 +230,55 @@ public class InsercaoSelecao {
         Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
         window.setScene(new Scene(root, 600, 400));
     }
+    
+    @FXML
+    void btnExcluirSelecaoAction(ActionEvent event) {
+    	try {
+    		String nomeSelecaoExcluida = comboBoxSelecoes.getValue().toString();
+    		SelecaoDAO.excluir(new Selecao(nomeSelecaoExcluida));
+    		comboBoxSelecoes.setValue("Vazio");
+    		int x = comboBoxSelecoes.getItems().size()-1;
+    		for (int i = x; i>= 0; i--) {
+    			comboBoxSelecoes.getItems().remove(i);
+    		}
+    		atualizarComboBoxSelecao("as");
+    		atualizarBarraProgresso();
+    		atualizarGrupos();
+    		atualizarBotoes();
+    		if (comboBoxSelecoes.getItems().size() > 0) {
+    			comboBoxSelecoes.setValue(comboBoxSelecoes.getItems().get(0));
+    			//comboBoxSelecoes.getItems();
+    		}
+    	} catch (Exception e) {
+    		System.out.println("GEGE");
+    	}
+    	
+    }
+    
+    @FXML
+    void btnMenuAlteracoesAction(ActionEvent event) {
 
-
+    }
+    
     @FXML
     void comboBoxTrocarLabelsAction(ActionEvent event) {
     	atualizarLabelsSelecaoEscolhida();
-    	selecaoComboBox = SelecaoDAO.getSelecaoPorSelecao(new Selecao(comboBoxSelecoes.getValue().toString()));
+    	try {
+			selecaoComboBox = SelecaoDAO.getSelecaoPorSelecao(new Selecao(comboBoxSelecoes.getValue()));
+		} catch (ObjetoNaoExisteException e) {
+			selecaoComboBox = null;
+			
+		}
     }
     
     
     @FXML
     void initialize() {
+    	
 		atualizarGrupos();
-    	atualizarComboBoxSelecao();
+    	atualizarComboBoxSelecao("Nenhum");
 		atualizarBarraProgresso();
+		atualizarBotoes();
 	   	//this.tabelaGruposAD.getColumns().addAll(colunaA, colunaB, colunaC, colunaD);
 	   	//this.tabelaGruposAD.setItems(selecoesGruposAD);
 		//this.tabelaGruposEH.getColumns().addAll(colunaE, colunaF, colunaG, colunaH);
@@ -258,9 +312,8 @@ public class InsercaoSelecao {
 		}
     }
     
-    private void atualizarComboBoxSelecao() {
-    	//comboBoxSelecoes.getItems().clear();
-    	
+    private void atualizarComboBoxSelecao(String selecaoEscolhida) {
+
     	List<String> listaSelecoes = SelecaoDAO.selecoesExistentes();
     	if(listaSelecoes.size() == 0) {
     		comboBoxSelecoes.setValue("Nenhuma");
@@ -274,31 +327,61 @@ public class InsercaoSelecao {
     			}    			
     		}
     	}
-    	
     }
     
     private void atualizarLabelsSelecaoEscolhida() {
-    	String nome = comboBoxSelecoes.getValue().toString();
-    	Selecao selecao = SelecaoDAO.getSelecaoPorSelecao(new Selecao(nome));
-    	//labelNomeSelecao.textProperty().bind(comboBoxSelecoes.getSelectionModel().selectedItemProperty());
-    	labelNomeSelecao.setText(selecao.getNome());
-    	labelNomeTecnico.setText(selecao.getTecnico().getNome());
-    	labelNomeJogador1.setText(selecao.getJogadores().get(0).getNome());
-    	labelNomeJogador2.setText(selecao.getJogadores().get(1).getNome());
-    	labelNomeJogador3.setText(selecao.getJogadores().get(2).getNome());
-    	labelNomeJogador4.setText(selecao.getJogadores().get(3).getNome());
-    	labelNomeJogador5.setText(selecao.getJogadores().get(4).getNome());
-    	labelNomeJogador6.setText(selecao.getJogadores().get(5).getNome());
-    	labelNomeJogador7.setText(selecao.getJogadores().get(6).getNome());
-    	labelNomeJogador8.setText(selecao.getJogadores().get(7).getNome());
-    	labelNomeJogador9.setText(selecao.getJogadores().get(8).getNome());
-    	labelNomeJogador10.setText(selecao.getJogadores().get(9).getNome());
-    	labelNomeJogador11.setText(selecao.getJogadores().get(10).getNome());
+    	try {
+    		String nome = comboBoxSelecoes.getValue().toString();
+    		Selecao selecao = SelecaoDAO.getSelecaoPorSelecao(new Selecao(nome));
+    		//labelNomeSelecao.textProperty().bind(comboBoxSelecoes.getSelectionModel().selectedItemProperty());
+    		labelNomeSelecao.setText(selecao.getNome());
+    		labelNomeTecnico.setText(selecao.getTecnico().getNome());
+    		labelNomeJogador1.setText(selecao.getJogadores().get(0).getNome());
+    		labelNomeJogador2.setText(selecao.getJogadores().get(1).getNome());
+    		labelNomeJogador3.setText(selecao.getJogadores().get(2).getNome());
+    		labelNomeJogador4.setText(selecao.getJogadores().get(3).getNome());
+    		labelNomeJogador5.setText(selecao.getJogadores().get(4).getNome());
+    		labelNomeJogador6.setText(selecao.getJogadores().get(5).getNome());
+    		labelNomeJogador7.setText(selecao.getJogadores().get(6).getNome());
+    		labelNomeJogador8.setText(selecao.getJogadores().get(7).getNome());
+    		labelNomeJogador9.setText(selecao.getJogadores().get(8).getNome());
+    		labelNomeJogador10.setText(selecao.getJogadores().get(9).getNome());
+    		labelNomeJogador11.setText(selecao.getJogadores().get(10).getNome());    		
+    	} catch (ObjetoNaoExisteException e) {
+    		labelNomeSelecao.setText("Vazio");
+    		labelNomeTecnico.setText("Vazio");
+    		labelNomeJogador1.setText("Vazio");
+    		labelNomeJogador2.setText("Vazio");
+    		labelNomeJogador3.setText("Vazio");
+    		labelNomeJogador4.setText("Vazio");
+    		labelNomeJogador5.setText("Vazio");
+    		labelNomeJogador6.setText("Vazio");
+    		labelNomeJogador7.setText("Vazio");
+    		labelNomeJogador8.setText("Vazio");
+    		labelNomeJogador9.setText("Vazio");
+    		labelNomeJogador10.setText("Vazio");
+    		labelNomeJogador11.setText("Vazio"); 
+    	} 
+    	catch(Exception e) {
+    		labelNomeSelecao.setText("Vazio");
+    		labelNomeTecnico.setText("Vazio");
+    		labelNomeJogador1.setText("Vazio");
+    		labelNomeJogador2.setText("Vazio");
+    		labelNomeJogador3.setText("Vazio");
+    		labelNomeJogador4.setText("Vazio");
+    		labelNomeJogador5.setText("Vazio");
+    		labelNomeJogador6.setText("Vazio");
+    		labelNomeJogador7.setText("Vazio");
+    		labelNomeJogador8.setText("Vazio");
+    		labelNomeJogador9.setText("Vazio");
+    		labelNomeJogador10.setText("Vazio");
+    		labelNomeJogador11.setText("Vazio"); 
+    	}
     }
     
     private void atualizarBarraProgresso() {
-    	quantidadeSelecoesCriadas.setText("Quantidade de Seleções criadas: %d".formatted(quantidadeSelecoes));
-    	progressoSelecoesCriadas.setProgress((1/32.0)*quantidadeSelecoes);
+    	quantidadeSelecoesCriadas.setText("Quantidade de Seleções criadas: %d".formatted(SelecaoDAO.quantidadeSelecoes()));
+    	progressoSelecoesCriadas.setProgress((1/32.0)*SelecaoDAO.quantidadeSelecoes());
     }
     
     private void impedirFechamento(Stage window, String titulo, String mensagem) {
@@ -309,6 +392,21 @@ public class InsercaoSelecao {
 	        		event.consume();
 	        	}
 	        });
+    }
+    
+    private void atualizarBotoes() {
+    	if (comboBoxSelecoes.getItems().size() > 0) {
+    		btnEditarSelecao.setDisable(false);
+    		btnExcluirSelecao.setDisable(false);
+    	} else {
+    		btnEditarSelecao.setDisable(true);
+    		btnExcluirSelecao.setDisable(true);
+    	}
+    	if (SelecaoDAO.quantidadeSelecoes() == 32) {
+    		btnMenuAlteracoes.setDisable(false);
+    	} else {
+    		btnMenuAlteracoes.setDisable(true);
+    	}
     }
 
 }
