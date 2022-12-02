@@ -8,6 +8,7 @@ import app.model.Jogador;
 import app.model.JogadorDAO;
 import app.model.Selecao;
 import app.model.SelecaoDAO;
+import app.model.exceptions.ObjetoNaoExisteException;
 
 public class JogadorDAOTest {
 	Selecao selecao0 = new Selecao("Brasil");
@@ -116,7 +117,7 @@ public class JogadorDAOTest {
 		JogadorDAO.resetarLista();
 	}
 	@Test
-	public void excluirTest() {
+	public void excluirTest() throws ObjetoNaoExisteException {
 		SelecaoDAO.inserirConsole(selecao0);
 		SelecaoDAO.inserirConsole(selecao1);
 		SelecaoDAO.inserirConsole(selecao2);

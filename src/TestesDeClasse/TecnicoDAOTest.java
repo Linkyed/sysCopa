@@ -7,6 +7,10 @@ import org.junit.Test;
 import app.model.Selecao;
 import app.model.Tecnico;
 import app.model.TecnicoDAO;
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
+import app.model.exceptions.StringVaziaException;
 
 public class TecnicoDAOTest {
 	Selecao selecao0 = new Selecao("Brasil");
@@ -42,7 +46,7 @@ public class TecnicoDAOTest {
 		TecnicoDAO.resetarLista();
 	}
 	@Test
-	public void editarNomeTest() {
+	public void editarNomeTest() throws StringVaziaException, CaracterInvalidoException, ObjetoNaoExisteException, ObjetoJaExisteException {
 		TecnicoDAO.inserirConsole(tecnico0);
 		TecnicoDAO.inserirConsole(tecnico1);
 		TecnicoDAO.inserirConsole(tecnico2);

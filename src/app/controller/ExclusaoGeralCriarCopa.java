@@ -104,6 +104,11 @@ public class ExclusaoGeralCriarCopa {
     	cbEscolhaExclusao.getItems().addAll("Seleção", "Tecnico", "Jogador");
     	cbEscolhaExclusao.setMinWidth(150);
     	try {
+			labelSelecao.setText(labelSelecao.getText().formatted(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getNome()));
+		} catch (ObjetoNaoExisteException e) {
+			labelError.setText("Seleção nao encontrada@");
+		}
+    	try {
 			for (Jogador jogador: SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getJogadores()) {
 				escolhaJogador.getItems().add(jogador.getNome());
 			}
