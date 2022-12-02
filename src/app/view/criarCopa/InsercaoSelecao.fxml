@@ -203,8 +203,8 @@
             </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="290.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnEditarSelecao" disable="true" mnemonicParsing="false" onAction="#btnEditarSelecaoAction" prefHeight="25.0" prefWidth="140.0" text="Editar Seleção" />
-                  <Button fx:id="btnExcluirSelecao" disable="true" mnemonicParsing="false" onAction="#btnExcluirSelecaoAction" prefHeight="25.0" prefWidth="140.0" text="Excluir Seleção" />
+                  <Button fx:id="btnEditar" disable="true" mnemonicParsing="false" onAction="#btnEditarAction" prefHeight="25.0" prefWidth="140.0" text="Editar" />
+                  <Button fx:id="btnExcluir" disable="true" mnemonicParsing="false" onAction="#btnExcluirAction" prefHeight="25.0" prefWidth="140.0" text="Excluir" />
                </children>
             </HBox>
          </children>
