@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ListaCheiaException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.StringVaziaException;
+
 public class Teste {
 
 	public static void RandomPartida(int numeroDePartidas,boolean grupoOUmata) {
@@ -42,9 +47,8 @@ public class Teste {
 			
 		}
 	}
-
-	public static void main(String[] args) {
-
+	
+	public static void preDefinicao() {
 		Selecao selecao1 = new Selecao("Qatar");
 		SelecaoDAO.inserirConsole(selecao1);
 		Jogador Q1Jogador = new Jogador("Saad Al-Sheeb", selecao1, 0);
@@ -877,6 +881,54 @@ public class Teste {
 		JogadorDAO.inserirConsole(KR9Jogador, selecao32, false);
 		JogadorDAO.inserirConsole(KR10Jogador, selecao32, false);
 		JogadorDAO.inserirConsole(KR11Jogador, selecao32, false);
+		
+
+		try {
+			TecnicoDAO.inserir(new Tecnico("Félix Sánchez", selecao1), selecao1);
+			TecnicoDAO.inserir(new Tecnico("Gustavo Alfaro", selecao2), selecao2);
+			TecnicoDAO.inserir(new Tecnico("Aliou Cissé", selecao3), selecao3);
+			TecnicoDAO.inserir(new Tecnico("Louis Van Gaal", selecao4), selecao4);
+			TecnicoDAO.inserir(new Tecnico("Gareth Southgate", selecao5), selecao5);
+			TecnicoDAO.inserir(new Tecnico("Carlos Queiroz", selecao6), selecao6);
+			TecnicoDAO.inserir(new Tecnico("Gregg Berhalter", selecao7), selecao7);
+			TecnicoDAO.inserir(new Tecnico("Robert Page", selecao8), selecao8);
+			TecnicoDAO.inserir(new Tecnico("Lionel Scaloni", selecao9), selecao9);
+			TecnicoDAO.inserir(new Tecnico("Herve Renard", selecao10), selecao10);
+			TecnicoDAO.inserir(new Tecnico("Gerardo Martino", selecao11), selecao11);
+			TecnicoDAO.inserir(new Tecnico("Czeslaw Michniewicz", selecao12), selecao12);
+			TecnicoDAO.inserir(new Tecnico("Didier Deschamps", selecao13), selecao13);
+			TecnicoDAO.inserir(new Tecnico("Graham Arnold", selecao14), selecao14);
+			TecnicoDAO.inserir(new Tecnico("Kasper Hjulmand", selecao15), selecao15);
+			TecnicoDAO.inserir(new Tecnico("Jalel Kadri", selecao16), selecao16);
+			TecnicoDAO.inserir(new Tecnico("Luis Enrique", selecao17), selecao17);
+			TecnicoDAO.inserir(new Tecnico("Luis Fernando", selecao18), selecao18);
+			TecnicoDAO.inserir(new Tecnico("Hansi Flick", selecao19), selecao19);
+			TecnicoDAO.inserir(new Tecnico("Hajime Moriyasu", selecao20), selecao20);
+			TecnicoDAO.inserir(new Tecnico("Roberto Martínez", selecao21), selecao21);
+			TecnicoDAO.inserir(new Tecnico("John Herdman", selecao22), selecao22);
+			TecnicoDAO.inserir(new Tecnico("Walid Regragui", selecao23), selecao23);
+			TecnicoDAO.inserir(new Tecnico("Zlatko Dalic", selecao24), selecao24);
+			TecnicoDAO.inserir(new Tecnico("Tite", selecao25), selecao25);
+			TecnicoDAO.inserir(new Tecnico("Dragan Stojkovic", selecao26), selecao26);
+			TecnicoDAO.inserir(new Tecnico("Murat Yakin", selecao27), selecao27);
+			TecnicoDAO.inserir(new Tecnico("Rigobert Song", selecao28), selecao28);
+			TecnicoDAO.inserir(new Tecnico("Fernando Santos", selecao29), selecao29);
+			TecnicoDAO.inserir(new Tecnico("Otto Addo", selecao30), selecao30);
+			TecnicoDAO.inserir(new Tecnico("Diego Alonso", selecao31), selecao31);
+			TecnicoDAO.inserir(new Tecnico("Paulo Bento", selecao32), selecao32);
+		} catch (ListaCheiaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ObjetoJaExisteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CaracterInvalidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (StringVaziaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		GrupoPrimeiraFase.adicionarSelecao("A", selecao1);
 		GrupoPrimeiraFase.adicionarSelecao("A", selecao2);
@@ -917,6 +969,11 @@ public class Teste {
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao30);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao31);
 		GrupoPrimeiraFase.adicionarSelecao("H", selecao32);
+	}
+
+	public static void main(String[] args) {
+
+		preDefinicao();
 
 		GrupoPrimeiraFase.organizadorTodasPartidas();
 
