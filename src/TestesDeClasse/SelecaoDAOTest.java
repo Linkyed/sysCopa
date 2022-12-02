@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import app.model.Selecao;
 import app.model.SelecaoDAO;
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
+import app.model.exceptions.StringVaziaException;
 
 public class SelecaoDAOTest {
 
@@ -32,7 +36,7 @@ public class SelecaoDAOTest {
 		SelecaoDAO.resetarLista();
 	}
 	@Test
-	public void editarTest() {
+	public void editarTest() throws ObjetoJaExisteException, ObjetoNaoExisteException, CaracterInvalidoException, StringVaziaException {
 		SelecaoDAO.inserirConsole(selecao0);
 		SelecaoDAO.inserirConsole(selecao1);
 		SelecaoDAO.inserirConsole(selecao2);
@@ -69,7 +73,7 @@ public class SelecaoDAOTest {
 		SelecaoDAO.resetarLista();
 	}
 	@Test
-	public void getSelecaoPorSelecaoTest() {
+	public void getSelecaoPorSelecaoTest() throws ObjetoNaoExisteException {
 		SelecaoDAO.inserirConsole(selecao0);
 		SelecaoDAO.inserirConsole(selecao1);
 		SelecaoDAO.inserirConsole(selecao2);

@@ -5,7 +5,7 @@
  * @author peedr
  *
  */
-module PBL {
+module TESTE {
 	requires javafx.fxml;
 	requires javafx.graphics;
 	requires javafx.controls;
