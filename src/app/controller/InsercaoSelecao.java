@@ -41,18 +41,18 @@ import javafx.stage.WindowEvent;
 public class InsercaoSelecao {
 
 	public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
-	public static Selecao selecaoComboBox;
+	public static String selecaoComboBox;
 	public static boolean alteracaoSelecao = false;
 	
 	@FXML
-	private Button btnEditarSelecao;
+	private Button btnEditar;
 
 		
 	@FXML
 	private Button btnInserirSelecao;
 	   
 	@FXML
-    private Button btnExcluirSelecao;
+    private Button btnExcluir;
 	
 	@FXML
 	private Button btnMenuAlteracoes;
@@ -180,7 +180,7 @@ public class InsercaoSelecao {
 	    }
    
 	@FXML
-    void btnEditarSelecaoAction(ActionEvent event) throws IOException {
+    void btnEditarAction(ActionEvent event) throws IOException {
 		try {
 			comboBoxSelecoes.getValue();
 			labelErrorEditDel.setText("");
@@ -232,27 +232,54 @@ public class InsercaoSelecao {
     }
     
     @FXML
-    void btnExcluirSelecaoAction(ActionEvent event) {
-    	try {
-    		String nomeSelecaoExcluida = comboBoxSelecoes.getValue().toString();
-    		SelecaoDAO.excluir(new Selecao(nomeSelecaoExcluida));
-    		comboBoxSelecoes.setValue("Vazio");
-    		int x = comboBoxSelecoes.getItems().size()-1;
-    		for (int i = x; i>= 0; i--) {
-    			comboBoxSelecoes.getItems().remove(i);
-    		}
-    		atualizarComboBoxSelecao("as");
-    		atualizarBarraProgresso();
-    		atualizarGrupos();
-    		atualizarBotoes();
-    		if (comboBoxSelecoes.getItems().size() > 0) {
-    			comboBoxSelecoes.setValue(comboBoxSelecoes.getItems().get(0));
-    			//comboBoxSelecoes.getItems();
-    		}
-    	} catch (Exception e) {
-    		System.out.println("GEGE");
-    	}
+    void btnExcluirAction(ActionEvent event) {
     	
+    	try {
+			comboBoxSelecoes.getValue();
+			labelErrorEditDel.setText("");
+			//Iniciando o precesso de inserir uma seleção em uma tela separada
+			FXMLLoader loaderSelecao = new FXMLLoader();
+			URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/ExclusaoGeralCriarCopa.fxml");
+			loaderSelecao.setLocation(xmlURLSelecao);
+			Parent rootSelecao = loaderSelecao.load();
+			Stage windowSelecao = new Stage();
+			windowSelecao.resizableProperty().setValue(false);
+			windowSelecao.initModality(Modality.APPLICATION_MODAL);
+			windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
+			//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
+			windowSelecao.showAndWait();
+			
+			
+			
+			//comboBoxSelecoes.getItems().clear();
+			atualizarLabelsSelecaoEscolhida();
+			atualizarBotoes();
+			alteracaoSelecao = false;
+		} catch (Exception e) {
+			labelErrorEditDel.setText("Selecione uma seleção acima para ser editada!");
+		}
+    	
+    	if (ExclusaoGeralCriarCopa.selecaoExcluida) {
+    		try {
+    			String nomeSelecaoExcluida = comboBoxSelecoes.getValue().toString();
+    			comboBoxSelecoes.setValue("Vazio");
+    			int x = comboBoxSelecoes.getItems().size()-1;
+    			for (int i = x; i>= 0; i--) {
+    				comboBoxSelecoes.getItems().remove(i);
+    			}
+    			atualizarComboBoxSelecao("as");
+    			atualizarBarraProgresso();
+    			atualizarGrupos();
+    			atualizarBotoes();
+    			if (comboBoxSelecoes.getItems().size() > 0) {
+    				comboBoxSelecoes.setValue(comboBoxSelecoes.getItems().get(0));
+    				//comboBoxSelecoes.getItems();
+    			}
+    			ExclusaoGeralCriarCopa.selecaoExcluida = false;
+    		} catch (Exception e) {
+    			labelErrorEditDel.setText("Seleção não pode ser excluida");
+    		}	
+    	}
     }
     
     @FXML
@@ -263,12 +290,8 @@ public class InsercaoSelecao {
     @FXML
     void comboBoxTrocarLabelsAction(ActionEvent event) {
     	atualizarLabelsSelecaoEscolhida();
-    	try {
-			selecaoComboBox = SelecaoDAO.getSelecaoPorSelecao(new Selecao(comboBoxSelecoes.getValue()));
-		} catch (ObjetoNaoExisteException e) {
-			selecaoComboBox = null;
-			
-		}
+		selecaoComboBox = comboBoxSelecoes.getValue();
+		
     }
     
     
@@ -396,11 +419,11 @@ public class InsercaoSelecao {
     
     private void atualizarBotoes() {
     	if (comboBoxSelecoes.getItems().size() > 0) {
-    		btnEditarSelecao.setDisable(false);
-    		btnExcluirSelecao.setDisable(false);
+    		btnEditar.setDisable(false);
+    		btnExcluir.setDisable(false);
     	} else {
-    		btnEditarSelecao.setDisable(true);
-    		btnExcluirSelecao.setDisable(true);
+    		btnEditar.setDisable(true);
+    		btnExcluir.setDisable(true);
     	}
     	if (SelecaoDAO.quantidadeSelecoes() == 32) {
     		btnMenuAlteracoes.setDisable(false);
