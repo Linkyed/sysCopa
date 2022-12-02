@@ -6,6 +6,7 @@ import java.util.List;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 
 /**
@@ -51,15 +52,23 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		}
 	}
 	
-	/**Metodo para editar um tecnico que já existente no banco de dados**/
-	static public boolean editar(Tecnico tecnico, String nome) {
-
-		if (tecnico.getNome() == nome || nome.isEmpty() == true || nome == null || verificarNome(nome)) {
-			return false;
-		}else {
-			tecnico.setNome(nome);
-			return true;
+	/**Metodo para editar um tecnico que já existente no banco de dados
+	 * @throws StringVaziaException 
+	 * @throws CaracterInvalidoException 
+	 * @throws ObjetoNaoExisteException 
+	 * @throws ObjetoJaExisteException **/
+	static public void editar(Tecnico tecnico, String nome) throws StringVaziaException, CaracterInvalidoException, ObjetoNaoExisteException, ObjetoJaExisteException {
+		if (nome.isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(nome, "O nome só aceita letras!");
 		}
+		if (tecnico == null) {
+			throw new ObjetoNaoExisteException("Tecnico não existe!");
+		} else if (TecnicoDAO.existeTecnico(new Tecnico(nome, null))) {
+			throw new ObjetoJaExisteException("O Tecnico já existe na lista!");
+		}
+		tecnico.setNome(nome);
 	}
 	
 	public static boolean editar(Tecnico tecnico, Selecao selecao) {

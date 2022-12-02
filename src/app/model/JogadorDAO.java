@@ -6,6 +6,7 @@ import java.util.List;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 
 /**
@@ -33,8 +34,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @param Tipo: Selecao
 	 * @param Tipo: boolean
 	 * @return true || false
+	 * @throws ObjetoNaoExisteException 
 	 */
-	public static void inserir(Jogador jogador, Selecao selecao, boolean mensagem) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException {
+	public static void inserir(Jogador jogador, Selecao selecao, boolean mensagem) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException, ObjetoNaoExisteException {
 		if (jogador.getNome().isEmpty()) {
 			throw new StringVaziaException("O nome está vazio!");
 		} else {
@@ -65,7 +67,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 	public static boolean inserirConsole(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 11;
-			Selecao selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			Selecao selecao_Modelo = null;
+			try {
+				selecao_Modelo = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			} catch (ObjetoNaoExisteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (selecao_Modelo.getTamanho() < tamanho_Max && !todos_Jogadores.contains(jogador)) {
 				selecao_Modelo.addJogador(jogador);
 				todos_Jogadores.add(jogador);
@@ -87,6 +95,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @return true || false
 	 */
 	public static boolean editarNome(Jogador jogador_Antigo, Jogador jogador_Novo) {
+
 
 		if (todos_Jogadores.contains(jogador_Antigo) && !todos_Jogadores.contains(jogador_Novo)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador_Antigo);
@@ -121,6 +130,18 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 		return false;
 
+	}
+	
+	public static void editarNome(Jogador jogador, String novoNome) throws ObjetoNaoExisteException, StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException{
+		if (novoNome.isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(novoNome, "O nome só aceita letras!");			
+		}
+		existeJogadorComNome(novoNome);		
+		jogador.setNome(novoNome);
+		
+		
 	}
 
 	/**
@@ -269,14 +290,24 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 		return false;
 	}
+	public static void editarPosicao(Jogador jogador, String posicao) throws ObjetoNaoExisteException {
+		if (todos_Jogadores.contains(jogador)) {
+			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
+			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
+			modelo_Jogador.setPosicaoJogada(posicao);
+		} else {
+			throw new ObjetoNaoExisteException("O jogador não existe na lista!");
+		}
+	}
 
 	/**
 	 * excluir: Exclui o jogador da seleção e da lista de todos os jogadores
 	 * 
 	 * @param Tipo: Jogador
 	 * @return true || false
+	 * @throws ObjetoNaoExisteException 
 	 */
-	public static boolean excluir(Jogador jogador) {
+	public static boolean excluir(Jogador jogador) throws ObjetoNaoExisteException {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
@@ -294,8 +325,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * 
 	 * @param Tipo: int - Número do jogador
 	 * @return true || false
+	 * @throws ObjetoNaoExisteException 
 	 */
-	public static boolean excluir(int posicao) {
+	public static boolean excluir(int posicao) throws ObjetoNaoExisteException {
 		if (getQuantidadeJogadores() > 0 && (posicao >= 0 && posicao < todos_Jogadores.size())) {
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao);
 			Selecao selecao_modelo = SelecaoDAO.getSelecaoPorSelecao(modelo_Jogador.getSelecao());
@@ -421,5 +453,23 @@ public class JogadorDAO implements JogadorDAOInterface{
 		} else {
 			return null;
 		}
+	}
+	
+	public static Jogador getJogadorPorNome(String nome) throws ObjetoNaoExisteException {
+		for (Jogador jogador: todos_Jogadores) {
+			if (jogador.getNome().equals(nome)) {
+				return jogador;
+			}
+		}
+		throw new ObjetoNaoExisteException("O jogador não existe na lista!");
+	}
+	
+	public static boolean existeJogadorComNome(String nome) throws ObjetoJaExisteException {
+		for (Jogador jogador: todos_Jogadores) {
+			if (jogador.getNome().equals(nome)) {
+				throw new ObjetoJaExisteException("O jogador já existe na lista!");
+			}
+		}
+		return false;
 	}
 }

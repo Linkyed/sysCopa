@@ -30,11 +30,7 @@ public class Jogador {
 	 **/
 	public Jogador(String nome, Selecao selecao, int posicao) {
 
-		if (nome.isEmpty()) {
-			this.nome = " ";			
-		} else {
-			this.nome = Funcoes.captilizeString(nome);
-		}
+		this.nome = Funcoes.captilizeString(nome);
 		this.selecao = selecao;
 		this.posicaoJogada = posicaoJogadorString[posicao];
 
@@ -46,7 +42,7 @@ public class Jogador {
 	public Jogador(String nome, Selecao selecao, String posicao) {
 
 		if (nome.isEmpty()) {
-			this.nome = " ";			
+			this.nome = "";			
 		} else {
 			this.nome = Funcoes.captilizeString(nome);
 		}
@@ -127,6 +123,10 @@ public class Jogador {
 		if (0 <= posicao && posicao < 6) {
 			this.posicaoJogada = posicaoJogadorString[posicao];
 		}
+	}
+	public void setPosicaoJogada(String posicao) {
+		this.posicaoJogada = posicao;
+		
 	}
 	
 	public String listarCaracteristicas() {

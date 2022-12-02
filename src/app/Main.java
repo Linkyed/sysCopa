@@ -18,7 +18,7 @@ public class Main extends Application{
 		loader.setLocation(xmlURL);
 		
 		Parent parent = loader.load();
-		
+	
 		 
 		Scene scene = new Scene(parent);
 		primaryState.setTitle("Syscopa 3.0V");

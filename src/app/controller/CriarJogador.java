@@ -8,6 +8,7 @@ import app.model.JogadorDAO;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -54,9 +55,9 @@ public class CriarJogador {
     
     @FXML
     void btnProximoAction(ActionEvent event) {
-    	Jogador jogador = new Jogador(nomeJogador.getText(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
     	
     	try {
+    		Jogador jogador = new Jogador(nomeJogador.getText().strip(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
     		JogadorDAO.inserir(jogador, CriarSelecao.selecaoAtual, true);
     		System.out.println("Aceito!");
     		
@@ -75,6 +76,10 @@ public class CriarJogador {
 		} catch (StringVaziaException e) {
 			System.out.println(e.getMessage());
 			errorShow.setText(e.getMessage());
+		} catch (StringIndexOutOfBoundsException e) {
+			errorShow.setText("O Nome esta vazio!");
+		} catch (ObjetoNaoExisteException e) {
+			errorShow.setText("A seleção nao existe!");
 		}
     	JogadorDAO.listar();
     }
