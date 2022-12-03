@@ -5,11 +5,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import app.model.Selecao;
+import app.model.SelecaoDAO;
 import app.model.Tecnico;
 import app.model.TecnicoDAO;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +22,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class CriarTecnico {
+
+	@FXML
+	private Label labelMensagem;
 
     @FXML
     private ResourceBundle resources;
@@ -37,10 +42,12 @@ public class CriarTecnico {
     private TextField nomeTecnico;
 
     @FXML
-    void btnProximoAction(ActionEvent event) {
+    void btnProximoAction(ActionEvent event) throws ObjetoNaoExisteException {
     	Selecao selecao = null;
     	if (CriarSelecao.selecaoAtual != null) {
     		selecao = CriarSelecao.selecaoAtual;
+    	} else {
+			selecao = SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox));
     	}
     	try {
     		Tecnico tecnico = new Tecnico(nomeTecnico.getText().strip(), selecao);
@@ -67,7 +74,7 @@ public class CriarTecnico {
     }
 
     @FXML
-    void enterPressionado(KeyEvent event) throws IOException {
+    void enterPressionado(KeyEvent event) throws IOException, ObjetoNaoExisteException {
     	if (event.getCode().toString().equals("ENTER")) {
     		btnProximoAction(new ActionEvent());
     	}

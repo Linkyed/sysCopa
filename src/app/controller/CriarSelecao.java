@@ -60,6 +60,7 @@ public class CriarSelecao {
     		System.out.println("Aceito!");
     		InsercaoSelecao.quantidadeSelecoes += 1;
     		selecaoAtual = selecao;
+    		System.out.println(selecao);
     		//Fechando tela da seleção
     		Stage window = (Stage)btnProximo.getScene().getWindow();
     		window.close();
