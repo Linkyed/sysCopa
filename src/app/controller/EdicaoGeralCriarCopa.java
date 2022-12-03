@@ -174,13 +174,9 @@ public class EdicaoGeralCriarCopa {
 
     @FXML
     void initialize() {
-       
+    	cbEscolhaEdicao.setValue("Seleção");
         assert btnVoltar != null : "fx:id=\"btnVoltar\" was not injected: check your FXML file 'EdicaoNaInsercao.fxml'.";
-        try {
-			labelSelecao.setText(labelSelecao.getText().formatted(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getNome()));
-		} catch (ObjetoNaoExisteException e) {
-			labelError.setText("Seleção nao encontrada@");
-		}
+        labelSelecao.setText(labelSelecao.getText().formatted(InsercaoSelecao.selecaoComboBox));
         cbEscolhaEdicao.getItems().addAll("Seleção", "Tecnico", "Jogador");
     }
 
