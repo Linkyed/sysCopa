@@ -25,12 +25,19 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class EdicaoGeralCriarCopa {
+public class EdicaoGeralCriarCopa extends JanelaJAVAFX{
 
 	private boolean objetosJaCriados= false;
 	private boolean textoPosicaoCriado = false;
-	
 	public static String nomeSelecaoEditada = "";
+	
+	 //Objetos usados na hora da escolha do que será editado
+    TextField novoNome = new TextField();
+    Label labelNovoNome =  new Label();
+    Label labelPosicao =  new Label();
+    Label labelJogador =  new Label();
+    ChoiceBox<String> escolhaPosicao = new ChoiceBox<String>();
+    ComboBox<String> escolhaJogador = new ComboBox<String>();
 	
 	@FXML
 	private VBox VBox;
@@ -65,13 +72,7 @@ public class EdicaoGeralCriarCopa {
     	window.close();
     }
     
-    //Objetos usados na hora da escolha do que será editado
-    TextField novoNome = new TextField();
-    Label labelNovoNome =  new Label();
-    Label labelPosicao =  new Label();
-    Label labelJogador =  new Label();
-    ChoiceBox<String> escolhaPosicao = new ChoiceBox<String>();
-    ComboBox<String> escolhaJogador = new ComboBox<String>();
+   
     @FXML
     void cbEscolhaEdicaoAction(ActionEvent event) {
     	Stage window = (Stage)btnVoltar.getScene().getWindow();
@@ -143,41 +144,46 @@ public class EdicaoGeralCriarCopa {
     
     @FXML
     void btnEditarAction(ActionEvent event) {
-    	try {
-    		if (cbEscolhaEdicao.getValue().toString().equals("Seleção")) {
-    			SelecaoDAO.editar(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)), Funcoes.captilizeString(novoNome.getText().strip()));
-    			nomeSelecaoEditada = Funcoes.captilizeString(novoNome.getText().strip());
-    			InsercaoSelecao.alteracaoSelecao = true;
-    		} else if (cbEscolhaEdicao.getValue().toString().equals("Tecnico")) {
-    			TecnicoDAO.editar(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getTecnico(), Funcoes.captilizeString(novoNome.getText().strip()));
-    		} else if (cbEscolhaEdicao.getValue().toString().equals("Jogador")) {
-    			Jogador jogador = JogadorDAO.getJogadorPorNome(escolhaJogador.getValue().toString().strip());
-    			JogadorDAO.editarNome(jogador, Funcoes.captilizeString(novoNome.getText().strip()));
-    			JogadorDAO.editarPosicao(jogador, escolhaPosicao.getValue().toString());
+    	if (!cbEscolhaEdicao.getValue().toString().equals("Nenhum")) {
+    		try {
+    			if (cbEscolhaEdicao.getValue().toString().equals("Seleção")) {
+    				SelecaoDAO.editar(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)), Funcoes.captilizeString(novoNome.getText().strip()));
+    				nomeSelecaoEditada = Funcoes.captilizeString(novoNome.getText().strip());
+    				InsercaoSelecao.alteracaoSelecao = true;
+    			} else if (cbEscolhaEdicao.getValue().toString().equals("Tecnico")) {
+    				TecnicoDAO.editar(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getTecnico(), Funcoes.captilizeString(novoNome.getText().strip()));
+    			} else if (cbEscolhaEdicao.getValue().toString().equals("Jogador")) {
+    				Jogador jogador = JogadorDAO.getJogadorPorNome(escolhaJogador.getValue().toString().strip());
+    				JogadorDAO.editarNome(jogador, Funcoes.captilizeString(novoNome.getText().strip()));
+    				JogadorDAO.editarPosicao(jogador, escolhaPosicao.getValue().toString());
+    			}
+    			
+    			Stage window = (Stage)btnVoltar.getScene().getWindow();
+    			window.close();
+    		} catch (ObjetoJaExisteException e) {
+    			labelError.setText(e.getMessage());
+    		} catch (ObjetoNaoExisteException e) {
+    			labelError.setText(e.getMessage());
+    		} catch (StringVaziaException e) {
+    			labelError.setText(e.getMessage());
+    		} catch (CaracterInvalidoException e) {
+    			labelError.setText(e.getMessage());
+    		} catch (StringIndexOutOfBoundsException e) {
+    			labelError.setText("O nome está vazio!");
     		}
-    		
-    		Stage window = (Stage)btnVoltar.getScene().getWindow();
-    		window.close();
-    	} catch (ObjetoJaExisteException e) {
-    		labelError.setText(e.getMessage());
-    	} catch (ObjetoNaoExisteException e) {
-    		labelError.setText(e.getMessage());
-    	} catch (StringVaziaException e) {
-    		labelError.setText(e.getMessage());
-    	} catch (CaracterInvalidoException e) {
-    		labelError.setText(e.getMessage());
-    	} catch (StringIndexOutOfBoundsException e) {
-    		labelError.setText("O nome está vazio!");
+    	} else {
+    		labelError.setText("Selecione uma opção antes!");
     	}
     	
     }
 
     @FXML
     void initialize() {
-    	cbEscolhaEdicao.setValue("Seleção");
         assert btnVoltar != null : "fx:id=\"btnVoltar\" was not injected: check your FXML file 'EdicaoNaInsercao.fxml'.";
         labelSelecao.setText(labelSelecao.getText().formatted(InsercaoSelecao.selecaoComboBox));
         cbEscolhaEdicao.getItems().addAll("Seleção", "Tecnico", "Jogador");
+        cbEscolhaEdicao.setValue("Nenhum");
+     
     }
 
 }

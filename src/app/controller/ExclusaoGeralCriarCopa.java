@@ -25,7 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class ExclusaoGeralCriarCopa {
+public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
 
 	public static boolean selecaoExcluida = false;
 	
@@ -87,41 +87,14 @@ public class ExclusaoGeralCriarCopa {
     		try {
     			SelecaoDAO.excluir(new Selecao(InsercaoSelecao.selecaoComboBox));
     			window.close();
-    			AlertBox.display("Resultado", "Exclusão foi realizada com sucesso! Agora insira a nova seleção");
+    			JanelaJAVAFX.alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira a nova seleção");
     			//Iniciando a inserção de um novo arbitro para tomar o lugar
-    			FXMLLoader loaderSelecao = new FXMLLoader();
-    			URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/CriarSelecao.fxml");
-    			loaderSelecao.setLocation(xmlURLSelecao);
-    		 	Parent rootSelecao = loaderSelecao.load();
-    		 	Stage windowSelecao = new Stage();
-    		 	windowSelecao.resizableProperty().setValue(false);
-    		 	windowSelecao.initModality(Modality.APPLICATION_MODAL);
-    		 	windowSelecao.setScene(new Scene(rootSelecao, 250, 150));
-    		 	impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-    		 	windowSelecao.showAndWait();
+    		 	abrirJanela("/app/view/criarCopa/CriarSelecao.fxml", 250, 150, true, false);
     		 	//Iniciando o precesso de inserir um Tecnico em uma tela separada
-    		 	FXMLLoader loaderTecnico = new FXMLLoader();
-    		 	URL xmlURLTecnico = getClass().getResource("/app/view/criarCopa/CriarTecnico.fxml");
-    		 	loaderTecnico.setLocation(xmlURLTecnico);
-    		 	Parent rootTecnico = loaderTecnico.load();
-    		 	Stage windowTecnico = new Stage();
-    		 	windowTecnico.initModality(Modality.APPLICATION_MODAL);
-    		 	windowTecnico.setScene(new Scene(rootTecnico, 250, 150));
-    		 	impedirFechamento(windowTecnico, "ERROR", "Termine a inserção para sair desta tela!");
-    		 	windowTecnico.showAndWait();
-
+    		 	abrirJanela("/app/view/criarCopa/CriarTecnico.fxml", 250, 150, true, false);
     		 	//Iniciando o processo de de inserir um jogador em uma tela separada
     		 	for (int i = 0; i < 11; i++) {
-    		 		CriarSelecao.quantidadeJoadores = i;
-    		 		FXMLLoader loaderJogador = new FXMLLoader();
-    		 		URL xmlURLJogador = getClass().getResource("/app/view/criarCopa/CriarJogador.fxml");
-    		 		loaderJogador.setLocation(xmlURLJogador);
-    		 		Parent rootJogador = loaderJogador.load();
-    		 		Stage windowJogador = new Stage();
-    		 		windowJogador.initModality(Modality.APPLICATION_MODAL);
-    		 		windowJogador.setScene(new Scene(rootJogador, 250, 210));
-    		 		impedirFechamento(windowJogador, "ERROR", "Termine a inserção para sair desta tela!");
-    		 		windowJogador.showAndWait();
+    		 		abrirJanela("/app/view/criarCopa/CriarJogador.fxml", 250, 150, true, false);
     		 	}
     			selecaoExcluida = true;
     		} catch (ObjetoNaoExisteException e) {
@@ -132,18 +105,9 @@ public class ExclusaoGeralCriarCopa {
 				TecnicoDAO.excluir(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getTecnico());
 				
 				window.close();
-				AlertBox.display("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo tecnico desta seleção");
+				JanelaJAVAFX.alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo tecnico desta seleção");
 				//Iniciando a inserção de um novo arbitro para tomar o lugar
-				FXMLLoader loaderSelecao = new FXMLLoader();
-				URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/CriarTecnico.fxml");
-				loaderSelecao.setLocation(xmlURLSelecao);
-				Parent rootSelecao = loaderSelecao.load();
-				Stage windowSelecao = new Stage();
-				windowSelecao.resizableProperty().setValue(false);
-				windowSelecao.initModality(Modality.APPLICATION_MODAL);
-				windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
-				impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-				windowSelecao.showAndWait();
+				abrirJanela("/app/view/criarCopa/CriarTecnico.fxml", 250, 150, true, false);
 			} catch (ObjetoNaoExisteException e) {
 				labelError.setText(e.getMessage());
 			}
@@ -151,18 +115,9 @@ public class ExclusaoGeralCriarCopa {
     		try {
 				JogadorDAO.excluir(new Jogador(escolhaJogador.getValue().toString(), null, null));
 				window.close();
-				AlertBox.display("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo jogador desta seleção");
+				JanelaJAVAFX.alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo jogador desta seleção");
 				//Iniciando a inserção de um novo arbitro para tomar o lugar
-				FXMLLoader loaderSelecao = new FXMLLoader();
-				URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/CriarJogador.fxml");
-				loaderSelecao.setLocation(xmlURLSelecao);
-				Parent rootSelecao = loaderSelecao.load();
-				Stage windowSelecao = new Stage();
-				windowSelecao.resizableProperty().setValue(false);
-				windowSelecao.initModality(Modality.APPLICATION_MODAL);
-				windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
-				impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-				windowSelecao.showAndWait();
+				abrirJanela("/app/view/criarCopa/CriarJogador.fxml", 250, 275, true, false);
 			} catch (ObjetoNaoExisteException e) {
 				labelError.setText(e.getMessage());
 			}
@@ -189,7 +144,6 @@ public class ExclusaoGeralCriarCopa {
 				escolhaJogador.getItems().add(jogador.getNome());
 			}
 		} catch (ObjetoNaoExisteException e) {
-			// TODO Auto-generated catch block
 			labelError.setText("Seleção não encontrada!");
 		}
     	try {
@@ -213,7 +167,7 @@ public class ExclusaoGeralCriarCopa {
    	 window.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	        	@Override
 	        	public void handle(WindowEvent event) {
-	        		AlertBox.display(titulo, mensagem);
+	        		JanelaJAVAFX.alertBox(titulo, mensagem);
 	        		event.consume();
 	        	}
 	        });
