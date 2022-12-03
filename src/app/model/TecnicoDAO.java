@@ -94,6 +94,12 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		 
 	}
 	
+	static public void excluir(Tecnico tecnico) throws ObjetoNaoExisteException {
+		if (!tecnicos.remove(tecnico)) {
+			throw new ObjetoNaoExisteException("O tecnico não existe na lista!");
+		}
+	}
+	
 	/**Metodo para mostrar todos os tecnicos que estão no banco de dados**/
 	static public void listar() {
 		if (tecnicos.size() > 0) {

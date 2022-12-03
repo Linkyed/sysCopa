@@ -3,7 +3,11 @@ package app.model;
 import java.util.Scanner;
 
 import app.model.exceptions.CaracterInvalidoException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.List;
 /**
  * Classe de Funções para ajudar na contrução do codígo.
@@ -183,5 +187,6 @@ public class Funcoes {
 	    }
 	    return nome;
 	}
+	
 	
 }

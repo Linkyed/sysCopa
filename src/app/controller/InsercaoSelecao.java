@@ -173,6 +173,7 @@ public class InsercaoSelecao {
 	 		impedirFechamento(windowJogador, "ERROR", "Termine a inserção para sair desta tela!");
 	 		windowJogador.showAndWait();
 	 	}
+	 	CriarSelecao.selecaoAtual = null;
 	 	atualizarGrupos();
 	 	atualizarComboBoxSelecao(CriarSelecao.selecaoAtual.getNome());
 	 	atualizarBarraProgresso();

@@ -307,19 +307,20 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @return true || false
 	 * @throws ObjetoNaoExisteException 
 	 */
-	public static boolean excluir(Jogador jogador) throws ObjetoNaoExisteException {
+	public static void excluir(Jogador jogador) throws ObjetoNaoExisteException {
 		if (todos_Jogadores.contains(jogador)) {
 			int posicao_lista_jogadores = todos_Jogadores.indexOf(jogador);
 			Jogador modelo_Jogador = todos_Jogadores.get(posicao_lista_jogadores);
 			Selecao selecao_modelo = SelecaoDAO.getSelecaoPorSelecao(modelo_Jogador.getSelecao());
 			selecao_modelo.removerJogador(modelo_Jogador);
 			todos_Jogadores.remove(modelo_Jogador);
-			return true;
+	
 		} else {
-			return false;
+			throw new ObjetoNaoExisteException("Jogador não existe na lista!");
 		}
 	}
 
+	
 	/**
 	 * excluir: Exclui o jogador da seleção e da lista de todos os jogadores
 	 * 

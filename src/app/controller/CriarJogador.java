@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import app.model.Jogador;
 import app.model.JogadorDAO;
+import app.model.Selecao;
+import app.model.SelecaoDAO;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ListaCheiaException;
 import app.model.exceptions.ObjetoJaExisteException;
@@ -55,10 +57,17 @@ public class CriarJogador {
     
     @FXML
     void btnProximoAction(ActionEvent event) {
-    	
+    	Selecao selecao = null;
     	try {
-    		Jogador jogador = new Jogador(nomeJogador.getText().strip(), CriarSelecao.selecaoAtual, posicaoJogador.getValue().toString());
-    		JogadorDAO.inserir(jogador, CriarSelecao.selecaoAtual, true);
+    		if (CriarSelecao.selecaoAtual != null) {
+    			System.out.println("AQWUI");
+    			selecao = CriarSelecao.selecaoAtual;
+    		} else {
+    			System.out.println("AQWUI100%");
+    			selecao = SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox));	
+    		}
+    		Jogador jogador = new Jogador(nomeJogador.getText().strip(), selecao, posicaoJogador.getValue().toString());
+    		JogadorDAO.inserir(jogador, selecao, true);
     		System.out.println("Aceito!");
     		
     		
@@ -98,13 +107,19 @@ public class CriarJogador {
         assert nomeJogador != null : "fx:id=\"nomeTecnico\" was not injected: check your FXML file 'CriarJogador.fxml'.";
         assert posicaoJogador != null : "fx:id=\"posicaoJogador\" was not injected: check your FXML file 'CriarJogador.fxml'.";
 
+        if (CriarSelecao.selecaoAtual != null) {
+        	quantidadeJogadores.setProgress((1/11.0)*CriarSelecao.quantidadeJoadores);
+        	labelQuantidadeJogadores.setText(labelQuantidadeJogadores.getText().formatted(11-CriarSelecao.quantidadeJoadores));
+        } else {
+        	labelQuantidadeJogadores.setText(labelQuantidadeJogadores.getText().formatted(1));
+        	quantidadeJogadores.setProgress(0.90);
+        }
+        
         posicaoJogador.getItems().addAll("Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro",
     			"Volante", "Meia Atacante" );
         posicaoJogador.setValue("Goleiro");
-        quantidadeJogadores.setProgress((1/11.0)*CriarSelecao.quantidadeJoadores);
         labelNomeJogador.setText(labelNomeJogador.getText().formatted(CriarSelecao.quantidadeJoadores+1));
         labelPosicaoJogador.setText(labelPosicaoJogador.getText().formatted(CriarSelecao.quantidadeJoadores+1));
-        labelQuantidadeJogadores.setText(labelQuantidadeJogadores.getText().formatted(11-CriarSelecao.quantidadeJoadores));
         
     }
 
