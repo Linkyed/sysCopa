@@ -4,6 +4,11 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ListaCheiaException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.StringVaziaException;
+
 /**
  * Classe DAO do Arbitro Ela inseri o arbritro em uma lista. 
  * Ela edita alguns atributos do arbitro. 
@@ -19,14 +24,40 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	static private List<Arbitro> arbitros = new ArrayList<>();
 	
 	
-	/**Metodo para inserir um arbitro já criado, no banco de dados**/
-	static public boolean inserir(Arbitro arbitro) {
-		if (!veriricarNomeArbitro(arbitro.getNome())) {
-			arbitros.add(arbitro);
-	
-			return true;	
+	/**Metodo para inserir um arbitro já criado, no banco de dados
+	 * @throws StringVaziaException 
+	 * @throws CaracterInvalidoException 
+	 * @throws ObjetoJaExisteException **/
+	static public void inserir(Arbitro arbitro) throws StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException {
+		if (arbitro.getNome().isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
 		} else {
+			Funcoes.verificarString(arbitro.getNome(), "O nome só aceita letras!");			
+		}
+		
+		if (arbitros.contains(arbitro)) {
+			throw new ObjetoJaExisteException("O Arbitro já existe na lista!");
+		} else {
+			arbitros.add(arbitro);
+		}
+	}
+	
+	static public boolean inserirConsole(Arbitro arbitro) {
+		if (arbitro.getNome().isEmpty()) {
 			return false;
+		} else {
+			try {
+				Funcoes.verificarString(arbitro.getNome(), "O nome só aceita letras!");							
+			} catch (CaracterInvalidoException e) {
+				return false;
+			}
+		}
+		
+		if (arbitros.contains(arbitro)) {
+			return false;
+		} else {
+			arbitros.add(arbitro);
+			return true;
 		}
 	}
 	/**Metodo para editar um arbitro que já existente no banco de dados, passando a referencia dele e o novo nome que ele deve receber**/

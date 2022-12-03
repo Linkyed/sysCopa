@@ -7,7 +7,11 @@ public class Arbitro{
 	
 	/**Construtor que obriga a receber um String nome para criar um arbitro**/
 	public Arbitro(String nome){
-		this.nome = Funcoes.captilizeString(nome);
+		if (nome.isEmpty()) {
+			this.nome = "";
+		} else {
+			this.nome = Funcoes.captilizeString(nome);			
+		}
 	}
 
 	public String getNome() {
