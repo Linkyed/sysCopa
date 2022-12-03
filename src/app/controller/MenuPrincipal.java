@@ -20,7 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MenuPrincipal {
+public class MenuPrincipal extends JanelaJAVAFX{
 
     @FXML
     private ResourceBundle resources;
@@ -40,30 +40,16 @@ public class MenuPrincipal {
     	TecnicoDAO.resetarLista();
     	JogadorDAO.resetarLista();
     	ArbitroDAO.resetarLista();
-    	GrupoPrimeiraFase.resetarGrupos();
-    	FXMLLoader loader = new FXMLLoader();
-		URL xmlURL = getClass().getResource("/app/view/criarCopa/InsercaoSelecao.fxml");
-		
-		loader.setLocation(xmlURL);
-		
-		Parent root = loader.load();
-		
+    	GrupoPrimeiraFase.resetarGrupos();	
 		Stage window = (Stage)btnCriarCopa.getScene().getWindow();
-		window.setScene(new Scene(root, 700, 500));
+		trocarJanela("/app/view/criarCopa/InsercaoSelecao.fxml", 700, 500, window);
     }
     
     @FXML
     void btnUsarDadosPreCarregados(ActionEvent event) throws IOException {
     	Teste.preDefinicao();
-    	FXMLLoader loader = new FXMLLoader();
-		URL xmlURL = getClass().getResource("/app/view/criarCopa/InsercaoSelecao.fxml");
-		
-		loader.setLocation(xmlURL);
-		
-		Parent root = loader.load();
-		
 		Stage window = (Stage)btnUsarDados.getScene().getWindow();
-		window.setScene(new Scene(root, 700, 500));
+		trocarJanela("/app/view/criarCopa/InsercaoSelecao.fxml", 700, 500, window);
     }
     
     
