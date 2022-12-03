@@ -55,7 +55,7 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     private Button btnExcluir;
 	
 	@FXML
-	private Button btnMenuAlteracoes;
+	private Button btnFaseGrupos;
 
 	@FXML
 	private Button btnVoltarMenu;
@@ -227,7 +227,7 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     }
     
     @FXML
-    void btnMenuAlteracoesAction(ActionEvent event) {
+    void btnFaseGruposAction(ActionEvent event) {
 
     }
     
@@ -359,9 +359,9 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     		btnExcluir.setDisable(true);
     	}
     	if (SelecaoDAO.quantidadeSelecoes() == 32) {
-    		btnMenuAlteracoes.setDisable(false);
+    		btnFaseGrupos.setDisable(false);
     	} else {
-    		btnMenuAlteracoes.setDisable(true);
+    		btnFaseGrupos.setDisable(true);
     	}
     }
 

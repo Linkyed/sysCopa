@@ -60,10 +60,8 @@ public class CriarJogador {
     	Selecao selecao = null;
     	try {
     		if (CriarSelecao.selecaoAtual != null) {
-    			System.out.println("AQWUI");
     			selecao = CriarSelecao.selecaoAtual;
     		} else {
-    			System.out.println("AQWUI100%");
     			selecao = SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox));	
     		}
     		Jogador jogador = new Jogador(nomeJogador.getText().strip(), selecao, posicaoJogador.getValue().toString());

@@ -87,7 +87,7 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
     		try {
     			SelecaoDAO.excluir(new Selecao(InsercaoSelecao.selecaoComboBox));
     			window.close();
-    			JanelaJAVAFX.alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira a nova seleção");
+    			alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira a nova seleção");
     			//Iniciando a inserção de um novo arbitro para tomar o lugar
     		 	abrirJanela("/app/view/criarCopa/CriarSelecao.fxml", 250, 150, true, false);
     		 	//Iniciando o precesso de inserir um Tecnico em uma tela separada
@@ -105,7 +105,7 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
 				TecnicoDAO.excluir(SelecaoDAO.getSelecaoPorSelecao(new Selecao(InsercaoSelecao.selecaoComboBox)).getTecnico());
 				
 				window.close();
-				JanelaJAVAFX.alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo tecnico desta seleção");
+				alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo tecnico desta seleção");
 				//Iniciando a inserção de um novo arbitro para tomar o lugar
 				abrirJanela("/app/view/criarCopa/CriarTecnico.fxml", 250, 150, true, false);
 			} catch (ObjetoNaoExisteException e) {
@@ -115,7 +115,7 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
     		try {
 				JogadorDAO.excluir(new Jogador(escolhaJogador.getValue().toString(), null, null));
 				window.close();
-				JanelaJAVAFX.alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo jogador desta seleção");
+				alertBox("Resultado", "Exclusão foi realizada com sucesso! Agora insira o novo jogador desta seleção");
 				//Iniciando a inserção de um novo arbitro para tomar o lugar
 				abrirJanela("/app/view/criarCopa/CriarJogador.fxml", 250, 275, true, false);
 			} catch (ObjetoNaoExisteException e) {
@@ -163,14 +163,6 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
         assert labelSelecao != null : "fx:id=\"labelSelecao\" was not injected: check your FXML file 'ExclusaoGeral.fxml'.";
 
     }
-    private void impedirFechamento(Stage window, String titulo, String mensagem) {
-   	 window.setOnCloseRequest(new EventHandler<WindowEvent>() {
-	        	@Override
-	        	public void handle(WindowEvent event) {
-	        		JanelaJAVAFX.alertBox(titulo, mensagem);
-	        		event.consume();
-	        	}
-	        });
-   }
+
 
 }

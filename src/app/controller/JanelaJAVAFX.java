@@ -51,17 +51,17 @@ public abstract class JanelaJAVAFX {
 		window.setScene(new Scene(root, largura, altura));
 	}
 	
-	private void impedirFechamento(Stage window, String titulo, String mensagem) {
+	void impedirFechamento(Stage window, String titulo, String mensagem) {
 	   	 window.setOnCloseRequest(new EventHandler<WindowEvent>() {
 		        	@Override
 		        	public void handle(WindowEvent event) {
-		        		JanelaJAVAFX.alertBox(titulo, mensagem);
+		        		alertBox(titulo, mensagem);
 		        		event.consume();
 		        	}
 		        });
 	   }
 	
-	public static void alertBox (String titulo, String mensagem) {
+	void alertBox (String titulo, String mensagem) {
 		Stage window = new Stage();
 		
 		window.initModality(Modality.APPLICATION_MODAL);
