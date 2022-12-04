@@ -89,9 +89,37 @@
                   <ListView fx:id="listaGrupoH" prefHeight="200.0" prefWidth="95.0" />
                </children>
             </HBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+            <VBox alignment="TOP_CENTER" prefHeight="242.0" prefWidth="389.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnInserirSelecao" mnemonicParsing="false" onAction="#btnInserirSelecaoAction" prefHeight="25.0" prefWidth="300.0" text="Inserir Nova Seleção" />
+                  <Button fx:id="btnInserirSelecao" mnemonicParsing="false" onAction="#btnInserirSelecaoAction" prefHeight="25.0" prefWidth="300.0" text="Inserir nova seleção" />
+                  <HBox alignment="CENTER" prefHeight="19.0" prefWidth="389.0">
+                     <children>
+                        <Button fx:id="btnEditarArbitro" mnemonicParsing="false" onAction="#btnEditarArbitroAction" prefHeight="25.0" prefWidth="145.0" text="Editar lista de arbitros">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnExcluirArbitro" mnemonicParsing="false" onAction="#btnExcluirArbitroAction" prefHeight="25.0" prefWidth="145.0" text="Excluir arbitro">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="19.0" prefWidth="389.0">
+                     <children>
+                        <Button fx:id="btnPesquisa" mnemonicParsing="false" onAction="#btnPesquisaAction" prefHeight="25.0" prefWidth="145.0" text="Sistema de Pesquisa">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnListagem" mnemonicParsing="false" onAction="#btnListagemAction" prefHeight="25.0" prefWidth="145.0" text="Listagem">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                   <Button fx:id="btnFaseGrupos" disable="true" mnemonicParsing="false" onAction="#btnFaseGruposAction" prefHeight="25.0" prefWidth="300.0" text="Ir para fase de grupos" />
                   <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenuAction" prefHeight="25.0" prefWidth="300.0" text="Voltar para o Menu" />
                   <Label fx:id="quantidadeSelecoesCriadas" text="Quantidade de Seleções criadas: %d">

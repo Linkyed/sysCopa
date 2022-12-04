@@ -53,7 +53,6 @@ public class MenuPrincipal extends JanelaJAVAFX{
 		Stage window = (Stage)btnCriarCopa.getScene().getWindow();
 		alertBoxSoAviso("Iniciando", "Primeiro insira os 20 arbitros que farão parte da copa");
 		for (int i = 0; i < 20; i++) {
-			CriarArbitro.arbitrosCriados = i;
 			CriarArbitro.continuar = true;
 			abrirJanela("/app/view/criarCopa/CriarArbitro.fxml", 250, 200, true, false);
 			if (!CriarArbitro.continuar) {
@@ -71,6 +70,8 @@ public class MenuPrincipal extends JanelaJAVAFX{
     	Teste.preDefinicao();
 		Stage window = (Stage)btnUsarDados.getScene().getWindow();
 		trocarJanela("/app/view/criarCopa/InsercaoSelecao.fxml", 700, 500, window);
+		
+		CriarArbitro.arbitrosCriados = 20;
     }
     
     @Override
