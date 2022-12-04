@@ -67,6 +67,11 @@ public class MenuPrincipal extends JanelaJAVAFX{
     
     @FXML
     void btnUsarDadosPreCarregados(ActionEvent event) throws IOException {
+    	SelecaoDAO.resetarLista();
+    	TecnicoDAO.resetarLista();
+    	JogadorDAO.resetarLista();
+    	ArbitroDAO.resetarLista();
+    	GrupoPrimeiraFase.resetarGrupos();
     	Teste.preDefinicao();
 		Stage window = (Stage)btnUsarDados.getScene().getWindow();
 		trocarJanela("/app/view/criarCopa/InsercaoSelecao.fxml", 700, 500, window);

@@ -276,6 +276,53 @@ public class GrupoPrimeiraFase {
 		}
 	}
 	
+	private static Map<Selecao, Integer> encontrarGrupo(String grupo) {
+		if (grupo.equalsIgnoreCase("A")) {
+			return grupoA;
+		} else if (grupo.equalsIgnoreCase("B")) {
+			return grupoB;
+		} else if (grupo.equalsIgnoreCase("C")) {
+			return grupoC;
+		} else if (grupo.equalsIgnoreCase("D")) {
+			return grupoD;
+		} else if (grupo.equalsIgnoreCase("E")) {
+			return grupoE;
+		} else if (grupo.equalsIgnoreCase("F")) {
+			return grupoF;
+		} else if (grupo.equalsIgnoreCase("G")) {
+			return grupoG;
+		} else if (grupo.equalsIgnoreCase("H")) {
+			return grupoH;
+		} else {
+			System.out.println("Grupo não encontrado.");
+			return null;
+		}
+	}
+	
+	public static List<String> selecoesClassificacaoNome(String grupo){
+		List<String> listaSelecoes = new ArrayList<>();
+		Map<Selecao, Integer> selecoesMap  = encontrarGrupo(grupo);
+		List<Entry<Selecao, Integer>> list = new ArrayList<>(selecoesMap.entrySet());
+		list.sort(Entry.comparingByValue());
+		Collections.reverse(list);
+		for (Entry<Selecao, Integer> entry : list) {
+			listaSelecoes.add(entry.getKey().getNome());
+		}
+		return listaSelecoes;
+	}
+	
+	public static List<Integer> selecoesClassificacaoPontos(String grupo){
+		List<Integer> listaSelecoes = new ArrayList<>();
+		Map<Selecao, Integer> selecoesMap  = encontrarGrupo(grupo);
+		List<Entry<Selecao, Integer>> list = new ArrayList<>(selecoesMap.entrySet());
+		list.sort(Entry.comparingByValue());
+		Collections.reverse(list);
+		for (Entry<Selecao, Integer> entry : list) {
+			listaSelecoes.add(entry.getValue());
+		}
+		return listaSelecoes;
+	}
+	
 	public static List<List<Selecao>> ganhadoresFasedeGrupos() {
 		List<List<Selecao>> listaSelecoesClassificadas = new ArrayList<>();
 		listaSelecoesClassificadas.add( maisPontosGrupo(grupoA));
