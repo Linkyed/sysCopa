@@ -36,6 +36,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 public class InsercaoSelecao extends JanelaJAVAFX{
@@ -252,14 +253,15 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     }
     
     @FXML
-    void btnFaseGruposAction(ActionEvent event) {
-
+    void btnFaseGruposAction(ActionEvent event) throws IOException {
+    	Stage window = (Stage)btnFaseGrupos.getScene().getWindow();
+    	trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
     }
     
     @FXML
     void btnVoltarMenuAction(ActionEvent event) throws IOException {
         Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
-        trocarJanela("/app/view/MenuPrincipal.fxml", 600, 400, window);
+        trocarJanela("/app/view/MenuPrincipal.fxml", 800, 500, window);
     }
     
     @FXML
