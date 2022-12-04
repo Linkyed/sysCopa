@@ -44,21 +44,32 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 	public static String selecaoComboBox;
 	public static boolean alteracaoSelecao = false;
 	
-	@FXML
-	private Button btnEditar;
+    @FXML
+    private Button btnEditar;
 
-		
-	@FXML
-	private Button btnInserirSelecao;
-	   
-	@FXML
+    @FXML
+    private Button btnEditarArbitro;
+
+    @FXML
     private Button btnExcluir;
-	
-	@FXML
-	private Button btnFaseGrupos;
 
-	@FXML
-	private Button btnVoltarMenu;
+    @FXML
+    private Button btnExcluirArbitro;
+
+    @FXML
+    private Button btnFaseGrupos;
+
+    @FXML
+    private Button btnInserirSelecao;
+
+    @FXML
+    private Button btnListagem;
+
+    @FXML
+    private Button btnPesquisa;
+
+    @FXML
+    private Button btnVoltarMenu;
 	  
 	@FXML
 	private ComboBox<String> comboBoxSelecoes;
@@ -180,13 +191,6 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 		}
 		
 	}
-	
-	
-    @FXML
-    void btnVoltarMenuAction(ActionEvent event) throws IOException {
-        Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
-        trocarJanela("/app/view/MenuPrincipal.fxml", 600, 400, window);
-    }
     
     @FXML
     void btnExcluirAction(ActionEvent event) {
@@ -227,8 +231,35 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     }
     
     @FXML
+    void btnEditarArbitroAction(ActionEvent event) throws IOException {
+    	abrirJanela("/app/view/criarCopa/EdicaoArbitro.fxml", 250, 200, true, true);
+    }
+  
+    @FXML
+    void btnExcluirArbitroAction(ActionEvent event) throws IOException {
+    	abrirJanela("/app/view/criarCopa/ExclusaoArbitro.fxml", 250, 200, true, true);
+    	abrirJanela("/app/view/criarCopa/CriarArbitro.fxml", 250, 200, true, false);
+    }
+    
+    @FXML
+    void btnPesquisaAction(ActionEvent event) throws IOException {
+    	
+    }
+    
+    @FXML
+    void btnListagemAction(ActionEvent event) throws IOException {
+    	
+    }
+    
+    @FXML
     void btnFaseGruposAction(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void btnVoltarMenuAction(ActionEvent event) throws IOException {
+        Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
+        trocarJanela("/app/view/MenuPrincipal.fxml", 600, 400, window);
     }
     
     @FXML

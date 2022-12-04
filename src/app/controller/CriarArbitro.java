@@ -61,6 +61,7 @@ public class CriarArbitro extends JanelaJAVAFX{
     	try {
     		ArbitroDAO.inserir(new Arbitro(nome));
     		Stage window = (Stage)btnProximo.getScene().getWindow();
+    		arbitrosCriados++;
     		window.close();
     	} catch (ObjetoJaExisteException e) {
     		errorShow.setText(e.getMessage());
