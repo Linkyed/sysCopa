@@ -54,6 +54,11 @@ public class MenuPrincipal {
     
     @FXML
     void btnUsarDadosPreCarregados(ActionEvent event) throws IOException {
+    	SelecaoDAO.resetarLista();
+    	TecnicoDAO.resetarLista();
+    	JogadorDAO.resetarLista();
+    	ArbitroDAO.resetarLista();
+    	GrupoPrimeiraFase.resetarGrupos();
     	Teste.preDefinicao();
     	FXMLLoader loader = new FXMLLoader();
 		URL xmlURL = getClass().getResource("/app/view/criarCopa/InsercaoSelecao.fxml");
