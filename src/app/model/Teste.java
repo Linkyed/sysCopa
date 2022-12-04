@@ -49,6 +49,51 @@ public class Teste {
 	}
 	
 	public static void preDefinicao() {
+		
+		Arbitro arbitro1 = new Arbitro("João Ernesto");
+		Arbitro arbitro2 = new Arbitro("Mauricio de Santos");
+		Arbitro arbitro3 = new Arbitro("Josivaldo Almeida");
+		Arbitro arbitro4 = new Arbitro("Pedro Henrique");
+		Arbitro arbitro5 = new Arbitro("Nalbert Santos");
+		Arbitro arbitro6 = new Arbitro("Guilherme Lucas");
+		Arbitro arbitro7 = new Arbitro("Matias Binnoto");
+		Arbitro arbitro8 = new Arbitro("Max Verstappen");
+		Arbitro arbitro9 = new Arbitro("Thiago Mendes");
+		Arbitro arbitro10 = new Arbitro("Lucas Araujo");
+		Arbitro arbitro11 = new Arbitro("Marcos Costa");
+		Arbitro arbitro12 = new Arbitro("Ernesto Junior");
+		Arbitro arbitro13 = new Arbitro("Rafael Leitão");
+		Arbitro arbitro14 = new Arbitro("Gabriel Jesus");
+		Arbitro arbitro15 = new Arbitro("Pedro Lucas Santos");
+		Arbitro arbitro16 = new Arbitro("Luciano de Almeida");
+		Arbitro arbitro17 = new Arbitro("Harry Kany");
+		Arbitro arbitro18 = new Arbitro("David Mota");
+		Arbitro arbitro19 = new Arbitro("Matheus Henrique");
+		Arbitro arbitro20 = new Arbitro("Jose Henrique Almeida");
+		
+		ArbitroDAO.inserirConsole(arbitro1);
+		ArbitroDAO.inserirConsole(arbitro2);
+		ArbitroDAO.inserirConsole(arbitro3);
+		ArbitroDAO.inserirConsole(arbitro4);
+		ArbitroDAO.inserirConsole(arbitro5);
+		ArbitroDAO.inserirConsole(arbitro6);
+		ArbitroDAO.inserirConsole(arbitro7);
+		ArbitroDAO.inserirConsole(arbitro8);
+		ArbitroDAO.inserirConsole(arbitro9);
+		ArbitroDAO.inserirConsole(arbitro10);
+		ArbitroDAO.inserirConsole(arbitro11);
+		ArbitroDAO.inserirConsole(arbitro12);
+		ArbitroDAO.inserirConsole(arbitro13);
+		ArbitroDAO.inserirConsole(arbitro14);
+		ArbitroDAO.inserirConsole(arbitro15);
+		ArbitroDAO.inserirConsole(arbitro16);
+		ArbitroDAO.inserirConsole(arbitro17);
+		ArbitroDAO.inserirConsole(arbitro18);
+		ArbitroDAO.inserirConsole(arbitro19);
+		ArbitroDAO.inserirConsole(arbitro20);
+		
+		
+		
 		Selecao selecao1 = new Selecao("Qatar");
 		SelecaoDAO.inserirConsole(selecao1);
 		Jogador Q1Jogador = new Jogador("Saad Al-Sheeb", selecao1, 0);

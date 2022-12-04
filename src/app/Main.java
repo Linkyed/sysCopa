@@ -14,12 +14,8 @@ public class Main extends Application{
 	public void start(Stage primaryState) throws Exception {
 		FXMLLoader loader = new FXMLLoader(); 
 		URL xmlURL = getClass().getResource("/app/view/MenuPrincipal.fxml");
-		
-		loader.setLocation(xmlURL);
-		
+		loader.setLocation(xmlURL);	
 		Parent parent = loader.load();
-	
-		 
 		Scene scene = new Scene(parent);
 		primaryState.setTitle("Syscopa 3.0V");
 		primaryState.setScene(scene);

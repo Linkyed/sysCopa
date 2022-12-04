@@ -38,27 +38,38 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
-public class InsercaoSelecao {
+public class InsercaoSelecao extends JanelaJAVAFX{
 
 	public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
 	public static String selecaoComboBox;
 	public static boolean alteracaoSelecao = false;
 	
-	@FXML
-	private Button btnEditar;
+    @FXML
+    private Button btnEditar;
 
-		
-	@FXML
-	private Button btnInserirSelecao;
-	   
-	@FXML
+    @FXML
+    private Button btnEditarArbitro;
+
+    @FXML
     private Button btnExcluir;
-	
-	@FXML
-	private Button btnMenuAlteracoes;
 
-	@FXML
-	private Button btnVoltarMenu;
+    @FXML
+    private Button btnExcluirArbitro;
+
+    @FXML
+    private Button btnFaseGrupos;
+
+    @FXML
+    private Button btnInserirSelecao;
+
+    @FXML
+    private Button btnListagem;
+
+    @FXML
+    private Button btnPesquisa;
+
+    @FXML
+    private Button btnVoltarMenu;
 	  
 	@FXML
 	private ComboBox<String> comboBoxSelecoes;
@@ -138,64 +149,29 @@ public class InsercaoSelecao {
 	@FXML
 	void btnInserirSelecaoAction(ActionEvent event) throws IOException {
 		//Iniciando o precesso de inserir uma seleção em uma tela separada
-		FXMLLoader loaderSelecao = new FXMLLoader();
-		URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/CriarSelecao.fxml");
-		loaderSelecao.setLocation(xmlURLSelecao);
-	 	Parent rootSelecao = loaderSelecao.load();
-	 	Stage windowSelecao = new Stage();
-	 	windowSelecao.resizableProperty().setValue(false);
-	 	windowSelecao.initModality(Modality.APPLICATION_MODAL);
-	 	windowSelecao.setScene(new Scene(rootSelecao, 250, 150));
-	 	impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-	 	windowSelecao.showAndWait();
+		
+	 	abrirJanela("/app/view/criarCopa/CriarSelecao.fxml", 250, 150, true, false);
 
 	 	//Iniciando o precesso de inserir um Tecnico em uma tela separada
-	 	FXMLLoader loaderTecnico = new FXMLLoader();
-	 	URL xmlURLTecnico = getClass().getResource("/app/view/criarCopa/CriarTecnico.fxml");
-	 	loaderTecnico.setLocation(xmlURLTecnico);
-	 	Parent rootTecnico = loaderTecnico.load();
-	 	Stage windowTecnico = new Stage();
-	 	windowTecnico.initModality(Modality.APPLICATION_MODAL);
-	 	windowTecnico.setScene(new Scene(rootTecnico, 250, 150));
-	 	impedirFechamento(windowTecnico, "ERROR", "Termine a inserção para sair desta tela!");
-	 	windowTecnico.showAndWait();
-
+	 	abrirJanela("/app/view/criarCopa/CriarTecnico.fxml", 250, 150, true, false);
+	 	
 	 	//Iniciando o processo de de inserir um jogador em uma tela separada
 	 	for (int i = 0; i < 11; i++) {
 	 		CriarSelecao.quantidadeJoadores = i;
-	 		FXMLLoader loaderJogador = new FXMLLoader();
-	 		URL xmlURLJogador = getClass().getResource("/app/view/criarCopa/CriarJogador.fxml");
-	 		loaderJogador.setLocation(xmlURLJogador);
-	 		Parent rootJogador = loaderJogador.load();
-	 		Stage windowJogador = new Stage();
-	 		windowJogador.initModality(Modality.APPLICATION_MODAL);
-	 		windowJogador.setScene(new Scene(rootJogador, 250, 210));
-	 		impedirFechamento(windowJogador, "ERROR", "Termine a inserção para sair desta tela!");
-	 		windowJogador.showAndWait();
+	 		abrirJanela("/app/view/criarCopa/CriarJogador.fxml", 250, 250, true, false);
 	 	}
-	 	CriarSelecao.selecaoAtual = null;
 	 	atualizarGrupos();
-	 	atualizarComboBoxSelecao(CriarSelecao.selecaoAtual.getNome());
+	 	atualizarComboBoxSelecao();
 	 	atualizarBarraProgresso();
 	 	atualizarBotoes();
+	 	CriarSelecao.selecaoAtual = null;
 	    }
    
 	@FXML
     void btnEditarAction(ActionEvent event) throws IOException {
 		try {
-			comboBoxSelecoes.getValue();
-			labelErrorEditDel.setText("");
 			//Iniciando o precesso de inserir uma seleção em uma tela separada
-			FXMLLoader loaderSelecao = new FXMLLoader();
-			URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/EdicaoGeral.fxml");
-			loaderSelecao.setLocation(xmlURLSelecao);
-			Parent rootSelecao = loaderSelecao.load();
-			Stage windowSelecao = new Stage();
-			windowSelecao.resizableProperty().setValue(false);
-			windowSelecao.initModality(Modality.APPLICATION_MODAL);
-			windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
-			//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-			windowSelecao.showAndWait();
+			abrirJanela("/app/view/criarCopa/EdicaoGeral.fxml", 250, 275, true, true);
 			
 			if(alteracaoSelecao) {		
 				comboBoxSelecoes.getItems().add(EdicaoGeralCriarCopa.nomeSelecaoEditada);
@@ -204,11 +180,9 @@ public class InsercaoSelecao {
                 for (int i = x; i >= 0; i--) {
                     comboBoxSelecoes.getItems().remove(i);
                 }
-				atualizarComboBoxSelecao(EdicaoGeralCriarCopa.nomeSelecaoEditada);
+				atualizarComboBoxSelecao();
 				atualizarGrupos();
 			}
-			
-			//comboBoxSelecoes.getItems().clear();
 			atualizarLabelsSelecaoEscolhida();
 			atualizarBotoes();
 			alteracaoSelecao = false;
@@ -217,20 +191,6 @@ public class InsercaoSelecao {
 		}
 		
 	}
-	
-	
-    @FXML
-    void btnVoltarMenuAction(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader();
-        URL xmlURL = getClass().getResource("/app/view/MenuPrincipal.fxml");
-
-        loader.setLocation(xmlURL);
-
-        Parent root = loader.load();
-
-        Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
-        window.setScene(new Scene(root, 600, 400));
-    }
     
     @FXML
     void btnExcluirAction(ActionEvent event) {
@@ -239,20 +199,7 @@ public class InsercaoSelecao {
 			comboBoxSelecoes.getValue();
 			labelErrorEditDel.setText("");
 			//Iniciando o precesso de inserir uma seleção em uma tela separada
-			FXMLLoader loaderSelecao = new FXMLLoader();
-			URL xmlURLSelecao = getClass().getResource("/app/view/criarCopa/ExclusaoGeralCriarCopa.fxml");
-			loaderSelecao.setLocation(xmlURLSelecao);
-			Parent rootSelecao = loaderSelecao.load();
-			Stage windowSelecao = new Stage();
-			windowSelecao.resizableProperty().setValue(false);
-			windowSelecao.initModality(Modality.APPLICATION_MODAL);
-			windowSelecao.setScene(new Scene(rootSelecao, 250, 200));
-			//impedirFechamento(windowSelecao, "ERROR", "Termine a inserção para sair desta tela!");
-			windowSelecao.showAndWait();
-			
-			
-			
-			//comboBoxSelecoes.getItems().clear();
+			abrirJanela("/app/view/criarCopa/ExclusaoGeralCriarCopa.fxml", 250, 275, true, true);
 			atualizarLabelsSelecaoEscolhida();
 			atualizarBotoes();
 			alteracaoSelecao = false;
@@ -268,7 +215,7 @@ public class InsercaoSelecao {
     			for (int i = x; i>= 0; i--) {
     				comboBoxSelecoes.getItems().remove(i);
     			}
-    			atualizarComboBoxSelecao("as");
+    			atualizarComboBoxSelecao();
     			atualizarBarraProgresso();
     			atualizarGrupos();
     			atualizarBotoes();
@@ -284,8 +231,35 @@ public class InsercaoSelecao {
     }
     
     @FXML
-    void btnMenuAlteracoesAction(ActionEvent event) {
+    void btnEditarArbitroAction(ActionEvent event) throws IOException {
+    	abrirJanela("/app/view/criarCopa/EdicaoArbitro.fxml", 250, 200, true, true);
+    }
+  
+    @FXML
+    void btnExcluirArbitroAction(ActionEvent event) throws IOException {
+    	abrirJanela("/app/view/criarCopa/ExclusaoArbitro.fxml", 250, 200, true, true);
+    	abrirJanela("/app/view/criarCopa/CriarArbitro.fxml", 250, 200, true, false);
+    }
+    
+    @FXML
+    void btnPesquisaAction(ActionEvent event) throws IOException {
+    	
+    }
+    
+    @FXML
+    void btnListagemAction(ActionEvent event) throws IOException {
+    	
+    }
+    
+    @FXML
+    void btnFaseGruposAction(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void btnVoltarMenuAction(ActionEvent event) throws IOException {
+        Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
+        trocarJanela("/app/view/MenuPrincipal.fxml", 600, 400, window);
     }
     
     @FXML
@@ -298,14 +272,11 @@ public class InsercaoSelecao {
     
     @FXML
     void initialize() {
-    	
 		atualizarGrupos();
-    	atualizarComboBoxSelecao("Nenhum");
+    	atualizarComboBoxSelecao();
+    	atualizarLabelsSelecaoEscolhida();
 		atualizarBarraProgresso();
 		atualizarBotoes();
-	   	//this.tabelaGruposAD.getColumns().addAll(colunaA, colunaB, colunaC, colunaD);
-	   	//this.tabelaGruposAD.setItems(selecoesGruposAD);
-		//this.tabelaGruposEH.getColumns().addAll(colunaE, colunaF, colunaG, colunaH);
     }
 
     private void atualizarGrupos() {
@@ -336,7 +307,7 @@ public class InsercaoSelecao {
 		}
     }
     
-    private void atualizarComboBoxSelecao(String selecaoEscolhida) {
+    private void atualizarComboBoxSelecao() {
 
     	List<String> listaSelecoes = SelecaoDAO.selecoesExistentes();
     	if(listaSelecoes.size() == 0) {
@@ -348,6 +319,8 @@ public class InsercaoSelecao {
     				if (!comboBoxSelecoes.getItems().contains(selecao)) {
     					comboBoxSelecoes.getItems().add(selecao);    					
     				}
+    				comboBoxSelecoes.setValue(listaSelecoes.get(listaSelecoes.size()-1));
+    				selecaoComboBox = listaSelecoes.get(listaSelecoes.size()-1);
     			}    			
     		}
     	}
@@ -408,16 +381,6 @@ public class InsercaoSelecao {
     	progressoSelecoesCriadas.setProgress((1/32.0)*SelecaoDAO.quantidadeSelecoes());
     }
     
-    private void impedirFechamento(Stage window, String titulo, String mensagem) {
-    	 window.setOnCloseRequest(new EventHandler<WindowEvent>() {
-	        	@Override
-	        	public void handle(WindowEvent event) {
-	        		AlertBox.display(titulo, mensagem);
-	        		event.consume();
-	        	}
-	        });
-    }
-    
     private void atualizarBotoes() {
     	if (comboBoxSelecoes.getItems().size() > 0) {
     		btnEditar.setDisable(false);
@@ -427,9 +390,9 @@ public class InsercaoSelecao {
     		btnExcluir.setDisable(true);
     	}
     	if (SelecaoDAO.quantidadeSelecoes() == 32) {
-    		btnMenuAlteracoes.setDisable(false);
+    		btnFaseGrupos.setDisable(false);
     	} else {
-    		btnMenuAlteracoes.setDisable(true);
+    		btnFaseGrupos.setDisable(true);
     	}
     }
 

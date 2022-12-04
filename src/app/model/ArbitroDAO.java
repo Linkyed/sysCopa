@@ -4,6 +4,12 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ListaCheiaException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
+import app.model.exceptions.StringVaziaException;
+
 /**
  * Classe DAO do Arbitro Ela inseri o arbritro em uma lista. 
  * Ela edita alguns atributos do arbitro. 
@@ -19,33 +25,66 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	static private List<Arbitro> arbitros = new ArrayList<>();
 	
 	
-	/**Metodo para inserir um arbitro já criado, no banco de dados**/
-	static public boolean inserir(Arbitro arbitro) {
-		if (!veriricarNomeArbitro(arbitro.getNome())) {
+	/**Metodo para inserir um arbitro já criado, no banco de dados
+	 * @throws StringVaziaException 
+	 * @throws CaracterInvalidoException 
+	 * @throws ObjetoJaExisteException **/
+	static public void inserir(Arbitro arbitro) throws StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException {
+		if (arbitro.getNome().isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
+		} else {
+			Funcoes.verificarString(arbitro.getNome(), "O nome só aceita letras!");			
+		}
+		
+		if (arbitros.contains(arbitro)) {
+			throw new ObjetoJaExisteException("O Arbitro já existe na lista!");
+		} else {
 			arbitros.add(arbitro);
+		}
+	}
 	
-			return true;	
+	static public boolean inserirConsole(Arbitro arbitro) {
+		if (arbitro.getNome().isEmpty()) {
+			return false;
 		} else {
-			return false;
+			try {
+				Funcoes.verificarString(arbitro.getNome(), "O nome só aceita letras!");							
+			} catch (CaracterInvalidoException e) {
+				return false;
+			}
 		}
-	}
-	/**Metodo para editar um arbitro que já existente no banco de dados, passando a referencia dele e o novo nome que ele deve receber**/
-	static public boolean editar(Arbitro arbitro, String nome) {
-		if (arbitro.getNome().equals(nome) || veriricarNomeArbitro(nome)) {
+		
+		if (arbitros.contains(arbitro)) {
 			return false;
-		}else {
-			arbitro.setNome(nome);
+		} else {
+			arbitros.add(arbitro);
 			return true;
 		}
 	}
-	/**Metodo para excluir um arbitro existente no banco de dados com base no index do mesmo**/
-	static public boolean excluir(int num) {
-		if (num <= arbitros.size()-1 && num >= 0) {
-			arbitros.remove(num);
-
-			return true;
+	/**Metodo para editar um arbitro que já existente no banco de dados, passando a referencia dele e o novo nome que ele deve receber
+	 * @throws ObjetoJaExisteException 
+	 * @throws ObjetoNaoExisteException 
+	 * @throws CaracterInvalidoException 
+	 * @throws StringVaziaException **/
+	static public void editar(Arbitro arbitro, String nome) throws ObjetoJaExisteException, ObjetoNaoExisteException, CaracterInvalidoException, StringVaziaException {
+		if (nome.isEmpty()) {
+			throw new StringVaziaException("O nome está vazio!");
 		} else {
-			return false;
+			Funcoes.verificarString(nome, "O nome só aceita letras!");
+		}
+		if (arbitro == null) {
+			throw new ObjetoNaoExisteException("Arbitro não existe!");
+		} else if (ArbitroDAO.existeArbitro(nome)) {
+			throw new ObjetoJaExisteException("O Arbitro já existe na lista!");
+		}
+		arbitro.setNome(nome);
+	}
+	/**Metodo para excluir um arbitro existente no banco de dados com base no index do mesmo
+	 * @throws ObjetoNaoExisteException **/
+	static public void excluir(String nome) throws ObjetoNaoExisteException {
+		Arbitro arbitroComparacao = new Arbitro(nome);
+		if (!arbitros.remove(arbitroComparacao)) {
+			throw new ObjetoNaoExisteException("Arbitro não existe na lista!");
 		}
 	}
 	/**Metodo para mostrar todos os arbitros que estão no banco de dados**/
@@ -88,7 +127,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	}
 	
 	/** Metodo para verificar se algum arbitro possui um determinado nome **/
-	private static boolean veriricarNomeArbitro(String nome) {
+	private static boolean existeArbitro(String nome) {
 		for (Arbitro arbitro: arbitros) {
 			if (arbitro.getNome().equals(nome)) {
 				return true;
@@ -99,5 +138,22 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	/** Metodo para resetar a lista de arbitros **/
 	public static void resetarLista() {
 		arbitros.clear();
+	}
+	
+	public static List<String> todosNomesArbitros(){
+		List<String> lista = new ArrayList<>();
+		for (Arbitro arbitro: arbitros) {
+			lista.add(arbitro.getNome());
+		}
+		return lista;
+	}
+	
+	public static Arbitro getArbitroPorNome(String nome) throws ObjetoNaoExisteException {
+		for (Arbitro arbitro: arbitros) {
+			if (arbitro.getNome().equals(nome)) {
+				return arbitro;
+			}
+		}
+		throw new ObjetoNaoExisteException("Arbitro não existe na lista!");
 	}
 }
