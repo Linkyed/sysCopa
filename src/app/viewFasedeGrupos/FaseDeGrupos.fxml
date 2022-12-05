@@ -379,7 +379,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="cadastrarPartidas" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Cadastrar Partidas" GridPane.columnIndex="1" />
+            <Button fx:id="cadastrarPartidas" mnemonicParsing="false" onAction="#btnCadastrar" prefHeight="25.0" prefWidth="155.0" text="Cadastrar Partidas" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>

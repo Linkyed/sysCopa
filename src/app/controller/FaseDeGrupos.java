@@ -12,8 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+import app.controller.JanelaJAVAFX;
 
-public class FaseDeGrupos {
+public class FaseDeGrupos extends JanelaJAVAFX {
 
 	@FXML
 	private ListView<String> listaGrupoA;
@@ -62,26 +64,25 @@ public class FaseDeGrupos {
 
 	@FXML
 	private ListView<Integer> listaGrupoHpontos;
-	
-    @FXML
-    private Button cadastrarPartidas;
 
+	@FXML
+	private Button cadastrarPartidas;
 
 	private void atualizarGrupos() {
-		
+
 		List<ListView<String>> listaDeListas = new ArrayList<>();
-    	listaDeListas.add(listaGrupoA);
-    	listaDeListas.add(listaGrupoB);
-    	listaDeListas.add(listaGrupoC);
-    	listaDeListas.add(listaGrupoD);
-    	listaDeListas.add(listaGrupoE);
-    	listaDeListas.add(listaGrupoF);
-    	listaDeListas.add(listaGrupoG);
-    	listaDeListas.add(listaGrupoH);
-    	for(ListView<String> lista: listaDeListas) {
-    		lista.getItems().clear();
-    	}
-		
+		listaDeListas.add(listaGrupoA);
+		listaDeListas.add(listaGrupoB);
+		listaDeListas.add(listaGrupoC);
+		listaDeListas.add(listaGrupoD);
+		listaDeListas.add(listaGrupoE);
+		listaDeListas.add(listaGrupoF);
+		listaDeListas.add(listaGrupoG);
+		listaDeListas.add(listaGrupoH);
+		for (ListView<String> lista : listaDeListas) {
+			lista.getItems().clear();
+		}
+
 		List<String> selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("A");
 		for (String selecao : selecoeStrings) {
 			System.out.println(selecao);
@@ -115,25 +116,24 @@ public class FaseDeGrupos {
 		for (String selecao : selecoeStrings) {
 			listaGrupoH.getItems().add(selecao);
 		}
-		
 
 	}
-	
-private void atualizarPontos() {
-		
+
+	private void atualizarPontos() {
+
 		List<ListView<Integer>> listaDeListas = new ArrayList<>();
-    	listaDeListas.add(listaGrupoApontos);
-    	listaDeListas.add(listaGrupoBpontos);
-    	listaDeListas.add(listaGrupoCpontos);
-    	listaDeListas.add(listaGrupoDpontos);
-    	listaDeListas.add(listaGrupoEpontos);
-    	listaDeListas.add(listaGrupoFpontos);
-    	listaDeListas.add(listaGrupoGpontos);
-    	listaDeListas.add(listaGrupoHpontos);
-    	for(ListView<Integer> lista: listaDeListas) {
-    		lista.getItems().clear();
-    	}
-		
+		listaDeListas.add(listaGrupoApontos);
+		listaDeListas.add(listaGrupoBpontos);
+		listaDeListas.add(listaGrupoCpontos);
+		listaDeListas.add(listaGrupoDpontos);
+		listaDeListas.add(listaGrupoEpontos);
+		listaDeListas.add(listaGrupoFpontos);
+		listaDeListas.add(listaGrupoGpontos);
+		listaDeListas.add(listaGrupoHpontos);
+		for (ListView<Integer> lista : listaDeListas) {
+			lista.getItems().clear();
+		}
+
 		List<Integer> selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("A");
 		for (Integer selecao : selecoeStrings) {
 			listaGrupoApontos.getItems().add(selecao);
@@ -166,15 +166,21 @@ private void atualizarPontos() {
 		for (Integer selecao : selecoeStrings) {
 			listaGrupoHpontos.getItems().add(selecao);
 		}
-		
 
 	}
-	
-	 public void randPartidaMenuAction(ActionEvent event) {
-		 Teste.RandomPartida(1, true);
-		 atualizarGrupos();
-		 atualizarPontos();
-	 }
+
+	public void btnCadastrar(ActionEvent event) throws IOException {
+		
+		Stage window = (Stage)cadastrarPartidas.getScene().getWindow();
+		
+        trocarJanela("/app/viewFasedeGrupos/menuDePartidas.fxml", 800, 500, window);
+	}
+
+	public void randPartidaMenuAction(ActionEvent event) {
+		Teste.RandomPartida(1, true);
+		atualizarGrupos();
+		atualizarPontos();
+	}
 
 	@FXML
 	void initialize() {

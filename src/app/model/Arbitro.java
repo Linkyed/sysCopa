@@ -29,7 +29,7 @@ public class Arbitro{
 	
 	/**Metodo para mostrar o Arbitro em String**/
 	public String toString() {
-		return "Nome: " + nome;
+		return nome;
 	}
 
 	public int hashCode() {

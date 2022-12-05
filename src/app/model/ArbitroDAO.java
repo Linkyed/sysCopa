@@ -148,6 +148,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		return lista;
 	}
 	
+	
 	public static Arbitro getArbitroPorNome(String nome) throws ObjetoNaoExisteException {
 		for (Arbitro arbitro: arbitros) {
 			if (arbitro.getNome().equals(nome)) {

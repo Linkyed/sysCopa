@@ -254,6 +254,7 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     
     @FXML
     void btnFaseGruposAction(ActionEvent event) throws IOException {
+    	GrupoPrimeiraFase.organizadorTodasPartidas();
     	Stage window = (Stage)btnFaseGrupos.getScene().getWindow();
     	trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
     }

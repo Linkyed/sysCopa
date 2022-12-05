@@ -30,7 +30,7 @@ public class Partida {
 	private Map<Jogador, Integer> cartaoAmareloSelecao2 = new HashMap<>();
 	private Map<Jogador, Integer> cartaoVermelhoSelecao2 = new HashMap<>();
 	private Map<Jogador, Integer> GolsMarcadosSelecao2 = new HashMap<>();
-	private List<Arbitro> listaArbitro = new ArrayList<>();
+	private Arbitro Arbitro = new Arbitro("");
 
 	public Partida(Selecao selecao1, Selecao selecao2,int posicao) {
 		this.selecao1 = selecao1;
@@ -171,12 +171,12 @@ public class Partida {
 		this.horarioM = horarioM;
 	}
 
-	public List<Arbitro> getListaArbitro() {
-		return listaArbitro;
+	public Arbitro getListaArbitro() {
+		return Arbitro;
 	}
 	
-	public void setListaArbitro(List<Arbitro> arbitros) {
-		this.listaArbitro = arbitros;
+	public void setListaArbitro(Arbitro arbitros) {
+		this.Arbitro = arbitros;
 	}
 
 	public void setCartaoAmareloSelecao1(Map<Jogador, Integer> cartaoAmareloPartida) {
