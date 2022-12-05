@@ -450,5 +450,10 @@ public class PartidaDAO {
 		if (!selecao.equals(null))
 			partida.setGanhador(selecao);
 	}
+	
+	public static void editorGols(Partida partida, int golSele1, int golSele2) {
+		partida.setGolSelecao1(golSele1);
+		partida.setGolSelecao2(golSele2);
+	}
 
 }

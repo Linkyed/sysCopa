@@ -11,10 +11,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-border-color: black; -fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuDePartidas">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-border-color: blue; -fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MenuDePartidas">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -67,13 +70,13 @@
                               <Insets left="20.0" />
                            </opaqueInsets>
                         </Label>
-                        <TextField prefHeight="25.0" prefWidth="252.0" text="Local da Partida" GridPane.columnIndex="2" />
+                        <TextField fx:id="localPartida" prefHeight="25.0" prefWidth="252.0" GridPane.columnIndex="2" />
                         <Label text="ARBITRO:" GridPane.columnIndex="4">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox prefHeight="25.0" prefWidth="333.0" GridPane.columnIndex="5" />
+                        <ComboBox fx:id="comboArbitro" prefHeight="25.0" prefWidth="333.0" GridPane.columnIndex="5" />
                      </children>
                   </GridPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -104,20 +107,20 @@
          <children>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <center>
-                  <Button mnemonicParsing="false" text="SALVAR" BorderPane.alignment="CENTER" />
+                  <Button fx:id="btnSalvarPartida" mnemonicParsing="false" onAction="#btnSalvar" text="SALVAR" BorderPane.alignment="CENTER" />
                </center></BorderPane>
             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <center>
-                  <Button fx:id="bntClassificacao" mnemonicParsing="false" text="Classificação de grupos" BorderPane.alignment="CENTER" />
+                  <Button fx:id="bntClassificacao" mnemonicParsing="false" onAction="#bntClassificacaoMostrar" text="Classificação de grupos" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <ProgressBar prefHeight="37.0" prefWidth="308.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="quantidadeSelecoesCriadas" text="Quantidade de Partidas realizadas: %d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+            <ProgressBar fx:id="barraProgressoPartidas" prefHeight="37.0" prefWidth="308.0" progress="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="quantidadePartidasCriadas" text="Quantidade de Partidas realizadas: %d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="System Italic" size="14.0" />
                </font>
             </Label>
-            <Button disable="true" mnemonicParsing="false" text="Oitavas de Final" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="btnOitavas" disable="true" mnemonicParsing="false" text="Oitavas de Final" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="1">
@@ -152,8 +155,8 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="2" />
-                  <ComboBox prefHeight="25.0" prefWidth="81.0" GridPane.columnIndex="4" />
+                  <ComboBox fx:id="comboDia" prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="2" />
+                  <ComboBox fx:id="comboMes" prefHeight="25.0" prefWidth="81.0" GridPane.columnIndex="4" />
                   <Label text="MES:" GridPane.columnIndex="3">
                      <font>
                         <Font size="18.0" />
@@ -169,8 +172,8 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="78.0" GridPane.columnIndex="6" />
-                  <ComboBox prefHeight="25.0" prefWidth="92.0" GridPane.columnIndex="8" />
+                  <ComboBox fx:id="comboHora" prefHeight="25.0" prefWidth="78.0" GridPane.columnIndex="6" />
+                  <ComboBox fx:id="comboMinuto" prefHeight="25.0" prefWidth="92.0" GridPane.columnIndex="8" />
                </children>
             </GridPane>
             <GridPane GridPane.rowIndex="2">
@@ -185,23 +188,67 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="SELEÇÃO 1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label text="SELEÇÃO 2" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
                   <Label text="X" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <font>
                         <Font size="63.0" />
                      </font>
                   </Label>
-                  <ComboBox prefHeight="25.0" prefWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <ComboBox prefHeight="25.0" prefWidth="92.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <ComboBox fx:id="comboGolSelecao1" prefHeight="25.0" prefWidth="92.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <ComboBox fx:id="comboGolSelecao2" prefHeight="25.0" prefWidth="92.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="35.0" stroke="BLACK" strokeType="INSIDE" width="162.0">
+                           <fill>
+                              <LinearGradient endX="0.9241706161137441" endY="1.0" startX="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.0021929824724793434" blue="0.06578947603702545" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.9473684430122375" green="0.9473684430122375" blue="0.9473684430122375" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Rectangle>
+                        <Label fx:id="selecao1">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="29.0" stroke="BLACK" strokeType="INSIDE" width="161.0">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="0.971563981042654">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="0.9473684430122375" green="0.9473684430122375" blue="0.9473684430122375" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Rectangle>
+                        <Label fx:id="selecao2">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
                </children>
             </GridPane>
             <GridPane GridPane.rowIndex="1">
