@@ -212,7 +212,7 @@ public class PartidaDAO {
 
 	/** Metodo para editar a lista de arbitros **/
 
-	public static boolean editarArbitros(List<Arbitro> arbitros, Partida partida) {
+	public static boolean editarArbitros(Arbitro arbitros, Partida partida) {
 		if (!arbitros.equals(null)) {
 			partida.setListaArbitro(arbitros);
 			return true;
@@ -236,7 +236,7 @@ public class PartidaDAO {
 			partida.getCartaoAmareloSelecao2().clear();
 			partida.getCartaoVermelhoSelecao2().clear();
 			partida.getGolsMarcadosSelecao2().clear();
-			partida.getListaArbitro().clear();
+			partida.setListaArbitro(null);
 			GrupoPrimeiraFase.definirPontos(partida, false);
 			partida.setStatus(false);
 			return true;
