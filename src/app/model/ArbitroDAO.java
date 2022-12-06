@@ -118,7 +118,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	public static List<Arbitro> getArbitroNome(String nome) {
 		List<Arbitro> listaArbitro = new ArrayList<>();
 		for(Arbitro arbitro: arbitros) {
-			if (arbitro.getNome().contains(nome)) {
+			if (arbitro.getNome().toLowerCase().contains(nome.toLowerCase())) {
 				listaArbitro.add(arbitro);
 			}
 			
