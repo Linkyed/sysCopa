@@ -473,4 +473,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 		return false;
 	}
+	
+	public static List<String> jogadoresExistentes(){
+		List<String> lista = new ArrayList<>();
+		for (Jogador jogador: todos_Jogadores) {
+			lista.add(jogador.getNome());
+		}
+		return lista;
+	}
+	
 }
