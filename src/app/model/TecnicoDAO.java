@@ -166,4 +166,13 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	public static void resetarLista() {
 		tecnicos = new ArrayList<Tecnico>();
 	}
+	
+	public static List<String> tecnicosExistentes(){
+		List<String> lista = new ArrayList<>();
+		for (Tecnico tecnico: tecnicos) {
+			lista.add(tecnico.getNome());
+		}
+		return lista;
+	}
+	
 }
