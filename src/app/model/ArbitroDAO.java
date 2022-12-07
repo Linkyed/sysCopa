@@ -118,7 +118,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 	public static List<Arbitro> getArbitroNome(String nome) {
 		List<Arbitro> listaArbitro = new ArrayList<>();
 		for(Arbitro arbitro: arbitros) {
-			if (arbitro.getNome().contains(nome)) {
+			if (arbitro.getNome().toLowerCase().contains(nome.toLowerCase())) {
 				listaArbitro.add(arbitro);
 			}
 			
@@ -157,4 +157,13 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		}
 		throw new ObjetoNaoExisteException("Arbitro não existe na lista!");
 	}
+	
+	public static List<String> arbitrosExistentes(){
+		List<String> lista = new ArrayList<>();
+		for (Arbitro arbitro: arbitros) {
+			lista.add(arbitro.getNome());
+		}
+		return lista;
+	}
+	
 }

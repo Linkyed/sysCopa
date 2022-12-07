@@ -223,7 +223,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	public static List<Selecao> getSelecaoNome(String nome) {
 		List<Selecao> lista = new ArrayList<Selecao>();
 		for (Selecao selecao: selecoes) {
-			if (selecao.getNome().contains(nome)) {
+			if (selecao.getNome().toLowerCase().contains(nome.toLowerCase())) {
 				lista.add(selecao);
 			}
 		}

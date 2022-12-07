@@ -143,7 +143,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	public static List<Tecnico> getTecnicoNome(String nome) {
 		List<Tecnico> listaTecnico = new ArrayList<>();
 		for (Tecnico tecnico: tecnicos) {
-			if (tecnico.getNome().contains(nome)) {
+			if (tecnico.getNome().toLowerCase().contains(nome.toLowerCase())) {
 				listaTecnico.add(tecnico);
 			}
 		}
@@ -166,4 +166,13 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 	public static void resetarLista() {
 		tecnicos = new ArrayList<Tecnico>();
 	}
+	
+	public static List<String> tecnicosExistentes(){
+		List<String> lista = new ArrayList<>();
+		for (Tecnico tecnico: tecnicos) {
+			lista.add(tecnico.getNome());
+		}
+		return lista;
+	}
+	
 }

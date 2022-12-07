@@ -244,12 +244,12 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     
     @FXML
     void btnPesquisaAction(ActionEvent event) throws IOException {
-    	
+    	abrirJanela("/app/view/criarCopa/Pesquisa.fxml", 250, 200, true, true);
     }
     
     @FXML
     void btnListagemAction(ActionEvent event) throws IOException {
-    	
+    	abrirJanela("/app/view/criarCopa/Listagem.fxml", 250, 200, true, true);
     }
     
     @FXML

@@ -434,7 +434,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 	public static List<Jogador> getJogadorNome(String nome) {
 		List<Jogador> listaJogadores = new ArrayList<>();
 		for (Jogador jogador: todos_Jogadores) {
-			if(jogador.getNome().contains(nome)) {
+			if(jogador.getNome().toLowerCase().contains(nome.toLowerCase())) {
 				listaJogadores.add(jogador);
 			}
 		}
@@ -473,4 +473,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 		return false;
 	}
+	
+	public static List<String> jogadoresExistentes(){
+		List<String> lista = new ArrayList<>();
+		for (Jogador jogador: todos_Jogadores) {
+			lista.add(jogador.getNome());
+		}
+		return lista;
+	}
+	
 }
