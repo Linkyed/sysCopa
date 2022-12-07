@@ -20,6 +20,7 @@ public class GrupoPrimeiraFase {
 	
 	private static List<Partida> partidasGrupo =  new ArrayList<>();
 
+	/**Metodo para retornar um Map(Seleção/Integer) com base em uma seleção e o grupo que ela esta**/
 	private static Map<Selecao, Integer> selecionarGrupo(Selecao selecao) {
 		if (grupoA.containsKey(selecao)) {
 			return grupoA;
@@ -41,6 +42,7 @@ public class GrupoPrimeiraFase {
 		return null;
 	}
 	
+	/**Metodo para retorna a String da letra do grupo que uma seleção está**/
 	public static String grupoSelecao(Selecao selecao) {
 		if (grupoA.containsKey(selecao)) {
 			return "A";
@@ -62,6 +64,8 @@ public class GrupoPrimeiraFase {
 			return "0";
 		}
 	}	
+	
+	/**Metodo para excluir uma seleção do grupo que elá está**/
 	public static void excluirSelecaoGrupo(Selecao selecao) {
 		Map<Selecao, Integer> grupoMap = selecionarGrupo(selecao);
 		if(grupoMap != null) {
@@ -69,12 +73,13 @@ public class GrupoPrimeiraFase {
 		}
 	}
 	
-	
+	/**Metodo para retornar os pontos que uma seleção possui dentro do grupo**/
 	public static int pontuacaoSelecao(Selecao selecao) {
 		int pontos = selecionarGrupo(selecao).get(selecao);
 		return pontos;
 	}
 
+	/**Metodo para adicionar a seleção em um grupo**/
 	public static boolean adicionarSelecao(String grupo, Selecao selecao) {
 		if (grupo.equalsIgnoreCase("A") && grupoA.size() < 4) {
 			grupoA.put(selecao, 0);
@@ -104,6 +109,7 @@ public class GrupoPrimeiraFase {
 		return true;
 	}
 
+	/**Metodo para organizar um Map(Seleção/Integer) com base em quem tem os maiores valores inteiros ficando no inicio da fila**/
 	private static void organizadorGrupo(Map<Selecao, Integer> grupo) {
 		List<Selecao> selecoesGrupoList = new ArrayList<>();
 		for (Map.Entry<Selecao, Integer> selecaoEpontos : grupo.entrySet()) {
@@ -134,6 +140,7 @@ public class GrupoPrimeiraFase {
 
 	}
 
+	/**Metodo para para organizar todos os grupos de uma vez**/
 	public static boolean organizadorTodasPartidas() {
 		int totalSelecoes = grupoA.size() + grupoB.size() + grupoC.size() + grupoD.size() + grupoE.size()
 				+ grupoF.size() + grupoG.size() + grupoH.size();
@@ -152,6 +159,7 @@ public class GrupoPrimeiraFase {
 
 	}
 
+	/**Metodo para decidir com base numa partida os pontos que uma seleção deve receber**/
 	public static void definirPontos(Partida partida, boolean positivo) {
 		if (PartidaDAO.statusAtuaisPartidas(partida)) {
 			int vitoria;
@@ -178,6 +186,7 @@ public class GrupoPrimeiraFase {
 		}
 	}
 
+	/**Metodo para imprimir todos os grupos e suas seleções**/
 	public static void listaGrupoString(String grupo) {
 		if (grupo.equalsIgnoreCase("A")) {
 			System.out.println("A");
@@ -208,6 +217,7 @@ public class GrupoPrimeiraFase {
 		}
 	}
 
+	/**Metodo para listar um determinado grupo**/
 	private static void listarGrupo(Map<Selecao, Integer> grupo) {
 		System.out.println("====================");
 		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
@@ -219,6 +229,7 @@ public class GrupoPrimeiraFase {
 		System.out.println("===================");
 	}
 	
+	/**Metodo que retorna uma lista de seleções que com base nos pontos foram classificadas para a proxima fase**/
 	private static List<Selecao> maisPontosGrupo(Map<Selecao, Integer> grupo) {
 		List<Selecao> selecaoClassificada = new ArrayList<>();
 		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
@@ -234,6 +245,7 @@ public class GrupoPrimeiraFase {
 		return selecaoClassificada;
 	}
 
+	/**Metodo para listar todos os grupos**/
 	public static void listarTodosGrupos() {
 		System.out.println("A");
 		listarGrupo(grupoA);
@@ -253,6 +265,7 @@ public class GrupoPrimeiraFase {
 		listarGrupo(grupoH);
 	}
 	
+	/**Metodo para retorna a quantidade de seleções que existem em um determinado grupo**/
 	public static int quantidadeGupo(String grupo) {
 		if (grupo.equalsIgnoreCase("A")) {
 			return grupoA.size();
@@ -276,6 +289,7 @@ public class GrupoPrimeiraFase {
 		}
 	}
 	
+	/**Metodo para retorna um Map com base na String de seu grupo**/
 	private static Map<Selecao, Integer> encontrarGrupo(String grupo) {
 		if (grupo.equalsIgnoreCase("A")) {
 			return grupoA;
@@ -299,6 +313,7 @@ public class GrupoPrimeiraFase {
 		}
 	}
 	
+	/**Metodo para retorna uma lista de string com o nome das seleções classificadas para proxima fase**/
 	public static List<String> selecoesClassificacaoNome(String grupo){
 		List<String> listaSelecoes = new ArrayList<>();
 		Map<Selecao, Integer> selecoesMap  = encontrarGrupo(grupo);
@@ -311,6 +326,7 @@ public class GrupoPrimeiraFase {
 		return listaSelecoes;
 	}
 	
+	/**Metodo para retorna uma lista de Integger com os pontos das seleções classificadas para proxima fase**/
 	public static List<Integer> selecoesClassificacaoPontos(String grupo){
 		List<Integer> listaSelecoes = new ArrayList<>();
 		Map<Selecao, Integer> selecoesMap  = encontrarGrupo(grupo);
@@ -323,6 +339,7 @@ public class GrupoPrimeiraFase {
 		return listaSelecoes;
 	}
 	
+	/**Metodo que retorna uma lista de lista de seleções que possuem as seleções classificadas de cada grupo**/
 	public static List<List<Selecao>> ganhadoresFasedeGrupos() {
 		List<List<Selecao>> listaSelecoesClassificadas = new ArrayList<>();
 		listaSelecoesClassificadas.add( maisPontosGrupo(grupoA));
@@ -336,6 +353,8 @@ public class GrupoPrimeiraFase {
 		return listaSelecoesClassificadas;
 	}
 
+	/**Metodo para retorna uma lista de string com o nome de todas as selções de todos os grupos e caso o grupo não esteja completo, o metodo
+	 * completa a lista com a string "Nenhuma"**/
 	public static List<String> selecoesTodosGrupos(){
 		List<String> nomesSelecoes = new ArrayList<>();
 		String grupo = "";
@@ -438,6 +457,7 @@ public class GrupoPrimeiraFase {
 		return nomesSelecoes;
 	}
 	
+	/**Metodo que retorna uma lista de String com os grupos que ainda possui vaga para seleções serem inseridas**/
 	public static List<String> gruposVazios(){
 		List<String> lista = new ArrayList<>();
 		if (grupoA.size() < 4) {
@@ -467,6 +487,7 @@ public class GrupoPrimeiraFase {
 		return lista;
 	}
 	
+	/**Metodo para resetar todos os grupos**/
 	public static void resetarGrupos() {
 		grupoA.clear();
 		grupoB.clear();

@@ -27,6 +27,9 @@ import javafx.stage.WindowEvent;
 
 public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
 
+	//Variaveis publicas para realizar controles logicos e de interface
+	
+	//Variavel booleana que é atualizada quando uma seleção é excluida
 	public static boolean selecaoExcluida = false;
 	
     @FXML
@@ -56,9 +59,12 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
     @FXML
     private Label labelSelecao;
 
+    //Objetos que serão utilizados para o usuario decidir o que o será excluido
     ComboBox<String> escolhaJogador = new ComboBox<String>();
     private boolean objetosJogadorCriado = false;
     @FXML
+    /**Ação da comboBox no momento em que um novo item é selecionado, atualizando a interface com o que precisa para excluir o objeto
+     * selecionado**/
     void cbEscolhaExclusaoAction(ActionEvent event) {
     	if (cbEscolhaExclusao.getValue().toString().equals("Seleção")) {
     		if (objetosJogadorCriado) {
@@ -81,6 +87,7 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
     }
     
     @FXML
+    /**Ação do botão de excluir onde o objeto que for escolhido na combobox será excluido do seu respectivo DAO**/
     void btnExcluirAction(ActionEvent event) throws IOException {
     	Stage window = (Stage)btnVoltar.getScene().getWindow();
     	if (cbEscolhaExclusao.getValue().toString().equals("Seleção")) {
@@ -127,6 +134,7 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
     }
 
     @FXML
+    /**Ação do botão de voltar, onde o usuario voltara para o menu Criar Copa**/
     void btnVoltarAction(ActionEvent event) {
     	Stage window = (Stage)btnVoltar.getScene().getWindow();
     	window.close();
@@ -136,6 +144,7 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
 
     @FXML
     void initialize() {
+    	//Sequencia de comandos para preencher os objetos e atualiza-los com base na seleção escolhida no Menu Criar Copa
     	cbEscolhaExclusao.getItems().addAll("Seleção", "Tecnico", "Jogador");
     	cbEscolhaExclusao.setValue("Seleção");
     	cbEscolhaExclusao.setMinWidth(150);

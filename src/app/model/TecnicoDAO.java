@@ -43,6 +43,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		}
 	}
 	
+	/**Metodo para inserir um tecnico já criado no banco de dados**/
 	static public boolean inserirConsole(Tecnico tecnico) {
 		if (tecnicos.size() <= 32 && !existeTecnico(tecnico)){
 			tecnicos.add(tecnico);
@@ -71,6 +72,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		tecnico.setNome(nome);
 	}
 	
+	/**Metodo para editar um tecnico que já existente no banco de dados**/
 	public static boolean editar(Tecnico tecnico, Selecao selecao) {
 		if (selecao.getTecnico() == null) {
 			tecnico.getSelecao().setTecnico(null);
@@ -82,7 +84,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		}
 	}
 	
-	/**Metodo para excluir um tecnico existente no banco de dados**/
+	/**Metodo para excluir um tecnico existente no banco de dados com base no seu index**/
 	static public boolean excluir(int num) {
 		if (num <= tecnicos.size() && num >= 0) {
 			tecnicos.get(num).getSelecao().setTecnico(null);
@@ -94,6 +96,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		 
 	}
 	
+	/**Metodo para excluir um tecnico existente no banco de dados com base em outro arbitro igual**/
 	static public void excluir(Tecnico tecnico) throws ObjetoNaoExisteException {
 		if (!tecnicos.remove(tecnico)) {
 			throw new ObjetoNaoExisteException("O tecnico não existe na lista!");
@@ -131,6 +134,7 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		return tecnicos.get(tecnicos.indexOf(tecnico));
 	}
 	
+	/**Metodo que retorna o index de um determinado tecnico**/
 	static public int getIndexPorTecnico(Tecnico tecnico) {
 		return tecnicos.indexOf(tecnico);
 	}
@@ -150,23 +154,18 @@ public class TecnicoDAO implements TecnicoDAOInterface{
 		return listaTecnico;
 	}
 	
+	/**Metodo que retorna um true ou false com base da existencia ou não de um tecnico**/
 	public static boolean existeTecnico(Tecnico tecnico) {
 		return tecnicos.contains(tecnico);
 	}
 	
-	public static boolean verificarNome(String nome) {
-		for (Tecnico tecnico: tecnicos) {
-			if (tecnico.getNome().equals(nome)) {
-				return true;
-			}
-		}
-		return false;
-	}
 	
+	/**Metodo para resetar a lista de tecnicos do DAO**/
 	public static void resetarLista() {
-		tecnicos = new ArrayList<Tecnico>();
+		tecnicos.clear();
 	}
 	
+	/**Metodo para retorna uma lista de string com o nome de todos os tecnicos existentes na lista de tecnicos**/
 	public static List<String> tecnicosExistentes(){
 		List<String> lista = new ArrayList<>();
 		for (Tecnico tecnico: tecnicos) {

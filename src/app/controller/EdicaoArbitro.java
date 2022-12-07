@@ -40,6 +40,8 @@ public class EdicaoArbitro {
     private TextField nomeArbitro;
 
     @FXML
+    /**Ação do botão de ditar, onde com o arbitro escolhido na choicebox e o novo nome digitado pelo usuario, o arbitro escolhido será editado
+     * e seu nome será alterado pelo novo que o usuario escolheu**/
     void btnEditarAction(ActionEvent event) {
     	Stage window = (Stage)btnEditar.getScene().getWindow();
     	try {
@@ -60,6 +62,7 @@ public class EdicaoArbitro {
 
     @FXML
     void initialize() {
+    	//Adicionando todos os arbitros existentes na choicebox
     	List<String> arbitrosNomes = ArbitroDAO.todosNomesArbitros();
     	for(String nome: arbitrosNomes) {
     		escolhaArbitro.getItems().add(nome);
