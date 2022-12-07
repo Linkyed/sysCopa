@@ -42,6 +42,9 @@ public class CriarTecnico {
     private TextField nomeTecnico;
 
     @FXML
+    /**Ação do botão de proximo onde com base no que foi digitado pelo usuario, o DAO do tecnico ira fazer suas devidas verificações
+     * e caso seja aceito o tecnico sera criado, caso não sejá aceita o erro encontrado será reportado para o usuario para que ele
+     * possa concertar**/
     void btnProximoAction(ActionEvent event) throws ObjetoNaoExisteException {
     	Selecao selecao = null;
     	if (CriarSelecao.selecaoAtual != null) {
@@ -74,6 +77,7 @@ public class CriarTecnico {
     }
 
     @FXML
+    /**Atalho ENTER para que não seja necessario o click no botão de proximo**/
     void enterPressionado(KeyEvent event) throws IOException, ObjetoNaoExisteException {
     	if (event.getCode().toString().equals("ENTER")) {
     		btnProximoAction(new ActionEvent());

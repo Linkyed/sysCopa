@@ -67,6 +67,7 @@ public class EdicaoGeralCriarCopa extends JanelaJAVAFX{
     private Button btnEditar;
     
     @FXML
+    /**Ação do botão de voltar onde o usuario tera acesso a janela do Menu Criar Copa**/
     void btnVoltarAction(ActionEvent event) {
     	Stage window = (Stage)btnVoltar.getScene().getWindow();
     	window.close();
@@ -74,6 +75,8 @@ public class EdicaoGeralCriarCopa extends JanelaJAVAFX{
     
    
     @FXML
+    /**Ação da ComboBox que toda vez que uma opção é escolhida, o programa ira mostrar certos objetos na tela que serão usados
+     * para fazer a edição do objeto escohido pelo usuario**/
     void cbEscolhaEdicaoAction(ActionEvent event) {
     	Stage window = (Stage)btnVoltar.getScene().getWindow();
     	Selecao selecao = null;
@@ -143,6 +146,8 @@ public class EdicaoGeralCriarCopa extends JanelaJAVAFX{
     }
     
     @FXML
+    /**Ação do botão de editar que com base na escolha da ComboBox ira poder editar o nome da seleção, o nome do tecnico e o nome e posição
+     * de um jogador da seleção escolhida na tela anterior**/
     void btnEditarAction(ActionEvent event) {
     	if (!cbEscolhaEdicao.getValue().toString().equals("Nenhum")) {
     		try {
@@ -180,6 +185,8 @@ public class EdicaoGeralCriarCopa extends JanelaJAVAFX{
     @FXML
     void initialize() {
         assert btnVoltar != null : "fx:id=\"btnVoltar\" was not injected: check your FXML file 'EdicaoNaInsercao.fxml'.";
+        
+        //Atualizando os objetos da janela a partir da seleção escolhida na combobox do Menu Criar Copa
         labelSelecao.setText(labelSelecao.getText().formatted(InsercaoSelecao.selecaoComboBox));
         cbEscolhaEdicao.getItems().addAll("Seleção", "Tecnico", "Jogador");
         cbEscolhaEdicao.setValue("Nenhum");

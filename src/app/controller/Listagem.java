@@ -39,6 +39,8 @@ public class Listagem extends JanelaJAVAFX{
     private ChoiceBox<String> escolhaListagem;
 
     @FXML
+    /**Ação do botão de listar, que com base no que foi escolhida na choicebox o programa ira iniciar uma nova tela com uma lista
+     * de todos os objetos do tipo escolhido presentes nas lista do sistema**/
     void btnListarAction(ActionEvent event) {
     	Stage window = new Stage();
     	window.initModality(Modality.APPLICATION_MODAL);
@@ -94,7 +96,7 @@ public class Listagem extends JanelaJAVAFX{
     		}
     		
     	} else if (escolhaListagem.getValue().toString().equals("Arbitro")) {
-    		List<String> lista = ArbitroDAO.arbitrosExistentes();
+    		List<String> lista = ArbitroDAO.todosNomesArbitros();
     		
     		if (lista.size() > 0) {
     			for (String arbitro: lista) {
@@ -111,6 +113,7 @@ public class Listagem extends JanelaJAVAFX{
 
     @FXML
     void initialize() {
+    	//Adicionando as opções que o usario pode escolher na choicebox
     	escolhaListagem.getItems().addAll("Seleção", "Tecnico", "Jogador", "Arbitro");
     	escolhaListagem.setValue("Seleção");
     	

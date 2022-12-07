@@ -56,6 +56,9 @@ public class CriarJogador {
 
     
     @FXML
+    /**Ação do botão de proximo onde com base no que foi digitado pelo usuario, o DAO do jogador ira fazer suas devidas verificações
+     * e caso seja aceito o jogador sera criado, caso não sejá aceita o erro encontrado será reportado para o usuario para que ele
+     * possa concertar**/
     void btnProximoAction(ActionEvent event) {
     	Selecao selecao = null;
     	try {
@@ -88,10 +91,10 @@ public class CriarJogador {
 		} catch (ObjetoNaoExisteException e) {
 			errorShow.setText("A seleção nao existe!");
 		}
-    	JogadorDAO.listar();
     }
 
     @FXML
+    /**Atalho ENTER para que não seja necessario o click no botão de proximo**/
     void enterPressionado(KeyEvent event) {
     	if (event.getCode().toString().equals("ENTER")) {
     		btnProximoAction(new ActionEvent());
@@ -105,6 +108,7 @@ public class CriarJogador {
         assert nomeJogador != null : "fx:id=\"nomeTecnico\" was not injected: check your FXML file 'CriarJogador.fxml'.";
         assert posicaoJogador != null : "fx:id=\"posicaoJogador\" was not injected: check your FXML file 'CriarJogador.fxml'.";
 
+        //Atualização da interface para caso a seleção precise dos 11 jogadores ou precise apenas de um jogador que ocorre nos casos de exclusão
         if (CriarSelecao.selecaoAtual != null) {
         	quantidadeJogadores.setProgress((1/11.0)*CriarSelecao.quantidadeJoadores);
         	labelQuantidadeJogadores.setText(labelQuantidadeJogadores.getText().formatted(11-CriarSelecao.quantidadeJoadores));
@@ -113,6 +117,7 @@ public class CriarJogador {
         	quantidadeJogadores.setProgress(0.90);
         }
         
+        //Adicionando as possiveis posições que o jogador pode ter
         posicaoJogador.getItems().addAll("Goleiro", "Lateral direito", "Lateral esquerdo", "Zagueiro",
     			"Volante", "Meia Atacante" );
         posicaoJogador.setValue("Goleiro");

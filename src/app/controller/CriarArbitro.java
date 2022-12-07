@@ -28,6 +28,7 @@ import javafx.stage.WindowEvent;
 
 public class CriarArbitro extends JanelaJAVAFX{
 
+	//Variaveis publicas para realizar controles logicos e de interface
 	public static boolean continuar = true;
 	public static int arbitrosCriados = 0;
 	
@@ -56,6 +57,9 @@ public class CriarArbitro extends JanelaJAVAFX{
     private ProgressBar quantidadeArbitros;
 
     @FXML
+    /**Ação do botão de proximo onde com base no que foi digitado pelo usuario, o DAO do arbitro ira fazer suas devidas verificações
+     * e caso seja aceito o arbitro sera criado, caso não sejá aceita o erro encontrado será reportado para o usuario para que ele
+     * possa concertar**/
     void btnProximoAction(ActionEvent event) {
     	String nome = nomeArbitro.getText();
     	try {
@@ -73,6 +77,7 @@ public class CriarArbitro extends JanelaJAVAFX{
     }
 
     @FXML
+    /**Atalho ENTER para que não seja necessario o click no botão de proximo**/
     void enterPressionado(KeyEvent event) {
     	if (event.getCode().toString().equals("ENTER")) {
     		btnProximoAction(new ActionEvent());
@@ -93,6 +98,8 @@ public class CriarArbitro extends JanelaJAVAFX{
 
     }
 
+    /**Função para atualizar os objetos na tela de criação, onde mostra a quantidade de arbitros que faltam ser inseridos junto
+     * a uma barra de progresso**/
     void atualizarObejtos() {
     	labelQuantidadeArbitros.setText(labelQuantidadeArbitros.getText().formatted(20-arbitrosCriados));
     	quantidadeArbitros.setProgress((1/20.0)*arbitrosCriados);
