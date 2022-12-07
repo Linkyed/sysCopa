@@ -35,6 +35,8 @@ public class ExclusaoArbitro extends JanelaJAVAFX{
     private Label labelError;
 
     @FXML
+    /**Ação do botão de excluir onde a partir do arbitro selecionado na choice box, ele será excluido e logo após um novo arbitro será
+     * criado e inserido pelo usuario**/
     void btnExcluirAction(ActionEvent event) {
     	Stage window = (Stage)btnExcluir.getScene().getWindow();
     	try {
@@ -49,6 +51,8 @@ public class ExclusaoArbitro extends JanelaJAVAFX{
 
     @FXML
     void initialize() {
+    	
+    	//Acessando todos os arbitros e colocando seus nomes na choice box para o usuario poder escolher
     	List<String> arbitrosNomes = ArbitroDAO.todosNomesArbitros();
     	for(String nome: arbitrosNomes) {
     		escolhaArbitro.getItems().add(nome);

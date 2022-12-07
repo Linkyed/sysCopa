@@ -35,6 +35,9 @@ public class JogadorDAO implements JogadorDAOInterface{
 	 * @param Tipo: boolean
 	 * @return true || false
 	 * @throws ObjetoNaoExisteException 
+	 * @throws ObjetoJaExisteException 
+	 * @throws StringVaziaException
+	 * @throws CaracterInvalidoException
 	 */
 	public static void inserir(Jogador jogador, Selecao selecao, boolean mensagem) throws ListaCheiaException, ObjetoJaExisteException, CaracterInvalidoException, StringVaziaException, ObjetoNaoExisteException {
 		if (jogador.getNome().isEmpty()) {
@@ -63,7 +66,13 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 
 	}
-	
+	/**
+	 * inseir: Faz a inserção do jogador na seleção e na lista de todos_Jogadores.
+	 * 
+	 * @param Tipo: Jogador
+	 * @param Tipo: Selecao
+	 * @param Tipo: boolean 
+	 * **/
 	public static boolean inserirConsole(Jogador jogador, Selecao selecao, boolean mensagem) {
 		if (SelecaoDAO.existeSelecao(selecao) == true) {
 			int tamanho_Max = 11;
@@ -456,6 +465,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		}
 	}
 	
+	/**Metodo para buscar um determinado jogador com base em um nome**/
 	public static Jogador getJogadorPorNome(String nome) throws ObjetoNaoExisteException {
 		for (Jogador jogador: todos_Jogadores) {
 			if (jogador.getNome().equals(nome)) {
@@ -465,6 +475,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		throw new ObjetoNaoExisteException("O jogador não existe na lista!");
 	}
 	
+	/**Metodo para retorna um true ou false caso exista um jogador com determinado nome**/
 	public static boolean existeJogadorComNome(String nome) throws ObjetoJaExisteException {
 		for (Jogador jogador: todos_Jogadores) {
 			if (jogador.getNome().equals(nome)) {
@@ -474,6 +485,7 @@ public class JogadorDAO implements JogadorDAOInterface{
 		return false;
 	}
 	
+	/**Metodo para retorna o nome de todos os jogadores existentes na lista**/
 	public static List<String> jogadoresExistentes(){
 		List<String> lista = new ArrayList<>();
 		for (Jogador jogador: todos_Jogadores) {

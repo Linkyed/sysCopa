@@ -41,6 +41,7 @@ import javafx.stage.WindowEvent;
 
 public class InsercaoSelecao extends JanelaJAVAFX{
 
+	//Variaveis publicas para realizar controles logicos e de interface
 	public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
 	public static String selecaoComboBox;
 	public static boolean alteracaoSelecao = false;
@@ -148,6 +149,8 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 	private ListView<String> listaGrupoH;
 	    
 	@FXML
+	/**Ação do botão de inserir seleção onde será criada tanto a seleção, tecnico, e os 11 jogadores de uma seleção
+	 * e depois disso ocorrerá toda atualização das outras funcionalidades da janela**/
 	void btnInserirSelecaoAction(ActionEvent event) throws IOException {
 		//Iniciando o precesso de inserir uma seleção em uma tela separada
 		
@@ -169,6 +172,8 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 	    }
    
 	@FXML
+	/**Ação do botão de editar, onde ele pega seleção escolhida pela ComboBox e pede ao usuario o que será alterado, podendo escolher
+	 * entre mudar o nome da seleção ou do tecnico ou o nome e a posição de um jogador da seleção**/
     void btnEditarAction(ActionEvent event) throws IOException {
 		try {
 			//Iniciando o precesso de inserir uma seleção em uma tela separada
@@ -194,6 +199,10 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 	}
     
     @FXML
+    /**Ação do botão de exlcuir que pega a seleção com base no que foi escolhido na ComboBox e pede ao usuario o que sera excluido
+     * caso a seleção sejá excluida, o usuario deve criar uma nova seleção completa para ficar no lugar na excluida
+     * caso o tecnico sejá excluido, o usuario deve criar um novo tecnico para substituir o antigo
+     * caso um jogador sejá excluido o usuario deve criar uum novo jogador para susbtituir o antigo**/
     void btnExcluirAction(ActionEvent event) {
     	
     	try {
@@ -232,27 +241,35 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     }
     
     @FXML
+    /**Ação do botão de editar arbitro onde será aberto uma janela que o usuario decidira que arbitro deseja editar e dará o seu novo nome**/
     void btnEditarArbitroAction(ActionEvent event) throws IOException {
     	abrirJanela("/app/view/criarCopa/EdicaoArbitro.fxml", 250, 200, true, true);
     }
   
     @FXML
+    /**Ação do botão de excluir arbitro onde será aberto uma janela onde o usuario poderá escolher que arbitro sera excluido e logo apos
+     * terá que criar um novo arbitro para que a lista se mantenha do mesmo tamanho**/
     void btnExcluirArbitroAction(ActionEvent event) throws IOException {
     	abrirJanela("/app/view/criarCopa/ExclusaoArbitro.fxml", 250, 200, true, true);
     	abrirJanela("/app/view/criarCopa/CriarArbitro.fxml", 250, 200, true, false);
     }
     
     @FXML
+    /**Ação do botão de pesquisar onde o usuario pooderá escolher se quer pesquisa uma Seleção, Tecnico, Jogador e arbitro a partir de uma
+     * sequencia de caracters que não necesseriamente precisam formar uma palavra**/
     void btnPesquisaAction(ActionEvent event) throws IOException {
     	abrirJanela("/app/view/criarCopa/Pesquisa.fxml", 250, 200, true, true);
     }
     
     @FXML
+    /**Ação do botão de listagem onde o usuario irá escolher entre Seleção, Tecnico, Jogador e Arbitro para que sejam listados todos os 
+     * presentes no banco de dados do programa**/
     void btnListagemAction(ActionEvent event) throws IOException {
     	abrirJanela("/app/view/criarCopa/Listagem.fxml", 250, 200, true, true);
     }
     
     @FXML
+    /**Ação do botão de ir para fase de grupos onde a tela será trocada para uma nova e o usuario poderá criar as partidas da copa do mundo**/
     void btnFaseGruposAction(ActionEvent event) throws IOException {
     	GrupoPrimeiraFase.organizadorTodasPartidas();
     	Stage window = (Stage)btnFaseGrupos.getScene().getWindow();
@@ -260,12 +277,16 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     }
     
     @FXML
+    /**Ação do botão de voltar onde simplesmente a tela atual é trocada para a do menu principal e todo o progresso criado é perdido, tendo
+     * que iniciar do 0 caso alguma seleção tenha sido criada no processo**/
     void btnVoltarMenuAction(ActionEvent event) throws IOException {
         Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
         trocarJanela("/app/view/MenuPrincipal.fxml", 800, 500, window);
     }
     
     @FXML
+    
+    /**Ação da comboBox onde cada vez que é trocada de seleção os labels que mostram as informações da mesma são atualizados**/
     void comboBoxTrocarLabelsAction(ActionEvent event) {
     	atualizarLabelsSelecaoEscolhida();
 		selecaoComboBox = comboBoxSelecoes.getValue();
@@ -282,6 +303,7 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 		atualizarBotoes();
     }
 
+    /**Função que atualiza todos os grupos mostrados na interface, atualizando as seleções existentes em grupo por grupo**/
     private void atualizarGrupos() {
     	
     	List<ListView<String>> listaDeListas = new ArrayList<>();
@@ -310,6 +332,7 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 		}
     }
     
+    /**Função que atualiza as seleções que podem ser escolhidas na comboBox com base na lista de seleções salvas no programa**/
     private void atualizarComboBoxSelecao() {
 
     	List<String> listaSelecoes = SelecaoDAO.selecoesExistentes();
@@ -329,6 +352,7 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     	}
     }
     
+    /**Função que atualiza os labels de informçãoes de uma seleção que possuem ligação direta com a seleção escolhiga pela comboBox**/
     private void atualizarLabelsSelecaoEscolhida() {
     	try {
     		String nome = comboBoxSelecoes.getValue().toString();
@@ -379,11 +403,15 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     	}
     }
     
+    /**Função que atualiza a barra de prorgasso de seleções criadas com base na quantidade de seleções já existentes e as que faltam
+     * serem criadas para que o programa possa ir para a proxima fase**/
     private void atualizarBarraProgresso() {
     	quantidadeSelecoesCriadas.setText("Quantidade de Seleções criadas: %d".formatted(SelecaoDAO.quantidadeSelecoes()));
     	progressoSelecoesCriadas.setProgress((1/32.0)*SelecaoDAO.quantidadeSelecoes());
     }
     
+    /**Função que atualiza o estado de disponiblidade dos botões, onde alguns que precisam e alguns prerequisitos para estarem disponivels
+     * terão que ser atualizados e verificados para que possam estar disponiveis para o usuario**/
     private void atualizarBotoes() {
     	if (comboBoxSelecoes.getItems().size() > 0) {
     		btnEditar.setDisable(false);

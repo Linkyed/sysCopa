@@ -20,6 +20,15 @@ import javafx.stage.WindowEvent;
 
 public abstract class JanelaJAVAFX {
 
+	/**Função responsavel por abrir uma nova janela na interface, mantendo a anterir aberta
+	 * @param diretorioFXML local e nome do arquvio fxml a ser aberto
+	 * @param largura quantidade de pixeis na horizontal
+	 * @param altura quantidade de piexeis na vertical
+	 * @param travarJanelaPrincipal booleano responsavel por deixar a tela anterior travada até o fechamento da nova
+	 * @param podeFechar booleano responsavel por impedir o fechamento da nova janela aberta
+	 * @throws IOException caso ocorra um erro na hora de carregar a arquvio fxml
+	 * **/
+	
 	void abrirJanela(String diretorioFXML, double largura, double altura, boolean travarJanelaPrincipal, boolean podeFechar) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		URL xmlURL = getClass().getResource(diretorioFXML);
@@ -42,6 +51,13 @@ public abstract class JanelaJAVAFX {
 		}
 	}
 	
+	/**Função responsavel por trocar a janela antiga por uma nova janela na interface
+	 * @param diretorioFXML local e nome do arquvio fxml a ser aberto
+	 * @param largura quantidade de pixeis na horizontal
+	 * @param altura quantidade de piexeis na vertical
+	 * @param janelaAntiga recebe a janela antiga para que ela possa ser trocada
+	 * @throws IOException caso ocorra um erro na hora de carregar a arquvio fxml
+	 * **/
 	void trocarJanela(String diretorioFXML, double largura, double altura, Stage janelaAntiga) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		URL xmlURL = getClass().getResource(diretorioFXML);
@@ -50,6 +66,12 @@ public abstract class JanelaJAVAFX {
 		Stage window = janelaAntiga;
 		window.setScene(new Scene(root, largura, altura));
 	}
+	
+	/**Função que impede o fechamento de uma janela escolhida, exibindo um alerta para o usuario avisando-o que não se pode ser fechada
+	 * @param window recebe a janela que deve ser impedida de ser fechada
+	 * @param titulo titulo da janela de alerta criada
+	 * @param mensagem mensagem mostrada para o usuario
+	 * **/
 	
 	void impedirFechamento(Stage window, String titulo, String mensagem) {
 	   	 window.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -61,6 +83,10 @@ public abstract class JanelaJAVAFX {
 		        });
 	   }
 	
+	/**Função que cria uma caixa de alerta exibindo alguma mensagem para o usuario
+	 * @param titulo titulo da janela de alerta criada
+	 * @param mensagem mensagem mostrada para o usuario
+	 * **/
 	void alertBox (String titulo, String mensagem) {
 		Stage window = new Stage();
 		

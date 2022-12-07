@@ -21,7 +21,7 @@ import app.model.exceptions.StringVaziaException;
  *
  */
 public class ArbitroDAO implements ArbitroDAOInterface{
-	int a = 0;
+
 	static private List<Arbitro> arbitros = new ArrayList<>();
 	
 	
@@ -140,6 +140,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		arbitros.clear();
 	}
 	
+	/**Metodo para retornar todos os nomes dos arbitros presentes na lista de arbitros**/
 	public static List<String> todosNomesArbitros(){
 		List<String> lista = new ArrayList<>();
 		for (Arbitro arbitro: arbitros) {
@@ -148,7 +149,7 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		return lista;
 	}
 	
-	
+	/**Metodo para retorna um arbitro com base no nome escolhido**/
 	public static Arbitro getArbitroPorNome(String nome) throws ObjetoNaoExisteException {
 		for (Arbitro arbitro: arbitros) {
 			if (arbitro.getNome().equals(nome)) {
@@ -158,12 +159,6 @@ public class ArbitroDAO implements ArbitroDAOInterface{
 		throw new ObjetoNaoExisteException("Arbitro não existe na lista!");
 	}
 	
-	public static List<String> arbitrosExistentes(){
-		List<String> lista = new ArrayList<>();
-		for (Arbitro arbitro: arbitros) {
-			lista.add(arbitro.getNome());
-		}
-		return lista;
-	}
+
 	
 }

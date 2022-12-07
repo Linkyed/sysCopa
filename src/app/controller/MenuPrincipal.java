@@ -43,7 +43,9 @@ public class MenuPrincipal extends JanelaJAVAFX{
     @FXML
     private Button btnUsarDados;
 
+    
     @FXML
+    /**Ação do botão no menu principal onde o ususario começa a criar a copa do zero, inserindo seleção por seleção até completar as 32**/
     void btnCriarCopaAction(ActionEvent event) throws IOException {
     	SelecaoDAO.resetarLista();
     	TecnicoDAO.resetarLista();
@@ -66,6 +68,8 @@ public class MenuPrincipal extends JanelaJAVAFX{
     }
     
     @FXML
+    /**Ação do botão no menu principal onde o ususario pode escolher usar dados predefinidos, 
+     * onde as 32 seleções já estarão criadas**/
     void btnUsarDadosPreCarregados(ActionEvent event) throws IOException {
     	SelecaoDAO.resetarLista();
     	TecnicoDAO.resetarLista();
@@ -80,6 +84,7 @@ public class MenuPrincipal extends JanelaJAVAFX{
     }
     
     @Override
+    /**Polimorfismo na função de impedirFechamento pois nesse menu é necessario que essa função mostre uma outra mensagem para o usuario**/
     void impedirFechamento(Stage window, String titulo, String mensagem) {
     	window.setOnCloseRequest(new EventHandler<WindowEvent>() {
         	@Override
@@ -94,6 +99,8 @@ public class MenuPrincipal extends JanelaJAVAFX{
         });
 	   }
 
+    
+    /**Função para mostrar uma alertbox para o usuario, bem parecido com a que existe na classe mãe**/
     void alertBoxSoAviso(String titulo, String mensagem) {
     	Stage window = new Stage();
 		
@@ -126,6 +133,8 @@ public class MenuPrincipal extends JanelaJAVAFX{
     }
     
     @Override
+    /**Polimorfismo na alertBox da classe mãe para mudar o que é exibido no alerta, para que adiciona uma funcionalidade a mais na hora
+     * de inserir os arbitros**/
     void alertBox(String titulo, String mensagem) {
     	Stage window = new Stage();
 		
@@ -169,6 +178,7 @@ public class MenuPrincipal extends JanelaJAVAFX{
 
     }
     
+    /**Função que muda uma variavel na inserção dos arbitros e fecha a janela de criação dos arbitros**/
     private void pararInsercao(Stage window) {
     	CriarArbitro.continuar = false;
     	window.close();

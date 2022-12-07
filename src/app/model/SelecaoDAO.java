@@ -19,7 +19,7 @@ import app.model.exceptions.StringVaziaException;
  *
  */
 public class SelecaoDAO implements SelecaoDAOInterface {
-	int a = 0;
+
 	/** Lista para guarda as seleções **/
 	static private List<Selecao> selecoes = new ArrayList<>();
 
@@ -40,6 +40,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		}
 	}
 
+	/** Metodo para inserir uma seleção já criada no banco de dados **/
 	static public boolean inserirConsole(Selecao selecao) {
 		if (selecoes.size() < 32 && !selecoes.contains(selecao)) {
 			selecoes.add(selecao);
@@ -69,7 +70,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		selecao.setNome(nome);
 	}
 
-	/** Metodo para excluir uma seleção existente no banco de dados **/
+	/** Metodo para excluir uma seleção existente no banco de dados com base no index da mesma**/
 	static public boolean excluir(int num) {
 		if (num < selecoes.size() && num >= 0) {
 			List<Jogador> jogadores = getOneSelecao(num).getJogadores();
@@ -85,6 +86,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		}
 	}
 	
+	/** Metodo para excluir uma seleção existente no banco de dados com base em outra seleção "igual" para fazer a comparação**/
 	static public void excluir(Selecao selecao) throws ObjetoNaoExisteException {
 		if (selecoes.contains(selecao)) {
 			selecao = SelecaoDAO.getSelecaoPorSelecao(selecao);
@@ -154,9 +156,6 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	 * seleção
 	 * @throws ObjetoNaoExisteException 
 	 **/
-	
-	
-	
 	static public Selecao getSelecaoPorSelecao(Selecao selecao) throws ObjetoNaoExisteException {
 		if (selecoes.contains(selecao)) {
 			return selecoes.get(selecoes.indexOf(selecao));			
@@ -166,6 +165,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		}
 	}
 
+	/**Metodo para retorna o index de uma determinada seleção**/
 	static public int getIndexSelecao(Selecao selecao) {
 		return selecoes.indexOf(selecao);
 	}
@@ -211,15 +211,17 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return contador;
 	}
 
-	
+	/**Metodo para adicionar as partidas que uma seleção jogou no seu historico**/
 	public static void adicionarPartidas(Partida partida,Selecao selecao) {
 		selecao.getListaPartdasList().add(partida);
 	}
 	
+	/**Metodo para retornar a lista de partidas do historico de uma seleção**/
 	public static List<Partida> listaPartidas(Selecao selecao){
 		return selecao.getListaPartdasList();
 	}
 
+	/**Retorna uma lista com todas as seleções que possuem uma determina string dentro de seus nomes**/
 	public static List<Selecao> getSelecaoNome(String nome) {
 		List<Selecao> lista = new ArrayList<Selecao>();
 		for (Selecao selecao: selecoes) {
@@ -230,10 +232,12 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	/**Metodo para resetar a lista de seleções**/
 	public static void resetarLista() {
-		selecoes = new ArrayList<Selecao>();
+		selecoes.clear();
 	}
 	
+	/**Metodo para retorna uma lista de seleções que possuem vagas para jogadores serem adicionados**/
 	public static List<Selecao> selecoesComVagaJogador(){
 		List<Selecao> lista = new ArrayList<>();
 		for (Selecao selecao: selecoes) {
@@ -244,10 +248,12 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	/**Meotodo para imprimir as caracteristicas de uma seleção**/
 	public static void imprimirCaracteristicas(int numSelecao) {
 		selecoes.get(numSelecao).listarJogadores();
 	}
 	
+	/**Metodo para retorna uma lista com os nomes de todas as seleções que existem na lista de seleções**/
 	public static List<String> selecoesExistentes(){
 		List<String> lista = new ArrayList<>();
 		for (Selecao selecao: selecoes) {

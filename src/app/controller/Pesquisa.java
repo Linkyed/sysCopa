@@ -45,6 +45,9 @@ public class Pesquisa extends JanelaJAVAFX{
     private TextField nomePesquisa;
 
     @FXML
+    /**Ação do botão de pesquisar que com base no tipo de objeto escolhido e a sequencia de caracters digitado pelo usuario, o programa ira
+     * fazer uma busca no respectivo DAO do objeto procurando pela sequencia de caracters digitada e verificar quais objetos possuem aquela
+     * sequencia, e apois isso criara uma nova tela e mostrara para o usuario todos esses objetos encontrados**/
     void btnPesquisar(ActionEvent event) {
     	Stage window = new Stage();
     	window.initModality(Modality.APPLICATION_MODAL);
@@ -118,6 +121,7 @@ public class Pesquisa extends JanelaJAVAFX{
 
     @FXML
     void initialize() {
+    	//Adicionando as opções de objetos para serem pesquisados para o usuario decidir
     	escolhaPesquisa.getItems().addAll("Seleção", "Tecnico", "Jogador", "Arbitro");
     	escolhaPesquisa.setValue("Seleção");
     	
