@@ -256,4 +256,12 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		return lista;
 	}
 	
+	public static List<Jogador> jogadoresSele(Selecao selecao) {
+		List<Jogador> listaJogadoresJogadors = new ArrayList<>();
+		for (Jogador jogador : selecao.getJogadores()) {
+			listaJogadoresJogadors.add(jogador);
+		}
+		return listaJogadoresJogadors;
+	}
+	
 }

@@ -173,7 +173,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		
 		Stage window = (Stage)cadastrarPartidas.getScene().getWindow();
 		
-        trocarJanela("/app/viewFasedeGrupos/menuDePartidas.fxml", 800, 500, window);
+        trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 500, window);
 	}
 
 	public void randPartidaMenuAction(ActionEvent event) {
