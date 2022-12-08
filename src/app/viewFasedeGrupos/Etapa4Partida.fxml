@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Etapa2PartidaController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Etapa4PartidaController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -27,7 +27,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label style="-fx-background-color: white; -fx-border-color: black;" text="Informe os dados da Etapa 2: Cadastramento de partida " GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+            <Label style="-fx-background-color: white; -fx-border-color: black;" text="Informe os dados da Etapa 4: Cadastramento de partida " GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="Arial Bold Italic" size="18.0" />
                </font>
@@ -78,7 +78,7 @@
                   </GridPane>
                </children>
             </GridPane>
-            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaGol" text="Salvar" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="btnSalvar" mnemonicParsing="false" onAction="#btnSalvaCartVermelho" text="Salvar" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <GridPane prefHeight="204.0" prefWidth="798.0" style="-fx-background-color: snow;" GridPane.rowIndex="1">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -125,7 +125,7 @@
                   <Label fx:id="sele2J9" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
                   <Label fx:id="sele2J10" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
                   <Label fx:id="sele2J11" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-                  <Label text="Gol(s):" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label text="Cartão Vermelho:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <ComboBox fx:id="comboSele1J1" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ComboBox fx:id="comboSele1J2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ComboBox fx:id="comboSele1J3" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -148,7 +148,7 @@
                   <ComboBox fx:id="comboSele2J9" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
                   <ComboBox fx:id="comboSele2J10" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER" />
                   <ComboBox fx:id="comboSele2J11" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
-                  <Label text="Gol(s)" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label text="Cartão Vermelho:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>
