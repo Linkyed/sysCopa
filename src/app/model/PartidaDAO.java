@@ -369,6 +369,14 @@ public class PartidaDAO {
 		}
 
 	}
+	
+	public static List<Partida> listaDePartidasGrupo(String grupo) {
+		List<Partida> partidasLista = new ArrayList<>();
+		for(int i=1;i<=6;i++) {
+			partidasLista.add(procurarPartida(grupo, i));
+		}
+		return partidasLista;
+	}
 
 	/** Metodo para ver quantidade de partidas sem ser realizada **/
 
