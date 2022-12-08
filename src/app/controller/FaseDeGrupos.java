@@ -68,6 +68,12 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 	@FXML
 	private Button cadastrarPartidas;
 
+	@FXML
+	private Button listarPartidas;
+
+	@FXML
+	private Button bntVoltarMenuPrincipal;
+
 	private void atualizarGrupos() {
 
 		List<ListView<String>> listaDeListas = new ArrayList<>();
@@ -170,11 +176,27 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 	}
 
 	public void btnCadastrar(ActionEvent event) throws IOException {
-		
-		Stage window = (Stage)cadastrarPartidas.getScene().getWindow();
-		
-        trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 500, window);
+
+		Stage window = (Stage) cadastrarPartidas.getScene().getWindow();
+
+		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 500, window);
 	}
+	
+	public void btnListar(ActionEvent event) throws IOException {
+
+		Stage window = (Stage) listarPartidas.getScene().getWindow();
+
+		trocarJanela("/app/viewFasedeGrupos/ListarPartidasFaseGrupo.fxml", 800, 500, window);
+	}
+	
+	public void btnVoltarMenu(ActionEvent event) throws IOException {
+
+		Stage window = (Stage) bntVoltarMenuPrincipal.getScene().getWindow();
+
+		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 500, window);
+	}
+	
+	
 
 	public void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(1, true);
