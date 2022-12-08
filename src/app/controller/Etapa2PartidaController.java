@@ -1,10 +1,14 @@
 package app.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
+import app.model.GrupoPrimeiraFase;
 import app.model.Jogador;
 import app.model.Partida;
 import app.model.PartidaDAO;
@@ -15,8 +19,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
-public class Etapa2PartidaController {
+public class Etapa2PartidaController extends JanelaJAVAFX {
 
     @FXML
     private ResourceBundle resources;
@@ -163,6 +168,7 @@ public class Etapa2PartidaController {
     private Label sele2J9;
     
 
+
     private List<Integer> listaGols = new ArrayList<>();
     
     private ObservableList<Integer> gols;
@@ -257,6 +263,67 @@ public class Etapa2PartidaController {
     	sele2J11.setText(""+sele2jogadores.get(10));
     	
     }
+    
+    private void adicionarGols() {
+        List<Integer> listaSeleGol1 = new ArrayList<>(); 
+        List<Integer> listaSeleGol2 = new ArrayList<>(); 
+        
+        Partida modeloPartida = PartidaDAO.partidaSemRealizar();
+    	List<Jogador> sele1jogadores = SelecaoDAO.jogadoresSele(modeloPartida.getSelecao1());
+    	List<Jogador> sele2jogadores = SelecaoDAO.jogadoresSele(modeloPartida.getSelecao2());
+    	
+    	Map<Jogador, Integer> jogadorEgolSele1 = new HashMap<>();
+    	Map<Jogador, Integer> jogadorEgolSele2 = new HashMap<>();
+    	
+		listaSeleGol1.add(comboSele1J1.getValue());
+		listaSeleGol1.add(comboSele1J2.getValue());
+		listaSeleGol1.add(comboSele1J3.getValue());
+		listaSeleGol1.add(comboSele1J4.getValue());
+		listaSeleGol1.add(comboSele1J5.getValue());
+		listaSeleGol1.add(comboSele1J6.getValue());
+		listaSeleGol1.add(comboSele1J7.getValue());
+		listaSeleGol1.add(comboSele1J8.getValue());
+		listaSeleGol1.add(comboSele1J9.getValue());
+		listaSeleGol1.add(comboSele1J10.getValue());
+		listaSeleGol1.add(comboSele1J11.getValue());
+		
+		listaSeleGol2.add(comboSele2J1.getValue());
+		listaSeleGol2.add(comboSele2J2.getValue());
+		listaSeleGol2.add(comboSele2J3.getValue());
+		listaSeleGol2.add(comboSele2J4.getValue());
+		listaSeleGol2.add(comboSele2J5.getValue());
+		listaSeleGol2.add(comboSele2J6.getValue());
+		listaSeleGol2.add(comboSele2J7.getValue());
+		listaSeleGol2.add(comboSele2J8.getValue());
+		listaSeleGol2.add(comboSele2J9.getValue());
+		listaSeleGol2.add(comboSele2J10.getValue());
+		listaSeleGol2.add(comboSele2J11.getValue());
+		
+		int contador = 0;
+		for (Integer integer : listaSeleGol1) {
+			if(integer != 0) {
+				System.out.println(sele1jogadores.get(contador)+" "+integer);
+				jogadorEgolSele1.put(sele1jogadores.get(contador), integer);
+			}
+			contador++;
+		}
+		contador = 0;
+		for (Integer integer : listaSeleGol2) {
+			if(integer != 0) {
+				System.out.println(sele2jogadores.get(contador)+" "+integer);
+				jogadorEgolSele2.put(sele2jogadores.get(contador), integer);
+			}
+			contador++;
+		}
+		
+
+	}
+    
+    public void btnSalvaGol() throws IOException {
+		adicionarGols();
+		Stage window = (Stage)btnSalvar.getScene().getWindow();
+        trocarJanela("/app/viewFasedeGrupos/Etapa3Partida.fxml", 800, 500, window);
+	}
     
 
     @FXML
