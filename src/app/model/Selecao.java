@@ -9,6 +9,10 @@ public class Selecao {
 	private Tecnico tecnico;
 	private String nome;
 	private List<Partida> listaPartdas = new ArrayList<>();
+	private int saldoDeGols = 0;
+	private int totalCartAmarelo = 0;
+	private int totalCartVermelho = 0;
+	private int golsMarcados = 0;
 
 	/** Construtor que obriga a receber um String nome para criar uma seleção **/
 	public Selecao(String nome) {
@@ -73,6 +77,38 @@ public class Selecao {
 
 	public List<Partida> getListaPartdasList() {
 		return listaPartdas;
+	}
+
+	public int getSaldoDeGols() {
+		return saldoDeGols;
+	}
+
+	public void setSaldoDeGols(int saldoDeGols) {
+		this.saldoDeGols = saldoDeGols;
+	}
+
+	public int getTotalCartAmarelo() {
+		return totalCartAmarelo;
+	}
+
+	public void setTotalCartAmarelo(int totalCartAmarelo) {
+		this.totalCartAmarelo = totalCartAmarelo;
+	}
+
+	public int getTotalCartVermelho() {
+		return totalCartVermelho;
+	}
+
+	public void setTotalCartVermelho(int totalCartVermelho) {
+		this.totalCartVermelho = totalCartVermelho;
+	}
+
+	public int getGolsMarcados() {
+		return golsMarcados;
+	}
+
+	public void setGolsMarcados(int golsMarcados) {
+		this.golsMarcados = golsMarcados;
 	}
 
 	public boolean equals(Object obj) {

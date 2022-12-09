@@ -326,6 +326,8 @@ public class Etapa4PartidaController extends JanelaJAVAFX{
     	adicionarCartVermelho();
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	PartidaDAO.alteracaoDeStatusPartida(true, modeloPartida);
+    	SelecaoDAO.atualizarCriterioDesempate(modeloPartida.getSelecao1());
+    	SelecaoDAO.atualizarCriterioDesempate(modeloPartida.getSelecao2());
     	if(modeloPartida.getFasePartida().equalsIgnoreCase("FaseDeGrupo")) {
     		GrupoPrimeiraFase.definirPontos(modeloPartida, true);
     		Stage window = (Stage)btnSalvar.getScene().getWindow();
