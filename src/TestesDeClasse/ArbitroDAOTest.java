@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import app.model.Arbitro;
 import app.model.ArbitroDAO;
+import app.model.exceptions.CaracterInvalidoException;
+import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.StringVaziaException;
 
 public class ArbitroDAOTest {
 
@@ -42,7 +45,7 @@ public class ArbitroDAOTest {
 		ArbitroDAO.resetarLista();
 	}
 	@Test
-	public void getOneArbitroTest() {
+	public void getOneArbitroTest() throws StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException {
 		ArbitroDAO.inserir(arbitro0);
 		ArbitroDAO.inserir(arbitro1);
 		ArbitroDAO.inserir(arbitro2);
@@ -51,7 +54,7 @@ public class ArbitroDAOTest {
 		ArbitroDAO.resetarLista();
 	}
 	@Test
-	public void getArbitroNomeTest() {
+	public void getArbitroNomeTest() throws StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException {
 		ArbitroDAO.inserir(arbitro0);
 		ArbitroDAO.inserir(arbitro1);
 		ArbitroDAO.inserir(arbitro2);

@@ -315,6 +315,8 @@ public class Etapa2PartidaController extends JanelaJAVAFX {
 			}
 			contador++;
 		}
+		PartidaDAO.editarGol(modeloPartida, jogadorEgolSele1, 1);
+		PartidaDAO.editarGol(modeloPartida, jogadorEgolSele2, 2);
 		
 
 	}

@@ -205,7 +205,7 @@ public class PartidaDAO {
 		if (numSelecao == 1) {
 			partida.setCartaoVermelhoSelecao1(jogasMap);
 		} else if (numSelecao == 2) {
-			partida.setCartaoVermelhoSelecao1(jogasMap);
+			partida.setCartaoVermelhoSelecao2(jogasMap);
 		}
 
 	}
