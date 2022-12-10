@@ -18,49 +18,49 @@ import app.controller.JanelaJAVAFX;
 public class FaseDeGrupos extends JanelaJAVAFX {
 
 	@FXML
-	private ListView<String> listaGrupoA;
+	private ListView<Selecao> listaGrupoA;
 
 	@FXML
 	private ListView<Integer> listaGrupoApontos;
 
 	@FXML
-	private ListView<String> listaGrupoB;
+	private ListView<Selecao> listaGrupoB;
 
 	@FXML
 	private ListView<Integer> listaGrupoBpontos;
 
 	@FXML
-	private ListView<String> listaGrupoC;
+	private ListView<Selecao>listaGrupoC;
 
 	@FXML
 	private ListView<Integer> listaGrupoCpontos;
 
 	@FXML
-	private ListView<String> listaGrupoD;
+	private ListView<Selecao> listaGrupoD;
 
 	@FXML
 	private ListView<Integer> listaGrupoDpontos;
 
 	@FXML
-	private ListView<String> listaGrupoE;
+	private ListView<Selecao> listaGrupoE;
 
 	@FXML
 	private ListView<Integer> listaGrupoEpontos;
 
 	@FXML
-	private ListView<String> listaGrupoF;
+	private ListView<Selecao> listaGrupoF;
 
 	@FXML
 	private ListView<Integer> listaGrupoFpontos;
 
 	@FXML
-	private ListView<String> listaGrupoG;
+	private ListView<Selecao> listaGrupoG;
 
 	@FXML
 	private ListView<Integer> listaGrupoGpontos;
 
 	@FXML
-	private ListView<String> listaGrupoH;
+	private ListView<Selecao> listaGrupoH;
 
 	@FXML
 	private ListView<Integer> listaGrupoHpontos;
@@ -76,7 +76,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 
 	private void atualizarGrupos() {
 
-		List<ListView<String>> listaDeListas = new ArrayList<>();
+		List<ListView<Selecao>> listaDeListas = new ArrayList<>();
 		listaDeListas.add(listaGrupoA);
 		listaDeListas.add(listaGrupoB);
 		listaDeListas.add(listaGrupoC);
@@ -85,41 +85,41 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		listaDeListas.add(listaGrupoF);
 		listaDeListas.add(listaGrupoG);
 		listaDeListas.add(listaGrupoH);
-		for (ListView<String> lista : listaDeListas) {
+		for (ListView<Selecao> lista : listaDeListas) {
 			lista.getItems().clear();
 		}
 
-		List<String> selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("A");
-		for (String selecao : selecoeStrings) {
+		List<Selecao> selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("A");
+		for (Selecao selecao : selecoeStrings) {
 			System.out.println(selecao);
 			listaGrupoA.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("B");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("B");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoB.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("C");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("C");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoC.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("D");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("D");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoD.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("E");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("E");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoE.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("F");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("F");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoF.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("G");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("G");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoG.getItems().add(selecao);
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoNome("H");
-		for (String selecao : selecoeStrings) {
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("H");
+		for (Selecao selecao : selecoeStrings) {
 			listaGrupoH.getItems().add(selecao);
 		}
 
@@ -140,38 +140,39 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 			lista.getItems().clear();
 		}
 
-		List<Integer> selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("A");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoApontos.getItems().add(selecao);
+		List<Selecao> selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("A");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoApontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("B");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoBpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("B");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoBpontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("C");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoCpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("C");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoCpontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("D");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoDpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("D");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoDpontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("E");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoEpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("E");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoEpontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("F");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoFpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("F");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoFpontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("G");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoGpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("G");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoGpontos.getItems().add(selecao.getPontos());
 		}
-		selecoeStrings = GrupoPrimeiraFase.selecoesClassificacaoPontos("H");
-		for (Integer selecao : selecoeStrings) {
-			listaGrupoHpontos.getItems().add(selecao);
+		selecoeStrings = GrupoPrimeiraFase.selecoesGrupo("H");
+		for (Selecao selecao : selecoeStrings) {
+			listaGrupoHpontos.getItems().add(selecao.getPontos());
 		}
+		
 
 	}
 

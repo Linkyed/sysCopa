@@ -329,5 +329,9 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 		selecao.setTotalCartVermelho(cartVermelho);
 		selecao.setGolsMarcados(gols);
 	}
+	
+	public static void definirPontos(int pontos,Selecao selecao) {
+		selecao.setPontos(pontos);
+	}
 
 }
