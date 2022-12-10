@@ -9,6 +9,7 @@ public class Selecao {
 	private Tecnico tecnico;
 	private String nome;
 	private List<Partida> listaPartdas = new ArrayList<>();
+	private int pontos = 0;
 	private int saldoDeGols = 0;
 	private int totalCartAmarelo = 0;
 	private int totalCartVermelho = 0;
@@ -109,6 +110,14 @@ public class Selecao {
 
 	public void setGolsMarcados(int golsMarcados) {
 		this.golsMarcados = golsMarcados;
+	}
+
+	public int getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
 	}
 
 	public boolean equals(Object obj) {
