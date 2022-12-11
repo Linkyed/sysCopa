@@ -220,8 +220,16 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnCadastrarPartida" mnemonicParsing="false" onAction="#btnCadastrar" text="Cadastrar Partida" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="btnQuartasDeFinal" mnemonicParsing="false" onAction="#btnQuartas" text="Quartas De Final" />
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="btnCadastrarPartida" mnemonicParsing="false" onAction="#btnCadastrar" text="Cadastrar Partida" />
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <Button fx:id="btnQuartasDeFinal" mnemonicParsing="false" onAction="#btnQuartas" text="Proxima Fase" />
+                           </children>
+                        </StackPane>
                      </children>
                   </GridPane>
                   <GridPane GridPane.rowIndex="2">
@@ -233,8 +241,16 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Voltar Menu" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <Button fx:id="btnRand" mnemonicParsing="false" onAction="#randPartidaMenuAction" text="Randown" GridPane.columnIndex="1" />
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Voltar " />
+                           </children>
+                        </StackPane>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <Button fx:id="btnRand" mnemonicParsing="false" onAction="#randPartidaMenuAction" text="Aleatório" />
+                           </children>
+                        </StackPane>
                      </children>
                   </GridPane>
                </children>

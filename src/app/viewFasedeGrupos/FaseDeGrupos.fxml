@@ -382,11 +382,11 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="cadastrarPartidas" mnemonicParsing="false" onAction="#btnCadastrar" prefHeight="25.0" prefWidth="155.0" text="Cadastrar Partidas" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Button fx:id="cadastrarPartidas" mnemonicParsing="false" onAction="#btnCadastrar" prefHeight="25.0" prefWidth="141.0" text="Cadastrar Partidas" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
             <Button fx:id="bntVoltarMenuPrincipal" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Menu Principal" GridPane.halignment="CENTER" />
-            <Button fx:id="listarPartidas" mnemonicParsing="false" onAction="#btnListar" text="Listar Partidas" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-            <Button fx:id="randButton" mnemonicParsing="false" onAction="#randPartidaMenuAction" text="Randown" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-            <Button fx:id="oitavasButton" mnemonicParsing="false" onAction="#btnOitavas" text="Oitavas" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+            <Button fx:id="listarPartidas" mnemonicParsing="false" onAction="#btnListar" prefHeight="25.0" prefWidth="145.0" text="Listar Partidas" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button fx:id="randButton" mnemonicParsing="false" onAction="#randPartidaMenuAction" prefHeight="25.0" prefWidth="137.0" text="Aleatório" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Button fx:id="oitavasButton" mnemonicParsing="false" onAction="#btnOitavas" text="Proxima Fase" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </children>
