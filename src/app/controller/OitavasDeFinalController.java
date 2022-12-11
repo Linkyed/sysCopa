@@ -156,12 +156,27 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 	public void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
+		atualizarBotoes();
+	}
+	
+
+	void atualizarBotoes() {
+		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
+			btnCadastrarPartida.setDisable(true);
+			btnRand.setDisable(true);
+			btnQuartasDeFinal.setDisable(false);
+		}else {
+			btnCadastrarPartida.setDisable(false);
+			btnRand.setDisable(false);
+			btnQuartasDeFinal.setDisable(true);
+		}
 	}
 
 	@FXML
 	void initialize() {
 		adicionar();
 		atualizarPartidas();
+		atualizarBotoes();
 		assert btnCadastrarPartida != null
 				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'OitavasDeFinal.fxml'.";
 		assert btnVoltarMenu != null

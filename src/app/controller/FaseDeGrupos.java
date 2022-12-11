@@ -183,6 +183,18 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		
 
 	}
+	
+	void atualizarBotoes() {
+		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
+			cadastrarPartidas.setDisable(true);
+			randButton.setDisable(true);
+			oitavasButton.setDisable(false);
+		}else {
+			oitavasButton.setDisable(true);
+			cadastrarPartidas.setDisable(false);
+			randButton.setDisable(false);
+		}
+	}
 
 	public void btnCadastrar(ActionEvent event) throws IOException {
 
@@ -216,12 +228,14 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), true);
 		atualizarGrupos();
 		atualizarPontos();
+		atualizarBotoes();
 	}
 
 	@FXML
 	void initialize() {
 		atualizarGrupos();
 		atualizarPontos();
+		atualizarBotoes();
 
 	}
 }

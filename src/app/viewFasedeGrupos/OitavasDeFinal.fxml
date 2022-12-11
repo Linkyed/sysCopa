@@ -45,7 +45,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="2">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava1Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava1Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -54,7 +54,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="4">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava1Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava1Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -63,7 +63,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava5Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava5Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -72,7 +72,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava5Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava5Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -114,7 +114,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="1">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava2Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava2Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -123,7 +123,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="3">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava2Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava2Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -132,7 +132,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava6Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava6Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -141,7 +141,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava6Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava6Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -186,7 +186,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="1">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava4Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava4Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -195,7 +195,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava8Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava8Sele2" text="Label">
                            <font>
                               <Font size="18.0" />
                            </font></Label>
@@ -271,7 +271,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="2">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava3Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava3Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -280,7 +280,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava7Sele2" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava7Sele2" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -307,7 +307,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava8Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava8Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -316,7 +316,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.rowIndex="4">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava4Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava4Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -325,7 +325,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;" GridPane.columnIndex="1">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava7Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava7Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>
@@ -334,7 +334,7 @@
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: grey;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="235.0" />
-                        <Label fx:id="oitava3Sele1" style="-fx-background-color: snow;" text="Label">
+                        <Label fx:id="oitava3Sele1" text="Label">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font></Label>

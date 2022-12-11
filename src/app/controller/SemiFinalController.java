@@ -69,6 +69,7 @@ public class SemiFinalController extends JanelaJAVAFX {
 	void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
+		atualizarBotoes();
 	}
 	
 	public void btnTerceiro(ActionEvent event) throws IOException {
@@ -111,11 +112,24 @@ public class SemiFinalController extends JanelaJAVAFX {
 			}
 		}
 	}
+	
+	void atualizarBotoes() {
+		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
+			btnCadastrarPartida.setDisable(true);
+			btnRandown.setDisable(true);
+			btnProxima.setDisable(false);
+		}else {
+			btnCadastrarPartida.setDisable(false);
+			btnRandown.setDisable(false);
+			btnProxima.setDisable(true);
+		}
+	}
 
 	@FXML
 	void initialize() {
 		adicionar();
 		atualizarPartidas();
+		atualizarBotoes();
 		assert btnCadastrarPartida != null
 				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'SemiFinal.fxml'.";
 		assert btnRandown != null : "fx:id=\"btnRandown\" was not injected: check your FXML file 'SemiFinal.fxml'.";
