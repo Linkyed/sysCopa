@@ -85,13 +85,14 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    }
 	    
 	    private void atualizarBarraProgresso() {
+	    	double num = PartidaDAO.quantidaPartidas();
 	    	quantidadePartidasCriadas.setText("Quantidade de Partidas criadas: %d".formatted(PartidaDAO.quantidadePartidasRealizada()));
-	    	barraProgressoPartidas.setProgress((1/48.0)*PartidaDAO.quantidadePartidasRealizada());
+	    	barraProgressoPartidas.setProgress((1/num)*PartidaDAO.quantidadePartidasRealizada());
 	    }
 	    
 	    private void atualizarPartida() {
 	    	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
-	    	nomeDaPartida.setText(""+modeloPartida);
+	    	nomeDaPartida.setText(modeloPartida+" - "+modeloPartida.getFasePartida());
 	    }
 	    
 	    private void AtualizarListaArbitros() {

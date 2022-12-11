@@ -3,6 +3,7 @@ package app;
 import java.net.URL;
 
 import app.model.GrupoPrimeiraFase;
+import app.model.OitavasDeFinal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +14,7 @@ public class MainTeste extends Application{
 	@Override
 	public void start(Stage primaryState) throws Exception {
 		FXMLLoader loader = new FXMLLoader(); 
-		URL xmlURL = getClass().getResource("/app/viewFasedeGrupos/fasedegrupos.fxml");
+		URL xmlURL = getClass().getResource("/app/viewFasedeGrupos/FaseDeGrupos.fxml");
 		
 		loader.setLocation(xmlURL);
 		
@@ -30,6 +31,7 @@ public class MainTeste extends Application{
 	public static void main(String[] args) {
 		app.model.Teste.preDefinicao();
 		GrupoPrimeiraFase.organizadorTodasPartidas();
+		
 		launch(args);
 	}
 }

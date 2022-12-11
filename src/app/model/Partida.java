@@ -1,8 +1,7 @@
 package app.model;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -20,7 +19,7 @@ public class Partida {
 	private Selecao selecao1;
 	private Selecao selecao2;
 	private String fasePartida;
-	private static String[] fase= {"FaseDeGrupo","Oitavas","Quartas","Semi","Final"};
+	private static String[] fase= {"FaseDeGrupo","Oitavas","Quartas","Semi","Final","Terceiro Lugar"};
 	private int golSelecao1 = 0;
 	private int golSelecao2 = 0;
 	private Selecao resultadoSelecao;

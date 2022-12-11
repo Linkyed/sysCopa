@@ -34,4 +34,11 @@ public class QuartasDeFinal {
 			contador++;
 		}
 	}
+	public static List<Partida> listaQuartas() {
+		List<Partida> partidasQuartasList = new ArrayList<>();
+		for (Partida partida : partidasQuartas) {
+			partidasQuartasList.add(partida);
+		}
+		return partidasQuartasList;
+	}
 }

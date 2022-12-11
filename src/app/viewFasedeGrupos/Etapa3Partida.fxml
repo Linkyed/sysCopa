@@ -69,7 +69,7 @@
                            <children>
                               <Label fx:id="partida" style="-fx-background-color: white;" text="Partida">
                                  <font>
-                                    <Font name="Arial Bold Italic" size="27.0" />
+                                    <Font name="Arial Bold Italic" size="36.0" />
                                  </font>
                               </Label>
                            </children>
