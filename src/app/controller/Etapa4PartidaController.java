@@ -371,6 +371,8 @@ public class Etapa4PartidaController extends JanelaJAVAFX {
 			}
 			PartidaDAO.alteracaoDeStatusPartida(true, modeloPartida);
 			trocarJanela("/app/viewFasedeGrupos/GanhadorFinal.fxml", 800, 600, window);}
+		SelecaoDAO.atualizarCriterioDesempate(modeloPartida.getSelecao1());
+		SelecaoDAO.atualizarCriterioDesempate(modeloPartida.getSelecao2());
 	}
 
 	@FXML

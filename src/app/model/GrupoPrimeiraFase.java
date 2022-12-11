@@ -159,6 +159,7 @@ public class GrupoPrimeiraFase {
 			criteriosMap.put(selecao, criterios);
 		}
 		List<List<Integer>> criteriosList = new ArrayList<>(criteriosMap.values());
+		System.out.println(criteriosList);
 		List<Selecao> selecoes = new ArrayList<>();
 		criteriosList.sort((x, y) -> {
 			for (int i = 0; i < Math.min(x.size(), y.size()); i++) {
