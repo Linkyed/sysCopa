@@ -463,5 +463,8 @@ public class PartidaDAO {
 		partida.setGolSelecao1(golSele1);
 		partida.setGolSelecao2(golSele2);
 	}
+	public static int quantidaPartidas() {
+		return listaPartidas.size();
+	}
 
 }

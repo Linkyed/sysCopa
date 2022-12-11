@@ -146,8 +146,6 @@ public class GrupoPrimeiraFase {
 		}
 
 	}
-	
-
 
 	public static List<Selecao> selecoesGrupo(String letraGrupo) {
 		Map<Selecao, Integer> grupo = encontrarGrupo(letraGrupo);
@@ -174,7 +172,7 @@ public class GrupoPrimeiraFase {
 			for (Entry<Selecao, List<Integer>> entry : criteriosMap.entrySet()) {
 				Selecao selecao = entry.getKey();
 				List<Integer> lis = entry.getValue();
-				if(list.equals(lis) && !selecoes.contains(selecao))
+				if (list.equals(lis) && !selecoes.contains(selecao))
 					selecoes.add(selecao);
 			}
 		}
@@ -281,18 +279,13 @@ public class GrupoPrimeiraFase {
 	 * Metodo que retorna uma lista de seleções que com base nos pontos foram
 	 * classificadas para a proxima fase
 	 **/
-	private static List<Selecao> maisPontosGrupo(Map<Selecao, Integer> grupo) {
+	private static List<Selecao> maisPontosGrupo(String grupo) {
 		List<Selecao> selecaoClassificada = new ArrayList<>();
-		List<Entry<Selecao, Integer>> list = new ArrayList<>(grupo.entrySet());
-		list.sort(Entry.comparingByValue());
-		Collections.reverse(list);
-		int contador = 0;
-		for (Entry<Selecao, Integer> selecaoEpontos : list) {
-			if (contador == 0 || contador == 1) {
-				selecaoClassificada.add(selecaoEpontos.getKey());
-			}
-			contador++;
-		}
+		List<Selecao> listGrupo = selecoesGrupo(grupo);
+
+		selecaoClassificada.add(listGrupo.get(0));
+		selecaoClassificada.add(listGrupo.get(1));
+
 		return selecaoClassificada;
 	}
 
@@ -405,14 +398,14 @@ public class GrupoPrimeiraFase {
 	 **/
 	public static List<List<Selecao>> ganhadoresFasedeGrupos() {
 		List<List<Selecao>> listaSelecoesClassificadas = new ArrayList<>();
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoA));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoB));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoC));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoD));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoE));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoF));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoG));
-		listaSelecoesClassificadas.add(maisPontosGrupo(grupoH));
+		listaSelecoesClassificadas.add(maisPontosGrupo("A"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("B"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("C"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("D"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("E"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("F"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("G"));
+		listaSelecoesClassificadas.add(maisPontosGrupo("H"));
 		return listaSelecoesClassificadas;
 	}
 

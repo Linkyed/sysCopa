@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import app.model.GrupoPrimeiraFase;
+import app.model.OitavasDeFinal;
+import app.model.PartidaDAO;
 import app.model.Selecao;
 import app.model.Teste;
 import javafx.event.ActionEvent;
@@ -73,6 +75,12 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 
 	@FXML
 	private Button bntVoltarMenuPrincipal;
+	
+	@FXML
+	private Button randButton;
+	
+	@FXML
+	private Button oitavasButton;
 
 	private void atualizarGrupos() {
 
@@ -180,27 +188,32 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 
 		Stage window = (Stage) cadastrarPartidas.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 500, window);
+		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 	
 	public void btnListar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) listarPartidas.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/ListarPartidasFaseGrupo.fxml", 800, 500, window);
+		trocarJanela("/app/viewFasedeGrupos/ListarPartidasFaseGrupo.fxml", 800, 600, window);
 	}
 	
 	public void btnVoltarMenu(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) bntVoltarMenuPrincipal.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 500, window);
+		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 600, window);
 	}
 	
+	public void btnOitavas(ActionEvent event) throws IOException {
+		OitavasDeFinal.OrganizarPartidasOitavas();
+		Stage window = (Stage) oitavasButton.getScene().getWindow();
+		trocarJanela("/app/viewFasedeGrupos/OitavasDeFinal.fxml", 800, 600, window);
+	}
 	
 
 	public void randPartidaMenuAction(ActionEvent event) {
-		Teste.RandomPartida(1, true);
+		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), true);
 		atualizarGrupos();
 		atualizarPontos();
 	}

@@ -32,36 +32,6 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" stroke="BLACK" strokeType="INSIDE" width="187.0" />
-                  <Button mnemonicParsing="false" text="Classificação: Fase de Grupos">
-                     <font>
-                        <Font name="Arial Italic" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" stroke="BLACK" strokeType="INSIDE" width="187.0" />
-                  <Button mnemonicParsing="false" text="Pesquisa" />
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" stroke="BLACK" strokeType="INSIDE" width="187.0" />
-                  <Button mnemonicParsing="false" text="Editar Partida" />
-               </children>
-            </StackPane>
-            <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="3">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" stroke="BLACK" strokeType="INSIDE" width="187.0" />
-                  <Button mnemonicParsing="false" text="Listar Partidas" />
-               </children>
-            </StackPane>
-         </children>
       </GridPane>
       <GridPane style="-fx-background-color: darkgrey; -fx-border-color: lightgrey;" GridPane.rowIndex="1">
         <columnConstraints>
@@ -88,7 +58,7 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fceffec" height="43.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 200; -fx-arc-width: 40;" width="763.0" />
                         <Label fx:id="nomeDaPartida" text="PARTIDA">
                            <font>
-                              <Font name="Arial Black" size="12.0" />
+                              <Font name="Arial Black" size="36.0" />
                            </font>
                         </Label>
                      </children>
@@ -147,7 +117,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label text="Informe os dados da Etapa 1: Cadastramento de partida - Fase de Grupos" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                              <Label text="Informe os dados da Etapa 1: Cadastramento de partida" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                  <font>
                                     <Font name="Arial Bold Italic" size="18.0" />
                                  </font>

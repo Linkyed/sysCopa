@@ -1027,7 +1027,7 @@ public class Teste {
 		OitavasDeFinal.OrganizarPartidasOitavas();
 		
 		RandomPartida(8, false);
-		OitavasDeFinal.listarPartidasOitavas();
+	
 		QuartasDeFinal.organizarPartidasQuartas();
 		System.out.println("====================================");
 		

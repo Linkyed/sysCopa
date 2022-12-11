@@ -33,11 +33,11 @@ public class OitavasDeFinal {
 		return selecoesClassificadas;
 	}
 	
-	public static void listarPartidasOitavas() {
-		int contador = 1;
+	public static List<Partida> listaPartidasOitavas() {
+		List<Partida> partidasOitavasList = new ArrayList<>();
 		for (Partida partida : partidasOitavas) {
-			System.out.println("Oitavas de Final "+contador+": "+ partida.getGolSelecao1() +" "+partida+" " +partida.getGolSelecao2() );
-			contador++;
+			partidasOitavasList.add(partida);
 		}
+		return partidasOitavasList;
 	}
 }
