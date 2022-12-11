@@ -77,6 +77,7 @@ public class TerceiroController extends JanelaJAVAFX {
 	void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
+		atualizarBotoes();
 	}
 
 	
@@ -117,11 +118,24 @@ public class TerceiroController extends JanelaJAVAFX {
 			}
 		}
 	}
+	
+	void atualizarBotoes() {
+		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
+			btnCadastrarPartida.setDisable(true);
+			btnRandown.setDisable(true);
+			btnProxima.setDisable(false);
+		}else {
+			btnCadastrarPartida.setDisable(false);
+			btnRandown.setDisable(false);
+			btnProxima.setDisable(true);
+		}
+	}
 
 	@FXML
 	void initialize() {
 		adicionar();
 		atualizarPartidas();
+		atualizarBotoes();
 		assert btnCadastrarPartida != null
 				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
 		assert btnRandown != null

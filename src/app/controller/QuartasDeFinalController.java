@@ -126,12 +126,26 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 	public void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
+		atualizarBotoes();
+	}
+	
+	void atualizarBotoes() {
+		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
+			btnCadastrarPartida.setDisable(true);
+			btnRandown.setDisable(true);
+			btnSemiDeFinal.setDisable(false);
+		}else {
+			btnCadastrarPartida.setDisable(false);
+			btnRandown.setDisable(false);
+			btnSemiDeFinal.setDisable(true);
+		}
 	}
 
     @FXML
     void initialize() {
     	adicionar();
     	atualizarPartidas();
+    	atualizarBotoes();
         assert btnCadastrarPartida != null : "fx:id=\"btnCadastrar\" was not injected: check your FXML file 'QuartasDeFinal.fxml'.";
         assert btnRandown != null : "fx:id=\"btnRandown\" was not injected: check your FXML file 'QuartasDeFinal.fxml'.";
         assert quarta1sele1 != null : "fx:id=\"quarta1sele1\" was not injected: check your FXML file 'QuartasDeFinal.fxml'.";

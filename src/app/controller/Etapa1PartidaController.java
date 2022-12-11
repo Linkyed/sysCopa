@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class Etapa1PartidaController extends JanelaJAVAFX{
@@ -133,7 +134,6 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    	comboMinuto.setItems(minuto);
 	    }
 	    
-
 	    
 	    public void btnProximo(ActionEvent event) throws IOException, ObjetoNaoExisteException{
 	    	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
@@ -143,7 +143,15 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    	PartidaDAO.editarArbitros(ArbitroDAO.getArbitroPorNome(comboArbitro.getValue()), modeloPartida);
 	    	PartidaDAO.editarHorario(comboHora.getValue(), comboMinuto.getValue(), modeloPartida);
 	    	Stage window = (Stage)btnProximaEtapa.getScene().getWindow();
-	        trocarJanela("/app/viewFasedeGrupos/Etapa2Partida.fxml", 800, 500, window);
+	        trocarJanela("/app/viewFasedeGrupos/Etapa2Partida.fxml", 800, 600, window);
+	    }
+	    
+	    public void atualizarBotao(MouseEvent event) {
+	    	if(localPartida.getText().isEmpty() || comboArbitro.getValue() == null || comboDia.getValue() == null || comboMinuto.getValue() == null || comboHora.getValue() == null || comboMes.getValue() == null) {
+	    		btnProximaEtapa.setDisable(true);
+	    	}else {
+	    		btnProximaEtapa.setDisable(false);
+			}
 	    }
 	    
 	    @FXML
@@ -155,6 +163,7 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 			atualizarMes();
 			atualizarHora();
 			atualizarMinuto();
+			btnProximaEtapa.setDisable(true);
 	    }
 
 

@@ -203,36 +203,40 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 		
 
 	}
+	
+	void atualizarBotoes() {
+		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
+			cadastrarPartidas.setDisable(true);
+		}else {
+			cadastrarPartidas.setDisable(false);
+		}
+	}
 
 	public void btnCadastrar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) cadastrarPartidas.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 500, window);
+		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 	
 	public void btnVoltarMenu(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) bntVoltarMenuPrincipal.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 500, window);
+		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 600, window);
 	}
 	
 	 public void bntClassificacaoMostrar(ActionEvent event) throws IOException {
 	    	Stage window = (Stage)bntClassificacao.getScene().getWindow();
-	        trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
+	        trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 600, window);
 	    }
 
-	public void randPartidaMenuAction(ActionEvent event) {
-		Teste.RandomPartida(1, true);
-		atualizarGrupos();
-		atualizarPontos();
-	}
 
 	@FXML
 	void initialize() {
 		atualizarGrupos();
 		atualizarPontos();
+		atualizarBotoes();
 
 	}
 }
