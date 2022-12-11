@@ -9,6 +9,7 @@ import app.model.GrupoPrimeiraFase;
 import app.model.OitavasDeFinal;
 import app.model.PartidaDAO;
 import app.model.Selecao;
+import app.model.SelecaoDAO;
 import app.model.Teste;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -225,7 +226,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 	
 
 	public void randPartidaMenuAction(ActionEvent event) {
-		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), true);
+		Teste.RandomPartida(6, true);
 		atualizarGrupos();
 		atualizarPontos();
 		atualizarBotoes();

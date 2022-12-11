@@ -299,6 +299,7 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 					score = partida.getGolSelecao1() - partida.getGolSelecao2();
 					saldoGol += score;
 					gols+= partida.getGolSelecao1();
+					System.out.println("Aqui");
 					Map<Jogador, Integer> cartAmareloMap = partida.getCartaoAmareloSelecao1();
 					for (Map.Entry<Jogador, Integer> entry : cartAmareloMap.entrySet()) {
 						cartAmarelo += entry.getValue();

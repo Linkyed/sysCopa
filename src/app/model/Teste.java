@@ -44,6 +44,8 @@ public class Teste {
 					PartidaDAO.DefinirGanhador(desempateList.get(int_random), partidaModelo);
 				}
 			}
+			SelecaoDAO.atualizarCriterioDesempate(partidaModelo.getSelecao1());
+			SelecaoDAO.atualizarCriterioDesempate(partidaModelo.getSelecao2());
 			
 		}
 	}
