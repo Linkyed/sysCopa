@@ -145,18 +145,21 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnCadastrarPartida" mnemonicParsing="false" onAction="#btnCadastrar" text="Cadastrar Partidas" />
+                        <Button fx:id="btnProxima" mnemonicParsing="false" onAction="#btnTerceiro" text="Proxima Fase" />
                      </children>
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnRandown" mnemonicParsing="false" onAction="#randPartidaMenuAction" text="Randown" />
+                        <Button fx:id="btnCadastrarPartida" mnemonicParsing="false" onAction="#btnCadastrar" text="Cadastrar Partidas" />
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Button fx:id="btnRandown" mnemonicParsing="false" onAction="#randPartidaMenuAction" text="Aleatório" />
+                     </children></StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Voltar Menu" />
+                        <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Voltar" />
                      </children>
                   </StackPane>
                </children>

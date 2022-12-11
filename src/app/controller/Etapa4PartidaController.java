@@ -355,6 +355,22 @@ public class Etapa4PartidaController extends JanelaJAVAFX {
 			}
 			PartidaDAO.alteracaoDeStatusPartida(true, modeloPartida);
 			trocarJanela("/app/viewFasedeGrupos/SemiFinal.fxml", 800, 600, window);}
+		else if (modeloPartida.getFasePartida().equalsIgnoreCase("Terceiro Lugar")) {
+			PartidaDAO.resultadoPartida(modeloPartida);
+			Stage window = (Stage) btnSalvar.getScene().getWindow();
+			if (modeloPartida.getResultadoSelecao() == null) {
+				abrirJanela("/app/viewFasedeGrupos/Desempate.fxml", 300, 400, true, false);
+			}
+			PartidaDAO.alteracaoDeStatusPartida(true, modeloPartida);
+			trocarJanela("/app/viewFasedeGrupos/Terceiro_E_Final.fxml", 800, 600, window);}
+		else if (modeloPartida.getFasePartida().equalsIgnoreCase("Final")) {
+			PartidaDAO.resultadoPartida(modeloPartida);
+			Stage window = (Stage) btnSalvar.getScene().getWindow();
+			if (modeloPartida.getResultadoSelecao() == null) {
+				abrirJanela("/app/viewFasedeGrupos/Desempate.fxml", 300, 400, true, false);
+			}
+			PartidaDAO.alteracaoDeStatusPartida(true, modeloPartida);
+			trocarJanela("/app/viewFasedeGrupos/GanhadorFinal.fxml", 800, 600, window);}
 	}
 
 	@FXML

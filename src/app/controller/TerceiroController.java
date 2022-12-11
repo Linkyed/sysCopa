@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import app.model.Final;
 import app.model.Partida;
 import app.model.PartidaDAO;
-import app.model.QuartasDeFinal;
 import app.model.SemiFinal;
 import app.model.Teste;
 import javafx.event.ActionEvent;
@@ -18,10 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class SemiFinalController extends JanelaJAVAFX {
+public class TerceiroController extends JanelaJAVAFX {
 
 	@FXML
 	private Button btnProxima;
+
 	@FXML
 	private ResourceBundle resources;
 
@@ -38,16 +38,16 @@ public class SemiFinalController extends JanelaJAVAFX {
 	private Button btnVoltarMenu;
 
 	@FXML
-	private Label semi1sele1;
+	private Label ganhador;
 
 	@FXML
-	private Label semi1sele2;
+	private Label sele1;
 
 	@FXML
-	private Label semi2sele1;
+	private Label sele2;
 
 	@FXML
-	private Label semi2sele2;
+	private Label seleTerceiroGanhador;
 
 	private List<Label> listaLabels = new ArrayList<>();
 
@@ -62,7 +62,15 @@ public class SemiFinalController extends JanelaJAVAFX {
 	void btnVoltarMenu(ActionEvent event) throws IOException {
 		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/QuartasDeFinal.fxml", 800, 600, window);
+		trocarJanela("/app/viewFasedeGrupos/SemiFinal.fxml", 800, 600, window);
+	}
+	
+	@FXML
+	void btnProx(ActionEvent event) throws IOException {
+		Final.partidaGrandeFinal();
+		Stage window = (Stage) btnProxima.getScene().getWindow();
+
+		trocarJanela("/app/viewFasedeGrupos/Final.fxml", 800, 600, window);
 	}
 
 	@FXML
@@ -70,25 +78,19 @@ public class SemiFinalController extends JanelaJAVAFX {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
 	}
+
 	
-	public void btnTerceiro(ActionEvent event) throws IOException {
-
-		Final.partidaTerceiroLugar();
-		Stage window = (Stage) btnProxima.getScene().getWindow();
-
-		trocarJanela("/app/viewFasedeGrupos/Terceiro_E_Final.fxml", 800, 600, window);
-	}
 
 	void adicionar() {
-		listaLabels.add(semi1sele1);
-		listaLabels.add(semi1sele2);
-		listaLabels.add(semi2sele1);
-		listaLabels.add(semi2sele2);
+		listaLabels.add(sele1);
+		listaLabels.add(sele2);
 
 	}
 
 	void atualizarPartidas() {
-		List<Partida> partidasSemiList = SemiFinal.listaPartidasSeimiFinal();
+
+		List<Partida> partidasSemiList = new ArrayList<Partida>();
+		partidasSemiList.add(Final.partidaTerceiro());
 		int contador = 0;
 		for (Partida partida : partidasSemiList) {
 			if (partida.getStatus() == false) {
@@ -98,15 +100,19 @@ public class SemiFinalController extends JanelaJAVAFX {
 				contador++;
 			} else {
 				if (partida.getSelecao1().equals(partida.getResultadoSelecao())) {
-					listaLabels.get(contador).setText("" + partida.getSelecao1() + " - Ganhador!");
+					listaLabels.get(contador).setText("" + partida.getSelecao1());
 					contador++;
 					listaLabels.get(contador).setText("" + partida.getSelecao2());
 					contador++;
+					seleTerceiroGanhador.setText("" + partida.getResultadoSelecao());
+					ganhador.setText("Ganhador!!!");
 				} else {
 					listaLabels.get(contador).setText("" + partida.getSelecao1());
 					contador++;
-					listaLabels.get(contador).setText("" + partida.getSelecao2() + " - Ganhador!");
+					listaLabels.get(contador).setText("" + partida.getSelecao2());
 					contador++;
+					seleTerceiroGanhador.setText("" + partida.getResultadoSelecao());
+					ganhador.setText("Ganhador!!!");
 				}
 			}
 		}
@@ -117,14 +123,16 @@ public class SemiFinalController extends JanelaJAVAFX {
 		adicionar();
 		atualizarPartidas();
 		assert btnCadastrarPartida != null
-				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'SemiFinal.fxml'.";
-		assert btnRandown != null : "fx:id=\"btnRandown\" was not injected: check your FXML file 'SemiFinal.fxml'.";
+				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
+		assert btnRandown != null
+				: "fx:id=\"btnRandown\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
 		assert btnVoltarMenu != null
-				: "fx:id=\"btnVoltarMenu\" was not injected: check your FXML file 'SemiFinal.fxml'.";
-		assert semi1sele1 != null : "fx:id=\"semi1sele1\" was not injected: check your FXML file 'SemiFinal.fxml'.";
-		assert semi1sele2 != null : "fx:id=\"semi1sele2\" was not injected: check your FXML file 'SemiFinal.fxml'.";
-		assert semi2sele1 != null : "fx:id=\"semi2sele1\" was not injected: check your FXML file 'SemiFinal.fxml'.";
-		assert semi2sele2 != null : "fx:id=\"semi2sele2\" was not injected: check your FXML file 'SemiFinal.fxml'.";
+				: "fx:id=\"btnVoltarMenu\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
+		assert ganhador != null : "fx:id=\"ganhador\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
+		assert sele1 != null : "fx:id=\"sele1\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
+		assert sele2 != null : "fx:id=\"sele2\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
+		assert seleTerceiroGanhador != null
+				: "fx:id=\"seleTerceiroGanhador\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
 
 	}
 
