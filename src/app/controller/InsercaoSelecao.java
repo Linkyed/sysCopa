@@ -45,6 +45,8 @@ public class InsercaoSelecao extends JanelaJAVAFX{
 	public static int quantidadeSelecoes = SelecaoDAO.quantidadeSelecoes();
 	public static String selecaoComboBox;
 	public static boolean alteracaoSelecao = false;
+	public static boolean voltarReset = false;
+	
 	
     @FXML
     private Button btnEditar;
@@ -251,7 +253,10 @@ public class InsercaoSelecao extends JanelaJAVAFX{
      * terá que criar um novo arbitro para que a lista se mantenha do mesmo tamanho**/
     void btnExcluirArbitroAction(ActionEvent event) throws IOException {
     	abrirJanela("/app/view/criarCopa/ExclusaoArbitro.fxml", 250, 200, true, true);
-    	abrirJanela("/app/view/criarCopa/CriarArbitro.fxml", 250, 200, true, false);
+    	if (ExclusaoArbitro.excluido) {
+    		abrirJanela("/app/view/criarCopa/CriarArbitro.fxml", 250, 200, true, false);    		
+    	}
+    	ExclusaoArbitro.excluido = false;    		
     }
     
     @FXML
@@ -280,8 +285,13 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     /**Ação do botão de voltar onde simplesmente a tela atual é trocada para a do menu principal e todo o progresso criado é perdido, tendo
      * que iniciar do 0 caso alguma seleção tenha sido criada no processo**/
     void btnVoltarMenuAction(ActionEvent event) throws IOException {
-        Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
-        trocarJanela("/app/view/MenuPrincipal.fxml", 800, 500, window);
+    	if (voltarReset) {
+    		Stage window = (Stage)btnVoltarMenu.getScene().getWindow();
+    		trocarJanela("/app/view/MenuPrincipal.fxml", 800, 500, window);    		
+    	} else {
+    		alertBox("CUIDADO", "Se você voltar, todo o progresso criado vai ser perdido e reiniciado! Se deseja realmente voltar aperta o botão novamente");
+    		voltarReset = true;
+    	}
     }
     
     @FXML
@@ -320,6 +330,9 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     	}
 	
 		List<String> listaSelecoesGrupos = GrupoPrimeiraFase.selecoesTodosGrupos();
+		for (String nomeString: listaSelecoesGrupos) {
+			System.out.println(nomeString);
+		}
 		int salvarNumero = 0;
 		int numeroDeRepeticoes = 4;
 		for (ListView<String> lista: listaDeListas) {
@@ -422,8 +435,10 @@ public class InsercaoSelecao extends JanelaJAVAFX{
     	}
     	if (SelecaoDAO.quantidadeSelecoes() == 32) {
     		btnFaseGrupos.setDisable(false);
+    		btnInserirSelecao.setDisable(true);
     	} else {
     		btnFaseGrupos.setDisable(true);
+    		btnInserirSelecao.setDisable(false);
     	}
     }
 

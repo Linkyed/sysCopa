@@ -94,7 +94,7 @@ public class Pesquisa extends JanelaJAVAFX{
     		
     		if (lista.size() > 0) {
     			for (Jogador jogador: lista) {
-    				pesquisaView.getItems().add(jogador.getNome());
+    				pesquisaView.getItems().add(jogador.getNome() + " | " + jogador.getPosicaoJogada() + " | " + jogador.getSelecao().getNome());
     			}    			
     			window.setScene(scene);
     			window.showAndWait();

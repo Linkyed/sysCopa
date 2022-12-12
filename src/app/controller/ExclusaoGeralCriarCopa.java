@@ -100,9 +100,12 @@ public class ExclusaoGeralCriarCopa extends JanelaJAVAFX{
     		 	//Iniciando o precesso de inserir um Tecnico em uma tela separada
     		 	abrirJanela("/app/view/criarCopa/CriarTecnico.fxml", 250, 150, true, false);
     		 	//Iniciando o processo de de inserir um jogador em uma tela separada
+    		 	CriarSelecao.quantidadeJoadores = 0;
     		 	for (int i = 0; i < 11; i++) {
-    		 		abrirJanela("/app/view/criarCopa/CriarJogador.fxml", 250, 150, true, false);
+    		 		CriarSelecao.quantidadeJoadores = i;
+    		 		abrirJanela("/app/view/criarCopa/CriarJogador.fxml", 250, 275, true, false);
     		 	}
+    		 	CriarSelecao.quantidadeJoadores = 0;
     			selecaoExcluida = true;
     		} catch (ObjetoNaoExisteException e) {
     			labelError.setText("Seleção não pode ser excluida");

@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 public class ExclusaoArbitro extends JanelaJAVAFX{
 
+	public static boolean excluido = false;
+	
     @FXML
     private ResourceBundle resources;
 
@@ -42,6 +44,7 @@ public class ExclusaoArbitro extends JanelaJAVAFX{
     	try {
 			ArbitroDAO.excluir(escolhaArbitro.getValue().toString());
 			CriarArbitro.arbitrosCriados--;
+			excluido = true;
 			window.close();
 			alertBox("Resultado", "O arbitro foi excluido com sucesso! Agora crie o novo que ira ficar no local do excluido!");
 		} catch (ObjetoNaoExisteException e) {
