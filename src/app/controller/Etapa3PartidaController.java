@@ -173,6 +173,7 @@ public class Etapa3PartidaController extends JanelaJAVAFX {
     
     private ObservableList<Integer> cartAmarelo;
     
+    /**Metodo para atualizar a quantidade de cartões amarelos**/
     private void atualizarCartAmarelo() {
     	
     	for(int i = 0; i <= 2;i++) {
@@ -230,11 +231,13 @@ public class Etapa3PartidaController extends JanelaJAVAFX {
 
     }
     
+    /**Metodo para atualizar a partida atual**/
     public void atualizarPartida() {
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	partida.setText(""+modeloPartida);
     }
     
+    /**Metodo para atualizar os jogadores presentes na partida**/
     private void atualizarJogadores() {
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	List<Jogador> sele1jogadores = SelecaoDAO.jogadoresSele(modeloPartida.getSelecao1());
@@ -265,6 +268,7 @@ public class Etapa3PartidaController extends JanelaJAVAFX {
     	
     }
     
+    /**Metodo para adicionar os cartões amarelos nos respectivos jogadores**/
     private void adicionarCartAmarelo() {
         List<Integer> listaSeleCartAmarelo1 = new ArrayList<>(); 
         List<Integer> listaSeleCartAmarelo2 = new ArrayList<>(); 
@@ -323,6 +327,7 @@ public class Etapa3PartidaController extends JanelaJAVAFX {
 
 	}
     
+    /**Ação do botão salvar para adicionar os cartões nos jogadores e ir para proxima tela**/
     public void btnSalvaCartAmarelo() throws IOException {
     	adicionarCartAmarelo();
 		Stage window = (Stage)btnSalvar.getScene().getWindow();

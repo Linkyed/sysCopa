@@ -52,6 +52,7 @@ public class TerceiroController extends JanelaJAVAFX {
 	private List<Label> listaLabels = new ArrayList<>();
 
 	@FXML
+	 /**Ação do botão de cadastrar onde muda a tela para a criação de partida**/
 	void btnCadastrar(ActionEvent event) throws IOException {
 		Stage window = (Stage) btnCadastrarPartida.getScene().getWindow();
 
@@ -59,6 +60,7 @@ public class TerceiroController extends JanelaJAVAFX {
 	}
 
 	@FXML
+	/**Ação do botão de voltar onde muda a tela para a fase de grupos**/
 	void btnVoltarMenu(ActionEvent event) throws IOException {
 		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
 
@@ -66,6 +68,7 @@ public class TerceiroController extends JanelaJAVAFX {
 	}
 	
 	@FXML
+	/**Ação do botão proximo onde muda a tela para a final da copa do mundo**/
 	void btnProx(ActionEvent event) throws IOException {
 		Final.partidaGrandeFinal();
 		Stage window = (Stage) btnProxima.getScene().getWindow();
@@ -74,6 +77,7 @@ public class TerceiroController extends JanelaJAVAFX {
 	}
 
 	@FXML
+	/**Metodo para randomizar o resultado das partidas**/
 	void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();

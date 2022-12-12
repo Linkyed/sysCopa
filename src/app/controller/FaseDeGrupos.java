@@ -86,6 +86,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 	@FXML
     private Button excuirPartida;
 
+	/**Metodo para atualizar os grupos da copa com as seleções**/
 	private void atualizarGrupos() {
 
 		List<ListView<Selecao>> listaDeListas = new ArrayList<>();
@@ -137,6 +138,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 
 	}
 
+	/**Metodo para atualizar os pontos de cada seleção da copa**/
 	private void atualizarPontos() {
 
 		List<ListView<Integer>> listaDeListas = new ArrayList<>();
@@ -188,6 +190,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 
 	}
 	
+	/**Metodo para atualizar a disponibilidade do botão de excluir**/
 	public void atualizarExcuir() {
 		if(PartidaDAO.quantidadePartidasRealizada() == 0) {
 			excuirPartida.setDisable(true);
@@ -196,6 +199,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		}
 	}
 	
+	/**Metodo para atualizar a disponibilidade de certos botões**/
 	public void atualizarBotoes() {
 		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
 			cadastrarPartidas.setDisable(true);
@@ -208,6 +212,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		}
 	}
 
+	/**Ação do botão de cadastrar onde troca a tela para a criação das partidas**/
 	public void btnCadastrar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) cadastrarPartidas.getScene().getWindow();
@@ -215,6 +220,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 	
+	/**Ação do botão de listar onde troca a tela para a listagem de partidas**/
 	public void btnListar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) listarPartidas.getScene().getWindow();
@@ -222,6 +228,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/ListarPartidasFaseGrupo.fxml", 800, 600, window);
 	}
 	
+	/**Ação do botão voltar onde volta para o menu geral da partida**/
 	public void btnVoltarMenu(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) bntVoltarMenuPrincipal.getScene().getWindow();
@@ -229,18 +236,21 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 600, window);
 	}
 	
+	/**Ação do botão de oitavas onde o programa ira para a proxima fase da copa**/
 	public void btnOitavas(ActionEvent event) throws IOException {
 		OitavasDeFinal.OrganizarPartidasOitavas();
 		Stage window = (Stage) oitavasButton.getScene().getWindow();
 		trocarJanela("/app/viewFasedeGrupos/OitavasDeFinal.fxml", 800, 600, window);
 	}
 	
+	/**Metodo para trocar a tela de deltar**/
 	public void deletar() throws IOException {
 		Stage window = (Stage) excuirPartida.getScene().getWindow();
 		trocarJanela("/app/viewFasedeGrupos/DeletarPartida.fxml", 300, 400, window);
 	}
 	
 
+	/**Metodo para randomizar as partidas**/
 	public void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), true);
 		atualizarGrupos();

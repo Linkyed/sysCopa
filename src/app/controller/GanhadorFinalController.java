@@ -18,6 +18,7 @@ public class GanhadorFinalController {
     @FXML
     private Label campeao;
     
+    /**Metodo para atualizar o campeão da copa**/
     void atualizarCampeao() {
     	campeao.setText(Final.CampeaoMundo()+"");
     }

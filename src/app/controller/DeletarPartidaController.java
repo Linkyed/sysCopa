@@ -24,6 +24,7 @@ public class DeletarPartidaController extends JanelaJAVAFX{
     @FXML
     private ComboBox<Partida> comboBoxPartida;
     
+    /**Metodo para atualizar a combo box com as partidas**/
     void atualizarCombo() {
     	List< Partida> listaSelecaos = PartidaDAO.listaPartidasRealizadas(1);
     	
@@ -32,6 +33,7 @@ public class DeletarPartidaController extends JanelaJAVAFX{
     	
     }
     
+    /**Metodo para salvar o ganhador e trocar a janela atual pela de fase de grupos**/
     public void salvarGanhador() throws IOException {
     	PartidaDAO.excluir(comboBoxPartida.getValue());
     	Stage window = (Stage)btnDeletar.getScene().getWindow();
@@ -39,6 +41,7 @@ public class DeletarPartidaController extends JanelaJAVAFX{
     	
     }
     
+    /**Metodo para verificar se a combo box possui algum valor escolhido**/
     public void verificarCombo(MouseEvent event) {
     	if(comboBoxPartida.getValue() == null ) {
     		btnDeletar.setDisable(true);

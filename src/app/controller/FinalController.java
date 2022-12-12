@@ -42,6 +42,7 @@ public class FinalController extends JanelaJAVAFX{
     private List<Label> listaLabels = new ArrayList<>();
 
     @FXML
+    /**Ação do botão cadastrar onde muda a tela para a primeira etapa da criação de partida**/
 	void btnCadastrar(ActionEvent event) throws IOException {
 		Stage window = (Stage) btnCadastrarPartida.getScene().getWindow();
 
@@ -49,6 +50,7 @@ public class FinalController extends JanelaJAVAFX{
 	}
 
 	@FXML
+	/**Ação do botão de voltar onde volta para o terceiro menu**/
 	void btnVoltarMenu(ActionEvent event) throws IOException {
 		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
 
@@ -56,6 +58,7 @@ public class FinalController extends JanelaJAVAFX{
 	}
 
 	@FXML
+	/**Ação do botão para randomizar o resultado da partida**/
 	void randPartidaMenuAction(ActionEvent event) throws IOException {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
@@ -64,13 +67,13 @@ public class FinalController extends JanelaJAVAFX{
 	}
 
 	
-
 	void adicionar() {
 		listaLabels.add(sele1);
 		listaLabels.add(sele2);
 
 	}
 
+	/**metodo para atualizar as partidas**/
 	void atualizarPartidas() {
 
 		List<Partida> partidasSemiList = new ArrayList<Partida>();
