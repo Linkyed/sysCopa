@@ -237,7 +237,8 @@ public class PartidaDAO {
 			partida.getCartaoVermelhoSelecao2().clear();
 			partida.getGolsMarcadosSelecao2().clear();
 			partida.setListaArbitro(null);
-			GrupoPrimeiraFase.definirPontos(partida, false);
+			if(partida.getFasePartida().equals("FaseDeGrupo"))
+				GrupoPrimeiraFase.definirPontos(partida, false);
 			partida.setStatus(false);
 			return true;
 		}

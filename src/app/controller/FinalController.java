@@ -62,7 +62,7 @@ public class FinalController extends JanelaJAVAFX{
 	void randPartidaMenuAction(ActionEvent event) throws IOException {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
-		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
+		Stage window = (Stage) btnRandown.getScene().getWindow();
 		trocarJanela("/app/viewFasedeGrupos/GanhadorFinal.fxml", 800, 600, window);
 	}
 

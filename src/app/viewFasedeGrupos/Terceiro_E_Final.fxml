@@ -131,7 +131,7 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="excuirPartida" mnemonicParsing="false" text="Excuir Partida" />
+                        <Button fx:id="excuirPartida" mnemonicParsing="false" onAction="#deletar" text="Excuir Partida" />
                      </children>
                   </StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.columnIndex="1" GridPane.rowIndex="1">

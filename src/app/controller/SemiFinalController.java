@@ -48,6 +48,9 @@ public class SemiFinalController extends JanelaJAVAFX {
 
 	@FXML
 	private Label semi2sele2;
+	
+    @FXML
+    private Button excuirPartida;
 
 	private List<Label> listaLabels = new ArrayList<>();
 
@@ -73,6 +76,7 @@ public class SemiFinalController extends JanelaJAVAFX {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 	}
 	
 	/**Ação d obotão de terceiro lugar onde muda a tela para a disputa de terceiro lugar da copa**/
@@ -90,6 +94,19 @@ public class SemiFinalController extends JanelaJAVAFX {
 		listaLabels.add(semi2sele1);
 		listaLabels.add(semi2sele2);
 
+	}
+	
+	public void deletar() throws IOException {
+		Stage window = (Stage) excuirPartida.getScene().getWindow();
+		trocarJanela("/app/viewFasedeGrupos/DeletarPartida.fxml", 300, 400, window);
+	}
+	
+	public void atualizarExcuir() {
+		if(PartidaDAO.quantidadePartidasRealizada() == 60) {
+			excuirPartida.setDisable(true);
+		}else {
+			excuirPartida.setDisable(false);
+		}
 	}
 
 	/**Metodo para atualizar as partidas das quartas de final**/
@@ -136,6 +153,7 @@ public class SemiFinalController extends JanelaJAVAFX {
 		adicionar();
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 		assert btnCadastrarPartida != null
 				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'SemiFinal.fxml'.";
 		assert btnRandown != null : "fx:id=\"btnRandown\" was not injected: check your FXML file 'SemiFinal.fxml'.";
