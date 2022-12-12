@@ -110,15 +110,7 @@
                         </Label>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <children>
-                        <Label text="SemiFinal 1">
-                           <font>
-                              <Font name="Arial" size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </StackPane>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" />
                   <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <Label text="SemiFinal 2">
@@ -128,6 +120,11 @@
                         </Label>
                      </children>
                   </StackPane>
+                  <Label text="SemiFinal 1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
             <GridPane GridPane.rowIndex="2">
@@ -159,7 +156,7 @@
                      </children></StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="excuirPartida" mnemonicParsing="false" text="Excuir Partida" />
+                        <Button fx:id="excuirPartida" mnemonicParsing="false" onAction="#deletar" text="Excuir Partida" />
                      </children>
                   </StackPane>
                </children>

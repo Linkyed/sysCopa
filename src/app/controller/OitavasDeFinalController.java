@@ -84,6 +84,9 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 
 	@FXML
 	private Label oitava8Sele2;
+	
+	@FXML
+    private Button excuirPartida;
 
 	private List<Label> listaLabels = new ArrayList<>();
 
@@ -157,6 +160,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 	}
 	
 
@@ -171,12 +175,26 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 			btnQuartasDeFinal.setDisable(true);
 		}
 	}
+	
+	public void deletar() throws IOException {
+		Stage window = (Stage) excuirPartida.getScene().getWindow();
+		trocarJanela("/app/viewFasedeGrupos/DeletarPartida.fxml", 300, 400, window);
+	}
+	
+	public void atualizarExcuir() {
+		if(PartidaDAO.quantidadePartidasRealizada() == 48) {
+			excuirPartida.setDisable(true);
+		}else {
+			excuirPartida.setDisable(false);
+		}
+	}
 
 	@FXML
 	void initialize() {
 		adicionar();
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 		assert btnCadastrarPartida != null
 				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'OitavasDeFinal.fxml'.";
 		assert btnVoltarMenu != null

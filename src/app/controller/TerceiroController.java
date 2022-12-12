@@ -48,6 +48,10 @@ public class TerceiroController extends JanelaJAVAFX {
 
 	@FXML
 	private Label seleTerceiroGanhador;
+	
+
+    @FXML
+    private Button excuirPartida;
 
 	private List<Label> listaLabels = new ArrayList<>();
 
@@ -78,9 +82,21 @@ public class TerceiroController extends JanelaJAVAFX {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 	}
 
+	public void deletar() throws IOException {
+		Stage window = (Stage) excuirPartida.getScene().getWindow();
+		trocarJanela("/app/viewFasedeGrupos/DeletarPartida.fxml", 300, 400, window);
+	}
 	
+	public void atualizarExcuir() {
+		if(PartidaDAO.quantidadePartidasRealizada() == 62) {
+			excuirPartida.setDisable(true);
+		}else {
+			excuirPartida.setDisable(false);
+		}
+	}
 
 	void adicionar() {
 		listaLabels.add(sele1);
@@ -136,6 +152,7 @@ public class TerceiroController extends JanelaJAVAFX {
 		adicionar();
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 		assert btnCadastrarPartida != null
 				: "fx:id=\"btnCadastrarPartida\" was not injected: check your FXML file 'Teceiro_E_Final.fxml'.";
 		assert btnRandown != null

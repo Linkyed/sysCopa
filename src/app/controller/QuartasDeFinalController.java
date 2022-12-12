@@ -62,6 +62,9 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
     @FXML
     private Label quarta4sele2;
     
+    @FXML
+    private Button excuirPartida1;
+    
     private List<Label> listaLabels = new ArrayList<>();
 
 	public void btnCadastrar(ActionEvent event) throws IOException {
@@ -121,6 +124,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
 		atualizarBotoes();
+		atualizarExcuir();
 	}
 	
 	void atualizarBotoes() {
@@ -134,12 +138,26 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 			btnSemiDeFinal.setDisable(true);
 		}
 	}
+	
+	public void deletar() throws IOException {
+		Stage window = (Stage) excuirPartida1.getScene().getWindow();
+		trocarJanela("/app/viewFasedeGrupos/DeletarPartida.fxml", 300, 400, window);
+	}
+	
+	public void atualizarExcuir() {
+		if(PartidaDAO.quantidadePartidasRealizada() == 56) {
+			excuirPartida1.setDisable(true);
+		}else {
+			excuirPartida1.setDisable(false);
+		}
+	}
 
     @FXML
     void initialize() {
     	adicionar();
     	atualizarPartidas();
     	atualizarBotoes();
+    	atualizarExcuir();
         assert btnCadastrarPartida != null : "fx:id=\"btnCadastrar\" was not injected: check your FXML file 'QuartasDeFinal.fxml'.";
         assert btnRandown != null : "fx:id=\"btnRandown\" was not injected: check your FXML file 'QuartasDeFinal.fxml'.";
         assert quarta1sele1 != null : "fx:id=\"quarta1sele1\" was not injected: check your FXML file 'QuartasDeFinal.fxml'.";
