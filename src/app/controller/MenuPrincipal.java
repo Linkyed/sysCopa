@@ -47,6 +47,7 @@ public class MenuPrincipal extends JanelaJAVAFX{
     @FXML
     /**Ação do botão no menu principal onde o ususario começa a criar a copa do zero, inserindo seleção por seleção até completar as 32**/
     void btnCriarCopaAction(ActionEvent event) throws IOException {
+    	CriarArbitro.arbitrosCriados = 0;
     	SelecaoDAO.resetarLista();
     	TecnicoDAO.resetarLista();
     	JogadorDAO.resetarLista();
@@ -65,6 +66,7 @@ public class MenuPrincipal extends JanelaJAVAFX{
 		if(ArbitroDAO.quantidadeArbitro() == 20) {
 			trocarJanela("/app/view/criarCopa/InsercaoSelecao.fxml", 700, 500, window);			
 		}
+		InsercaoSelecao.voltarReset = false;
     }
     
     @FXML
@@ -81,6 +83,7 @@ public class MenuPrincipal extends JanelaJAVAFX{
 		trocarJanela("/app/view/criarCopa/InsercaoSelecao.fxml", 700, 500, window);
 		
 		CriarArbitro.arbitrosCriados = 20;
+		InsercaoSelecao.voltarReset = false;
     }
     
     @Override
