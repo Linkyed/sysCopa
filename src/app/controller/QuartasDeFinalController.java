@@ -71,12 +71,6 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 
-	public void btnVoltar(ActionEvent event) throws IOException {
-
-		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
-
-		trocarJanela("/app/viewFasedeGrupos/OitavasDeFinal.fxml", 800, 600, window);
-	}
 
 	public void btnSemiFinal(ActionEvent event) throws IOException {
 		

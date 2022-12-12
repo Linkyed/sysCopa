@@ -228,7 +228,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 	
 	 public void bntClassificacaoMostrar(ActionEvent event) throws IOException {
 	    	Stage window = (Stage)bntClassificacao.getScene().getWindow();
-	        trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 600, window);
+	        trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
 	    }
 
 

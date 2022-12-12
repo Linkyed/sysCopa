@@ -95,10 +95,10 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 	}
 
 	public void btnVoltarMenu(ActionEvent event) throws IOException {
-
+		OitavasDeFinal.voltarGrupo();
 		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
 
-		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 600, window);
+		trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
 	}
 
 	public void btnQuartas(ActionEvent event) throws IOException {

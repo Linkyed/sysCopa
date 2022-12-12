@@ -369,10 +369,10 @@ public class PartidaDAO {
 		}
 
 	}
-	
+
 	public static List<Partida> listaDePartidasGrupo(String grupo) {
 		List<Partida> partidasLista = new ArrayList<>();
-		for(int i=1;i<=6;i++) {
+		for (int i = 1; i <= 6; i++) {
 			partidasLista.add(procurarPartida(grupo, i));
 		}
 		return partidasLista;
@@ -458,13 +458,71 @@ public class PartidaDAO {
 		if (!selecao.equals(null))
 			partida.setGanhador(selecao);
 	}
-	
+
 	public static void editorGols(Partida partida, int golSele1, int golSele2) {
 		partida.setGolSelecao1(golSele1);
 		partida.setGolSelecao2(golSele2);
 	}
+
 	public static int quantidaPartidas() {
 		return listaPartidas.size();
 	}
 
+	public static void excluirTotalPartida(Partida partida) {
+		listaPartidas.remove(partida);
+	}
+
+	public static void limparPartidas() {
+		for (Partida partida : listaPartidas) {
+			excluir(partida);
+		}
+	}
+
+	public static List<Partida> listaPartidasRealizadas(int fase) {
+		List<Partida> list = new ArrayList<>();
+		if (fase == 1) {
+			for (Partida partida : listaPartidas) {
+				if (partida.getStatus() == true && partida.getFasePartida().equals("FaseDeGrupo")) {
+					list.add(partida);
+				}
+			}
+		} else if (fase == 2) {
+			for (Partida partida : listaPartidas) {
+				if (partida.getStatus() == true && partida.getFasePartida().equals("Oitavas")) {
+					list.add(partida);
+				}
+			}
+
+		}else if (fase == 3) {
+			for (Partida partida : listaPartidas) {
+				if (partida.getStatus() == true && partida.getFasePartida().equals("Quartas")) {
+					list.add(partida);
+				}
+			}
+
+		}else if (fase == 4) {
+			for (Partida partida : listaPartidas) {
+				if (partida.getStatus() == true && partida.getFasePartida().equals("Semi")) {
+					list.add(partida);
+				}
+			}
+
+		}else if (fase == 5) {
+			for (Partida partida : listaPartidas) {
+				if (partida.getStatus() == true && partida.getFasePartida().equals("Terceiro Lugar")) {
+					list.add(partida);
+				}
+			}
+
+		}else if (fase == 6) {
+			for (Partida partida : listaPartidas) {
+				if (partida.getStatus() == true && partida.getFasePartida().equals("Final")) {
+					list.add(partida);
+				}
+			}
+
+		}
+		return list;
+
+	}
 }
