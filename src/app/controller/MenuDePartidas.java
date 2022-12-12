@@ -98,16 +98,19 @@ public class MenuDePartidas extends JanelaJAVAFX{
     @FXML
     private Label selecao2;
     
+    /**Ação do botão de mostra classificação onde muda a tela para fase de grupos**/
     public void bntClassificacaoMostrar(ActionEvent event) throws IOException {
     	Stage window = (Stage)bntClassificacao.getScene().getWindow();
         trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
     }
     
+    /**metodo para atualizar a barra de progresso com base na quantidade de partidas**/
     private void atualizarBarraProgresso() {
     	quantidadePartidasCriadas.setText("Quantidade de Partidas criadas: %d".formatted(PartidaDAO.quantidadePartidasRealizada()));
     	barraProgressoPartidas.setProgress((1/48.0)*PartidaDAO.quantidadePartidasRealizada());
     }
     
+    /**Metodo para atualizar a partida atual**/
     private void atualizarPartida() {
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	nomeDaPartida.setText(""+modeloPartida);
@@ -115,12 +118,14 @@ public class MenuDePartidas extends JanelaJAVAFX{
     	selecao2.setText("%s".formatted(modeloPartida.getSelecao2().getNome()));
     }
     
+    /**metodo para atualizar os arbitros disponiveis**/
     private void AtualizarListaArbitros() {
     	listaArbitros = ArbitroDAO.todosNomesArbitros();
     	arbitros = FXCollections.observableArrayList(listaArbitros);
     	comboArbitro.setItems(arbitros);
     }
     
+    /**Metodo para atualizar os dias disponiveis para realizar as partidas**/
     private void atualizarDias() {
     	for(int i = 1; i <= 31;i++) {
     		listaDias.add(i);
@@ -129,6 +134,7 @@ public class MenuDePartidas extends JanelaJAVAFX{
     	comboDia.setItems(dias);
     }
     
+    /**Metodo para atualizar os meses disponiveis para realizar as partidas**/
     private void atualizarMes() {
     	for(int i = 1; i <= 12;i++) {
     		listaMes.add(i);
@@ -137,6 +143,7 @@ public class MenuDePartidas extends JanelaJAVAFX{
     	comboMes.setItems(mes);
     }
     
+    /**Metodo para atualizar as horas disponiveis para realizar as partidas**/
     private void atualizarHora() {
     	for(int i = 0; i <= 23;i++) {
     		listaHoras.add(i);
@@ -145,6 +152,7 @@ public class MenuDePartidas extends JanelaJAVAFX{
     	comboHora.setItems(horas);
     }
     
+    /**Metodo para atualizar os minutos disponiveis para realizar as partidas**/
     private void atualizarMinuto() {
     	for(int i = 0; i <= 59;i++) {
     		listaMinuto.add(i);
@@ -153,6 +161,7 @@ public class MenuDePartidas extends JanelaJAVAFX{
     	comboMinuto.setItems(minuto);
     }
     
+    /**Metodo para atualizar os gols**/
     private void atualizarGols() {
     	for(int i = 0; i <= 20;i++) {
     		listaGols.add(i);
@@ -162,6 +171,7 @@ public class MenuDePartidas extends JanelaJAVAFX{
     	comboGolSelecao2.setItems(gols);
     }
     
+    /**Ação do salvar onde será inserida/criada todas as caracteristicas da partida**/
     public void btnSalvar(ActionEvent event) throws IOException, ObjetoNaoExisteException{
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	PartidaDAO.editarLocal(localPartida.getText(), modeloPartida);
