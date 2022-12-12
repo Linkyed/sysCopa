@@ -173,6 +173,7 @@ public class Etapa2PartidaController extends JanelaJAVAFX {
     
     private ObservableList<Integer> gols;
     
+    /**Metodo para atualizar os gols da partida**/
     private void atualizarGols() {
     	for(int i = 0; i <= 10;i++) {
     		listaGols.add(i);
@@ -229,11 +230,13 @@ public class Etapa2PartidaController extends JanelaJAVAFX {
 
     }
     
+    /**Metodo para atualizar a partida em si**/
     public void atualizarPartida() {
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	partida.setText(""+modeloPartida);
     }
     
+    /**Metodo para atualizar os jogadores presentes na partida**/
     private void atualizarJogadores() {
     	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
     	List<Jogador> sele1jogadores = SelecaoDAO.jogadoresSele(modeloPartida.getSelecao1());
@@ -264,6 +267,7 @@ public class Etapa2PartidaController extends JanelaJAVAFX {
     	
     }
     
+    /**Metodo para adicionar os gols nos respectivos jogadores**/
     private void adicionarGols() {
         List<Integer> listaSeleGol1 = new ArrayList<>(); 
         List<Integer> listaSeleGol2 = new ArrayList<>(); 
@@ -321,6 +325,7 @@ public class Etapa2PartidaController extends JanelaJAVAFX {
 
 	}
     
+    /**Ação do botão de salvar gol onde irá adicionar os gols nos jogadores e mudar a tela para proxima etapa**/
     public void btnSalvaGol() throws IOException {
 		adicionarGols();
 		Stage window = (Stage)btnSalvar.getScene().getWindow();

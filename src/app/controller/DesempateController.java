@@ -31,7 +31,7 @@ public class DesempateController {
     private ComboBox<Selecao> comboBoxSele;
     
     
-    
+    /**Metodo para atualizar a combobox com as seleções que empataram**/
     void atualizarCombo() {
     	List< Selecao> listaSelecaos = new ArrayList<>();
     	Partida modelo = PartidaDAO.partidaSemRealizar();
@@ -43,6 +43,7 @@ public class DesempateController {
     	comboBoxSele.setItems(selecoes);
     }
     
+    /**Metodo para salvar o ganhador e fechar a janela atual**/
     public void salvarGanhador() {
     	Partida modelo = PartidaDAO.partidaSemRealizar();
     	PartidaDAO.DefinirGanhador(comboBoxSele.getValue(), modelo);
@@ -51,6 +52,7 @@ public class DesempateController {
     	
     }
     
+    /**Metodo para verificar se a combo box possui algum valor escolhido**/
     public void verificarCombo(MouseEvent event) {
     	if(comboBoxSele.getValue() == null ) {
     		btnSalvar.setDisable(true);

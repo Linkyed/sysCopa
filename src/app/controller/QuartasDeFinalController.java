@@ -67,6 +67,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
     
     private List<Label> listaLabels = new ArrayList<>();
 
+    /**Ação do botão de cadastrar onde muda a tela para a criação de partida**/
 	public void btnCadastrar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) btnCadastrarPartida.getScene().getWindow();
@@ -74,7 +75,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 
-
+	/**Ação do botão semi final onde muda a tela para a semi final da copa**/
 	public void btnSemiFinal(ActionEvent event) throws IOException {
 		
 		SemiFinal.organizarPartidasSemi();
@@ -83,6 +84,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		trocarJanela("/app/viewFasedeGrupos/SemiFinal.fxml", 800, 600, window);
 	}
 
+	/**Metodo para adicionar na lista de labels os label com as seleções**/
 	void adicionar() {
 		listaLabels.add(quarta1sele1);
 		listaLabels.add(quarta1sele2);
@@ -95,6 +97,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		
 	}
 
+	/**Metodo para atualizar as partidas das quartas de final**/
 	void atualizarPartidas() {
 		List<Partida> partidasQuartasList = QuartasDeFinal.listaQuartas();
 		int contador = 0;
@@ -120,6 +123,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		}
 	}
 
+	/**Metodo para randomizar o resultado das partidas**/
 	public void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
@@ -127,6 +131,7 @@ public class QuartasDeFinalController extends JanelaJAVAFX{
 		atualizarExcuir();
 	}
 	
+	/**metodo para atualizar a disponibilidade dos botões**/
 	void atualizarBotoes() {
 		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
 			btnCadastrarPartida.setDisable(true);

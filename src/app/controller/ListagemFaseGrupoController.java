@@ -78,6 +78,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 	@FXML
 	private Button bntVoltarMenuPrincipal;
 
+	/**Metodo para atualizar os grupos com as respectivas seleções**/
 	private void atualizarGrupos() {
 
 		List<ListView<Partida>> listaDeListas = new ArrayList<>();
@@ -129,6 +130,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 
 	}
 
+	/**Metodo para atualizar os pontos das seleções**/
 	private void atualizarPontos() {
 
 		List<ListView<String>> listaDeListas = new ArrayList<>();
@@ -204,6 +206,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 
 	}
 	
+	/**Metodo para atualizar a disponibilidade dos botões**/
 	void atualizarBotoes() {
 		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
 			cadastrarPartidas.setDisable(true);
@@ -212,6 +215,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 		}
 	}
 
+	/**Ação do botão de cadastrar onde muda a tela para a criação de partida**/
 	public void btnCadastrar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) cadastrarPartidas.getScene().getWindow();
@@ -219,6 +223,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 	
+	/**Ação do botão de voltar onde troca a tela para o menu geral das partidas**/
 	public void btnVoltarMenu(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) bntVoltarMenuPrincipal.getScene().getWindow();
@@ -226,6 +231,7 @@ public class ListagemFaseGrupoController extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/MenuGeralPartida.fxml", 800, 600, window);
 	}
 	
+	/**Ação do botão mostrar classificação onde muda a tela para a fase de grupos**/
 	 public void bntClassificacaoMostrar(ActionEvent event) throws IOException {
 	    	Stage window = (Stage)bntClassificacao.getScene().getWindow();
 	        trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);

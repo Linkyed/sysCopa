@@ -80,28 +80,35 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    private Label quantidadePartidasCriadas;
 	    
 	    
+	    /**Ação do botão Mostrar classificicação para mostrar como estão os grupos da fase atual**/
 	    public void bntClassificacaoMostrar(ActionEvent event) throws IOException {
 	    	Stage window = (Stage)bntClassificacao.getScene().getWindow();
 	        trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
 	    }
 	    
+	    /**Metodo para atualizar a barra de progresso das partidas**/
 	    private void atualizarBarraProgresso() {
 	    	double num = PartidaDAO.quantidaPartidas();
 	    	quantidadePartidasCriadas.setText("Quantidade de Partidas criadas: %d".formatted(PartidaDAO.quantidadePartidasRealizada()));
 	    	barraProgressoPartidas.setProgress((1/num)*PartidaDAO.quantidadePartidasRealizada());
 	    }
 	    
+	    
+	    /**Metodo para atualizar as partidas**/
 	    private void atualizarPartida() {
 	    	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
 	    	nomeDaPartida.setText(modeloPartida+" - "+modeloPartida.getFasePartida());
 	    }
 	    
+	    
+	    /**Metodo para atualizar a lista de arbitros disponiveis**/
 	    private void AtualizarListaArbitros() {
 	    	listaArbitros = ArbitroDAO.todosNomesArbitros();
 	    	arbitros = FXCollections.observableArrayList(listaArbitros);
 	    	comboArbitro.setItems(arbitros);
 	    }
-	    
+
+	    /**Metodo para atualizar os dias disponiveis para realizar as partidas**/
 	    private void atualizarDias() {
 	    	for(int i = 1; i <= 31;i++) {
 	    		listaDias.add(i);
@@ -110,6 +117,7 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    	comboDia.setItems(dias);
 	    }
 	    
+	    /**Metodo para atualizar os meses disponiveis para realizar as partidas**/
 	    private void atualizarMes() {
 	    	for(int i = 1; i <= 12;i++) {
 	    		listaMes.add(i);
@@ -118,6 +126,7 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    	comboMes.setItems(mes);
 	    }
 	    
+	    /**Metodo para atualizar as horas disponiveis para realizar as partidas**/
 	    private void atualizarHora() {
 	    	for(int i = 0; i <= 23;i++) {
 	    		listaHoras.add(i);
@@ -126,6 +135,7 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    	comboHora.setItems(horas);
 	    }
 	    
+	    /**Metodo para atualizar os minutos disponiveis para realizar as partidas**/
 	    private void atualizarMinuto() {
 	    	for(int i = 0; i <= 59;i++) {
 	    		listaMinuto.add(i);
@@ -134,7 +144,7 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	    	comboMinuto.setItems(minuto);
 	    }
 	    
-	    
+	    /**Ação do botão proximo para salvar a partida e mudar a tela para a proxima etapa**/
 	    public void btnProximo(ActionEvent event) throws IOException, ObjetoNaoExisteException{
 	    	Partida modeloPartida = PartidaDAO.partidaSemRealizar();
 	    	PartidaDAO.editarLocal(localPartida.getText(), modeloPartida);
@@ -146,6 +156,7 @@ public class Etapa1PartidaController extends JanelaJAVAFX{
 	        trocarJanela("/app/viewFasedeGrupos/Etapa2Partida.fxml", 800, 600, window);
 	    }
 	    
+	    /**Metodo para atualizar a disponibilidade do botão de proxima etapa**/
 	    public void atualizarBotao(MouseEvent event) {
 	    	if(localPartida.getText().isEmpty() || comboArbitro.getValue() == null || comboDia.getValue() == null || comboMinuto.getValue() == null || comboHora.getValue() == null || comboMes.getValue() == null) {
 	    		btnProximaEtapa.setDisable(true);

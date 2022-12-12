@@ -90,6 +90,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 
 	private List<Label> listaLabels = new ArrayList<>();
 
+	/**Ação do botão de cadastrar onde muda a tela para a criação de partida**/
 	public void btnCadastrar(ActionEvent event) throws IOException {
 
 		Stage window = (Stage) btnCadastrarPartida.getScene().getWindow();
@@ -97,6 +98,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/Etapa1Partida.fxml", 800, 600, window);
 	}
 
+	/**Ação do botão de voltar onde muda a tela para a fase de grupos**/
 	public void btnVoltarMenu(ActionEvent event) throws IOException {
 		OitavasDeFinal.voltarGrupo();
 		Stage window = (Stage) btnVoltarMenu.getScene().getWindow();
@@ -104,6 +106,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
 	}
 
+	/**Ação do botão de quartas de final onde muda a tela para as quartas de final**/
 	public void btnQuartas(ActionEvent event) throws IOException {
 		
 		QuartasDeFinal.organizarPartidasQuartas();
@@ -112,6 +115,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/QuartasDeFinal.fxml", 800, 600, window);
 	}
 
+	/**Metodo para adicionar na lista de labels os label com as seleções**/
 	void adicionar() {
 		listaLabels.add(oitava1Sele1);
 		listaLabels.add(oitava1Sele2);
@@ -131,6 +135,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 		listaLabels.add(oitava8Sele2);
 	}
 
+	/**Metodo para atualizar as partidas das oitavas de final**/
 	void atualizarPartidas() {
 		List<Partida> partidasOitavasList = OitavasDeFinal.listaPartidasOitavas();
 		int contador = 0;
@@ -156,6 +161,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 		}
 	}
 
+	/**Metodo para randomizar o resultado das partidas**/
 	public void randPartidaMenuAction(ActionEvent event) {
 		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), false);
 		atualizarPartidas();
@@ -164,6 +170,7 @@ public class OitavasDeFinalController extends JanelaJAVAFX {
 	}
 	
 
+	/**metodo para atualizar a disponibilidade dos botões**/
 	void atualizarBotoes() {
 		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
 			btnCadastrarPartida.setDisable(true);
