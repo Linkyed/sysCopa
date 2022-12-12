@@ -1,6 +1,7 @@
 package app.controller;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -83,12 +84,12 @@ public class Listagem extends JanelaJAVAFX{
     		}
     		
     	} else if (escolhaListagem.getValue().toString().equals("Jogador")) {
-    		List<String> lista = JogadorDAO.jogadoresExistentes();
+    		HashMap<String, String> lista = JogadorDAO.jogadoresEPosicoes();
     		
-    		if (lista.size() > 0) {
-    			for (String jogador: lista) {
-    				listagemView.getItems().add(jogador);
-    			}    			
+    		if (lista.size() > 0) {  
+    			for (HashMap.Entry<String,String> pair : lista.entrySet()) {
+    				listagemView.getItems().add(pair.getKey() + " | " + pair.getValue());
+    			}
     			window.setScene(scene);
     			window.showAndWait();
     		} else {

@@ -1,6 +1,7 @@
 package app.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import app.model.exceptions.CaracterInvalidoException;
@@ -490,6 +491,14 @@ public class JogadorDAO implements JogadorDAOInterface{
 		List<String> lista = new ArrayList<>();
 		for (Jogador jogador: todos_Jogadores) {
 			lista.add(jogador.getNome());
+		}
+		return lista;
+	}
+	
+	public static HashMap<String, String> jogadoresEPosicoes(){
+		HashMap<String, String> lista = new HashMap<>();
+		for (Jogador jogador: todos_Jogadores) {
+			lista.put(jogador.getNome(), jogador.getPosicaoJogada());
 		}
 		return lista;
 	}

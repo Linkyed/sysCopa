@@ -100,14 +100,14 @@ public class SelecaoDAO implements SelecaoDAOInterface {
 	 **/
 	static public void excluir(Selecao selecao) throws ObjetoNaoExisteException {
 		if (selecoes.contains(selecao)) {
-			selecao = SelecaoDAO.getSelecaoPorSelecao(selecao);
-			List<Jogador> jogadores = selecao.getJogadores();
+			Selecao selecaoReal = SelecaoDAO.getSelecaoPorSelecao(selecao);
+			List<Jogador> jogadores = selecaoReal.getJogadores();
 			for (Jogador jogador : jogadores) {
 				JogadorDAO.excluirJogadorParcial(jogador);
 			}
-			TecnicoDAO.excluir(TecnicoDAO.getIndexPorTecnico(selecao.getTecnico()));
-			GrupoPrimeiraFase.excluirSelecaoGrupo(selecao);
-			selecoes.remove(selecao);
+			TecnicoDAO.excluir(TecnicoDAO.getIndexPorTecnico(selecaoReal.getTecnico()));
+			GrupoPrimeiraFase.excluirSelecaoGrupo(selecaoReal);
+			selecoes.remove(selecaoReal);
 		} else {
 			throw new ObjetoNaoExisteException("Seleção não existe na lista");
 		}

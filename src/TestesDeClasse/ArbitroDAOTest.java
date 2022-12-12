@@ -7,6 +7,7 @@ import app.model.Arbitro;
 import app.model.ArbitroDAO;
 import app.model.exceptions.CaracterInvalidoException;
 import app.model.exceptions.ObjetoJaExisteException;
+import app.model.exceptions.ObjetoNaoExisteException;
 import app.model.exceptions.StringVaziaException;
 
 public class ArbitroDAOTest {
@@ -16,7 +17,7 @@ public class ArbitroDAOTest {
 	Arbitro arbitro2 = new Arbitro("Lucas");
 	Arbitro arbitro3 = new Arbitro("Mateus");
 	@Test
-	public void inserirTest() {
+	public void inserirTest() throws StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException {
 		ArbitroDAO.inserir(arbitro0);
 		ArbitroDAO.inserir(arbitro1);
 		ArbitroDAO.inserir(arbitro2);
@@ -25,7 +26,7 @@ public class ArbitroDAOTest {
 		ArbitroDAO.resetarLista();
 	}
 	@Test
-	public void editarTest() {
+	public void editarTest() throws StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException, ObjetoNaoExisteException {
 		ArbitroDAO.inserir(arbitro0);
 		ArbitroDAO.inserir(arbitro1);
 		ArbitroDAO.inserir(arbitro2);
@@ -36,12 +37,13 @@ public class ArbitroDAOTest {
 		ArbitroDAO.resetarLista();
 	}
 	@Test
-	public void excluirTest() {
+	public void excluirTest() throws ObjetoNaoExisteException, StringVaziaException, CaracterInvalidoException, ObjetoJaExisteException {
 		ArbitroDAO.inserir(arbitro0);
 		ArbitroDAO.inserir(arbitro1);
 		ArbitroDAO.inserir(arbitro2);
 		ArbitroDAO.inserir(arbitro3);
-		assertTrue(ArbitroDAO.excluir(0));
+		ArbitroDAO.excluir("Jose");
+		assertEquals(ArbitroDAO.quantidadeArbitro(), 3);
 		ArbitroDAO.resetarLista();
 	}
 	@Test
