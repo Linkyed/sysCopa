@@ -39,7 +39,7 @@
          <children>
             <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: MEDIUMTURQUOISE;" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="campeao" text="Label" textFill="#fffbfb">
+                  <Label fx:id="campeao" style="-fx-border-color: black;" text="Label" textFill="#eeeded">
                      <font>
                         <Font name="Arial Bold Italic" size="96.0" />
                      </font>

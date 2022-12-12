@@ -330,7 +330,7 @@ public class Etapa4PartidaController extends JanelaJAVAFX {
 			PartidaDAO.alteracaoDeStatusPartida(true, modeloPartida);
 			GrupoPrimeiraFase.definirPontos(modeloPartida, true);
 			Stage window = (Stage) btnSalvar.getScene().getWindow();
-			trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 600, window);
+			trocarJanela("/app/viewFasedeGrupos/FaseDeGrupos.fxml", 800, 500, window);
 		} else if (modeloPartida.getFasePartida().equalsIgnoreCase("Oitavas")) {
 			PartidaDAO.resultadoPartida(modeloPartida);
 			Stage window = (Stage) btnSalvar.getScene().getWindow();

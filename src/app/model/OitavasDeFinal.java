@@ -40,4 +40,19 @@ public class OitavasDeFinal {
 		}
 		return partidasOitavasList;
 	}
+	
+	public static void voltarGrupo() {
+		for (Partida partida : partidasOitavas) {
+			PartidaDAO.excluirTotalPartida(partida);
+		}
+		partidasOitavas.clear();
+		PartidaDAO.limparPartidas();
+	}
+	
+	public static void Limpar() {
+		for (Partida partida : partidasOitavas) {
+			PartidaDAO.excluir(partida);
+		}
+	
+	}
 }

@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class DesempateController {
@@ -49,10 +50,20 @@ public class DesempateController {
     	window.close();
     	
     }
+    
+    public void verificarCombo(MouseEvent event) {
+    	if(comboBoxSele.getValue() == null ) {
+    		btnSalvar.setDisable(true);
+    	}else {
+    		btnSalvar.setDisable(false);
+    	}
+    }
+    
 
     @FXML
     void initialize() {
     	atualizarCombo();
+    	btnSalvar.setDisable(true);
         assert btnSalvar != null : "fx:id=\"btnSalvar\" was not injected: check your FXML file 'Desempate.fxml'.";
         assert comboBoxSele != null : "fx:id=\"comboBoxSele\" was not injected: check your FXML file 'Desempate.fxml'.";
 

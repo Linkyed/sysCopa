@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-border-color: blue; -fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.FaseDeGrupos">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-border-color: Black; -fx-background-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.FaseDeGrupos">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -31,7 +31,7 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="56.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 200; -fx-arc-width: 20;" width="775.0" />
                   <Label text="FASE DE GRUPOS">
                      <font>
-                        <Font name="Arial Italic" size="28.0" />
+                        <Font name="Arial Bold Italic" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -383,10 +383,10 @@
         </rowConstraints>
          <children>
             <Button fx:id="cadastrarPartidas" mnemonicParsing="false" onAction="#btnCadastrar" prefHeight="25.0" prefWidth="141.0" text="Cadastrar Partidas" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-            <Button fx:id="bntVoltarMenuPrincipal" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Menu Principal" GridPane.halignment="CENTER" />
             <Button fx:id="listarPartidas" mnemonicParsing="false" onAction="#btnListar" prefHeight="25.0" prefWidth="145.0" text="Listar Partidas" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <Button fx:id="randButton" mnemonicParsing="false" onAction="#randPartidaMenuAction" prefHeight="25.0" prefWidth="137.0" text="Aleatório" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
             <Button fx:id="oitavasButton" mnemonicParsing="false" onAction="#btnOitavas" text="Proxima Fase" GridPane.columnIndex="4" GridPane.halignment="CENTER" />
+            <Button fx:id="excuirPartida" mnemonicParsing="false" onAction="#deletar" text="Excuir Partida" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </children>

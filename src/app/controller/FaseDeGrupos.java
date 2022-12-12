@@ -82,6 +82,9 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 	
 	@FXML
 	private Button oitavasButton;
+	
+	@FXML
+    private Button excuirPartida;
 
 	private void atualizarGrupos() {
 
@@ -185,7 +188,15 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 
 	}
 	
-	void atualizarBotoes() {
+	public void atualizarExcuir() {
+		if(PartidaDAO.quantidadePartidasRealizada() == 0) {
+			excuirPartida.setDisable(true);
+		}else {
+			excuirPartida.setDisable(false);
+		}
+	}
+	
+	public void atualizarBotoes() {
 		if(PartidaDAO.quantidadePartidasNaoRealizada() == 0) {
 			cadastrarPartidas.setDisable(true);
 			randButton.setDisable(true);
@@ -224,12 +235,18 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		trocarJanela("/app/viewFasedeGrupos/OitavasDeFinal.fxml", 800, 600, window);
 	}
 	
+	public void deletar() throws IOException {
+		Stage window = (Stage) excuirPartida.getScene().getWindow();
+		trocarJanela("/app/viewFasedeGrupos/DeletarPartida.fxml", 300, 400, window);
+	}
+	
 
 	public void randPartidaMenuAction(ActionEvent event) {
-		Teste.RandomPartida(6, true);
+		Teste.RandomPartida(PartidaDAO.quantidadePartidasNaoRealizada(), true);
 		atualizarGrupos();
 		atualizarPontos();
 		atualizarBotoes();
+		atualizarExcuir();
 	}
 
 	@FXML
@@ -237,6 +254,7 @@ public class FaseDeGrupos extends JanelaJAVAFX {
 		atualizarGrupos();
 		atualizarPontos();
 		atualizarBotoes();
+		atualizarExcuir();
 
 	}
 }

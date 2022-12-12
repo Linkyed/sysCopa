@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SemiFinalController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SemiFinalController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -159,14 +159,14 @@
                      </children></StackPane>
                   <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: gray;" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnVoltarMenu" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Voltar" />
+                        <Button fx:id="excuirPartida" mnemonicParsing="false" text="Excuir Partida" />
                      </children>
                   </StackPane>
                </children>
             </GridPane>
          </children>
       </GridPane>
-      <StackPane prefHeight="57.0" prefWidth="798.0" style="-fx-background-color: grey;">
+      <StackPane prefHeight="57.0" prefWidth="798.0" style="-fx-background-color: grey; -fx-border-color: black;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" stroke="BLACK" strokeType="INSIDE" width="726.0" />
             <Label text="SemiFinal">

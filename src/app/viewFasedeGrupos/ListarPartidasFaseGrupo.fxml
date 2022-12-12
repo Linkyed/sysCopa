@@ -382,8 +382,7 @@
         </rowConstraints>
          <children>
             <Button fx:id="cadastrarPartidas" mnemonicParsing="false" onAction="#btnCadastrar" prefHeight="25.0" prefWidth="155.0" text="Cadastrar Partidas" GridPane.columnIndex="3" />
-            <Button fx:id="bntVoltarMenuPrincipal" mnemonicParsing="false" onAction="#btnVoltarMenu" text="Menu Principal" GridPane.columnIndex="1" />
-            <Button fx:id="bntClassificacao" mnemonicParsing="false" onAction="#bntClassificacaoMostrar" text="Classificação Grupos" GridPane.columnIndex="2" />
+            <Button fx:id="bntClassificacao" mnemonicParsing="false" onAction="#bntClassificacaoMostrar" text="Classificação Grupos" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
