@@ -1,6 +1,6 @@
 # sysCopa
 ## English
-### Resume
+### Summary
 Hello everyone, this is a project created by me (Linkyed) and my friend Nalbert(Nalbertsan), this project was created to be a "simulator" of the Futbool World Cup
 where the user can create his own teams, choachs, players and referees, or use a preset of all the real teams to make the simulation. After that the program will generate
 all the matchs with the 32 teams and the user will have to decide who wins the match, who marked goals, who gets yellow and red cards and some other things. After
